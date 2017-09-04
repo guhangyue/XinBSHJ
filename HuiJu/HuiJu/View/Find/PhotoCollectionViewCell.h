@@ -9,5 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface PhotoCollectionViewCell : UICollectionViewCell
+@property (weak, nonatomic) IBOutlet UIImageView *PhotoIV;
+@property (weak, nonatomic) IBOutlet UILabel *NameLbl;
+@property (weak, nonatomic) IBOutlet UILabel *address;
+@property (weak, nonatomic) IBOutlet UILabel *distance;
 
 @end

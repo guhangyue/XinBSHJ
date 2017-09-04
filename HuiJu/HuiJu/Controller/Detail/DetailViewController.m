@@ -32,6 +32,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setNavigationItem];
+    UITapGestureRecognizer *tap=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(Action:)];
+    [_TiYanJuanView addGestureRecognizer:tap];
     // Do any additional setup after loading the view.
 }
 
@@ -57,6 +59,10 @@
 - (void)backAction {
     [self dismissViewControllerAnimated:YES completion:nil];
     //[self.navigationController popViewControllerAnimated:YES];
+}
+-(void)Action:(id)sender{
+    [self dismissViewControllerAnimated:YES completion:nil];
+
 }
 /*
 #pragma mark - Navigation

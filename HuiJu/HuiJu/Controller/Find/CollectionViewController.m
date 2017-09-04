@@ -7,7 +7,7 @@
 //
 
 #import "CollectionViewController.h"
-
+#import "PhotoCollectionViewCell.h"
 @interface CollectionViewController ()
 
 @end
@@ -15,6 +15,12 @@
 @implementation CollectionViewController
 
 static NSString * const reuseIdentifier = @"Cell";
+- (IBAction)cityAction:(id)sender forEvent:(UIEvent *)event {
+}
+- (IBAction)classificationAction:(id)sender forEvent:(UIEvent *)event {
+}
+- (IBAction)distanceToAction:(id)sender forEvent:(UIEvent *)event {
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -47,13 +53,13 @@ static NSString * const reuseIdentifier = @"Cell";
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
 #warning Incomplete implementation, return the number of sections
-    return 0;
+    return 2;
 }
 
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
 #warning Incomplete implementation, return the number of items
-    return 0;
+    return 2;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
