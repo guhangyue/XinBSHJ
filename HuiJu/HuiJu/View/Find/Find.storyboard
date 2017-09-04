@@ -12,7 +12,7 @@
         <scene sceneID="Xx1-7p-ODF">
             <objects>
                 <collectionViewController id="qTS-3V-JOO" customClass="CollectionViewController" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="5ZQ-S0-seO">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="5ZQ-S0-seO">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -46,7 +46,7 @@
         <!--Find-->
         <scene sceneID="t38-bR-zTU">
             <objects>
-                <navigationController title="Find" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="tni-CF-KyH" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="Find" title="Find" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="tni-CF-KyH" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="OV5-5K-SfU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
