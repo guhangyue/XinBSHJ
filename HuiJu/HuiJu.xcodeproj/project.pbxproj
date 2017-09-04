@@ -60,16 +60,20 @@
 		882119631F593BBF003258C6 /* qrspec.m in Sources */ = {isa = PBXBuildFile; fileRef = 8821195A1F593BBF003258C6 /* qrspec.m */; };
 		882119641F593BBF003258C6 /* rscode.m in Sources */ = {isa = PBXBuildFile; fileRef = 8821195C1F593BBF003258C6 /* rscode.m */; };
 		882119651F593BBF003258C6 /* split.m in Sources */ = {isa = PBXBuildFile; fileRef = 8821195E1F593BBF003258C6 /* split.m */; };
-		882119821F5946D1003258C6 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 882119811F5946D1003258C6 /* DetailViewController.m */; };
 		8821198D1F5946DD003258C6 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 882119881F5946DD003258C6 /* HomeViewController.m */; };
 		8821198E1F5946DD003258C6 /* MyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8821198B1F5946DD003258C6 /* MyViewController.m */; };
-		882119951F594791003258C6 /* Detail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 882119901F594791003258C6 /* Detail.storyboard */; };
 		882119961F594791003258C6 /* Find.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 882119921F594791003258C6 /* Find.storyboard */; };
 		882119971F594791003258C6 /* My.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 882119941F594791003258C6 /* My.storyboard */; };
 		8862D08E1F5A996800D828E6 /* Sign.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8862D08D1F5A996800D828E6 /* Sign.storyboard */; };
 		8862D0921F5A99AB00D828E6 /* SignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8862D0911F5A99AB00D828E6 /* SignInViewController.m */; };
 		8862D0951F5A99BB00D828E6 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8862D0941F5A99BB00D828E6 /* SignUpViewController.m */; };
 		8862D0981F5A99EC00D828E6 /* SheZhi.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8862D0971F5A99EC00D828E6 /* SheZhi.storyboard */; };
+		B24C64191F5D375B00A76F39 /* Detail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B24C64181F5D375B00A76F39 /* Detail.storyboard */; };
+		B24C64241F5D379A00A76F39 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B24C641B1F5D379A00A76F39 /* DetailViewController.m */; };
+		B24C64251F5D379A00A76F39 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B24C641D1F5D379A00A76F39 /* MapViewController.m */; };
+		B24C64261F5D379A00A76F39 /* PayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B24C641F1F5D379A00A76F39 /* PayViewController.m */; };
+		B24C64271F5D379A00A76F39 /* TiYanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B24C64211F5D379A00A76F39 /* TiYanViewController.m */; };
+		B24C64281F5D379A00A76F39 /* ZhiFuBaoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B24C64231F5D379A00A76F39 /* ZhiFuBaoViewController.m */; };
 		B990D25BAC48C15119EEBA99 /* libPods-HuiJu.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C75145C4FBF4BD7AF8AF12F /* libPods-HuiJu.a */; };
 /* End PBXBuildFile section */
 
@@ -195,13 +199,10 @@
 		8821195C1F593BBF003258C6 /* rscode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = rscode.m; sourceTree = "<group>"; };
 		8821195D1F593BBF003258C6 /* split.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = split.h; sourceTree = "<group>"; };
 		8821195E1F593BBF003258C6 /* split.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = split.m; sourceTree = "<group>"; };
-		882119801F5946D1003258C6 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
-		882119811F5946D1003258C6 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		882119871F5946DD003258C6 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		882119881F5946DD003258C6 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		8821198A1F5946DD003258C6 /* MyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyViewController.h; sourceTree = "<group>"; };
 		8821198B1F5946DD003258C6 /* MyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyViewController.m; sourceTree = "<group>"; };
-		882119901F594791003258C6 /* Detail.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Detail.storyboard; sourceTree = "<group>"; };
 		882119921F594791003258C6 /* Find.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Find.storyboard; sourceTree = "<group>"; };
 		882119941F594791003258C6 /* My.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = My.storyboard; sourceTree = "<group>"; };
 		8862D08D1F5A996800D828E6 /* Sign.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Sign.storyboard; sourceTree = "<group>"; };
@@ -210,6 +211,17 @@
 		8862D0931F5A99BB00D828E6 /* SignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
 		8862D0941F5A99BB00D828E6 /* SignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
 		8862D0971F5A99EC00D828E6 /* SheZhi.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SheZhi.storyboard; sourceTree = "<group>"; };
+		B24C64181F5D375B00A76F39 /* Detail.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Detail.storyboard; sourceTree = "<group>"; };
+		B24C641A1F5D379A00A76F39 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		B24C641B1F5D379A00A76F39 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		B24C641C1F5D379A00A76F39 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
+		B24C641D1F5D379A00A76F39 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
+		B24C641E1F5D379A00A76F39 /* PayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayViewController.h; sourceTree = "<group>"; };
+		B24C641F1F5D379A00A76F39 /* PayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PayViewController.m; sourceTree = "<group>"; };
+		B24C64201F5D379A00A76F39 /* TiYanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TiYanViewController.h; sourceTree = "<group>"; };
+		B24C64211F5D379A00A76F39 /* TiYanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TiYanViewController.m; sourceTree = "<group>"; };
+		B24C64221F5D379A00A76F39 /* ZhiFuBaoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZhiFuBaoViewController.h; sourceTree = "<group>"; };
+		B24C64231F5D379A00A76F39 /* ZhiFuBaoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZhiFuBaoViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -516,8 +528,16 @@
 		8821197F1F5946D1003258C6 /* Detail */ = {
 			isa = PBXGroup;
 			children = (
-				882119801F5946D1003258C6 /* DetailViewController.h */,
-				882119811F5946D1003258C6 /* DetailViewController.m */,
+				B24C641A1F5D379A00A76F39 /* DetailViewController.h */,
+				B24C641B1F5D379A00A76F39 /* DetailViewController.m */,
+				B24C641C1F5D379A00A76F39 /* MapViewController.h */,
+				B24C641D1F5D379A00A76F39 /* MapViewController.m */,
+				B24C641E1F5D379A00A76F39 /* PayViewController.h */,
+				B24C641F1F5D379A00A76F39 /* PayViewController.m */,
+				B24C64201F5D379A00A76F39 /* TiYanViewController.h */,
+				B24C64211F5D379A00A76F39 /* TiYanViewController.m */,
+				B24C64221F5D379A00A76F39 /* ZhiFuBaoViewController.h */,
+				B24C64231F5D379A00A76F39 /* ZhiFuBaoViewController.m */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -552,7 +572,7 @@
 		8821198F1F594791003258C6 /* Detail */ = {
 			isa = PBXGroup;
 			children = (
-				882119901F594791003258C6 /* Detail.storyboard */,
+				B24C64181F5D375B00A76F39 /* Detail.storyboard */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -723,11 +743,11 @@
 				8862D08E1F5A996800D828E6 /* Sign.storyboard in Resources */,
 				882119971F594791003258C6 /* My.storyboard in Resources */,
 				8821187C1F5937CB003258C6 /* LaunchScreen.storyboard in Resources */,
+				B24C64191F5D375B00A76F39 /* Detail.storyboard in Resources */,
 				8862D0981F5A99EC00D828E6 /* SheZhi.storyboard in Resources */,
 				882119961F594791003258C6 /* Find.storyboard in Resources */,
 				882118791F5937CB003258C6 /* Assets.xcassets in Resources */,
 				882118741F5937CB003258C6 /* Main.storyboard in Resources */,
-				882119951F594791003258C6 /* Detail.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -804,6 +824,7 @@
 				882119631F593BBF003258C6 /* qrspec.m in Sources */,
 				882119481F593B6F003258C6 /* ErrorHandler.m in Sources */,
 				8821193F1F593B6F003258C6 /* base64.m in Sources */,
+				B24C64271F5D379A00A76F39 /* TiYanViewController.m in Sources */,
 				882119611F593BBF003258C6 /* qrencode.m in Sources */,
 				882118E41F5938E5003258C6 /* SKTagButton.m in Sources */,
 				882119461F593B6F003258C6 /* RSADataVerifier.m in Sources */,
@@ -813,7 +834,7 @@
 				882119601F593BBF003258C6 /* mask.m in Sources */,
 				882118E31F5938E5003258C6 /* SKTag.m in Sources */,
 				8821195F1F593BBF003258C6 /* bitstream.m in Sources */,
-				882119821F5946D1003258C6 /* DetailViewController.m in Sources */,
+				B24C64251F5D379A00A76F39 /* MapViewController.m in Sources */,
 				8821198E1F5946DD003258C6 /* MyViewController.m in Sources */,
 				8821194D1F593B6F003258C6 /* StorageMgr.m in Sources */,
 				882118E61F5938E5003258C6 /* ViewController.m in Sources */,
@@ -821,6 +842,7 @@
 				882119441F593B6F003258C6 /* openssl_wrapper.m in Sources */,
 				882119451F593B6F003258C6 /* RSADataSigner.m in Sources */,
 				88022E5D1F5D2FC9005CF9F7 /* CollectionViewController.m in Sources */,
+				B24C64241F5D379A00A76F39 /* DetailViewController.m in Sources */,
 				8821198D1F5946DD003258C6 /* HomeViewController.m in Sources */,
 				882118E11F5938E5003258C6 /* HMSegmentedControl.m in Sources */,
 				8821186E1F5937CA003258C6 /* AppDelegate.m in Sources */,
@@ -833,6 +855,7 @@
 				88022E541F5D00BE005CF9F7 /* YeMianTableViewCell.m in Sources */,
 				8862D0951F5A99BB00D828E6 /* SignUpViewController.m in Sources */,
 				882119401F593B6F003258C6 /* DataSigner.m in Sources */,
+				B24C64281F5D379A00A76F39 /* ZhiFuBaoViewController.m in Sources */,
 				8821194E1F593B6F003258C6 /* UIImage+MDQRCode.m in Sources */,
 				8821194B1F593B6F003258C6 /* NSString+Crypt.m in Sources */,
 				882119621F593BBF003258C6 /* qrinput.m in Sources */,
@@ -840,6 +863,7 @@
 				8821193E1F593B6F003258C6 /* GBAlipayManager.m in Sources */,
 				882119651F593BBF003258C6 /* split.m in Sources */,
 				8821194A1F593B6F003258C6 /* NSData+Base64.m in Sources */,
+				B24C64261F5D379A00A76F39 /* PayViewController.m in Sources */,
 				8821186B1F5937CA003258C6 /* main.m in Sources */,
 				882119431F593B6F003258C6 /* NSDataEx.m in Sources */,
 				882118E21F5938E5003258C6 /* BasicEncodingRules.m in Sources */,

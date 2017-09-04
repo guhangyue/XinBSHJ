@@ -1,32 +1,29 @@
 //
-//  DetailViewController.m
+//  TiYanViewController.m
 //  HuiJu
 //
-//  Created by IMAC on 2017/9/1.
+//  Created by admin1 on 2017/9/4.
 //  Copyright © 2017年 shiki. All rights reserved.
 //
 
-#import "DetailViewController.h"
+#import "TiYanViewController.h"
 
-@interface DetailViewController ()
-@property (weak, nonatomic) IBOutlet UIButton *addressBtn;
-- (IBAction)addressAction:(UIButton *)sender forEvent:(UIEvent *)event;
+@interface TiYanViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *clubNameLbl;
+@property (weak, nonatomic) IBOutlet UIButton *clubAddressbBtn;
+- (IBAction)clubAddressbAction:(UIButton *)sender forEvent:(UIEvent *)event;
 @property (weak, nonatomic) IBOutlet UIButton *callingBtn;
 - (IBAction)callingAction:(UIButton *)sender forEvent:(UIEvent *)event;
-@property (weak, nonatomic) IBOutlet UILabel *clubIntroduceLbl;
-@property (weak, nonatomic) IBOutlet UILabel *clubTimeLbl;
-@property (weak, nonatomic) IBOutlet UILabel *clubMemberLbl;
-@property (weak, nonatomic) IBOutlet UILabel *clubSiteLbl;
-@property (weak, nonatomic) IBOutlet UILabel *clubPersonLbl;
+@property (weak, nonatomic) IBOutlet UILabel *saleCountLbl;
 @property (weak, nonatomic) IBOutlet UILabel *eNameLbl;
 @property (weak, nonatomic) IBOutlet UILabel *priceLbl;
-@property (weak, nonatomic) IBOutlet UILabel *saleCountLbl;
-@property (weak, nonatomic) IBOutlet UIImageView *eLogoImage;
+@property (weak, nonatomic) IBOutlet UILabel *orginPriceLbl;
+@property (weak, nonatomic) IBOutlet UIButton *payBtn;
+- (IBAction)payAction:(UIButton *)sender forEvent:(UIEvent *)event;
 
 @end
 
-@implementation DetailViewController
+@implementation TiYanViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -48,8 +45,10 @@
 }
 */
 
-- (IBAction)addressAction:(UIButton *)sender forEvent:(UIEvent *)event {
+- (IBAction)clubAddressbAction:(UIButton *)sender forEvent:(UIEvent *)event {
 }
 - (IBAction)callingAction:(UIButton *)sender forEvent:(UIEvent *)event {
+}
+- (IBAction)payAction:(UIButton *)sender forEvent:(UIEvent *)event {
 }
 @end
