@@ -76,6 +76,7 @@
 		B24C64281F5D379A00A76F39 /* ZhiFuBaoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B24C64231F5D379A00A76F39 /* ZhiFuBaoViewController.m */; };
 		B2FE370F1F5D39A6007E6621 /* shezhiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2FE370E1F5D39A6007E6621 /* shezhiViewController.m */; };
 		B990D25BAC48C15119EEBA99 /* libPods-HuiJu.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C75145C4FBF4BD7AF8AF12F /* libPods-HuiJu.a */; };
+		DECFEEB51F5D486A00F18D9D /* UserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DECFEEB41F5D486A00F18D9D /* UserModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -225,6 +226,8 @@
 		B24C64231F5D379A00A76F39 /* ZhiFuBaoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZhiFuBaoViewController.m; sourceTree = "<group>"; };
 		B2FE370D1F5D39A6007E6621 /* shezhiViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = shezhiViewController.h; sourceTree = "<group>"; };
 		B2FE370E1F5D39A6007E6621 /* shezhiViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = shezhiViewController.m; sourceTree = "<group>"; };
+		DECFEEB31F5D486A00F18D9D /* UserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserModel.h; sourceTree = "<group>"; };
+		DECFEEB41F5D486A00F18D9D /* UserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -426,6 +429,8 @@
 				882118B61F5938E5003258C6 /* Order.m */,
 				88022E581F5D10D5005CF9F7 /* ShouYe.h */,
 				88022E591F5D10D5005CF9F7 /* ShouYe.m */,
+				DECFEEB31F5D486A00F18D9D /* UserModel.h */,
+				DECFEEB41F5D486A00F18D9D /* UserModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -830,6 +835,7 @@
 				882119481F593B6F003258C6 /* ErrorHandler.m in Sources */,
 				8821193F1F593B6F003258C6 /* base64.m in Sources */,
 				B24C64271F5D379A00A76F39 /* TiYanViewController.m in Sources */,
+				DECFEEB51F5D486A00F18D9D /* UserModel.m in Sources */,
 				882119611F593BBF003258C6 /* qrencode.m in Sources */,
 				882118E41F5938E5003258C6 /* SKTagButton.m in Sources */,
 				882119461F593B6F003258C6 /* RSADataVerifier.m in Sources */,
