@@ -21,4 +21,14 @@
     }
     return self;
 }
+- (id)initWithDetialDictionary: (NSDictionary *)dict{
+    self = [super init];
+    if (self) {
+        _logo=[Utilities nullAndNilCheck:dict[@"logo"] replaceBy:@""];
+        _TName=[Utilities nullAndNilCheck:dict[@"name"] replaceBy:@""];
+        _categoryName=[Utilities nullAndNilCheck:dict[@"categoryName"] replaceBy:@""];
+        _price=[Utilities nullAndNilCheck:dict[@"price"] replaceBy:@""];
+    }
+    return self;
+}
 @end

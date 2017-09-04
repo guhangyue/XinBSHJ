@@ -14,5 +14,10 @@
 @property (strong,nonatomic) NSString *address;
 @property (strong,nonatomic) NSString *distance;
 @property (strong,nonatomic) NSString *experience;
+@property (strong,nonatomic) NSString *logo;
+@property (strong,nonatomic) NSString *TName;
+@property (strong,nonatomic) NSString *categoryName;
+@property (strong,nonatomic) NSString *price;
 - (instancetype)initWithDictForHotelCell: (NSDictionary *)dict;
+- (id)initWithDetialDictionary: (NSDictionary *)dict;
 @end

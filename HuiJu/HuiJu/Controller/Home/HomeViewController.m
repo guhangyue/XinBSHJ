@@ -37,7 +37,7 @@
     NSLog(@"para = %@", para);
     [RequestAPI requestURL:@"/homepage/choice" withParameters:para andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
         [_avi stopAnimating];
-        NSLog(@"%@",responseObject);
+        //NSLog(@"%@",responseObject);
         if ([responseObject[@"resultFlag"] integerValue] == 8001) {
             NSLog(@"%@",responseObject);
         }
