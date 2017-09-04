@@ -10,7 +10,7 @@
 
 @implementation ShouYe
 
-- (instancetype)initWithDictForHotelCell: (NSDictionary *)dict{
+- (id)initWithDictionary: (NSDictionary *)dict{
     self = [super init];
     if (self) {
         self.image = [Utilities nullAndNilCheck:dict[@"image"] replaceBy:@"暂无"];

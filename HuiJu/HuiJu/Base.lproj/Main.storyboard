@@ -22,21 +22,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AdDefault" translatesAutoresizingMaskIntoConstraints="NO" id="38Z-2d-E1V">
-                                <rect key="frame" x="0.0" y="64" width="375" height="150"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="150" id="IGI-8H-4nL"/>
-                                </constraints>
-                            </imageView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1el-QE-JfB">
+                                <rect key="frame" x="0.0" y="64" width="375" height="133.5"/>
+                            </scrollView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="tt7-Pm-S46">
-                                <rect key="frame" x="0.0" y="214" width="375" height="404"/>
+                                <rect key="frame" x="0.0" y="197.5" width="375" height="420.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="YeMianCell" rowHeight="150" id="IT7-Qd-ryG" customClass="YeMianTableViewCell">
                                         <rect key="frame" x="0.0" y="28" width="375" height="150"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="IT7-Qd-ryG" id="ZWv-7K-54F">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="150"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="149"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fUT-Dl-0Z1">
@@ -97,7 +94,7 @@
                                         <rect key="frame" x="0.0" y="178" width="375" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dyl-KZ-dkZ" id="NXn-cP-wX2">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="99"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2Tv-B5-Wrx">
@@ -161,13 +158,14 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="tt7-Pm-S46" firstAttribute="top" secondItem="38Z-2d-E1V" secondAttribute="bottom" id="0ud-to-z15"/>
                             <constraint firstItem="Bmm-9z-pGX" firstAttribute="top" secondItem="tt7-Pm-S46" secondAttribute="bottom" id="4H0-h6-8DO"/>
-                            <constraint firstItem="38Z-2d-E1V" firstAttribute="top" secondItem="gSr-Eo-T2A" secondAttribute="bottom" id="9fu-yn-uAg"/>
-                            <constraint firstItem="38Z-2d-E1V" firstAttribute="leading" secondItem="vqo-v1-AFk" secondAttribute="leading" id="HJb-Sg-4Bx"/>
+                            <constraint firstAttribute="trailing" secondItem="1el-QE-JfB" secondAttribute="trailing" id="6FD-IR-LYH"/>
+                            <constraint firstItem="1el-QE-JfB" firstAttribute="top" secondItem="gSr-Eo-T2A" secondAttribute="bottom" id="PpP-ly-4DY"/>
+                            <constraint firstItem="tt7-Pm-S46" firstAttribute="top" secondItem="1el-QE-JfB" secondAttribute="bottom" id="UYy-NA-DpM"/>
                             <constraint firstAttribute="trailing" secondItem="tt7-Pm-S46" secondAttribute="trailing" id="ZBm-r1-fYK"/>
-                            <constraint firstAttribute="trailing" secondItem="38Z-2d-E1V" secondAttribute="trailing" id="h24-el-Skt"/>
+                            <constraint firstItem="1el-QE-JfB" firstAttribute="height" secondItem="vqo-v1-AFk" secondAttribute="height" multiplier="1:5" id="mPC-Bb-GOo"/>
                             <constraint firstItem="tt7-Pm-S46" firstAttribute="leading" secondItem="vqo-v1-AFk" secondAttribute="leading" id="qM8-Ch-mFj"/>
+                            <constraint firstItem="1el-QE-JfB" firstAttribute="leading" secondItem="vqo-v1-AFk" secondAttribute="leading" id="x0s-e6-9bS"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="PAu-Jq-UT9"/>
@@ -247,7 +245,4 @@
             <point key="canvasLocation" x="428" y="-317.09145427286359"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="AdDefault" width="480" height="183"/>
-    </resources>
 </document>

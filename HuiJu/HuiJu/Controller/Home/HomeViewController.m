@@ -40,6 +40,22 @@
         //NSLog(@"%@",responseObject);
         if ([responseObject[@"resultFlag"] integerValue] == 8001) {
             NSLog(@"%@",responseObject);
+            NSDictionary *result =responseObject[@"result"];
+            NSDictionary *models =result [@"models"];
+            NSArray *experience =models[@"experience"];
+            for (NSDictionary *dict in models) {
+                //用ActivityModel类中定义的初始化方法initWithDictionary：将遍历得来的字典dict转换为ActivityModel对象
+                ShouYe *models = [[ShouYe alloc]initWithDictionary:dict];
+                //将上述实例化好的activityModel对象插入_arr数组中
+                [_arr addObject:models];
+            }
+            for (NSDictionary *dict in experience) {
+                //用ActivityModel类中定义的初始化方法initWithDictionary：将遍历得来的字典dict转换为ActivityModel对象
+                ShouYe *models = [[ShouYe alloc]initWithDetialDictionary:dict];
+                //将上述实例化好的activityModel对象插入_arr数组中
+                [_arr addObject:models];
+            }
+    
         }
         
     }failure:^(NSInteger statusCode, NSError *error) {

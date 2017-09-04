@@ -18,6 +18,6 @@
 @property (strong,nonatomic) NSString *TName;
 @property (strong,nonatomic) NSString *categoryName;
 @property (strong,nonatomic) NSString *price;
-- (instancetype)initWithDictForHotelCell: (NSDictionary *)dict;
+- (id)initWithDictionary: (NSDictionary *)dict;
 - (id)initWithDetialDictionary: (NSDictionary *)dict;
 @end
