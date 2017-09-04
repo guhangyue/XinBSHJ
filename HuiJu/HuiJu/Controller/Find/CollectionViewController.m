@@ -8,7 +8,7 @@
 
 #import "CollectionViewController.h"
 #import "PhotoCollectionViewCell.h"
-@interface CollectionViewController ()
+@interface CollectionViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 
 @end
 
