@@ -16,6 +16,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self setNavigationItem];
     // Do any additional setup after loading the view.
 }
 
@@ -23,7 +24,25 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
+//设置导航栏样式
+-(void)setNavigationItem{
+    self.navigationItem.title = @"支付";
+    //设置导航条的颜色（风格颜色）
+    self.navigationController.navigationBar.barTintColor = UIColorFromRGB(0, 100, 255);
+    //实例化一个button
+    UIButton *leftBtn = [UIButton buttonWithType:UIButtonTypeSystem];
+    //设置button的位置大小
+    leftBtn.frame = CGRectMake(0, 0, 20, 20);
+    //设置背景图片
+    [leftBtn setBackgroundImage:[UIImage imageNamed:@"返回"] forState:UIControlStateNormal];
+    //给按钮添加事件
+    [leftBtn addTarget:self action:@selector(backAction) forControlEvents:UIControlEventTouchUpInside];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:leftBtn];
+}
+- (void)backAction {
+    [self dismissViewControllerAnimated:YES completion:nil];
+    //[self.navigationController popViewControllerAnimated:YES];
+}
 /*
 #pragma mark - Navigation
 

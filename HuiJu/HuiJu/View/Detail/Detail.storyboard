@@ -187,7 +187,7 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q5N-ZF-tlY">
+                                    <view contentMode="scaleToFill" restorationIdentifier="TiYanJuanView" translatesAutoresizingMaskIntoConstraints="NO" id="q5N-ZF-tlY">
                                         <rect key="frame" x="0.0" y="526.5" width="375" height="115"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cWA-qw-laO">
@@ -284,6 +284,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="TiYanJuanView" destination="q5N-ZF-tlY" id="0ka-ed-lna"/>
                         <outlet property="addressBtn" destination="Ha3-eY-hDE" id="zgj-tq-xvD"/>
                         <outlet property="callingBtn" destination="vgb-JR-qmG" id="1pr-Lf-QSE"/>
                         <outlet property="clubIntroduceLbl" destination="4QD-Xr-SCF" id="LwJ-iG-Kkx"/>
@@ -676,6 +677,6 @@
         <image name="地址" width="48" height="48"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="wmk-mv-alp"/>
+        <segue reference="424-OX-C1w"/>
     </inferredMetricsTieBreakers>
 </document>
