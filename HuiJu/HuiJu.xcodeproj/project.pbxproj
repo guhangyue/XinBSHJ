@@ -75,6 +75,7 @@
 		B24C64271F5D379A00A76F39 /* TiYanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B24C64211F5D379A00A76F39 /* TiYanViewController.m */; };
 		B24C64281F5D379A00A76F39 /* ZhiFuBaoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B24C64231F5D379A00A76F39 /* ZhiFuBaoViewController.m */; };
 		B990D25BAC48C15119EEBA99 /* libPods-HuiJu.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C75145C4FBF4BD7AF8AF12F /* libPods-HuiJu.a */; };
+		DE059BFC1F5D3C340063FD20 /* UserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DE059BFB1F5D3C340063FD20 /* UserModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -222,6 +223,8 @@
 		B24C64211F5D379A00A76F39 /* TiYanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TiYanViewController.m; sourceTree = "<group>"; };
 		B24C64221F5D379A00A76F39 /* ZhiFuBaoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZhiFuBaoViewController.h; sourceTree = "<group>"; };
 		B24C64231F5D379A00A76F39 /* ZhiFuBaoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZhiFuBaoViewController.m; sourceTree = "<group>"; };
+		DE059BFA1F5D3C340063FD20 /* UserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserModel.h; sourceTree = "<group>"; };
+		DE059BFB1F5D3C340063FD20 /* UserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -423,6 +426,8 @@
 				882118B61F5938E5003258C6 /* Order.m */,
 				88022E581F5D10D5005CF9F7 /* ShouYe.h */,
 				88022E591F5D10D5005CF9F7 /* ShouYe.m */,
+				DE059BFA1F5D3C340063FD20 /* UserModel.h */,
+				DE059BFB1F5D3C340063FD20 /* UserModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -846,6 +851,7 @@
 				8821198D1F5946DD003258C6 /* HomeViewController.m in Sources */,
 				882118E11F5938E5003258C6 /* HMSegmentedControl.m in Sources */,
 				8821186E1F5937CA003258C6 /* AppDelegate.m in Sources */,
+				DE059BFC1F5D3C340063FD20 /* UserModel.m in Sources */,
 				882118E81F5938E5003258C6 /* Order.m in Sources */,
 				88022E5A1F5D10D5005CF9F7 /* ShouYe.m in Sources */,
 				882119471F593B6F003258C6 /* AppAPIClient.m in Sources */,
