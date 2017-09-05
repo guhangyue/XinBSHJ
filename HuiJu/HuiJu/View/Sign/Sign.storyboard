@@ -34,7 +34,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="用户名" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NZW-mg-Kjd">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="密码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NZW-mg-Kjd">
                                 <rect key="frame" x="15" y="194" width="345" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="LZ8-YU-Lop"/>
@@ -71,7 +71,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.85882352939999995" green="0.85882352939999995" blue="0.85882352939999995" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="fC5-xe-2QZ" firstAttribute="trailing" secondItem="NZW-mg-Kjd" secondAttribute="trailing" id="29S-eG-7UT"/>
                             <constraint firstItem="fC5-xe-2QZ" firstAttribute="leading" secondItem="NZW-mg-Kjd" secondAttribute="leading" id="FEl-O3-L7M"/>
@@ -186,7 +186,7 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.87843137250000003" green="0.8862745098" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="BG4-Mj-cG5" firstAttribute="leading" secondItem="79S-xA-cNm" secondAttribute="leading" id="1ZA-d0-plK"/>
                             <constraint firstItem="uQq-ED-arD" firstAttribute="trailing" secondItem="BG4-Mj-cG5" secondAttribute="trailing" id="DCy-pS-EeJ"/>
@@ -215,7 +215,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zeQ-Jv-2cO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2927" y="114"/>
+            <point key="canvasLocation" x="2839" y="114"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="qGs-iu-JYg">
