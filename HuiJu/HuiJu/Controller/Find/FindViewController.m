@@ -16,7 +16,10 @@
 @property (weak, nonatomic) IBOutlet UIButton *distanceBtn;
 @property (weak, nonatomic) IBOutlet UIButton *classificationBtn;
 @property (strong,nonatomic)UIActivityIndicatorView *avi;
-@property (strong,nonatomic)NSMutableArray *ClubArr;
+@property (strong,nonatomic)NSArray *hotarr;
+@property (strong,nonatomic)NSArray *upgradedArr;
+@property (strong,nonatomic)NSMutableArray *hotClubArr;
+
 @end
 
 @implementation FindViewController
@@ -25,6 +28,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self naviConfig];
+    _collectionView.allowsSelection = NO;
+    [self naviConfig];
+    [self dataInitialize];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -52,7 +58,62 @@
     return 2;
 }
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    return _ClubArr.count;
+    return _hotClubArr.count;
+}
+//每个items长什么样
+- (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
+    PhotoCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"collectionCell" forIndexPath:indexPath];
+    FindModel *model = _hotClubArr[indexPath.item];
+    cell.clubName.text = model.clubName;
+    cell.clubaddress.text = model.address;
+    cell.clubdistance.text = [NSString stringWithFormat:@"%@米",model.distance];
+    NSURL *URL = [NSURL URLWithString:model.Image];
+    [cell.clubImage sd_setImageWithURL:URL placeholderImage:[UIImage imageNamed:@"默认"]];
+    return cell;
+}
+//设置每个cell的尺寸
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
+    return CGSizeMake((UI_SCREEN_W - 5)/2,185);
+}
+//最小的行间距
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section{
+    return 5;
+}
+//cell的最小列间距
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section{
+    return 5;
+}
+#pragma mark - request
+-(void)dataInitialize{
+    // [self hotRequest];
+    [self ClubRequest];
+}
+- (void)ClubRequest{
+    
+    _avi = [Utilities getCoverOnView:self.view];
+    NSDictionary *para =  @{@"city":@"无锡",@"jing":@"120.300000",@"wei":@"31.570000",@"page":@"1",@"perPage":@"6"};
+    [RequestAPI requestURL:@"/homepage/choice" withParameters:para andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
+        NSLog(@"responseObject:%@", responseObject);
+        [_avi stopAnimating];
+        if([responseObject[@"resultFlag"] integerValue] == 8001){
+            NSArray *result = responseObject[@"result"][@"models"];
+            for(NSDictionary *dict in result){
+                FindModel *model = [[FindModel alloc]initWithClub:dict];
+                [_hotClubArr  addObject: model];
+                NSLog(@"数组里的是：%@",model.clubName);
+            }
+            [_collectionView reloadData];
+        }else{
+            //业务逻辑失败的情况下
+            NSString *errorMsg = [ErrorHandler getProperErrorString:[responseObject[@"result"] integerValue]];
+            [Utilities popUpAlertViewWithMsg:errorMsg andTitle:nil onView:self];
+        }
+        
+    } failure:^(NSInteger statusCode, NSError *error) {
+        [_avi stopAnimating];
+        [Utilities popUpAlertViewWithMsg:@"请保持网络连接畅通" andTitle:nil onView:self];
+    }];
+    
 }
 
 /*
