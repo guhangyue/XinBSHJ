@@ -190,27 +190,13 @@
             
             //ShouYe *hotels = _arr[indexPath.row];
             //将http请求的字符串转换为NSURL
-            NSURL *url = [NSURL URLWithString:experience.image];
+            NSURL *url = [NSURL URLWithString:experience[@"logo"]];
             [cell.logo sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@""]];
-            cell.name.text =experience.name;
-            cell.categoryName.text =experience.categoryName;
-            cell.price.text =experience.price;
+            cell.name.text =experience[@"TName"];
+            cell.categoryName.text =experience[@"categoryName"];
+            cell.price.text =experience[@"price"];
             
         }
-    }
-    
-    if (_arr2.count !=0) {
-        experienceCellTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"experienceCell" forIndexPath:indexPath];
-        //根据当前正在渲染的细胞的行号，从对应的数组中拿到这一行所匹配的活动字典
-        
-        
-        ShouYe *hotels = _arr2[indexPath.row];
-        //将http请求的字符串转换为NSURL
-        NSURL *url = [NSURL URLWithString:hotels.image];
-        [cell.logo sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@""]];
-        cell.name.text =hotels.name;
-        cell.categoryName.text =hotels.categoryName;
-        cell.price.text =hotels.price;
     }
     return cell;
 }
