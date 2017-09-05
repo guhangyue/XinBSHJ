@@ -72,8 +72,16 @@
            // NSDictionary *models =result [@"models"];
             ShouYe *detail = [[ ShouYe alloc]initWithDetialDictionary:result];
             _clubNameLbl.text =detail.TName;
+            _clubIntroduceLbl.text=detail.clubIntroduce;
+            _clubTimeLbl.text=detail.clubTime;
+            _clubMemberLbl.text=detail.clubMember;
+            _clubSiteLbl.text=detail.clubSite;
+            _clubPersonLbl.text=detail.clubPerson;
+            _priceLbl.text=detail.price;
+            
             
             [_addressBtn setTitle:detail.addressB forState:UIControlStateNormal];
+            
             //NSLog(@"333:%@",detail.addressB);
            // _addressLbl.text = detail.hotelLocation;
             //_priceLbl.text = [NSString stringWithFormat:@"¥ %@",detail.hotelMoney];

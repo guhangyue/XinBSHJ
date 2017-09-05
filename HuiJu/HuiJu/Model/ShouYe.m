@@ -36,6 +36,12 @@
         _categoryName=[Utilities nullAndNilCheck:dict[@"categoryName"] replaceBy:@""];
         _price=[Utilities nullAndNilCheck:dict[@"price"] replaceBy:@""];
         self.addressB = [Utilities nullAndNilCheck:dict[@"clubAddressB"] replaceBy:@"未知"];
+        self.clubTime= [Utilities nullAndNilCheck:dict[@"clubTime"] replaceBy:@"未知"];
+        self.clubMember= [Utilities nullAndNilCheck:dict[@"clubMember"] replaceBy:@"未知"];
+        self.clubSite= [Utilities nullAndNilCheck:dict[@"clubSite"] replaceBy:@"未知"];
+        self.clubPerson= [Utilities nullAndNilCheck:dict[@"clubPerson"] replaceBy:@"未知"];
+        
+
     }
     return self;
 }
