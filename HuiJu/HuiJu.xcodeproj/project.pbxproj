@@ -10,7 +10,6 @@
 		88022E541F5D00BE005CF9F7 /* YeMianTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 88022E531F5D00BE005CF9F7 /* YeMianTableViewCell.m */; };
 		88022E571F5D00E3005CF9F7 /* experienceCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 88022E561F5D00E3005CF9F7 /* experienceCellTableViewCell.m */; };
 		88022E5A1F5D10D5005CF9F7 /* ShouYe.m in Sources */ = {isa = PBXBuildFile; fileRef = 88022E591F5D10D5005CF9F7 /* ShouYe.m */; };
-		88022E5D1F5D2FC9005CF9F7 /* CollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88022E5C1F5D2FC9005CF9F7 /* CollectionViewController.m */; };
 		88022E601F5D2FEA005CF9F7 /* PhotoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 88022E5F1F5D2FEA005CF9F7 /* PhotoCollectionViewCell.m */; };
 		8821186B1F5937CA003258C6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8821186A1F5937CA003258C6 /* main.m */; };
 		8821186E1F5937CA003258C6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8821186D1F5937CA003258C6 /* AppDelegate.m */; };
@@ -74,6 +73,7 @@
 		B24C64261F5D379A00A76F39 /* PayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B24C641F1F5D379A00A76F39 /* PayViewController.m */; };
 		B24C64271F5D379A00A76F39 /* TiYanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B24C64211F5D379A00A76F39 /* TiYanViewController.m */; };
 		B24C64281F5D379A00A76F39 /* ZhiFuBaoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B24C64231F5D379A00A76F39 /* ZhiFuBaoViewController.m */; };
+		B2AC874C1F5E357A00CB8589 /* FindViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2AC874B1F5E357A00CB8589 /* FindViewController.m */; };
 		B2F4EC1A1F5E33EE00C651D0 /* shezhiTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B2F4EC191F5E33EE00C651D0 /* shezhiTableViewCell.m */; };
 		B2FE370F1F5D39A6007E6621 /* shezhiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2FE370E1F5D39A6007E6621 /* shezhiViewController.m */; };
 		B990D25BAC48C15119EEBA99 /* libPods-HuiJu.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C75145C4FBF4BD7AF8AF12F /* libPods-HuiJu.a */; };
@@ -107,8 +107,6 @@
 		88022E561F5D00E3005CF9F7 /* experienceCellTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = experienceCellTableViewCell.m; sourceTree = "<group>"; };
 		88022E581F5D10D5005CF9F7 /* ShouYe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShouYe.h; sourceTree = "<group>"; };
 		88022E591F5D10D5005CF9F7 /* ShouYe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShouYe.m; sourceTree = "<group>"; };
-		88022E5B1F5D2FC9005CF9F7 /* CollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewController.h; sourceTree = "<group>"; };
-		88022E5C1F5D2FC9005CF9F7 /* CollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewController.m; sourceTree = "<group>"; };
 		88022E5E1F5D2FEA005CF9F7 /* PhotoCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoCollectionViewCell.h; sourceTree = "<group>"; };
 		88022E5F1F5D2FEA005CF9F7 /* PhotoCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoCollectionViewCell.m; sourceTree = "<group>"; };
 		882118661F5937CA003258C6 /* HuiJu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HuiJu.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -225,6 +223,8 @@
 		B24C64211F5D379A00A76F39 /* TiYanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TiYanViewController.m; sourceTree = "<group>"; };
 		B24C64221F5D379A00A76F39 /* ZhiFuBaoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZhiFuBaoViewController.h; sourceTree = "<group>"; };
 		B24C64231F5D379A00A76F39 /* ZhiFuBaoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZhiFuBaoViewController.m; sourceTree = "<group>"; };
+		B2AC874A1F5E357A00CB8589 /* FindViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindViewController.h; sourceTree = "<group>"; };
+		B2AC874B1F5E357A00CB8589 /* FindViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FindViewController.m; sourceTree = "<group>"; };
 		B2F4EC181F5E33EE00C651D0 /* shezhiTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = shezhiTableViewCell.h; sourceTree = "<group>"; };
 		B2F4EC191F5E33EE00C651D0 /* shezhiTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = shezhiTableViewCell.m; sourceTree = "<group>"; };
 		B2FE370D1F5D39A6007E6621 /* shezhiViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = shezhiViewController.h; sourceTree = "<group>"; };
@@ -556,8 +556,8 @@
 		882119831F5946DD003258C6 /* Find */ = {
 			isa = PBXGroup;
 			children = (
-				88022E5B1F5D2FC9005CF9F7 /* CollectionViewController.h */,
-				88022E5C1F5D2FC9005CF9F7 /* CollectionViewController.m */,
+				B2AC874A1F5E357A00CB8589 /* FindViewController.h */,
+				B2AC874B1F5E357A00CB8589 /* FindViewController.m */,
 			);
 			path = Find;
 			sourceTree = "<group>";
@@ -858,11 +858,11 @@
 				882119491F593B6F003258C6 /* JSONS.m in Sources */,
 				882119441F593B6F003258C6 /* openssl_wrapper.m in Sources */,
 				882119451F593B6F003258C6 /* RSADataSigner.m in Sources */,
-				88022E5D1F5D2FC9005CF9F7 /* CollectionViewController.m in Sources */,
 				B24C64241F5D379A00A76F39 /* DetailViewController.m in Sources */,
 				8821198D1F5946DD003258C6 /* HomeViewController.m in Sources */,
 				882118E11F5938E5003258C6 /* HMSegmentedControl.m in Sources */,
 				B2FE370F1F5D39A6007E6621 /* shezhiViewController.m in Sources */,
+				B2AC874C1F5E357A00CB8589 /* FindViewController.m in Sources */,
 				8821186E1F5937CA003258C6 /* AppDelegate.m in Sources */,
 				882118E81F5938E5003258C6 /* Order.m in Sources */,
 				88022E5A1F5D10D5005CF9F7 /* ShouYe.m in Sources */,
