@@ -12,6 +12,7 @@
 @property (strong,nonatomic) NSString *image;
 @property (strong,nonatomic) NSString *name;
 @property (strong,nonatomic) NSString *address;
+@property (strong,nonatomic) NSString *addressB;
 @property (strong,nonatomic) NSString *distance;
 @property (strong,nonatomic) NSArray *experience;
 @property (strong,nonatomic) NSString *logo;

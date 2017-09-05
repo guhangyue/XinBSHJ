@@ -16,6 +16,7 @@
         self.image = [Utilities nullAndNilCheck:dict[@"image"] replaceBy:@"暂无"];
         self.name = [Utilities nullAndNilCheck:dict[@"name"] replaceBy:@"未知"];
         self.address = [Utilities nullAndNilCheck:dict[@"address"] replaceBy:@"未知"];
+        
         self.distance = [Utilities nullAndNilCheck:dict[@"distance"] replaceBy:@"未知"];
         //self.experience = [Utilities nullAndNilCheck:dict[@"experience"] replaceBy:@[]];
     }
@@ -24,10 +25,11 @@
 - (id)initWithDetialDictionary: (NSDictionary *)dict{
     self = [super init];
     if (self) {
-        _logo=[Utilities nullAndNilCheck:dict[@"logo"] replaceBy:@""];
-        _TName=[Utilities nullAndNilCheck:dict[@"name"] replaceBy:@""];
-        _categoryName=[Utilities nullAndNilCheck:dict[@"categoryName"] replaceBy:@""];
-        _price=[Utilities nullAndNilCheck:dict[@"price"] replaceBy:@""];
+        //_logo=[Utilities nullAndNilCheck:dict[@"clubLogo"] replaceBy:@""];
+        _TName=[Utilities nullAndNilCheck:dict[@"clubName"] replaceBy:@""];
+       // _categoryName=[Utilities nullAndNilCheck:dict[@"categoryName"] replaceBy:@""];
+       // _price=[Utilities nullAndNilCheck:dict[@"price"] replaceBy:@""];
+        _addressB = [Utilities nullAndNilCheck:dict[@"clubAddressB"] replaceBy:@"未知"];
     }
     return self;
 }

@@ -40,15 +40,7 @@
     self.navigationItem.title = @"体验劵详情";
     //设置导航条的颜色（风格颜色）
     self.navigationController.navigationBar.barTintColor = UIColorFromRGB(0, 100, 255);
-    //实例化一个button
-    UIButton *leftBtn = [UIButton buttonWithType:UIButtonTypeSystem];
-    //设置button的位置大小
-    leftBtn.frame = CGRectMake(0, 0, 20, 20);
-    //设置背景图片
-    [leftBtn setBackgroundImage:[UIImage imageNamed:@"返回"] forState:UIControlStateNormal];
-    //给按钮添加事件
-    [leftBtn addTarget:self action:@selector(backAction) forControlEvents:UIControlEventTouchUpInside];
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:leftBtn];
+
 }
 - (void)backAction {
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -65,9 +57,11 @@
 */
 
 - (IBAction)clubAddressbAction:(UIButton *)sender forEvent:(UIEvent *)event {
+    [self performSegueWithIdentifier:@"TiYanJuanToMap" sender:nil];
 }
 - (IBAction)callingAction:(UIButton *)sender forEvent:(UIEvent *)event {
 }
 - (IBAction)payAction:(UIButton *)sender forEvent:(UIEvent *)event {
+    [self performSegueWithIdentifier:@"TiYanJuanToPay" sender:nil];
 }
 @end
