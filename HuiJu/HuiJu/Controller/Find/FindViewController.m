@@ -26,13 +26,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    _hotClubArr = [NSMutableArray new];
     // Do any additional setup after loading the view.
     [self naviConfig];
     _collectionView.allowsSelection = NO;
-    [self naviConfig];
     [self dataInitialize];
 }
-
+- (void)viewWillAppear:(BOOL)animated{
+    // [self dataInitialize];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -50,39 +52,9 @@
     //设置导航条上按钮的风格颜色
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     //设置是否需要毛玻璃效果
-    self.navigationController.navigationBar.translucent = YES;
+    self.navigationController.navigationBar.translucent = NO;
 }
 
-//每组有多少个细胞（item）
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    return 2;
-}
-- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    return _hotClubArr.count;
-}
-//每个items长什么样
-- (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
-    PhotoCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"collectionCell" forIndexPath:indexPath];
-    FindModel *model = _hotClubArr[indexPath.item];
-    cell.clubName.text = model.clubName;
-    cell.clubaddress.text = model.address;
-    cell.clubdistance.text = [NSString stringWithFormat:@"%@米",model.distance];
-    NSURL *URL = [NSURL URLWithString:model.Image];
-    [cell.clubImage sd_setImageWithURL:URL placeholderImage:[UIImage imageNamed:@"默认"]];
-    return cell;
-}
-//设置每个cell的尺寸
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
-    return CGSizeMake((UI_SCREEN_W - 5)/2,185);
-}
-//最小的行间距
-- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section{
-    return 5;
-}
-//cell的最小列间距
-- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section{
-    return 5;
-}
 #pragma mark - request
 -(void)dataInitialize{
     // [self hotRequest];
@@ -100,6 +72,7 @@
             for(NSDictionary *dict in result){
                 FindModel *model = [[FindModel alloc]initWithClub:dict];
                 [_hotClubArr  addObject: model];
+                
                 NSLog(@"数组里的是：%@",model.clubName);
             }
             [_collectionView reloadData];
@@ -115,7 +88,35 @@
     }];
     
 }
-
+//每组有多少个细胞（item）
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
+    return _hotClubArr.count;
+}
+//每个items长什么样
+- (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
+    PhotoCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"Cell" forIndexPath:indexPath];
+    FindModel *model = _hotClubArr[indexPath.item];
+    cell.clubName.text = model.clubName;
+    cell.clubaddress.text = model.address;
+    //NSLog(@"%@",model.address);
+    cell.clubdistance.text = [NSString stringWithFormat:@"%@米",model.distance];
+    NSURL *URL = [NSURL URLWithString:model.Image];
+    [cell.clubImage sd_setImageWithURL:URL placeholderImage:[UIImage imageNamed:@"默认"]];
+    //cell.clubImage.image=[UIImage imageNamed:@"Default"];
+    return cell;
+}
+//设置每个cell的尺寸
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
+    return CGSizeMake((UI_SCREEN_W - 5)/2,185);
+}
+//最小的行间距
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section{
+    return 5;
+}
+//cell的最小列间距
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section{
+    return 5;
+}
 /*
 #pragma mark - Navigation
 
@@ -125,5 +126,9 @@
     // Pass the selected object to the new view controller.
 }
 */
-
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    //写跳转语句
+    
+    
+}
 @end
