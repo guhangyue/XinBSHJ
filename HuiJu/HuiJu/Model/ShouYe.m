@@ -17,7 +17,7 @@
         self.name = [Utilities nullAndNilCheck:dict[@"name"] replaceBy:@"未知"];
         self.address = [Utilities nullAndNilCheck:dict[@"address"] replaceBy:@"未知"];
         self.distance = [Utilities nullAndNilCheck:dict[@"distance"] replaceBy:@"未知"];
-        self.experience = [Utilities nullAndNilCheck:dict[@"experience"] replaceBy:@"未知"];
+        //self.experience = [Utilities nullAndNilCheck:dict[@"experience"] replaceBy:@[]];
     }
     return self;
 }

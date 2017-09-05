@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "ShouYe.h"
 @interface DetailViewController : UIViewController
-
+@property (strong,nonatomic) ShouYe *detailA;
 @end
