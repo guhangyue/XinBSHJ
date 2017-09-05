@@ -9,6 +9,9 @@
 #import "shezhiViewController.h"
 
 @interface shezhiViewController ()
+@property (weak, nonatomic) IBOutlet UIImageView *touxiang;
+@property (weak, nonatomic) IBOutlet UIButton *xiugaiTX;
+- (IBAction)xiugaiAction:(UIButton *)sender forEvent:(UIEvent *)event;
 
 @end
 
@@ -34,4 +37,6 @@
 }
 */
 
+- (IBAction)xiugaiAction:(UIButton *)sender forEvent:(UIEvent *)event {
+}
 @end
