@@ -15,6 +15,7 @@
 @property (strong, nonatomic) UIActivityIndicatorView *avi;
 @property (weak, nonatomic) IBOutlet UITableView *HomeTableView;
 @property (strong, nonatomic) NSMutableArray *arr;
+@property (strong, nonatomic) NSMutableArray *arr2;
 @end
 
 @implementation HomeViewController
@@ -25,6 +26,8 @@
     //创建菊花膜
     _avi = [Utilities getCoverOnView:self.view];
     [self networkRequest];
+    _arr = [NSMutableArray new];
+    _arr2 = [NSMutableArray new];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -42,18 +45,18 @@
             NSLog(@"%@",responseObject);
             NSDictionary *result =responseObject[@"result"];
             NSDictionary *models =result [@"models"];
-            NSArray *experience =models[@"experience"];
             for (NSDictionary *dict in models) {
                 //用ActivityModel类中定义的初始化方法initWithDictionary：将遍历得来的字典dict转换为ActivityModel对象
                 ShouYe *models = [[ShouYe alloc]initWithDictionary:dict];
                 //将上述实例化好的activityModel对象插入_arr数组中
                 [_arr addObject:models];
             }
-            for (NSDictionary *dict in experience) {
+            NSArray *experience =models[@"experience"];
+            for (NSDictionary *Adict in experience) {
                 //用ActivityModel类中定义的初始化方法initWithDictionary：将遍历得来的字典dict转换为ActivityModel对象
-                ShouYe *models = [[ShouYe alloc]initWithDetialDictionary:dict];
+                ShouYe *experience = [[ShouYe alloc]initWithDetialDictionary:Adict];
                 //将上述实例化好的activityModel对象插入_arr数组中
-                [_arr addObject:models];
+                [_arr2 addObject:experience];
             }
     
         }
@@ -114,18 +117,18 @@
     cell.name.text =hotel.name;
     cell.address.text =hotel.address;
     cell.distance.text =hotel.distance;
-//    if (experience.text >0) {
-//        experienceCellTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"experienceCell" forIndexPath:indexPath];
-//        //根据当前正在渲染的细胞的行号，从对应的数组中拿到这一行所匹配的活动字典
-//        
-//        ShouYe *hotel = _arr[indexPath.row];
-//        //将http请求的字符串转换为NSURL
-//        NSURL *url = [NSURL URLWithString:hotel.image];
-//        [cell.logo sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@""]];
-//        cell.name.text =hotel.name;
-//        cell.categoryName.text =hotel.categoryName;
-//        cell.price.text =hotel.price;
-//    }
+    if (hotel.experience>0) {
+        experienceCellTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"experienceCell" forIndexPath:indexPath];
+        //根据当前正在渲染的细胞的行号，从对应的数组中拿到这一行所匹配的活动字典
+        
+        ShouYe *hotels = _arr2[indexPath.row];
+        //将http请求的字符串转换为NSURL
+        NSURL *url = [NSURL URLWithString:hotels.image];
+        [cell.logo sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@""]];
+        cell.name.text =hotels.name;
+        cell.categoryName.text =hotels.categoryName;
+        cell.price.text =hotels.price;
+    }
     return cell;
 }
 
