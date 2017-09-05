@@ -7,7 +7,7 @@
 //
 
 #import "shezhiViewController.h"
-
+#import "shezhiTableViewCell.h"
 @interface shezhiViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *touxiang;
 @property (weak, nonatomic) IBOutlet UIButton *xiugaiTX;
@@ -22,13 +22,34 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    _shezhiArr= @[@{@"biaoti":@"昵称",@"neirong":@"name"}];
+    _shezhiArr= @[@{@"biaoti":@"昵称",@"neirong":@"name"},@{@"biaoti":@"昵称",@"neirong":@"name"},@{@"biaoti":@"昵称",@"neirong":@"name"},@{@"biaoti":@"昵称",@"neirong":@"name"}];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+#pragma mark - table view
+
+//有多少组
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return _shezhiArr.count;
+}
+//每组多少行
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return 1;
+}
+//细胞长什么样
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    shezhiTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"shezhiTableViewCell" forIndexPath:indexPath];
+    //根据行号拿到数组中对应的数据
+    NSDictionary *dict = _shezhiArr[indexPath.section];
+    cell.biaoti.text = dict[@"biaoti"];
+    cell.neirong.text = dict[@"neirong"];
+    return cell;
+}
+
 
 /*
 #pragma mark - Navigation

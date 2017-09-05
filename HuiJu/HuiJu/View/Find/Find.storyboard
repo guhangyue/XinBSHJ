@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Collection-->
+        <!--Find View Controller-->
         <scene sceneID="e9X-Mf-pop">
             <objects>
-                <viewController title="Collection" id="IgQ-yq-aWg" customClass="FindViewController" sceneMemberID="viewController">
+                <viewController id="IgQ-yq-aWg" customClass="FindViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="LE9-yN-zil"/>
                         <viewControllerLayoutGuide type="bottom" id="39V-dK-QZG"/>
@@ -60,42 +60,53 @@
                                 </constraints>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="uOj-lw-Vtn">
-                                <rect key="frame" x="0.0" y="94" width="375" height="573"/>
+                                <rect key="frame" x="0.0" y="93" width="375" height="524"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="qG5-Ya-JXo">
-                                    <size key="itemSize" width="199" height="175"/>
+                                    <size key="itemSize" width="180" height="185"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
+                                <scrollView key="backgroundView" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="zcG-nJ-keJ">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="524"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iGA-QH-bee">
+                                            <rect key="frame" x="101" y="0.0" width="240" height="128"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </subviews>
+                                </scrollView>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="kWu-3p-1Sj" customClass="PhotoCollectionViewCell">
-                                        <rect key="frame" x="88" y="0.0" width="199" height="175"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="180" height="185"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="199" height="175"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="180" height="185"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4yg-AF-SNH">
-                                                    <rect key="frame" x="0.0" y="0.0" width="199" height="90"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Default" translatesAutoresizingMaskIntoConstraints="NO" id="4yg-AF-SNH">
+                                                    <rect key="frame" x="5" y="10" width="170" height="90"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="90" id="58v-vH-PqH"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="莫梵瑜伽(阳光店)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nrc-hH-93U">
-                                                    <rect key="frame" x="5" y="100" width="189" height="16"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="莫梵瑜伽(阳光店)" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nrc-hH-93U">
+                                                    <rect key="frame" x="5" y="110" width="170" height="16"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="无锡市雪浪街道88号" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MNa-MX-Lbc">
-                                                    <rect key="frame" x="5" y="126" width="189" height="13.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="无锡市雪浪街道88号" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MNa-MX-Lbc">
+                                                    <rect key="frame" x="5" y="136" width="170" height="13.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                     <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1515米" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OZ1-0m-bKe">
-                                                    <rect key="frame" x="5" y="150" width="189" height="13.5"/>
+                                                    <rect key="frame" x="5" y="160" width="170" height="13.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                     <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                                     <nil key="highlightedColor"/>
@@ -106,10 +117,10 @@
                                             <constraint firstAttribute="trailing" secondItem="nrc-hH-93U" secondAttribute="trailing" constant="5" id="3Gb-hq-HdL"/>
                                             <constraint firstItem="MNa-MX-Lbc" firstAttribute="leading" secondItem="nrc-hH-93U" secondAttribute="leading" id="77Z-Vp-hYG"/>
                                             <constraint firstItem="OZ1-0m-bKe" firstAttribute="top" secondItem="MNa-MX-Lbc" secondAttribute="bottom" constant="10" id="BuX-hs-orM"/>
-                                            <constraint firstItem="4yg-AF-SNH" firstAttribute="leading" secondItem="kWu-3p-1Sj" secondAttribute="leading" id="EMW-S6-uk1"/>
+                                            <constraint firstItem="4yg-AF-SNH" firstAttribute="leading" secondItem="kWu-3p-1Sj" secondAttribute="leading" constant="5" id="EMW-S6-uk1"/>
                                             <constraint firstItem="OZ1-0m-bKe" firstAttribute="trailing" secondItem="nrc-hH-93U" secondAttribute="trailing" id="EXz-cV-JLE"/>
-                                            <constraint firstItem="4yg-AF-SNH" firstAttribute="top" secondItem="kWu-3p-1Sj" secondAttribute="top" id="F8X-Qf-9Cs"/>
-                                            <constraint firstAttribute="trailing" secondItem="4yg-AF-SNH" secondAttribute="trailing" id="HPY-c7-9Np"/>
+                                            <constraint firstItem="4yg-AF-SNH" firstAttribute="top" secondItem="kWu-3p-1Sj" secondAttribute="top" constant="10" id="F8X-Qf-9Cs"/>
+                                            <constraint firstAttribute="trailing" secondItem="4yg-AF-SNH" secondAttribute="trailing" constant="5" id="HPY-c7-9Np"/>
                                             <constraint firstItem="MNa-MX-Lbc" firstAttribute="trailing" secondItem="nrc-hH-93U" secondAttribute="trailing" id="IJp-Nj-203"/>
                                             <constraint firstItem="nrc-hH-93U" firstAttribute="top" secondItem="4yg-AF-SNH" secondAttribute="bottom" constant="10" id="Igj-VC-xBJ"/>
                                             <constraint firstItem="OZ1-0m-bKe" firstAttribute="leading" secondItem="nrc-hH-93U" secondAttribute="leading" id="WQp-RM-oOw"/>
@@ -137,11 +148,13 @@
                             <constraint firstItem="uOj-lw-Vtn" firstAttribute="leading" secondItem="CRM-bA-c2P" secondAttribute="leading" id="WRR-oq-iO4"/>
                             <constraint firstItem="KQY-mF-cbg" firstAttribute="top" secondItem="LE9-yN-zil" secondAttribute="bottom" id="XK3-zT-xz6"/>
                             <constraint firstItem="KQY-mF-cbg" firstAttribute="leading" secondItem="CRM-bA-c2P" secondAttribute="leading" id="arS-NZ-huw"/>
-                            <constraint firstItem="uOj-lw-Vtn" firstAttribute="top" secondItem="KQY-mF-cbg" secondAttribute="bottom" id="pzY-pH-XZb"/>
-                            <constraint firstItem="39V-dK-QZG" firstAttribute="top" secondItem="uOj-lw-Vtn" secondAttribute="bottom" id="qnQ-XR-zqb"/>
+                            <constraint firstItem="uOj-lw-Vtn" firstAttribute="top" secondItem="KQY-mF-cbg" secondAttribute="bottom" constant="-1" id="pzY-pH-XZb"/>
+                            <constraint firstItem="39V-dK-QZG" firstAttribute="top" secondItem="uOj-lw-Vtn" secondAttribute="bottom" constant="1" id="qnQ-XR-zqb"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="JB7-l1-2T6"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="ButtonView" destination="KQY-mF-cbg" id="fih-NG-fYZ"/>
                         <outlet property="cityBtn" destination="J2h-Ic-SAl" id="tMP-ZW-OWx"/>
@@ -173,4 +186,7 @@
             <point key="canvasLocation" x="1896.8" y="94.902548725637189"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Default" width="300" height="200"/>
+    </resources>
 </document>
