@@ -22,12 +22,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1el-QE-JfB">
-                                <rect key="frame" x="0.0" y="64" width="375" height="130"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="130" id="4uN-1j-j8Q"/>
-                                </constraints>
-                            </scrollView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="tt7-Pm-S46">
                                 <rect key="frame" x="0.0" y="194" width="375" height="424"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -36,7 +30,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="150"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="IT7-Qd-ryG" id="ZWv-7K-54F">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="149"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="150"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fUT-Dl-0Z1">
@@ -97,7 +91,7 @@
                                         <rect key="frame" x="0.0" y="178" width="375" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dyl-KZ-dkZ" id="NXn-cP-wX2">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="99"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2Tv-B5-Wrx">
@@ -158,21 +152,29 @@
                                     <outlet property="delegate" destination="sX1-Ub-lv6" id="J8R-CW-IXw"/>
                                 </connections>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wIQ-ti-G8d">
+                                <rect key="frame" x="0.0" y="64" width="375" height="130"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="130" id="WFh-Ig-LdJ"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Bmm-9z-pGX" firstAttribute="top" secondItem="tt7-Pm-S46" secondAttribute="bottom" id="4H0-h6-8DO"/>
-                            <constraint firstAttribute="trailing" secondItem="1el-QE-JfB" secondAttribute="trailing" id="R8l-k9-lGa"/>
+                            <constraint firstItem="tt7-Pm-S46" firstAttribute="top" secondItem="wIQ-ti-G8d" secondAttribute="bottom" id="CfN-Kj-baL"/>
                             <constraint firstAttribute="trailing" secondItem="tt7-Pm-S46" secondAttribute="trailing" id="ZBm-r1-fYK"/>
-                            <constraint firstItem="tt7-Pm-S46" firstAttribute="top" secondItem="1el-QE-JfB" secondAttribute="bottom" id="nuZ-9A-xP6"/>
+                            <constraint firstItem="wIQ-ti-G8d" firstAttribute="leading" secondItem="vqo-v1-AFk" secondAttribute="leading" id="dYj-Du-X5k"/>
+                            <constraint firstItem="wIQ-ti-G8d" firstAttribute="top" secondItem="gSr-Eo-T2A" secondAttribute="bottom" id="eae-yZ-b7p"/>
                             <constraint firstItem="tt7-Pm-S46" firstAttribute="leading" secondItem="vqo-v1-AFk" secondAttribute="leading" id="qM8-Ch-mFj"/>
-                            <constraint firstItem="1el-QE-JfB" firstAttribute="leading" secondItem="vqo-v1-AFk" secondAttribute="leading" id="vCX-tR-iM2"/>
-                            <constraint firstItem="1el-QE-JfB" firstAttribute="top" secondItem="gSr-Eo-T2A" secondAttribute="bottom" id="xRS-vh-YiE"/>
+                            <constraint firstAttribute="trailing" secondItem="wIQ-ti-G8d" secondAttribute="trailing" id="rOG-q1-0tu"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="PAu-Jq-UT9"/>
                     <connections>
                         <outlet property="HomeTableView" destination="tt7-Pm-S46" id="HBy-0N-pa4"/>
+                        <outlet property="adView" destination="wIQ-ti-G8d" id="ivJ-Yl-dxz"/>
                         <segue destination="Y3b-iV-imK" kind="show" identifier="ShouYe2Detail" id="RlF-Mt-CNn"/>
                     </connections>
                 </viewController>

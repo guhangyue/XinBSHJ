@@ -18,7 +18,12 @@
         self.address = [Utilities nullAndNilCheck:dict[@"address"] replaceBy:@"未知"];
         
         self.distance = [Utilities nullAndNilCheck:dict[@"distance"] replaceBy:@"未知"];
-        //self.experience = [Utilities nullAndNilCheck:dict[@"experience"] replaceBy:@[]];
+        self.experience =[dict[@"experience"] isKindOfClass:[NSNull class]] ?@[ ]:      dict[@"experience"];
+        _adView = [Utilities nullAndNilCheck:dict[@"imgurl"] replaceBy:@""];
+        _logo=[Utilities nullAndNilCheck:dict[@"Logo"] replaceBy:@""];
+        _categoryName=[Utilities nullAndNilCheck:dict[@"categoryName"] replaceBy:@""];
+        _price=[Utilities nullAndNilCheck:dict[@"price"] replaceBy:@""];
+        _TName=[Utilities nullAndNilCheck:dict[@"experiencename"] replaceBy:@""];
     }
     return self;
 }
@@ -27,10 +32,10 @@
     if (self) {
         self.nameId=[Utilities nullAndNilCheck:dict[@"id"] replaceBy:@""] ;
         _logo=[Utilities nullAndNilCheck:dict[@"clubLogo"] replaceBy:@""];
-      self.TName=[Utilities nullAndNilCheck:dict[@"clubName"] replaceBy:@""];
+        self.TName=[Utilities nullAndNilCheck:dict[@"clubName"] replaceBy:@""];
         _categoryName=[Utilities nullAndNilCheck:dict[@"categoryName"] replaceBy:@""];
         _price=[Utilities nullAndNilCheck:dict[@"price"] replaceBy:@""];
-       self.addressB = [Utilities nullAndNilCheck:dict[@"clubAddressB"] replaceBy:@"未知"];
+        self.addressB = [Utilities nullAndNilCheck:dict[@"clubAddressB"] replaceBy:@"未知"];
     }
     return self;
 }

@@ -25,10 +25,11 @@
 @property (strong,nonatomic) NSString *clubSite;
 @property (strong,nonatomic) NSString *clubPerson;
 @property (strong,nonatomic) NSString *clubIntroduce;
-
+@property (strong,nonatomic) NSString *adView;
 
 
 @property (nonatomic) NSString *nameId;
 - (id)initWithDictionary: (NSDictionary *)dict;
 - (id)initWithDetialDictionary: (NSDictionary *)dict;
+
 @end
