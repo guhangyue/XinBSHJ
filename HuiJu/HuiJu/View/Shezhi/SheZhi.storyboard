@@ -248,7 +248,7 @@
         <!--修改出生日期-->
         <scene sceneID="ufI-5G-OGi">
             <objects>
-                <viewController title="修改出生日期" id="vIv-md-26q" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="xiugaichushen" title="修改出生日期" id="vIv-md-26q" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jeu-Ac-8ts"/>
                         <viewControllerLayoutGuide type="bottom" id="ngH-Nx-uFO"/>
