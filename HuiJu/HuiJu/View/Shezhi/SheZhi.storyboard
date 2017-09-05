@@ -76,7 +76,7 @@
                                             </constraints>
                                         </view>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="42" id="8z9-kv-8Ts">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="42" id="8z9-kv-8Ts" customClass="shezhiTableViewCell">
                                                 <rect key="frame" x="0.0" y="28" width="375" height="42"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8z9-kv-8Ts" id="pOX-e6-K47">
@@ -104,6 +104,10 @@
                                                         <constraint firstAttribute="trailing" secondItem="25a-wN-RVq" secondAttribute="trailing" constant="10" id="ygE-di-cZB"/>
                                                     </constraints>
                                                 </tableViewCellContentView>
+                                                <connections>
+                                                    <outlet property="biaoti" destination="evD-Lp-iTw" id="HMw-av-FJb"/>
+                                                    <outlet property="neirong" destination="25a-wN-RVq" id="0iV-SK-rhR"/>
+                                                </connections>
                                             </tableViewCell>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="20" id="l21-WP-gvq">
                                                 <rect key="frame" x="0.0" y="70" width="375" height="20"/>

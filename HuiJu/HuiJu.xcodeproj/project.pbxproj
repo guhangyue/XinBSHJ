@@ -74,6 +74,7 @@
 		B24C64261F5D379A00A76F39 /* PayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B24C641F1F5D379A00A76F39 /* PayViewController.m */; };
 		B24C64271F5D379A00A76F39 /* TiYanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B24C64211F5D379A00A76F39 /* TiYanViewController.m */; };
 		B24C64281F5D379A00A76F39 /* ZhiFuBaoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B24C64231F5D379A00A76F39 /* ZhiFuBaoViewController.m */; };
+		B2F4EC1A1F5E33EE00C651D0 /* shezhiTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B2F4EC191F5E33EE00C651D0 /* shezhiTableViewCell.m */; };
 		B2FE370F1F5D39A6007E6621 /* shezhiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2FE370E1F5D39A6007E6621 /* shezhiViewController.m */; };
 		B990D25BAC48C15119EEBA99 /* libPods-HuiJu.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C75145C4FBF4BD7AF8AF12F /* libPods-HuiJu.a */; };
 		DECFEEB51F5D486A00F18D9D /* UserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DECFEEB41F5D486A00F18D9D /* UserModel.m */; };
@@ -224,6 +225,8 @@
 		B24C64211F5D379A00A76F39 /* TiYanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TiYanViewController.m; sourceTree = "<group>"; };
 		B24C64221F5D379A00A76F39 /* ZhiFuBaoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZhiFuBaoViewController.h; sourceTree = "<group>"; };
 		B24C64231F5D379A00A76F39 /* ZhiFuBaoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZhiFuBaoViewController.m; sourceTree = "<group>"; };
+		B2F4EC181F5E33EE00C651D0 /* shezhiTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = shezhiTableViewCell.h; sourceTree = "<group>"; };
+		B2F4EC191F5E33EE00C651D0 /* shezhiTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = shezhiTableViewCell.m; sourceTree = "<group>"; };
 		B2FE370D1F5D39A6007E6621 /* shezhiViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = shezhiViewController.h; sourceTree = "<group>"; };
 		B2FE370E1F5D39A6007E6621 /* shezhiViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = shezhiViewController.m; sourceTree = "<group>"; };
 		DECFEEB31F5D486A00F18D9D /* UserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserModel.h; sourceTree = "<group>"; };
@@ -628,6 +631,8 @@
 				8862D0971F5A99EC00D828E6 /* SheZhi.storyboard */,
 				B2FE370D1F5D39A6007E6621 /* shezhiViewController.h */,
 				B2FE370E1F5D39A6007E6621 /* shezhiViewController.m */,
+				B2F4EC181F5E33EE00C651D0 /* shezhiTableViewCell.h */,
+				B2F4EC191F5E33EE00C651D0 /* shezhiTableViewCell.m */,
 			);
 			path = Shezhi;
 			sourceTree = "<group>";
@@ -844,6 +849,7 @@
 				882119641F593BBF003258C6 /* rscode.m in Sources */,
 				882119601F593BBF003258C6 /* mask.m in Sources */,
 				882118E31F5938E5003258C6 /* SKTag.m in Sources */,
+				B2F4EC1A1F5E33EE00C651D0 /* shezhiTableViewCell.m in Sources */,
 				8821195F1F593BBF003258C6 /* bitstream.m in Sources */,
 				B24C64251F5D379A00A76F39 /* MapViewController.m in Sources */,
 				8821198E1F5946DD003258C6 /* MyViewController.m in Sources */,
