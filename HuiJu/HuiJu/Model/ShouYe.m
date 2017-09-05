@@ -25,11 +25,12 @@
 - (id)initWithDetialDictionary: (NSDictionary *)dict{
     self = [super init];
     if (self) {
-        //_logo=[Utilities nullAndNilCheck:dict[@"clubLogo"] replaceBy:@""];
-        _TName=[Utilities nullAndNilCheck:dict[@"clubName"] replaceBy:@""];
-       // _categoryName=[Utilities nullAndNilCheck:dict[@"categoryName"] replaceBy:@""];
-       // _price=[Utilities nullAndNilCheck:dict[@"price"] replaceBy:@""];
-        _addressB = [Utilities nullAndNilCheck:dict[@"clubAddressB"] replaceBy:@"未知"];
+        self.nameId=[Utilities nullAndNilCheck:dict[@"id"] replaceBy:@""] ;
+        _logo=[Utilities nullAndNilCheck:dict[@"clubLogo"] replaceBy:@""];
+      self.TName=[Utilities nullAndNilCheck:dict[@"clubName"] replaceBy:@""];
+        _categoryName=[Utilities nullAndNilCheck:dict[@"categoryName"] replaceBy:@""];
+        _price=[Utilities nullAndNilCheck:dict[@"price"] replaceBy:@""];
+       self.addressB = [Utilities nullAndNilCheck:dict[@"clubAddressB"] replaceBy:@"未知"];
     }
     return self;
 }

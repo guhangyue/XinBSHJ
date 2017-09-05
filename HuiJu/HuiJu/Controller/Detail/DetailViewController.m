@@ -62,8 +62,8 @@
     UIActivityIndicatorView *aiv = [Utilities getCoverOnView:self.view];
     //NSLog(@"%@",_hotelid);
     // HotelModel *user=[ HotelModel alloc];
-    NSDictionary *para1 = @{@"clubKeyId":@123};
-    // NSLog(@"%@",user.hotelId);
+    NSDictionary *para1 = @{@"clubKeyId":@55};
+    // NSLog(@"%ld",(long)_detailA.nameId);
     [RequestAPI requestURL:@"/clubController/getClubDetails" withParameters:para1 andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
         [aiv stopAnimating];
         NSLog(@"result:%@",responseObject);
@@ -73,7 +73,7 @@
             ShouYe *detail = [[ ShouYe alloc]initWithDetialDictionary:result];
             _clubNameLbl.text =detail.TName;
             
-           // [_addressBtn setTitle:@"detail.addressB" forState:UIControlStateNormal];
+            [_addressBtn setTitle:detail.addressB forState:UIControlStateNormal];
             //NSLog(@"333:%@",detail.addressB);
            // _addressLbl.text = detail.hotelLocation;
             //_priceLbl.text = [NSString stringWithFormat:@"¥ %@",detail.hotelMoney];

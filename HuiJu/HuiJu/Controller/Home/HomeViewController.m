@@ -181,6 +181,7 @@
         //获取要传递到下一页的数据
         NSIndexPath *indexPath=[_HomeTableView indexPathForSelectedRow];
         ShouYe *activity=_arr[indexPath.row];
+       // NSLog(@"%@",_arr[indexPath.row]);
         //获取下一页的这个实例
         DetailViewController *detailVC= segue.destinationViewController;
         //把数据给下一页预备好的接收容器

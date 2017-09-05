@@ -19,6 +19,16 @@
 @property (strong,nonatomic) NSString *TName;
 @property (strong,nonatomic) NSString *categoryName;
 @property (strong,nonatomic) NSString *price;
+@property (strong,nonatomic) NSString *clubLogo;
+@property (strong,nonatomic) NSString *clubTime;
+@property (strong,nonatomic) NSString *clubMember;
+@property (strong,nonatomic) NSString *clubSite;
+@property (strong,nonatomic) NSString *clubPerson;
+@property (strong,nonatomic) NSString *clubIntroduce;
+
+
+
+@property (nonatomic) NSString *nameId;
 - (id)initWithDictionary: (NSDictionary *)dict;
 - (id)initWithDetialDictionary: (NSDictionary *)dict;
 @end
