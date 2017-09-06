@@ -9,6 +9,7 @@
 #import "FindViewController.h"
 #import "PhotoCollectionViewCell.h"
 #import "FindModel.h"
+#import "SKTagView.h"
 @interface FindViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (weak, nonatomic) IBOutlet UIView *ButtonView;
@@ -126,6 +127,7 @@
     // Pass the selected object to the new view controller.
 }
 */
+
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     //写跳转语句
     
