@@ -159,12 +159,17 @@
     //
     ShouYe *model = _arr[section];
     //当前正在渲染的细胞会所的体验券的数量加上一个会所的数量
-    return model.experience.count +1;
+    return model.i +1;
 }
 //每行高度
-//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-//    return 150.f;
-//}
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.row == 0) {
+        return 150.f;
+    }else{
+        return 100.f;
+    }
+    
+}
 //设置每一组中每一行的cell（细胞）长什么样
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     ShouYe *model = _arr[indexPath.section];
@@ -173,7 +178,7 @@
         YeMianTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"YeMianCell" forIndexPath:indexPath];
         //根据当前正在渲染的细胞的行号，从对应的数组中拿到这一行所匹配的活动字典
         
-        ShouYe *hotel = _arr[indexPath.row];
+        ShouYe *hotel = _arr[indexPath.section];
         
         //将http请求的字符串转换为NSURL
         NSURL *url = [NSURL URLWithString:hotel.image];
@@ -185,16 +190,19 @@
     } else {
         experienceCellTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"experienceCell" forIndexPath:indexPath];
         //根据当前正在渲染的细胞的行号，从对应的数组中拿到这一行所匹配的活动字典
-        NSArray *experiences = model.experience;
-        NSDictionary *experience = experiences[indexPath.row-1];
+        //NSArray *experiences = model.experience;
+        //NSDictionary *experience = experiences[indexPath.row-1];
         
         //ShouYe *hotels = _arr[indexPath.row];
         //将http请求的字符串转换为NSURL
-        NSURL *url = [NSURL URLWithString:experience[@"logo"]];
+        NSLog(@"图片网址：%@",model.experience[indexPath.row-1][0]);
+        NSURL *url = [NSURL URLWithString:model.experience[indexPath.row-1][0]];
         [cell.logo sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@""]];
-        cell.name.text = experience[@"name"];
-        cell.categoryName.text = [Utilities nullAndNilCheck:experience[@"categoryName"] replaceBy:@""];
-        cell.price.text = experience[@"orginPrice"];
+        
+        cell.categoryName.text = model.experience[indexPath.row-1][1];
+        cell.price.text = model.experience[indexPath.row-1][2];
+        cell.name.text = model.experience[indexPath.row-1][3];
+        cell.sellNumber.text = [NSString stringWithFormat:@"已售：%@",model.experience[indexPath.row-1][4]];
         return cell;
     }
 }
