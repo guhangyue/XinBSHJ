@@ -11,6 +11,7 @@
 		88022E571F5D00E3005CF9F7 /* experienceCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 88022E561F5D00E3005CF9F7 /* experienceCellTableViewCell.m */; };
 		88022E5A1F5D10D5005CF9F7 /* ShouYe.m in Sources */ = {isa = PBXBuildFile; fileRef = 88022E591F5D10D5005CF9F7 /* ShouYe.m */; };
 		88022E601F5D2FEA005CF9F7 /* PhotoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 88022E5F1F5D2FEA005CF9F7 /* PhotoCollectionViewCell.m */; };
+		88034F461F5EAECD00615C92 /* ZLImageViewDisplayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 88034F451F5EAECD00615C92 /* ZLImageViewDisplayView.m */; };
 		8821186B1F5937CA003258C6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8821186A1F5937CA003258C6 /* main.m */; };
 		8821186E1F5937CA003258C6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8821186D1F5937CA003258C6 /* AppDelegate.m */; };
 		882118741F5937CB003258C6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 882118721F5937CA003258C6 /* Main.storyboard */; };
@@ -112,6 +113,8 @@
 		88022E591F5D10D5005CF9F7 /* ShouYe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShouYe.m; sourceTree = "<group>"; };
 		88022E5E1F5D2FEA005CF9F7 /* PhotoCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoCollectionViewCell.h; sourceTree = "<group>"; };
 		88022E5F1F5D2FEA005CF9F7 /* PhotoCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoCollectionViewCell.m; sourceTree = "<group>"; };
+		88034F441F5EAECD00615C92 /* ZLImageViewDisplayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZLImageViewDisplayView.h; sourceTree = "<group>"; };
+		88034F451F5EAECD00615C92 /* ZLImageViewDisplayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZLImageViewDisplayView.m; sourceTree = "<group>"; };
 		882118661F5937CA003258C6 /* HuiJu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HuiJu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8821186A1F5937CA003258C6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8821186C1F5937CA003258C6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -302,6 +305,15 @@
 			path = Main;
 			sourceTree = "<group>";
 		};
+		88034F431F5EAECD00615C92 /* ZLImageViewDisplay */ = {
+			isa = PBXGroup;
+			children = (
+				88034F441F5EAECD00615C92 /* ZLImageViewDisplayView.h */,
+				88034F451F5EAECD00615C92 /* ZLImageViewDisplayView.m */,
+			);
+			path = ZLImageViewDisplay;
+			sourceTree = "<group>";
+		};
 		8821185D1F5937CA003258C6 = {
 			isa = PBXGroup;
 			children = (
@@ -371,6 +383,7 @@
 		8821189F1F5938E5003258C6 /* 3rd */ = {
 			isa = PBXGroup;
 			children = (
+				88034F431F5EAECD00615C92 /* ZLImageViewDisplay */,
 				882119501F593BBF003258C6 /* MDQREncode */,
 				882118A01F5938E5003258C6 /* HMSegmentedControl */,
 				882118A31F5938E5003258C6 /* SCZ-BasicEncodingRules */,
@@ -895,6 +908,7 @@
 				88022E541F5D00BE005CF9F7 /* YeMianTableViewCell.m in Sources */,
 				8862D0951F5A99BB00D828E6 /* SignUpViewController.m in Sources */,
 				882119401F593B6F003258C6 /* DataSigner.m in Sources */,
+				88034F461F5EAECD00615C92 /* ZLImageViewDisplayView.m in Sources */,
 				B24C64281F5D379A00A76F39 /* ZhiFuBaoViewController.m in Sources */,
 				8821194E1F593B6F003258C6 /* UIImage+MDQRCode.m in Sources */,
 				8821194B1F593B6F003258C6 /* NSString+Crypt.m in Sources */,

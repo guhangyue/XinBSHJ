@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="txY-qK-bv7">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="txY-qK-bv7">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -283,6 +283,7 @@
                             <constraint firstAttribute="bottom" secondItem="F9L-vJ-AHu" secondAttribute="bottom" id="pge-fh-zh4"/>
                         </constraints>
                     </view>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="TiYanJuanView" destination="q5N-ZF-tlY" id="0ka-ed-lna"/>
                         <outlet property="addressBtn" destination="Ha3-eY-hDE" id="zgj-tq-xvD"/>
@@ -297,8 +298,8 @@
                         <outlet property="eNameLbl" destination="yWe-wR-GEU" id="jTz-8m-iTs"/>
                         <outlet property="priceLbl" destination="lP9-rV-JsG" id="b0T-Gk-Pog"/>
                         <outlet property="saleCountLbl" destination="b50-Cq-Kew" id="MGQ-on-99R"/>
-                        <segue destination="9Zu-OG-LH5" kind="push" id="jR1-vn-IJK"/>
-                        <segue destination="7HK-Sc-3SH" kind="push" id="424-OX-C1w"/>
+                        <segue destination="9Zu-OG-LH5" kind="push" identifier="detailToTiyanjuan" id="jR1-vn-IJK"/>
+                        <segue destination="7HK-Sc-3SH" kind="push" identifier="detailToMap" id="424-OX-C1w"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VmB-lN-XEc" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -603,8 +604,8 @@
                         <outlet property="payBtn" destination="Mcv-4r-d7p" id="7En-YA-D2Q"/>
                         <outlet property="priceLbl" destination="hmE-ff-4xy" id="aNP-f8-q04"/>
                         <outlet property="saleCountLbl" destination="z2g-XG-Wqu" id="Rju-qe-SkU"/>
-                        <segue destination="7HK-Sc-3SH" kind="push" id="wmk-mv-alp"/>
-                        <segue destination="txt-9C-2dA" kind="push" id="U0I-YI-4XZ"/>
+                        <segue destination="7HK-Sc-3SH" kind="push" identifier="TiYanJuanToMap" id="wmk-mv-alp"/>
+                        <segue destination="txt-9C-2dA" kind="push" identifier="TiYanJuanToPay" id="U0I-YI-4XZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="APQ-lj-M7O" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -677,6 +678,6 @@
         <image name="地址" width="48" height="48"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="424-OX-C1w"/>
+        <segue reference="wmk-mv-alp"/>
     </inferredMetricsTieBreakers>
 </document>

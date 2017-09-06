@@ -16,18 +16,32 @@
         self.image = [Utilities nullAndNilCheck:dict[@"image"] replaceBy:@"暂无"];
         self.name = [Utilities nullAndNilCheck:dict[@"name"] replaceBy:@"未知"];
         self.address = [Utilities nullAndNilCheck:dict[@"address"] replaceBy:@"未知"];
+        
         self.distance = [Utilities nullAndNilCheck:dict[@"distance"] replaceBy:@"未知"];
-        //self.experience = [Utilities nullAndNilCheck:dict[@"experience"] replaceBy:@[]];
+        self.experience =[dict[@"experience"] isKindOfClass:[NSNull class]] ?@[ ]:      dict[@"experience"];
+        _adView = [Utilities nullAndNilCheck:dict[@"imgurl"] replaceBy:@""];
+        _logo=[Utilities nullAndNilCheck:dict[@"Logo"] replaceBy:@""];
+        _categoryName=[Utilities nullAndNilCheck:dict[@"categoryName"] replaceBy:@""];
+        _price=[Utilities nullAndNilCheck:dict[@"price"] replaceBy:@""];
+        _TName=[Utilities nullAndNilCheck:dict[@"experiencename"] replaceBy:@""];
     }
     return self;
 }
 - (id)initWithDetialDictionary: (NSDictionary *)dict{
     self = [super init];
     if (self) {
-        _logo=[Utilities nullAndNilCheck:dict[@"logo"] replaceBy:@""];
-        _TName=[Utilities nullAndNilCheck:dict[@"name"] replaceBy:@""];
+        self.nameId=[Utilities nullAndNilCheck:dict[@"id"] replaceBy:@""] ;
+        _logo=[Utilities nullAndNilCheck:dict[@"clubLogo"] replaceBy:@""];
+        self.TName=[Utilities nullAndNilCheck:dict[@"clubName"] replaceBy:@""];
         _categoryName=[Utilities nullAndNilCheck:dict[@"categoryName"] replaceBy:@""];
         _price=[Utilities nullAndNilCheck:dict[@"price"] replaceBy:@""];
+        self.addressB = [Utilities nullAndNilCheck:dict[@"clubAddressB"] replaceBy:@"未知"];
+        self.clubTime= [Utilities nullAndNilCheck:dict[@"clubTime"] replaceBy:@"未知"];
+        self.clubMember= [Utilities nullAndNilCheck:dict[@"clubMember"] replaceBy:@"未知"];
+        self.clubSite= [Utilities nullAndNilCheck:dict[@"clubSite"] replaceBy:@"未知"];
+        self.clubPerson= [Utilities nullAndNilCheck:dict[@"clubPerson"] replaceBy:@"未知"];
+        
+
     }
     return self;
 }
