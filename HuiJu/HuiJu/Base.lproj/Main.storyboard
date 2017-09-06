@@ -144,6 +144,7 @@
                                             <outlet property="logo" destination="2Tv-B5-Wrx" id="CNC-uy-yJI"/>
                                             <outlet property="name" destination="3rz-V3-aON" id="CTt-9B-MgP"/>
                                             <outlet property="price" destination="Dv8-Rk-Ndj" id="uPf-SL-B73"/>
+                                            <outlet property="sellNumber" destination="PsU-Ai-OS3" id="IGg-uQ-K5e"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

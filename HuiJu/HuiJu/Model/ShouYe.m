@@ -11,6 +11,7 @@
 @implementation ShouYe
 
 - (id)initWithDictionary: (NSDictionary *)dict{
+    _experience = [NSMutableArray new];
     self = [super init];
     if (self) {
         self.image = [Utilities nullAndNilCheck:dict[@"image"] replaceBy:@"暂无"];
@@ -18,12 +19,32 @@
         self.address = [Utilities nullAndNilCheck:dict[@"address"] replaceBy:@"未知"];
         
         self.distance = [Utilities nullAndNilCheck:dict[@"distance"] replaceBy:@"未知"];
-        self.experience =[dict[@"experience"] isKindOfClass:[NSNull class]] ?@[ ]:      dict[@"experience"];
+        
+        
+        if (![dict[@"experience"] isKindOfClass:[NSNull class]]) {
+            for (NSDictionary *experience in dict[@"experience"]) {
+                ShouYe *shouye =[[ShouYe alloc] initWithExDictionary:experience];
+                NSMutableArray *experiences = [NSMutableArray new];
+                [experiences addObject:shouye.logo];
+                [experiences addObject:shouye.categoryName];
+                [experiences addObject:shouye.price];
+                [experiences addObject:shouye.TName];
+                [experiences addObject:shouye.sellNumber];
+                self.i++;
+                [self.experience addObject:experiences];
+                
+            }
+            //self.experience = experiences;
+            
+        } else {
+            self.experience = NULL;
+        }
+        //self.experience = [dict[@"experience"] isKindOfClass:[NSNull class]] ?@[] : dict[@"experience"];
         _adView = [Utilities nullAndNilCheck:dict[@"imgurl"] replaceBy:@""];
-        _logo=[Utilities nullAndNilCheck:dict[@"Logo"] replaceBy:@""];
-        _categoryName=[Utilities nullAndNilCheck:dict[@"categoryName"] replaceBy:@""];
-        _price=[Utilities nullAndNilCheck:dict[@"price"] replaceBy:@""];
-        _TName=[Utilities nullAndNilCheck:dict[@"experiencename"] replaceBy:@""];
+        //        _logo=[Utilities nullAndNilCheck:dict[@"Logo"] replaceBy:@""];
+        //        _categoryName=[Utilities nullAndNilCheck:dict[@"categoryName"] replaceBy:@""];
+        //        _price=[Utilities nullAndNilCheck:dict[@"price"] replaceBy:@""];
+        //        _TName=[Utilities nullAndNilCheck:dict[@"experiencename"] replaceBy:@""];
     }
     return self;
 }
@@ -41,7 +62,19 @@
         self.clubSite= [Utilities nullAndNilCheck:dict[@"clubSite"] replaceBy:@"未知"];
         self.clubPerson= [Utilities nullAndNilCheck:dict[@"clubPerson"] replaceBy:@"未知"];
         
-
+        
+    }
+    return self;
+}
+- (id)initWithExDictionary: (NSDictionary *)dict{
+    self = [super init];
+    if (self) {
+        _logo=[Utilities nullAndNilCheck:dict[@"logo"] replaceBy:@""];
+        _categoryName=[Utilities nullAndNilCheck:dict[@"categoryName"] replaceBy:@"综合卷"];
+        //[experience[@"categoryName"] isKindOfClass:[NSNull class]] ?@"综合卷" :experience[@"categoryName"];
+        _price=[Utilities nullAndNilCheck:dict[@"price"] replaceBy:@"111"];
+        _TName=[Utilities nullAndNilCheck:dict[@"name"] replaceBy:@"000"];
+        _sellNumber=[Utilities nullAndNilCheck:dict[@"sellNumber"] replaceBy:@"000"];
     }
     return self;
 }
