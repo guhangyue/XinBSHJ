@@ -68,22 +68,6 @@
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
-                                <scrollView key="backgroundView" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="zcG-nJ-keJ">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="524"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <subviews>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BOj-Jc-Md5">
-                                            <rect key="frame" x="1" y="6" width="376" height="128"/>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </view>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstItem="BOj-Jc-Md5" firstAttribute="top" secondItem="zcG-nJ-keJ" secondAttribute="top" id="5m3-Rx-Tec"/>
-                                        <constraint firstAttribute="trailing" secondItem="BOj-Jc-Md5" secondAttribute="trailing" id="W3u-0T-KXX"/>
-                                        <constraint firstItem="BOj-Jc-Md5" firstAttribute="leading" secondItem="zcG-nJ-keJ" secondAttribute="leading" id="i5Y-0L-s8P"/>
-                                        <constraint firstItem="BOj-Jc-Md5" firstAttribute="width" secondItem="zcG-nJ-keJ" secondAttribute="width" id="lNs-I6-RdS"/>
-                                    </constraints>
-                                </scrollView>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="kWu-3p-1Sj" customClass="PhotoCollectionViewCell">
                                         <rect key="frame" x="0.0" y="0.0" width="180" height="185"/>
