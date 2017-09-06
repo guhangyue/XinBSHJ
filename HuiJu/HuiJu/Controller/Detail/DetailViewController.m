@@ -62,8 +62,8 @@
     UIActivityIndicatorView *aiv = [Utilities getCoverOnView:self.view];
     //NSLog(@"%@",_hotelid);
     // HotelModel *user=[ HotelModel alloc];
-    NSDictionary *para1 = @{@"clubKeyId":@55};
-    // NSLog(@"%ld",(long)_detailA.nameId);
+    NSDictionary *para1 = @{@"clubKeyId":@(_detailA.nameId2)};
+     NSLog(@"反馈：%ld",(long)_detailA.nameId);
     [RequestAPI requestURL:@"/clubController/getClubDetails" withParameters:para1 andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
         [aiv stopAnimating];
         NSLog(@"result:%@",responseObject);
@@ -77,7 +77,12 @@
             _clubMemberLbl.text=detail.clubMember;
             _clubSiteLbl.text=detail.clubSite;
             _clubPersonLbl.text=detail.clubPerson;
-            _priceLbl.text=detail.price;
+            ShouYe *detail2 = [[ ShouYe alloc]initWithExDictionary2:result];
+            NSURL *url = [NSURL URLWithString:detail2.eLogo];
+            [_eLogoImage sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@""]];
+            _eNameLbl.text=detail2.eName;
+            _priceLbl.text=detail2.price2;
+            _saleCountLbl.text=detail2.saleCount;
             
             
             [_addressBtn setTitle:detail.addressB forState:UIControlStateNormal];

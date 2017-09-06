@@ -15,6 +15,7 @@
 @property (strong,nonatomic) NSString *addressB;
 @property (strong,nonatomic) NSString *distance;
 @property (strong,nonatomic) NSMutableArray *experience;
+@property (strong,nonatomic) NSMutableArray *experienceInfos;
 @property (strong,nonatomic) NSString *logo;
 @property (strong,nonatomic) NSString *TName;
 @property (strong,nonatomic) NSString *categoryName;
@@ -26,11 +27,18 @@
 @property (strong,nonatomic) NSString *clubPerson;
 @property (strong,nonatomic) NSString *clubIntroduce;
 @property (strong,nonatomic) NSString *adView;
+@property (strong,nonatomic) NSString *cardLogo;
+@property (strong,nonatomic) NSString *eLogo;
+@property (strong,nonatomic) NSString *eName;
+@property (strong,nonatomic) NSString *saleCount;
+@property (strong,nonatomic) NSString *price2;
+
 @property (nonatomic) NSInteger i;
 @property (strong,nonatomic) NSString *sellNumber;
-
+@property (nonatomic) NSInteger nameId2;
 @property (nonatomic) NSString *nameId;
 - (id)initWithDictionary: (NSDictionary *)dict;
 - (id)initWithDetialDictionary: (NSDictionary *)dict;
 - (id)initWithExDictionary: (NSDictionary *)dict;
+- (id)initWithExDictionary2: (NSDictionary *)dict;
 @end

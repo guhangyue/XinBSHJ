@@ -10,4 +10,5 @@
 #import "ShouYe.h"
 @interface DetailViewController : UIViewController
 @property (strong,nonatomic) ShouYe *detailA;
+@property (strong,nonatomic) ShouYe *detailB;
 @end
