@@ -31,5 +31,5 @@
 @property (nonatomic) NSString *nameId;
 - (id)initWithDictionary: (NSDictionary *)dict;
 - (id)initWithDetialDictionary: (NSDictionary *)dict;
-
+- (id)initWithExDictionary: (NSDictionary *)dict;
 @end

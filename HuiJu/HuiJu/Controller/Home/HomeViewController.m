@@ -162,15 +162,15 @@
     return model.experience.count +1;
 }
 //每行高度
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 150.f;
-}
+//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+//    return 150.f;
+//}
 //设置每一组中每一行的cell（细胞）长什么样
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     ShouYe *model = _arr[indexPath.section];
-    YeMianTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"YeMianCell" forIndexPath:indexPath];
     //判断当前正在渲染的行数是不是第一行
     if (indexPath.row == 0) {
+        YeMianTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"YeMianCell" forIndexPath:indexPath];
         //根据当前正在渲染的细胞的行号，从对应的数组中拿到这一行所匹配的活动字典
         
         ShouYe *hotel = _arr[indexPath.row];
@@ -178,28 +178,27 @@
         //将http请求的字符串转换为NSURL
         NSURL *url = [NSURL URLWithString:hotel.image];
         [cell.image sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@""]];
-        cell.name.text =hotel.name;
-        cell.address.text =hotel.address;
-        cell.distance.text =hotel.distance;
-    }else{
-        if (indexPath.row>=1) {
-            experienceCellTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"experienceCell" forIndexPath:indexPath];
-            //根据当前正在渲染的细胞的行号，从对应的数组中拿到这一行所匹配的活动字典
-            NSArray *experiences = model.experience;
-            NSDictionary *experience = experiences[indexPath.row-1];
-            
-            //ShouYe *hotels = _arr[indexPath.row];
-            //将http请求的字符串转换为NSURL
-            NSURL *url = [NSURL URLWithString:experience[@"logo"]];
-            [cell.logo sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@""]];
-            cell.name.text =experience[@"TName"];
-            cell.categoryName.text =experience[@"categoryName"];
-            cell.price.text =experience[@"price"];
-            
-        }
+        cell.name.text = hotel.name;
+        cell.address.text = hotel.address;
+        cell.distance.text = hotel.distance;
+        return cell;
+    } else {
+        experienceCellTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"experienceCell" forIndexPath:indexPath];
+        //根据当前正在渲染的细胞的行号，从对应的数组中拿到这一行所匹配的活动字典
+        NSArray *experiences = model.experience;
+        NSDictionary *experience = experiences[indexPath.row-1];
+        
+        //ShouYe *hotels = _arr[indexPath.row];
+        //将http请求的字符串转换为NSURL
+        NSURL *url = [NSURL URLWithString:experience[@"logo"]];
+        [cell.logo sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@""]];
+        cell.name.text = experience[@"name"];
+        cell.categoryName.text = [Utilities nullAndNilCheck:experience[@"categoryName"] replaceBy:@""];
+        cell.price.text = experience[@"orginPrice"];
+        return cell;
     }
-    return cell;
 }
+
 //细胞选中后调用
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     //[tableView deselectRowAtIndexPath:indexPath animated:YES];

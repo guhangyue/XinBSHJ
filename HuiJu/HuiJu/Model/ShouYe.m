@@ -18,12 +18,22 @@
         self.address = [Utilities nullAndNilCheck:dict[@"address"] replaceBy:@"未知"];
         
         self.distance = [Utilities nullAndNilCheck:dict[@"distance"] replaceBy:@"未知"];
-        self.experience =[dict[@"experience"] isKindOfClass:[NSNull class]] ?@[ ]:      dict[@"experience"];
+        
+        NSMutableArray *experiences = [NSMutableArray new];
+        if (![dict[@"experience"] isKindOfClass:[NSNull class]]) {
+            for (NSDictionary *experience in dict[@"experience"]) {
+               
+        }
+            self.experience = experiences;
+        } else {
+            self.experience = @[];
+        }
+        //self.experience = [dict[@"experience"] isKindOfClass:[NSNull class]] ?@[] : dict[@"experience"];
         _adView = [Utilities nullAndNilCheck:dict[@"imgurl"] replaceBy:@""];
-        _logo=[Utilities nullAndNilCheck:dict[@"Logo"] replaceBy:@""];
-        _categoryName=[Utilities nullAndNilCheck:dict[@"categoryName"] replaceBy:@""];
-        _price=[Utilities nullAndNilCheck:dict[@"price"] replaceBy:@""];
-        _TName=[Utilities nullAndNilCheck:dict[@"experiencename"] replaceBy:@""];
+//        _logo=[Utilities nullAndNilCheck:dict[@"Logo"] replaceBy:@""];
+//        _categoryName=[Utilities nullAndNilCheck:dict[@"categoryName"] replaceBy:@""];
+//        _price=[Utilities nullAndNilCheck:dict[@"price"] replaceBy:@""];
+//        _TName=[Utilities nullAndNilCheck:dict[@"experiencename"] replaceBy:@""];
     }
     return self;
 }
@@ -42,6 +52,16 @@
         self.clubPerson= [Utilities nullAndNilCheck:dict[@"clubPerson"] replaceBy:@"未知"];
         
 
+    }
+    return self;
+}
+- (id)initWithExDictionary: (NSDictionary *)dict{
+    self = [super init];
+    if (self) {
+        _logo=[Utilities nullAndNilCheck:dict[@"Logo"] replaceBy:@""];
+        _categoryName=[Utilities nullAndNilCheck:dict[@"categoryName"] replaceBy:@""];
+        _price=[Utilities nullAndNilCheck:dict[@"price"] replaceBy:@""];
+        _TName=[Utilities nullAndNilCheck:dict[@"experiencename"] replaceBy:@""];
     }
     return self;
 }
