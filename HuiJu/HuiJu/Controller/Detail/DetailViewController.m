@@ -9,6 +9,7 @@
 #import "DetailViewController.h"
 #import "ShouYe.h"
 #import "TiYanJuanTableViewCell.h"
+#import "TiYanViewController.h"
 @interface DetailViewController ()<UITableViewDelegate,UITableViewDataSource>{
     ShouYe *detail;
 
@@ -191,7 +192,10 @@
     if ([segue.identifier isEqualToString:@"detailToTiyanjuan"]) {
         //当从列表页到详情页的这个跳转要发生的时候
         //获取要传递到下一页的数据
-//        NSIndexPath *indexPath=[_HomeTableView indexPathForSelectedRow];
+        NSIndexPath *indexPath=[_TiYanJuanTableView indexPathForSelectedRow];
+        ShouYe *club=detail.experienceInfos[indexPath.row];
+        TiYanViewController *detailVC= segue.destinationViewController;
+        detailVC.detailC=club;
 //        ShouYe *activity=_arr[indexPath.section];
 //        ShouYe *activity2=_arr[indexPath.row];
 //        // NSLog(@"%@",_arr[indexPath.row]);

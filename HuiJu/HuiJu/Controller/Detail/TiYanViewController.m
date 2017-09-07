@@ -7,6 +7,8 @@
 //
 
 #import "TiYanViewController.h"
+#import "DetailViewController.h"
+#import "ShouYe.h"
 
 @interface TiYanViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *clubNameLbl;
@@ -54,9 +56,9 @@
     // HotelModel *user=[ HotelModel alloc];
     NSDictionary *para1 = @{@"clubKeyId":@(1)};
     //NSLog(@"反馈：%ld",(long)_detailA.nameId);
-    [RequestAPI requestURL:@"/clubController/getClubDetails" withParameters:para1 andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
+    [RequestAPI requestURL:@"/clubController/experienceDetail" withParameters:para1 andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
         [aiv stopAnimating];
-        NSLog(@"result:%@",responseObject);
+        NSLog(@"result2:%@",responseObject);
         if([responseObject[@"resultFlag"]integerValue]==8001){
             NSDictionary *result = responseObject[@"result"];
             // NSDictionary *models =result [@"models"];

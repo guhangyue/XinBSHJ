@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "ShouYe.h"
 @interface TiYanViewController : UIViewController
-
+@property (strong,nonatomic) ShouYe *detailC;
 @end
