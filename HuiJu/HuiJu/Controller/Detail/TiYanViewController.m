@@ -28,6 +28,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setNavigationItem];
+    [self Club2DetailRequest];
     // Do any additional setup after loading the view.
 }
 
@@ -45,6 +46,53 @@
 - (void)backAction {
     [self dismissViewControllerAnimated:YES completion:nil];
     //[self.navigationController popViewControllerAnimated:YES];
+}
+- (void)Club2DetailRequest{
+    //菊花膜
+    UIActivityIndicatorView *aiv = [Utilities getCoverOnView:self.view];
+    //NSLog(@"%@",_hotelid);
+    // HotelModel *user=[ HotelModel alloc];
+    NSDictionary *para1 = @{@"clubKeyId":@(1)};
+    //NSLog(@"反馈：%ld",(long)_detailA.nameId);
+    [RequestAPI requestURL:@"/clubController/getClubDetails" withParameters:para1 andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
+        [aiv stopAnimating];
+        NSLog(@"result:%@",responseObject);
+        if([responseObject[@"resultFlag"]integerValue]==8001){
+            NSDictionary *result = responseObject[@"result"];
+            // NSDictionary *models =result [@"models"];
+//            ShouYe *detail = [[ ShouYe alloc]initWithDetialDictionary:result];
+            // [_arr5 addObject:detail];
+//            _clubNameLbl.text =detail.TName;
+//            _clubIntroduceLbl.text=detail.clubIntroduce;
+//            _clubTimeLbl.text=detail.clubTime;
+//            _clubMemberLbl.text=detail.clubMember;
+//            _clubSiteLbl.text=detail.clubSite;
+//            _clubPersonLbl.text=detail.clubPerson;
+            //          ShouYe *detail2 = [[ ShouYe alloc]initWithExDictionary2:result];
+            //            NSURL *url = [NSURL URLWithString:detail2.eLogo];
+            //            [_eLogoImage sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@""]];
+            //            _eNameLbl.text=detail2.eName;
+            //            _priceLbl.text=detail2.price2;
+            //            _saleCountLbl.text=detail2.saleCount;
+//            [_clubPic sd_setImageWithURL:[NSURL URLWithString:detail.clubLogo] placeholderImage:[UIImage imageNamed:@"11"]];
+//            
+//            [_addressBtn setTitle:detail.addressB forState:UIControlStateNormal];
+            
+            //NSLog(@"333:%@",detail.addressB);
+            // _addressLbl.text = detail.hotelLocation;
+            //_priceLbl.text = [NSString stringWithFormat:@"¥ %@",detail.hotelMoney];
+            
+            // [_smallPictureImgView sd_setImageWithURL:[NSURL URLWithString:detail.hotelImg] placeholderImage:[UIImage imageNamed:@"11"]];设置默认图片
+            
+            
+        }else{
+            NSString *errorMsg = [ErrorHandler getProperErrorString:[responseObject[@"result"] integerValue]];
+            [Utilities popUpAlertViewWithMsg:errorMsg andTitle:nil onView:self ];
+        }
+    } failure:^(NSInteger statusCode, NSError *error) {
+        [aiv stopAnimating];
+        [Utilities popUpAlertViewWithMsg:@"该功能需要登录才会开放，请您登录" andTitle:@"提示" onView:self];
+    }];
 }
 /*
 #pragma mark - Navigation

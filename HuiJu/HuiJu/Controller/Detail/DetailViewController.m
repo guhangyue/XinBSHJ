@@ -36,7 +36,7 @@
 //    UITapGestureRecognizer *tap=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(Action:)];
 //    [_TiYanJuanView addGestureRecognizer:tap];//视图单击手势的创建
     
-    [self HotelDetailRequest];
+    [self ClubDetailRequest];
     // Do any additional setup after loading the view.
 }
 
@@ -56,7 +56,7 @@
 //    [self performSegueWithIdentifier:@"detailToTiyanjuan" sender:nil];
 //
 //}
-- (void)HotelDetailRequest{
+- (void)ClubDetailRequest{
     //菊花膜
     UIActivityIndicatorView *aiv = [Utilities getCoverOnView:self.view];
     //NSLog(@"%@",_hotelid);
