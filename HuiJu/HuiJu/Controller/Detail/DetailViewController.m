@@ -8,7 +8,8 @@
 
 #import "DetailViewController.h"
 #import "ShouYe.h"
-@interface DetailViewController ()
+#import "TiYanJuanTableViewCell.h"
+@interface DetailViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UIButton *addressBtn;
 - (IBAction)addressAction:(UIButton *)sender forEvent:(UIEvent *)event;
 @property (weak, nonatomic) IBOutlet UILabel *clubNameLbl;
@@ -19,11 +20,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *clubMemberLbl;
 @property (weak, nonatomic) IBOutlet UILabel *clubSiteLbl;
 @property (weak, nonatomic) IBOutlet UILabel *clubPersonLbl;
-@property (weak, nonatomic) IBOutlet UILabel *eNameLbl;
-@property (weak, nonatomic) IBOutlet UILabel *priceLbl;
-@property (weak, nonatomic) IBOutlet UILabel *saleCountLbl;
-@property (weak, nonatomic) IBOutlet UIImageView *eLogoImage;
-@property (weak, nonatomic) IBOutlet UIView *TiYanJuanView;
+
+//@property (weak, nonatomic) IBOutlet UIView *TiYanJuanView;
 
 @end
 
@@ -32,8 +30,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setNavigationItem];
-    UITapGestureRecognizer *tap=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(Action:)];
-    [_TiYanJuanView addGestureRecognizer:tap];
+//    UITapGestureRecognizer *tap=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(Action:)];
+//    [_TiYanJuanView addGestureRecognizer:tap];//视图单击手势的创建
+    
     [self HotelDetailRequest];
     // Do any additional setup after loading the view.
 }
@@ -49,21 +48,18 @@
     self.navigationController.navigationBar.barTintColor = UIColorFromRGB(0, 100, 255);
    
 }
-- (void)backAction {
-    [self dismissViewControllerAnimated:YES completion:nil];
-    //[self.navigationController popViewControllerAnimated:YES];
-}
--(void)Action:(id)sender{
-    [self performSegueWithIdentifier:@"detailToTiyanjuan" sender:nil];
 
-}
+//-(void)Action:(id)sender{
+//    [self performSegueWithIdentifier:@"detailToTiyanjuan" sender:nil];
+//
+//}
 - (void)HotelDetailRequest{
     //菊花膜
     UIActivityIndicatorView *aiv = [Utilities getCoverOnView:self.view];
     //NSLog(@"%@",_hotelid);
     // HotelModel *user=[ HotelModel alloc];
     NSDictionary *para1 = @{@"clubKeyId":@(_detailA.nameId2)};
-     NSLog(@"反馈：%ld",(long)_detailA.nameId);
+     //NSLog(@"反馈：%ld",(long)_detailA.nameId);
     [RequestAPI requestURL:@"/clubController/getClubDetails" withParameters:para1 andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
         [aiv stopAnimating];
         NSLog(@"result:%@",responseObject);
@@ -77,12 +73,12 @@
             _clubMemberLbl.text=detail.clubMember;
             _clubSiteLbl.text=detail.clubSite;
             _clubPersonLbl.text=detail.clubPerson;
-            ShouYe *detail2 = [[ ShouYe alloc]initWithExDictionary2:result];
-            NSURL *url = [NSURL URLWithString:detail2.eLogo];
-            [_eLogoImage sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@""]];
-            _eNameLbl.text=detail2.eName;
-            _priceLbl.text=detail2.price2;
-            _saleCountLbl.text=detail2.saleCount;
+//            ShouYe *detail2 = [[ ShouYe alloc]initWithExDictionary2:result];
+//            NSURL *url = [NSURL URLWithString:detail2.eLogo];
+//            [_eLogoImage sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@""]];
+//            _eNameLbl.text=detail2.eName;
+//            _priceLbl.text=detail2.price2;
+//            _saleCountLbl.text=detail2.saleCount;
             
             
             [_addressBtn setTitle:detail.addressB forState:UIControlStateNormal];
@@ -103,6 +99,86 @@
         [Utilities popUpAlertViewWithMsg:@"该功能需要登录才会开放，请您登录" andTitle:@"提示" onView:self];
     }];
 }
+//设置表格视图中有多少组
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    //数组中项目会所的数量
+    return 2;
+}
+//设置表格视图中每一组有多少行
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    //
+    ShouYe *model = _detailA;
+    //当前正在渲染的细胞会所的体验券的数量加上一个会所的数量
+    return model.i ;
+}
+//每行高度
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+        return 100.f;
+    
+    
+}
+//设置每一组中每一行的cell（细胞）长什么样
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+//    //判断当前正在渲染的行数是不是第一行
+//    if (indexPath.row == 0) {
+//        YeMianTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"YeMianCell" forIndexPath:indexPath];
+//        //根据当前正在渲染的细胞的行号，从对应的数组中拿到这一行所匹配的活动字典
+//        
+//        ShouYe *hotel = _arr[indexPath.section];
+//        
+//        //将http请求的字符串转换为NSURL
+//        NSURL *url = [NSURL URLWithString:hotel.image];
+//        [cell.image sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@""]];
+//        cell.name.text = hotel.name;
+//        cell.address.text = hotel.address;
+//        cell.distance.text = hotel.distance;
+//        return cell;
+//    } else {
+//        experienceCellTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"experienceCell" forIndexPath:indexPath];
+        //根据当前正在渲染的细胞的行号，从对应的数组中拿到这一行所匹配的活动字典
+        //NSArray *experiences = model.experience;
+        //NSDictionary *experience = experiences[indexPath.row-1];
+        
+        //ShouYe *hotels = _arr[indexPath.row];
+        //将http请求的字符串转换为NSURL
+        //NSLog(@"图片网址：%@",model.experience[indexPath.row-1][0]);
+//        NSURL *url = [NSURL URLWithString:model.experience[indexPath.row-1][0]];
+//        [cell.logo sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@""]];
+//        
+//        cell.categoryName.text = model.experience[indexPath.row-1][1];
+//        cell.price.text = model.experience[indexPath.row-1][2];
+//        cell.name.text = model.experience[indexPath.row-1][3];
+//        cell.sellNumber.text = [NSString stringWithFormat:@"已售：%@",model.experience[indexPath.row-1][4]];
+   TiYanJuanTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:@"TiyanJuanCell" forIndexPath:indexPath];
+        return cell;
+   // }
+}
+
+//细胞选中后调用
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    //[tableView deselectRowAtIndexPath:indexPath animated:YES];
+    //    DetailViewController *detailVC = [Utilities getStoryboardInstance:@"Detail" byIdentity:@"Detail2"];
+    //    [self.navigationController pushViewController:detailVC animated:YES];
+    [self performSegueWithIdentifier:@"detailToTiyanjuan" sender:nil];
+}
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if ([segue.identifier isEqualToString:@"detailToTiyanjuan"]) {
+        //当从列表页到详情页的这个跳转要发生的时候
+        //获取要传递到下一页的数据
+//        NSIndexPath *indexPath=[_HomeTableView indexPathForSelectedRow];
+//        ShouYe *activity=_arr[indexPath.section];
+//        ShouYe *activity2=_arr[indexPath.row];
+//        // NSLog(@"%@",_arr[indexPath.row]);
+//        //获取下一页的这个实例
+//        DetailViewController *detailVC= segue.destinationViewController;
+//        //把数据给下一页预备好的接收容器
+//        detailVC.detailA=activity;
+//        detailVC.detailB=activity2;
+    }
+}
+
 /*
 #pragma mark - Navigation
 
