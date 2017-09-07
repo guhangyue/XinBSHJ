@@ -64,7 +64,8 @@
         self.clubSite= [Utilities nullAndNilCheck:dict[@"clubSite"] replaceBy:@"未知"];
         self.clubPerson= [Utilities nullAndNilCheck:dict[@"clubPerson"] replaceBy:@"未知"];
         self.clubIntroduce= [Utilities nullAndNilCheck:dict[@"clubIntroduce"] replaceBy:@"未知"];
-        self.cardLogo= [Utilities nullAndNilCheck:dict[@"cardLogo"] replaceBy:@"未知"];
+        self.clubLogo= [Utilities nullAndNilCheck:dict[@"clubLogo"] replaceBy:@"未知"];
+        
        // self.eName= [Utilities nullAndNilCheck:dict[@"eName"] replaceBy:@"未知"];
         if (![dict[@"experienceInfos"] isKindOfClass:[NSNull class]]) {
             for (NSDictionary *experienceInfos in dict[@"experienceInfos"]) {

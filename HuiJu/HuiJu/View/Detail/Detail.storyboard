@@ -26,6 +26,20 @@
                                 <subviews>
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fv6-ga-jzf">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="148"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ryj-io-gfu">
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="163"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="163" id="u3v-4p-PkQ"/>
+                                                </constraints>
+                                            </imageView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="Ryj-io-gfu" firstAttribute="top" secondItem="Fv6-ga-jzf" secondAttribute="top" id="80n-r8-jor"/>
+                                            <constraint firstAttribute="bottom" secondItem="Ryj-io-gfu" secondAttribute="bottom" id="dwR-hr-hOT"/>
+                                            <constraint firstAttribute="trailing" secondItem="Ryj-io-gfu" secondAttribute="trailing" id="eJQ-ZK-b5p"/>
+                                            <constraint firstItem="Ryj-io-gfu" firstAttribute="leading" secondItem="Fv6-ga-jzf" secondAttribute="leading" id="ouX-d1-oLX"/>
+                                        </constraints>
                                     </scrollView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MVg-GG-GNk">
                                         <rect key="frame" x="0.0" y="148" width="375" height="70"/>
@@ -295,6 +309,7 @@
                             <constraint firstItem="F9L-vJ-AHu" firstAttribute="top" secondItem="kxJ-Co-VW6" secondAttribute="top" id="S5O-s6-2vw"/>
                             <constraint firstItem="Fv6-ga-jzf" firstAttribute="height" secondItem="kxJ-Co-VW6" secondAttribute="height" multiplier="1:4.5" id="Vcl-Sh-7S0"/>
                             <constraint firstItem="MVg-GG-GNk" firstAttribute="width" secondItem="kxJ-Co-VW6" secondAttribute="width" id="hf9-Cc-3yf"/>
+                            <constraint firstItem="Ryj-io-gfu" firstAttribute="width" secondItem="kxJ-Co-VW6" secondAttribute="width" id="lgo-ch-yPZ"/>
                             <constraint firstAttribute="bottom" secondItem="F9L-vJ-AHu" secondAttribute="bottom" id="pge-fh-zh4"/>
                         </constraints>
                     </view>
@@ -306,6 +321,7 @@
                         <outlet property="clubMemberLbl" destination="vP8-ZR-Vsb" id="EeB-KC-gfT"/>
                         <outlet property="clubNameLbl" destination="jgv-al-Eww" id="myQ-2u-6ZB"/>
                         <outlet property="clubPersonLbl" destination="L1K-0X-RH2" id="uvc-Wb-7Wc"/>
+                        <outlet property="clubPic" destination="Ryj-io-gfu" id="A3R-XO-5pO"/>
                         <outlet property="clubSiteLbl" destination="pPg-k1-8pz" id="MTi-eb-FnN"/>
                         <outlet property="clubTimeLbl" destination="gzy-O0-A58" id="NaT-aF-Oor"/>
                         <segue destination="9Zu-OG-LH5" kind="push" identifier="detailToTiyanjuan" id="jR1-vn-IJK"/>

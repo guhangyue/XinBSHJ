@@ -20,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *clubMemberLbl;
 @property (weak, nonatomic) IBOutlet UILabel *clubSiteLbl;
 @property (weak, nonatomic) IBOutlet UILabel *clubPersonLbl;
+@property (weak, nonatomic) IBOutlet UIImageView *clubPic;
 
 //@property (weak, nonatomic) IBOutlet UIView *TiYanJuanView;
 
@@ -79,7 +80,7 @@
 //            _eNameLbl.text=detail2.eName;
 //            _priceLbl.text=detail2.price2;
 //            _saleCountLbl.text=detail2.saleCount;
-            
+            [_clubPic sd_setImageWithURL:[NSURL URLWithString:detail.clubLogo] placeholderImage:[UIImage imageNamed:@"11"]];
             
             [_addressBtn setTitle:detail.addressB forState:UIControlStateNormal];
             
