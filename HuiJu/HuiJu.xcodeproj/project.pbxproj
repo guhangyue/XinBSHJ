@@ -74,6 +74,10 @@
 		B24C64261F5D379A00A76F39 /* PayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B24C641F1F5D379A00A76F39 /* PayViewController.m */; };
 		B24C64271F5D379A00A76F39 /* TiYanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B24C64211F5D379A00A76F39 /* TiYanViewController.m */; };
 		B24C64281F5D379A00A76F39 /* ZhiFuBaoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B24C64231F5D379A00A76F39 /* ZhiFuBaoViewController.m */; };
+		B2A129E61F5FCD03008AF2DF /* nichenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2A129E51F5FCD03008AF2DF /* nichenViewController.m */; };
+		B2A129E91F5FCD29008AF2DF /* xingbieViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2A129E81F5FCD29008AF2DF /* xingbieViewController.m */; };
+		B2A129EC1F5FCD3B008AF2DF /* chushengViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2A129EB1F5FCD3B008AF2DF /* chushengViewController.m */; };
+		B2A129EF1F5FCD49008AF2DF /* shenfenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2A129EE1F5FCD49008AF2DF /* shenfenViewController.m */; };
 		B2AC874C1F5E357A00CB8589 /* FindViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2AC874B1F5E357A00CB8589 /* FindViewController.m */; };
 		B2AC874F1F5E412400CB8589 /* FindModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B2AC874E1F5E412400CB8589 /* FindModel.m */; };
 		B2F4EC1A1F5E33EE00C651D0 /* shezhiTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B2F4EC191F5E33EE00C651D0 /* shezhiTableViewCell.m */; };
@@ -229,6 +233,14 @@
 		B24C64211F5D379A00A76F39 /* TiYanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TiYanViewController.m; sourceTree = "<group>"; };
 		B24C64221F5D379A00A76F39 /* ZhiFuBaoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZhiFuBaoViewController.h; sourceTree = "<group>"; };
 		B24C64231F5D379A00A76F39 /* ZhiFuBaoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZhiFuBaoViewController.m; sourceTree = "<group>"; };
+		B2A129E41F5FCD03008AF2DF /* nichenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = nichenViewController.h; sourceTree = "<group>"; };
+		B2A129E51F5FCD03008AF2DF /* nichenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = nichenViewController.m; sourceTree = "<group>"; };
+		B2A129E71F5FCD29008AF2DF /* xingbieViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = xingbieViewController.h; sourceTree = "<group>"; };
+		B2A129E81F5FCD29008AF2DF /* xingbieViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = xingbieViewController.m; sourceTree = "<group>"; };
+		B2A129EA1F5FCD3B008AF2DF /* chushengViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = chushengViewController.h; sourceTree = "<group>"; };
+		B2A129EB1F5FCD3B008AF2DF /* chushengViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = chushengViewController.m; sourceTree = "<group>"; };
+		B2A129ED1F5FCD49008AF2DF /* shenfenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = shenfenViewController.h; sourceTree = "<group>"; };
+		B2A129EE1F5FCD49008AF2DF /* shenfenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = shenfenViewController.m; sourceTree = "<group>"; };
 		B2AC874A1F5E357A00CB8589 /* FindViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindViewController.h; sourceTree = "<group>"; };
 		B2AC874B1F5E357A00CB8589 /* FindViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FindViewController.m; sourceTree = "<group>"; };
 		B2AC874D1F5E412400CB8589 /* FindModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindModel.h; sourceTree = "<group>"; };
@@ -464,7 +476,7 @@
 		882118E01F5938E5003258C6 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				B2F4EC1B1F5E7CC500C651D0 /* faxian */,
+				B2F4EC1B1F5E7CC500C651D0 /* zhifu */,
 				88022E511F5CFFA6005CF9F7 /* Main */,
 				8862D0961F5A99DC00D828E6 /* Shezhi */,
 				8862D08C1F5A995200D828E6 /* Sign */,
@@ -657,6 +669,14 @@
 				B2FE370E1F5D39A6007E6621 /* shezhiViewController.m */,
 				B2F4EC181F5E33EE00C651D0 /* shezhiTableViewCell.h */,
 				B2F4EC191F5E33EE00C651D0 /* shezhiTableViewCell.m */,
+				B2A129E41F5FCD03008AF2DF /* nichenViewController.h */,
+				B2A129E51F5FCD03008AF2DF /* nichenViewController.m */,
+				B2A129E71F5FCD29008AF2DF /* xingbieViewController.h */,
+				B2A129E81F5FCD29008AF2DF /* xingbieViewController.m */,
+				B2A129EA1F5FCD3B008AF2DF /* chushengViewController.h */,
+				B2A129EB1F5FCD3B008AF2DF /* chushengViewController.m */,
+				B2A129ED1F5FCD49008AF2DF /* shenfenViewController.h */,
+				B2A129EE1F5FCD49008AF2DF /* shenfenViewController.m */,
 			);
 			path = Shezhi;
 			sourceTree = "<group>";
@@ -670,14 +690,14 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		B2F4EC1B1F5E7CC500C651D0 /* faxian */ = {
+		B2F4EC1B1F5E7CC500C651D0 /* zhifu */ = {
 			isa = PBXGroup;
 			children = (
 				B2F4EC1C1F5E7CE900C651D0 /* Storyboard.storyboard */,
 				B2F4EC1E1F5E832F00C651D0 /* zhifuTableViewController.h */,
 				B2F4EC1F1F5E832F00C651D0 /* zhifuTableViewController.m */,
 			);
-			name = faxian;
+			name = zhifu;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -905,8 +925,10 @@
 				882118E51F5938E5003258C6 /* SKTagView.m in Sources */,
 				88022E601F5D2FEA005CF9F7 /* PhotoCollectionViewCell.m in Sources */,
 				8821194C1F593B6F003258C6 /* RequestAPI.m in Sources */,
+				B2A129EF1F5FCD49008AF2DF /* shenfenViewController.m in Sources */,
 				88022E541F5D00BE005CF9F7 /* YeMianTableViewCell.m in Sources */,
 				8862D0951F5A99BB00D828E6 /* SignUpViewController.m in Sources */,
+				B2A129E61F5FCD03008AF2DF /* nichenViewController.m in Sources */,
 				882119401F593B6F003258C6 /* DataSigner.m in Sources */,
 				88034F461F5EAECD00615C92 /* ZLImageViewDisplayView.m in Sources */,
 				B24C64281F5D379A00A76F39 /* ZhiFuBaoViewController.m in Sources */,
@@ -922,8 +944,10 @@
 				B2F4EC201F5E832F00C651D0 /* zhifuTableViewController.m in Sources */,
 				8821186B1F5937CA003258C6 /* main.m in Sources */,
 				882119431F593B6F003258C6 /* NSDataEx.m in Sources */,
+				B2A129EC1F5FCD3B008AF2DF /* chushengViewController.m in Sources */,
 				882118E21F5938E5003258C6 /* BasicEncodingRules.m in Sources */,
 				8821194F1F593B6F003258C6 /* Utilities.m in Sources */,
+				B2A129E91F5FCD29008AF2DF /* xingbieViewController.m in Sources */,
 				882119411F593B6F003258C6 /* DataVerifier.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

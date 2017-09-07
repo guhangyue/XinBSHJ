@@ -195,7 +195,7 @@
         
         //ShouYe *hotels = _arr[indexPath.row];
         //将http请求的字符串转换为NSURL
-        NSLog(@"图片网址：%@",model.experience[indexPath.row-1][0]);
+        //NSLog(@"图片网址：%@",model.experience[indexPath.row-1][0]);
         NSURL *url = [NSURL URLWithString:model.experience[indexPath.row-1][0]];
         [cell.logo sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@""]];
         
@@ -220,12 +220,14 @@
         //当从列表页到详情页的这个跳转要发生的时候
         //获取要传递到下一页的数据
         NSIndexPath *indexPath=[_HomeTableView indexPathForSelectedRow];
-        ShouYe *activity=_arr[indexPath.row];
+        ShouYe *activity=_arr[indexPath.section];
+        ShouYe *activity2=_arr[indexPath.row];
         // NSLog(@"%@",_arr[indexPath.row]);
         //获取下一页的这个实例
         DetailViewController *detailVC= segue.destinationViewController;
         //把数据给下一页预备好的接收容器
         detailVC.detailA=activity;
+        detailVC.detailB=activity2;
     }
 }
 

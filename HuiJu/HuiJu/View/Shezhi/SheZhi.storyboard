@@ -174,7 +174,7 @@
         <!--修改昵称-->
         <scene sceneID="GPp-Qw-qwE">
             <objects>
-                <viewController title="修改昵称" id="21V-St-8gU" sceneMemberID="viewController">
+                <viewController title="修改昵称" id="21V-St-8gU" customClass="nichenViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="RPi-9n-Pzy"/>
                         <viewControllerLayoutGuide type="bottom" id="92v-k9-V8W"/>
@@ -229,7 +229,7 @@
         <!--修改性别-->
         <scene sceneID="1PY-0e-pPl">
             <objects>
-                <viewController title="修改性别" id="HkW-AB-cwN" sceneMemberID="viewController">
+                <viewController title="修改性别" id="HkW-AB-cwN" customClass="xingbieViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="fQC-lT-Tfw"/>
                         <viewControllerLayoutGuide type="bottom" id="XXb-PW-Q6S"/>
@@ -248,7 +248,7 @@
         <!--修改出生日期-->
         <scene sceneID="ufI-5G-OGi">
             <objects>
-                <viewController storyboardIdentifier="xiugaichushen" title="修改出生日期" id="vIv-md-26q" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="xiugaichushen" title="修改出生日期" id="vIv-md-26q" customClass="chushengViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jeu-Ac-8ts"/>
                         <viewControllerLayoutGuide type="bottom" id="ngH-Nx-uFO"/>
@@ -267,7 +267,7 @@
         <!--修改身份证号-->
         <scene sceneID="pNr-4h-Zo9">
             <objects>
-                <viewController title="修改身份证号" id="xsu-nZ-gfm" sceneMemberID="viewController">
+                <viewController title="修改身份证号" id="xsu-nZ-gfm" customClass="shenfenViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="mFc-2o-PLU"/>
                         <viewControllerLayoutGuide type="bottom" id="xxA-5N-u2M"/>
