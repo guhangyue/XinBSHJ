@@ -68,6 +68,7 @@
 		8862D0921F5A99AB00D828E6 /* SignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8862D0911F5A99AB00D828E6 /* SignInViewController.m */; };
 		8862D0951F5A99BB00D828E6 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8862D0941F5A99BB00D828E6 /* SignUpViewController.m */; };
 		8862D0981F5A99EC00D828E6 /* SheZhi.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8862D0971F5A99EC00D828E6 /* SheZhi.storyboard */; };
+		88FF9C5C1F61161A0074F897 /* Cities.plist in Resources */ = {isa = PBXBuildFile; fileRef = 88FF9C5B1F61161A0074F897 /* Cities.plist */; };
 		B246BEA31F60D447009DA8AA /* TiYanJuanTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B246BEA21F60D447009DA8AA /* TiYanJuanTableViewCell.m */; };
 		B24C64191F5D375B00A76F39 /* Detail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B24C64181F5D375B00A76F39 /* Detail.storyboard */; };
 		B24C64241F5D379A00A76F39 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B24C641B1F5D379A00A76F39 /* DetailViewController.m */; };
@@ -223,6 +224,7 @@
 		8862D0931F5A99BB00D828E6 /* SignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
 		8862D0941F5A99BB00D828E6 /* SignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
 		8862D0971F5A99EC00D828E6 /* SheZhi.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SheZhi.storyboard; sourceTree = "<group>"; };
+		88FF9C5B1F61161A0074F897 /* Cities.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Cities.plist; sourceTree = "<group>"; };
 		B246BEA11F60D447009DA8AA /* TiYanJuanTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TiYanJuanTableViewCell.h; sourceTree = "<group>"; };
 		B246BEA21F60D447009DA8AA /* TiYanJuanTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TiYanJuanTableViewCell.m; sourceTree = "<group>"; };
 		B24C64181F5D375B00A76F39 /* Detail.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Detail.storyboard; sourceTree = "<group>"; };
@@ -370,6 +372,7 @@
 			children = (
 				8821186C1F5937CA003258C6 /* AppDelegate.h */,
 				8821186D1F5937CA003258C6 /* AppDelegate.m */,
+				88FF9C5B1F61161A0074F897 /* Cities.plist */,
 				8821187D1F5937CB003258C6 /* Info.plist */,
 				8821186A1F5937CA003258C6 /* main.m */,
 				8821190B1F59392B003258C6 /* PrefixHeader.pch */,
@@ -821,6 +824,7 @@
 				B24C64191F5D375B00A76F39 /* Detail.storyboard in Resources */,
 				8862D0981F5A99EC00D828E6 /* SheZhi.storyboard in Resources */,
 				882119961F594791003258C6 /* Find.storyboard in Resources */,
+				88FF9C5C1F61161A0074F897 /* Cities.plist in Resources */,
 				882118791F5937CB003258C6 /* Assets.xcassets in Resources */,
 				882118741F5937CB003258C6 /* Main.storyboard in Resources */,
 			);
