@@ -21,6 +21,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *clubSiteLbl;
 @property (weak, nonatomic) IBOutlet UILabel *clubPersonLbl;
 @property (weak, nonatomic) IBOutlet UIImageView *clubPic;
+@property (strong, nonatomic) NSMutableArray *arr5;
 
 //@property (weak, nonatomic) IBOutlet UIView *TiYanJuanView;
 
@@ -29,6 +30,7 @@
 @implementation DetailViewController
 
 - (void)viewDidLoad {
+    _arr5 = [NSMutableArray new];
     [super viewDidLoad];
     [self setNavigationItem];
 //    UITapGestureRecognizer *tap=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(Action:)];
@@ -68,13 +70,14 @@
             NSDictionary *result = responseObject[@"result"];
            // NSDictionary *models =result [@"models"];
             ShouYe *detail = [[ ShouYe alloc]initWithDetialDictionary:result];
+           // [_arr5 addObject:detail];
             _clubNameLbl.text =detail.TName;
             _clubIntroduceLbl.text=detail.clubIntroduce;
             _clubTimeLbl.text=detail.clubTime;
             _clubMemberLbl.text=detail.clubMember;
             _clubSiteLbl.text=detail.clubSite;
             _clubPersonLbl.text=detail.clubPerson;
-//            ShouYe *detail2 = [[ ShouYe alloc]initWithExDictionary2:result];
+ //          ShouYe *detail2 = [[ ShouYe alloc]initWithExDictionary2:result];
 //            NSURL *url = [NSURL URLWithString:detail2.eLogo];
 //            [_eLogoImage sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@""]];
 //            _eNameLbl.text=detail2.eName;
@@ -103,7 +106,7 @@
 //设置表格视图中有多少组
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     //数组中项目会所的数量
-    return 2;
+    return 1;
 }
 //设置表格视图中每一组有多少行
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -153,6 +156,16 @@
 //        cell.name.text = model.experience[indexPath.row-1][3];
 //        cell.sellNumber.text = [NSString stringWithFormat:@"已售：%@",model.experience[indexPath.row-1][4]];
    TiYanJuanTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:@"TiyanJuanCell" forIndexPath:indexPath];
+   // ShouYe *hotel = _arr5[3];
+   // NSLog(@"%@",_arr5[3]);
+//    NSURL *url = [NSURL URLWithString:hotel.experienceInfos[1]];
+//                [cell.eLogoImage sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"Home"]];
+   // cell.eNameLbl.text=_detailA.experience[3];
+    
+//                cell.priceLbl.text=_detailA.experience[2];
+//                cell.saleCountLbl.text=[NSString stringWithFormat:@"已售：%@",_detailA.experience[4]];
+    
+    
         return cell;
    // }
 }
