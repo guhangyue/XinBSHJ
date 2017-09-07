@@ -11,6 +11,9 @@
 #import "FindModel.h"
 #import "SKTagView.h"
 @interface FindViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
+{
+    NSInteger detailPageNum;
+}
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (weak, nonatomic) IBOutlet UIView *ButtonView;
 @property (weak, nonatomic) IBOutlet UIButton *cityBtn;
@@ -32,6 +35,8 @@
     [self naviConfig];
     _collectionView.allowsSelection = NO;
     [self dataInitialize];
+    [self uiLayout];
+    
 }
 - (void)viewWillAppear:(BOOL)animated{
     // [self dataInitialize];
@@ -55,7 +60,34 @@
     //设置是否需要毛玻璃效果
     self.navigationController.navigationBar.translucent = NO;
 }
-
+-(void)uiLayout{
+    //创建下拉刷新器
+    [self refreshConfiguration];
+}
+-(void)refreshConfiguration{
+    //初始化一个下拉刷新控件
+    UIRefreshControl *refreshControl = [[UIRefreshControl alloc]init];
+    refreshControl.tag = 10001;
+    //设置标题
+    NSString *title = @"加载中...";
+    //创建属性字典
+    NSDictionary *attrDict = @{NSForegroundColorAttributeName : [UIColor redColor],NSBackgroundColorAttributeName : [UIColor yellowColor]};
+    
+    
+    //将文字和属性字典包裹成一个带属性的字符串
+    NSAttributedString *attriTitle = [[NSAttributedString alloc]initWithString:title attributes:attrDict];
+    
+    refreshControl.attributedTitle = attriTitle;
+    //设置风格颜色为黑色（风格颜色：刷新指示器的颜色）
+    refreshControl.tintColor = [UIColor brownColor];
+    
+    //设置背景色
+    refreshControl.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    //定义用户触发下拉事件时执行的方法
+    [refreshControl addTarget:self action:@selector(refreshPage) forControlEvents:UIControlEventValueChanged];
+    //将下拉刷新控件添加到tableView中(在tableView中，下拉刷新控件会自动放置在表格视图顶部后侧位置)
+    [self.collectionView addSubview:refreshControl];
+}
 #pragma mark - request
 -(void)dataInitialize{
     // [self hotRequest];

@@ -76,6 +76,27 @@
     _zhifuArr=@[@"支付宝支付",@"微信支付",@"银联支付"];
 }
 
+-(void)payAction{
+    switch(self.tableView.indexPathForSelectedRow.row){
+        case 0:{
+            NSString *tradeNo=[GBAlipayManager generateTradeNO];
+            //[GBAlipayManager alipayWithProductName:_detail.eName amount:_detail.currentPrice tradeNO:tradeNo notifyURL:nil productDescription:[NSString stringWithFormat:@"%@的活动报名费",_detail.eName] itBPay:@"30"];
+        }
+            break;
+        case 1:{
+            
+        }
+            break;
+        case 2:{
+            
+        }
+            break;
+        default:
+            break;
+    }
+    
+}
+
 - (void)setFootViewForTableView{
     
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, UI_SCREEN_W, 45)];
