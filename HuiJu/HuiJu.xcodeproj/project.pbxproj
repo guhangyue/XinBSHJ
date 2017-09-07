@@ -76,6 +76,8 @@
 		B24C64261F5D379A00A76F39 /* PayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B24C641F1F5D379A00A76F39 /* PayViewController.m */; };
 		B24C64271F5D379A00A76F39 /* TiYanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B24C64211F5D379A00A76F39 /* TiYanViewController.m */; };
 		B24C64281F5D379A00A76F39 /* ZhiFuBaoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B24C64231F5D379A00A76F39 /* ZhiFuBaoViewController.m */; };
+		B284F97D1F61369100DD48FD /* zhifu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B284F97A1F61369100DD48FD /* zhifu.storyboard */; };
+		B284F97E1F61369100DD48FD /* zhifuTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B284F97C1F61369100DD48FD /* zhifuTableViewController.m */; };
 		B2A129E61F5FCD03008AF2DF /* nichenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2A129E51F5FCD03008AF2DF /* nichenViewController.m */; };
 		B2A129E91F5FCD29008AF2DF /* xingbieViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2A129E81F5FCD29008AF2DF /* xingbieViewController.m */; };
 		B2A129EC1F5FCD3B008AF2DF /* chushengViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2A129EB1F5FCD3B008AF2DF /* chushengViewController.m */; };
@@ -83,8 +85,6 @@
 		B2AC874C1F5E357A00CB8589 /* FindViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2AC874B1F5E357A00CB8589 /* FindViewController.m */; };
 		B2AC874F1F5E412400CB8589 /* FindModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B2AC874E1F5E412400CB8589 /* FindModel.m */; };
 		B2F4EC1A1F5E33EE00C651D0 /* shezhiTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B2F4EC191F5E33EE00C651D0 /* shezhiTableViewCell.m */; };
-		B2F4EC1D1F5E7CE900C651D0 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2F4EC1C1F5E7CE900C651D0 /* Storyboard.storyboard */; };
-		B2F4EC201F5E832F00C651D0 /* zhifuTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2F4EC1F1F5E832F00C651D0 /* zhifuTableViewController.m */; };
 		B2FE370F1F5D39A6007E6621 /* shezhiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2FE370E1F5D39A6007E6621 /* shezhiViewController.m */; };
 		B990D25BAC48C15119EEBA99 /* libPods-HuiJu.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C75145C4FBF4BD7AF8AF12F /* libPods-HuiJu.a */; };
 		DECFEEB51F5D486A00F18D9D /* UserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DECFEEB41F5D486A00F18D9D /* UserModel.m */; };
@@ -238,6 +238,9 @@
 		B24C64211F5D379A00A76F39 /* TiYanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TiYanViewController.m; sourceTree = "<group>"; };
 		B24C64221F5D379A00A76F39 /* ZhiFuBaoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZhiFuBaoViewController.h; sourceTree = "<group>"; };
 		B24C64231F5D379A00A76F39 /* ZhiFuBaoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZhiFuBaoViewController.m; sourceTree = "<group>"; };
+		B284F97A1F61369100DD48FD /* zhifu.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = zhifu.storyboard; sourceTree = "<group>"; };
+		B284F97B1F61369100DD48FD /* zhifuTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zhifuTableViewController.h; sourceTree = "<group>"; };
+		B284F97C1F61369100DD48FD /* zhifuTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = zhifuTableViewController.m; sourceTree = "<group>"; };
 		B2A129E41F5FCD03008AF2DF /* nichenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = nichenViewController.h; sourceTree = "<group>"; };
 		B2A129E51F5FCD03008AF2DF /* nichenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = nichenViewController.m; sourceTree = "<group>"; };
 		B2A129E71F5FCD29008AF2DF /* xingbieViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = xingbieViewController.h; sourceTree = "<group>"; };
@@ -252,9 +255,6 @@
 		B2AC874E1F5E412400CB8589 /* FindModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FindModel.m; sourceTree = "<group>"; };
 		B2F4EC181F5E33EE00C651D0 /* shezhiTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = shezhiTableViewCell.h; sourceTree = "<group>"; };
 		B2F4EC191F5E33EE00C651D0 /* shezhiTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = shezhiTableViewCell.m; sourceTree = "<group>"; };
-		B2F4EC1C1F5E7CE900C651D0 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
-		B2F4EC1E1F5E832F00C651D0 /* zhifuTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zhifuTableViewController.h; sourceTree = "<group>"; };
-		B2F4EC1F1F5E832F00C651D0 /* zhifuTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = zhifuTableViewController.m; sourceTree = "<group>"; };
 		B2FE370D1F5D39A6007E6621 /* shezhiViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = shezhiViewController.h; sourceTree = "<group>"; };
 		B2FE370E1F5D39A6007E6621 /* shezhiViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = shezhiViewController.m; sourceTree = "<group>"; };
 		DECFEEB31F5D486A00F18D9D /* UserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserModel.h; sourceTree = "<group>"; };
@@ -482,7 +482,7 @@
 		882118E01F5938E5003258C6 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				B2F4EC1B1F5E7CC500C651D0 /* zhifu */,
+				B284F9791F61369100DD48FD /* ZhiFu */,
 				88022E511F5CFFA6005CF9F7 /* Main */,
 				8862D0961F5A99DC00D828E6 /* Shezhi */,
 				8862D08C1F5A995200D828E6 /* Sign */,
@@ -698,14 +698,14 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		B2F4EC1B1F5E7CC500C651D0 /* zhifu */ = {
+		B284F9791F61369100DD48FD /* ZhiFu */ = {
 			isa = PBXGroup;
 			children = (
-				B2F4EC1C1F5E7CE900C651D0 /* Storyboard.storyboard */,
-				B2F4EC1E1F5E832F00C651D0 /* zhifuTableViewController.h */,
-				B2F4EC1F1F5E832F00C651D0 /* zhifuTableViewController.m */,
+				B284F97A1F61369100DD48FD /* zhifu.storyboard */,
+				B284F97B1F61369100DD48FD /* zhifuTableViewController.h */,
+				B284F97C1F61369100DD48FD /* zhifuTableViewController.m */,
 			);
-			name = zhifu;
+			path = ZhiFu;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -819,8 +819,8 @@
 			files = (
 				8862D08E1F5A996800D828E6 /* Sign.storyboard in Resources */,
 				882119971F594791003258C6 /* My.storyboard in Resources */,
-				B2F4EC1D1F5E7CE900C651D0 /* Storyboard.storyboard in Resources */,
 				8821187C1F5937CB003258C6 /* LaunchScreen.storyboard in Resources */,
+				B284F97D1F61369100DD48FD /* zhifu.storyboard in Resources */,
 				B24C64191F5D375B00A76F39 /* Detail.storyboard in Resources */,
 				8862D0981F5A99EC00D828E6 /* SheZhi.storyboard in Resources */,
 				882119961F594791003258C6 /* Find.storyboard in Resources */,
@@ -917,6 +917,7 @@
 				B2F4EC1A1F5E33EE00C651D0 /* shezhiTableViewCell.m in Sources */,
 				8821195F1F593BBF003258C6 /* bitstream.m in Sources */,
 				B24C64251F5D379A00A76F39 /* MapViewController.m in Sources */,
+				B284F97E1F61369100DD48FD /* zhifuTableViewController.m in Sources */,
 				8821198E1F5946DD003258C6 /* MyViewController.m in Sources */,
 				8821194D1F593B6F003258C6 /* StorageMgr.m in Sources */,
 				882118E61F5938E5003258C6 /* ViewController.m in Sources */,
@@ -951,7 +952,6 @@
 				882119651F593BBF003258C6 /* split.m in Sources */,
 				8821194A1F593B6F003258C6 /* NSData+Base64.m in Sources */,
 				B24C64261F5D379A00A76F39 /* PayViewController.m in Sources */,
-				B2F4EC201F5E832F00C651D0 /* zhifuTableViewController.m in Sources */,
 				8821186B1F5937CA003258C6 /* main.m in Sources */,
 				882119431F593B6F003258C6 /* NSDataEx.m in Sources */,
 				B2A129EC1F5FCD3B008AF2DF /* chushengViewController.m in Sources */,
