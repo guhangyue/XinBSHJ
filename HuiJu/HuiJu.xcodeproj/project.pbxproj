@@ -69,6 +69,12 @@
 		8862D0951F5A99BB00D828E6 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8862D0941F5A99BB00D828E6 /* SignUpViewController.m */; };
 		8862D0981F5A99EC00D828E6 /* SheZhi.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8862D0971F5A99EC00D828E6 /* SheZhi.storyboard */; };
 		88FF9C5C1F61161A0074F897 /* Cities.plist in Resources */ = {isa = PBXBuildFile; fileRef = 88FF9C5B1F61161A0074F897 /* Cities.plist */; };
+		B23E9C1D1F613BDC00AE98AB /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B23E9C121F613BDC00AE98AB /* AboutViewController.m */; };
+		B23E9C1E1F613BDC00AE98AB /* CallUsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B23E9C141F613BDC00AE98AB /* CallUsViewController.m */; };
+		B23E9C1F1F613BDC00AE98AB /* HistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B23E9C161F613BDC00AE98AB /* HistoryViewController.m */; };
+		B23E9C201F613BDC00AE98AB /* myinfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B23E9C181F613BDC00AE98AB /* myinfoTableViewCell.m */; };
+		B23E9C211F613BDC00AE98AB /* SafetyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B23E9C1A1F613BDC00AE98AB /* SafetyViewController.m */; };
+		B23E9C221F613BDC00AE98AB /* UsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B23E9C1C1F613BDC00AE98AB /* UsViewController.m */; };
 		B246BEA31F60D447009DA8AA /* TiYanJuanTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B246BEA21F60D447009DA8AA /* TiYanJuanTableViewCell.m */; };
 		B24C64191F5D375B00A76F39 /* Detail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B24C64181F5D375B00A76F39 /* Detail.storyboard */; };
 		B24C64241F5D379A00A76F39 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B24C641B1F5D379A00A76F39 /* DetailViewController.m */; };
@@ -225,6 +231,18 @@
 		8862D0941F5A99BB00D828E6 /* SignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
 		8862D0971F5A99EC00D828E6 /* SheZhi.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SheZhi.storyboard; sourceTree = "<group>"; };
 		88FF9C5B1F61161A0074F897 /* Cities.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Cities.plist; sourceTree = "<group>"; };
+		B23E9C111F613BDC00AE98AB /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
+		B23E9C121F613BDC00AE98AB /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
+		B23E9C131F613BDC00AE98AB /* CallUsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CallUsViewController.h; sourceTree = "<group>"; };
+		B23E9C141F613BDC00AE98AB /* CallUsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CallUsViewController.m; sourceTree = "<group>"; };
+		B23E9C151F613BDC00AE98AB /* HistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryViewController.h; sourceTree = "<group>"; };
+		B23E9C161F613BDC00AE98AB /* HistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryViewController.m; sourceTree = "<group>"; };
+		B23E9C171F613BDC00AE98AB /* myinfoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = myinfoTableViewCell.h; sourceTree = "<group>"; };
+		B23E9C181F613BDC00AE98AB /* myinfoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = myinfoTableViewCell.m; sourceTree = "<group>"; };
+		B23E9C191F613BDC00AE98AB /* SafetyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SafetyViewController.h; sourceTree = "<group>"; };
+		B23E9C1A1F613BDC00AE98AB /* SafetyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SafetyViewController.m; sourceTree = "<group>"; };
+		B23E9C1B1F613BDC00AE98AB /* UsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UsViewController.h; sourceTree = "<group>"; };
+		B23E9C1C1F613BDC00AE98AB /* UsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UsViewController.m; sourceTree = "<group>"; };
 		B246BEA11F60D447009DA8AA /* TiYanJuanTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TiYanJuanTableViewCell.h; sourceTree = "<group>"; };
 		B246BEA21F60D447009DA8AA /* TiYanJuanTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TiYanJuanTableViewCell.m; sourceTree = "<group>"; };
 		B24C64181F5D375B00A76F39 /* Detail.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Detail.storyboard; sourceTree = "<group>"; };
@@ -616,6 +634,18 @@
 		882119891F5946DD003258C6 /* My */ = {
 			isa = PBXGroup;
 			children = (
+				B23E9C111F613BDC00AE98AB /* AboutViewController.h */,
+				B23E9C121F613BDC00AE98AB /* AboutViewController.m */,
+				B23E9C131F613BDC00AE98AB /* CallUsViewController.h */,
+				B23E9C141F613BDC00AE98AB /* CallUsViewController.m */,
+				B23E9C151F613BDC00AE98AB /* HistoryViewController.h */,
+				B23E9C161F613BDC00AE98AB /* HistoryViewController.m */,
+				B23E9C171F613BDC00AE98AB /* myinfoTableViewCell.h */,
+				B23E9C181F613BDC00AE98AB /* myinfoTableViewCell.m */,
+				B23E9C191F613BDC00AE98AB /* SafetyViewController.h */,
+				B23E9C1A1F613BDC00AE98AB /* SafetyViewController.m */,
+				B23E9C1B1F613BDC00AE98AB /* UsViewController.h */,
+				B23E9C1C1F613BDC00AE98AB /* UsViewController.m */,
 				8821198A1F5946DD003258C6 /* MyViewController.h */,
 				8821198B1F5946DD003258C6 /* MyViewController.m */,
 			);
@@ -904,12 +934,14 @@
 				882119631F593BBF003258C6 /* qrspec.m in Sources */,
 				882119481F593B6F003258C6 /* ErrorHandler.m in Sources */,
 				8821193F1F593B6F003258C6 /* base64.m in Sources */,
+				B23E9C201F613BDC00AE98AB /* myinfoTableViewCell.m in Sources */,
 				B24C64271F5D379A00A76F39 /* TiYanViewController.m in Sources */,
 				DECFEEB51F5D486A00F18D9D /* UserModel.m in Sources */,
 				882119611F593BBF003258C6 /* qrencode.m in Sources */,
 				882118E41F5938E5003258C6 /* SKTagButton.m in Sources */,
 				882119461F593B6F003258C6 /* RSADataVerifier.m in Sources */,
 				88022E571F5D00E3005CF9F7 /* experienceCellTableViewCell.m in Sources */,
+				B23E9C1D1F613BDC00AE98AB /* AboutViewController.m in Sources */,
 				882118E71F5938E5003258C6 /* HuiJu.xcdatamodeld in Sources */,
 				882119641F593BBF003258C6 /* rscode.m in Sources */,
 				882119601F593BBF003258C6 /* mask.m in Sources */,
@@ -922,6 +954,7 @@
 				8821194D1F593B6F003258C6 /* StorageMgr.m in Sources */,
 				882118E61F5938E5003258C6 /* ViewController.m in Sources */,
 				882119491F593B6F003258C6 /* JSONS.m in Sources */,
+				B23E9C1E1F613BDC00AE98AB /* CallUsViewController.m in Sources */,
 				882119441F593B6F003258C6 /* openssl_wrapper.m in Sources */,
 				882119451F593B6F003258C6 /* RSADataSigner.m in Sources */,
 				B24C64241F5D379A00A76F39 /* DetailViewController.m in Sources */,
@@ -940,10 +973,13 @@
 				88022E541F5D00BE005CF9F7 /* YeMianTableViewCell.m in Sources */,
 				8862D0951F5A99BB00D828E6 /* SignUpViewController.m in Sources */,
 				B2A129E61F5FCD03008AF2DF /* nichenViewController.m in Sources */,
+				B23E9C211F613BDC00AE98AB /* SafetyViewController.m in Sources */,
 				882119401F593B6F003258C6 /* DataSigner.m in Sources */,
+				B23E9C221F613BDC00AE98AB /* UsViewController.m in Sources */,
 				88034F461F5EAECD00615C92 /* ZLImageViewDisplayView.m in Sources */,
 				B24C64281F5D379A00A76F39 /* ZhiFuBaoViewController.m in Sources */,
 				8821194E1F593B6F003258C6 /* UIImage+MDQRCode.m in Sources */,
+				B23E9C1F1F613BDC00AE98AB /* HistoryViewController.m in Sources */,
 				8821194B1F593B6F003258C6 /* NSString+Crypt.m in Sources */,
 				882119621F593BBF003258C6 /* qrinput.m in Sources */,
 				882119421F593B6F003258C6 /* MD5DataSigner.m in Sources */,
