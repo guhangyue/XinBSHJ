@@ -12,6 +12,7 @@
 
 - (id)initWithDictionary: (NSDictionary *)dict{
     _experience = [NSMutableArray new];
+    
     self = [super init];
     if (self) {
         self.nameId2=[[Utilities nullAndNilCheck:dict[@"id"] replaceBy:0] integerValue] ;
@@ -51,6 +52,7 @@
 }
 - (id)initWithDetialDictionary: (NSDictionary *)dict{
     self = [super init];
+    _experienceInfos = [NSMutableArray new];
     if (self) {
         self.nameId2=[[Utilities nullAndNilCheck:dict[@"id"] replaceBy:0] integerValue] ;
         self.nameId=[Utilities nullAndNilCheck:dict[@"id"] replaceBy:@""] ;
@@ -77,6 +79,7 @@
                 [Infos addObject:shouye1.saleCount];
                 self.i++;
                 [self.experienceInfos addObject:Infos];
+                NSLog(@"111%@",self.experienceInfos);
                 
             }
             //self.experience = experiences;

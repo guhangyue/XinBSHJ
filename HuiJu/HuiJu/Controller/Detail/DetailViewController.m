@@ -9,7 +9,10 @@
 #import "DetailViewController.h"
 #import "ShouYe.h"
 #import "TiYanJuanTableViewCell.h"
-@interface DetailViewController ()<UITableViewDelegate,UITableViewDataSource>
+@interface DetailViewController ()<UITableViewDelegate,UITableViewDataSource>{
+    ShouYe *detail;
+
+}
 @property (weak, nonatomic) IBOutlet UIButton *addressBtn;
 - (IBAction)addressAction:(UIButton *)sender forEvent:(UIEvent *)event;
 @property (weak, nonatomic) IBOutlet UILabel *clubNameLbl;
@@ -22,6 +25,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *clubPersonLbl;
 @property (weak, nonatomic) IBOutlet UIImageView *clubPic;
 @property (strong, nonatomic) NSMutableArray *arr5;
+@property (weak, nonatomic) IBOutlet UITableView *TiYanJuanTableView;
 
 //@property (weak, nonatomic) IBOutlet UIView *TiYanJuanView;
 
@@ -69,14 +73,20 @@
         if([responseObject[@"resultFlag"]integerValue]==8001){
             NSDictionary *result = responseObject[@"result"];
            // NSDictionary *models =result [@"models"];
-            ShouYe *detail = [[ ShouYe alloc]initWithDetialDictionary:result];
+           
+                detail = [[ ShouYe alloc]initWithDetialDictionary:result];
+                _clubNameLbl.text =detail.TName;
+                _clubIntroduceLbl.text=detail.clubIntroduce;
+                _clubTimeLbl.text=detail.clubTime;
+                _clubMemberLbl.text=detail.clubMember;
+                _clubSiteLbl.text=detail.clubSite;
+                _clubPersonLbl.text=detail.clubPerson;
+            
+            
+            
+            
            // [_arr5 addObject:detail];
-            _clubNameLbl.text =detail.TName;
-            _clubIntroduceLbl.text=detail.clubIntroduce;
-            _clubTimeLbl.text=detail.clubTime;
-            _clubMemberLbl.text=detail.clubMember;
-            _clubSiteLbl.text=detail.clubSite;
-            _clubPersonLbl.text=detail.clubPerson;
+            
  //          ShouYe *detail2 = [[ ShouYe alloc]initWithExDictionary2:result];
 //            NSURL *url = [NSURL URLWithString:detail2.eLogo];
 //            [_eLogoImage sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@""]];
@@ -92,7 +102,7 @@
             //_priceLbl.text = [NSString stringWithFormat:@"¥ %@",detail.hotelMoney];
             
            // [_smallPictureImgView sd_setImageWithURL:[NSURL URLWithString:detail.hotelImg] placeholderImage:[UIImage imageNamed:@"11"]];设置默认图片
-            
+            [_TiYanJuanTableView reloadData];
            
         }else{
             NSString *errorMsg = [ErrorHandler getProperErrorString:[responseObject[@"result"] integerValue]];
@@ -156,15 +166,15 @@
 //        cell.name.text = model.experience[indexPath.row-1][3];
 //        cell.sellNumber.text = [NSString stringWithFormat:@"已售：%@",model.experience[indexPath.row-1][4]];
    TiYanJuanTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:@"TiyanJuanCell" forIndexPath:indexPath];
-   // ShouYe *hotel = _arr5[3];
-   // NSLog(@"%@",_arr5[3]);
-//    NSURL *url = [NSURL URLWithString:hotel.experienceInfos[1]];
-//                [cell.eLogoImage sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"Home"]];
-   // cell.eNameLbl.text=_detailA.experience[3];
     
-//                cell.priceLbl.text=_detailA.experience[2];
-//                cell.saleCountLbl.text=[NSString stringWithFormat:@"已售：%@",_detailA.experience[4]];
+//    NSLog(@"%@",_arr5[3]);
+    NSURL *url = [NSURL URLWithString:detail.experienceInfos[indexPath.row][1]];
+                [cell.eLogoImage sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"Home"]];
+    cell.eNameLbl.text=detail.experienceInfos[indexPath.row][0];
     
+                cell.priceLbl.text=detail.experienceInfos[indexPath.row][2];
+                cell.saleCountLbl.text=[NSString stringWithFormat:@"已售：%@",detail.experienceInfos[indexPath.row][3]];
+   
     
         return cell;
    // }

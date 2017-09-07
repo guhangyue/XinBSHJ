@@ -315,6 +315,7 @@
                     </view>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="TiYanJuanTableView" destination="aA0-G8-WHQ" id="bvo-KI-8OD"/>
                         <outlet property="addressBtn" destination="Ha3-eY-hDE" id="zgj-tq-xvD"/>
                         <outlet property="callingBtn" destination="vgb-JR-qmG" id="1pr-Lf-QSE"/>
                         <outlet property="clubIntroduceLbl" destination="4QD-Xr-SCF" id="LwJ-iG-Kkx"/>
