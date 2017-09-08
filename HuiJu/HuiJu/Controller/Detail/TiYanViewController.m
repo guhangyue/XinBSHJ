@@ -22,6 +22,12 @@
 @property (weak, nonatomic) IBOutlet UILabel *orginPriceLbl;
 @property (weak, nonatomic) IBOutlet UIButton *payBtn;
 - (IBAction)payAction:(UIButton *)sender forEvent:(UIEvent *)event;
+@property (weak, nonatomic) IBOutlet UILabel *beginDateLbl;
+@property (weak, nonatomic) IBOutlet UILabel *endDateLbl;
+@property (weak, nonatomic) IBOutlet UILabel *useDateLbl;
+@property (weak, nonatomic) IBOutlet UILabel *rulesLbl;
+@property (weak, nonatomic) IBOutlet UIImageView *eLogoImage;
+@property (weak, nonatomic) IBOutlet UILabel *eFeatureLbl;
 
 @end
 
@@ -54,7 +60,8 @@
     UIActivityIndicatorView *aiv = [Utilities getCoverOnView:self.view];
     //NSLog(@"%@",_hotelid);
     // HotelModel *user=[ HotelModel alloc];
-    NSDictionary *para1 = @{@"clubKeyId":@(1)};
+    NSDictionary *para1 = @{@"experienceId":@"92"};
+    //NSLog(@"%@",_detailC.experienceInfos[4]);
     //NSLog(@"反馈：%ld",(long)_detailA.nameId);
     [RequestAPI requestURL:@"/clubController/experienceDetail" withParameters:para1 andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
         [aiv stopAnimating];
@@ -62,7 +69,21 @@
         if([responseObject[@"resultFlag"]integerValue]==8001){
             NSDictionary *result = responseObject[@"result"];
             // NSDictionary *models =result [@"models"];
-//            ShouYe *detail = [[ ShouYe alloc]initWithDetialDictionary:result];
+            ShouYe *detail3 = [[ ShouYe alloc]initWithExDictionary3:result];
+            _beginDateLbl.text=detail3.beginDate;
+            _endDateLbl.text=[NSString stringWithFormat:@"至%@",detail3.endDate];
+            NSURL *url = [NSURL URLWithString:detail3.eLogo2];
+           [_eLogoImage sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@""]];
+            [_clubAddressbBtn setTitle:detail3.eAddress forState:UIControlStateNormal];
+            _eNameLbl.text=detail3.eName2;
+            _clubNameLbl.text=detail3.eClubName;
+            _orginPriceLbl.text=[NSString stringWithFormat:@"原价：%@元",detail3.orginPrice];
+            _rulesLbl.text=detail3.rules;
+            _saleCountLbl.text=[NSString stringWithFormat:@"已售：%@",detail3.saleCount ];
+            _useDateLbl.text=detail3.useDate;
+            _eFeatureLbl.text=detail3.eFeature;
+            
+           // _priceLbl.text = [NSString stringWithFormat:@"¥ %@",detail.hotelMoney];
             // [_arr5 addObject:detail];
 //            _clubNameLbl.text =detail.TName;
 //            _clubIntroduceLbl.text=detail.clubIntroduce;

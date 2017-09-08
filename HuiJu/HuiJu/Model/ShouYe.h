@@ -32,6 +32,20 @@
 @property (strong,nonatomic) NSString *eName;
 @property (strong,nonatomic) NSString *saleCount;
 @property (strong,nonatomic) NSString *price2;
+@property (nonatomic) NSString *eId;
+@property (nonatomic) NSString *beginDate;
+@property (nonatomic) NSString *currentPrice;
+@property (nonatomic) NSString *eAddress;
+@property (nonatomic) NSString *eClubName;
+@property (nonatomic) NSString *eFeature;
+@property (nonatomic) NSString *eLogo2;
+@property (nonatomic) NSString *eName2;
+@property (nonatomic) NSString *endDate;
+@property (nonatomic) NSString *orginPrice;
+@property (nonatomic) NSString *rules;
+@property (nonatomic) NSString *useDate;
+
+
 
 @property (nonatomic) NSInteger i;
 @property (strong,nonatomic) NSString *sellNumber;
@@ -41,4 +55,6 @@
 - (id)initWithDetialDictionary: (NSDictionary *)dict;
 - (id)initWithExDictionary: (NSDictionary *)dict;
 - (id)initWithExDictionary2: (NSDictionary *)dict;
+- (id)initWithExDictionary3: (NSDictionary *)dict;
+
 @end

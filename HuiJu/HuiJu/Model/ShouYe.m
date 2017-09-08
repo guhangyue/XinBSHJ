@@ -77,6 +77,8 @@
                 [Infos addObject:shouye1.eLogo];
                 [Infos addObject:shouye1.price2];
                 [Infos addObject:shouye1.saleCount];
+                [Infos addObject:shouye1.eId];
+
                 self.i++;
                 [self.experienceInfos addObject:Infos];
                 NSLog(@"111%@",self.experienceInfos);
@@ -111,6 +113,28 @@
         self.eLogo= [Utilities nullAndNilCheck:dict[@"eLogo"] replaceBy:@"未知"];
         self.price2= [Utilities nullAndNilCheck:dict[@"price"] replaceBy:@"未知"];
         self.saleCount= [Utilities nullAndNilCheck:dict[@"saleCount"] replaceBy:@"未知"];
+        self.eId= [Utilities nullAndNilCheck:dict[@"eId"] replaceBy:@"gg"] ;
+    }
+    return self;
+}
+- (id)initWithExDictionary3: (NSDictionary *)dict{
+    self = [super init];
+    if (self) {
+        self.beginDate= [Utilities nullAndNilCheck:dict[@"beginDate"] replaceBy:@"未知"];
+        self.endDate= [Utilities nullAndNilCheck:dict[@"endDate"] replaceBy:@"未知"];
+        self.currentPrice= [Utilities nullAndNilCheck:dict[@"currentPrice"] replaceBy:@"未知"];
+        self.eAddress= [Utilities nullAndNilCheck:dict[@"eAddress"] replaceBy:@"未知"];
+        self.eClubName= [Utilities nullAndNilCheck:dict[@"eClubName"] replaceBy:@"未知"];
+        self.eFeature= [Utilities nullAndNilCheck:dict[@"eFeature"] replaceBy:@"未知"];
+        self.eLogo2= [Utilities nullAndNilCheck:dict[@"eLogo"] replaceBy:@"未知"];
+        self.eName2= [Utilities nullAndNilCheck:dict[@"eName"] replaceBy:@"未知"];
+        self.orginPrice= [Utilities nullAndNilCheck:dict[@"orginPrice"] replaceBy:@"未知"];
+        self.rules= [Utilities nullAndNilCheck:dict[@"rules"] replaceBy:@"未知"];
+        self.saleCount= [Utilities nullAndNilCheck:dict[@"saleCount"] replaceBy:@"未知"];
+        self.useDate= [Utilities nullAndNilCheck:dict[@"useDate"] replaceBy:@"未知"];
+        
+        
+       
     }
     return self;
 }
