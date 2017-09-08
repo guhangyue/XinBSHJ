@@ -60,8 +60,10 @@
     UIActivityIndicatorView *aiv = [Utilities getCoverOnView:self.view];
     //NSLog(@"%@",_hotelid);
     // HotelModel *user=[ HotelModel alloc];
-    NSDictionary *para1 = @{@"experienceId":@"92"};
-    //NSLog(@"%@",_detailC.experienceInfos[4]);
+    NSInteger  s=[_eid intValue];
+    NSDictionary *para1 = @{@"experienceId":@(s)};
+    
+    NSLog(@"又是什么东西啊%ld",(long)s);
     //NSLog(@"反馈：%ld",(long)_detailA.nameId);
     [RequestAPI requestURL:@"/clubController/experienceDetail" withParameters:para1 andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
         [aiv stopAnimating];

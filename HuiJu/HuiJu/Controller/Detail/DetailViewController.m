@@ -193,10 +193,13 @@
         //当从列表页到详情页的这个跳转要发生的时候
         //获取要传递到下一页的数据
         NSIndexPath *indexPath=[_TiYanJuanTableView indexPathForSelectedRow];
-        ShouYe *club=detail.experienceInfos[indexPath.row];
+        
+        NSString *club=detail.experienceInfos[indexPath.row][4];
+        
         TiYanViewController *detailVC= segue.destinationViewController;
-        detailVC.detailC=club;
-//        ShouYe *activity=_arr[indexPath.section];
+        detailVC.eid=club;
+       // NSLog(@"传的什么鬼%@",detailVC.detailC);
+        //        ShouYe *activity=_arr[indexPath.section];
 //        ShouYe *activity2=_arr[indexPath.row];
 //        // NSLog(@"%@",_arr[indexPath.row]);
 //        //获取下一页的这个实例

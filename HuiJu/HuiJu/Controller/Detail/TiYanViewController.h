@@ -10,4 +10,5 @@
 #import "ShouYe.h"
 @interface TiYanViewController : UIViewController
 @property (strong,nonatomic) ShouYe *detailC;
+@property (strong,nonatomic)NSString *eid;
 @end
