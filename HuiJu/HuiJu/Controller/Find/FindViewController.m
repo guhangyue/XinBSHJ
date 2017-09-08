@@ -257,10 +257,64 @@
     
 }
 -(void)classificationClubRequest{
-    
+    _brightView.hidden = YES;
+    _avi = [Utilities getCoverOnView:self.view];
+    NSDictionary *para =  @{@"city":@"无锡",@"jing":@"120.300000",@"wei":@"31.570000",@"page":@(PageNum),@"perPage":@(pageSize),@"Type":@0,@"featureId":_classificationId};
+    [RequestAPI requestURL:@"/clubController/nearSearchClub" withParameters:para andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
+        //  NSLog(@"responseObject:%@", responseObject);
+        [_avi stopAnimating];
+        if([responseObject[@"resultFlag"] integerValue] == 8001){
+            NSDictionary *result = responseObject[@"result"];
+            NSArray *array = result[@"models"];
+            [_ClubArr removeAllObjects];
+            for(NSDictionary *dict in array){
+                FindModel *model = [[FindModel alloc]initWithClub:dict];
+                
+                [_ClubArr addObject:model];
+                
+            }
+            [_collectionView reloadData];
+        }else{
+            //业务逻辑失败的情况下
+            NSString *errorMsg = [ErrorHandler getProperErrorString:[responseObject[@"result"] integerValue]];
+            [Utilities popUpAlertViewWithMsg:errorMsg andTitle:nil onView:self];
+        }
+        
+    } failure:^(NSInteger statusCode, NSError *error) {
+        [_avi stopAnimating];
+        [Utilities popUpAlertViewWithMsg:@"请保持网络连接畅通" andTitle:nil onView:self];
+    }];
+ 
 }
 -(void)TypeClubRequest{
-    
+    _brightView.hidden = YES;
+    _avi = [Utilities getCoverOnView:self.view];
+    NSDictionary *para =  @{@"city":@"无锡",@"jing":@"120.300000",@"wei":@"31.570000",@"page":@(PageNum),@"perPage":@(pageSize),@"Type":@1};
+    [RequestAPI requestURL:@"/clubController/nearSearchClub" withParameters:para andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
+        //  NSLog(@"responseObject:%@", responseObject);
+        [_avi stopAnimating];
+        if([responseObject[@"resultFlag"] integerValue] == 8001){
+            NSDictionary *result = responseObject[@"result"];
+            NSArray *array = result[@"models"];
+            [_ClubArr removeAllObjects];
+            for(NSDictionary *dict in array){
+                FindModel *model = [[FindModel alloc]initWithClub:dict];
+                
+                [_ClubArr addObject:model];
+                
+            }
+            [_collectionView reloadData];
+        }else{
+            //业务逻辑失败的情况下
+            NSString *errorMsg = [ErrorHandler getProperErrorString:[responseObject[@"result"] integerValue]];
+            [Utilities popUpAlertViewWithMsg:errorMsg andTitle:nil onView:self];
+        }
+        
+    } failure:^(NSInteger statusCode, NSError *error) {
+        [_avi stopAnimating];
+        [Utilities popUpAlertViewWithMsg:@"请保持网络连接畅通" andTitle:nil onView:self];
+    }];
+ 
 }
 /*
 #pragma mark - Navigation
@@ -286,8 +340,16 @@
 }
 
 - (IBAction)distanceAction:(UIButton *)sender forEvent:(UIEvent *)event {
+    fiag = 2;
+    self.HeightConstraint.constant = _cityArr.count *40 ;
+    _brightView.hidden = NO;
+    [_tableView reloadData];
 }
 
 - (IBAction)classificationAction:(UIButton *)sender forEvent:(UIEvent *)event {
+    fiag = 3;
+    self.HeightConstraint.constant = _distanceArr.count *40;
+    _brightView.hidden = NO;
+    [_tableView reloadData];
 }
 @end
