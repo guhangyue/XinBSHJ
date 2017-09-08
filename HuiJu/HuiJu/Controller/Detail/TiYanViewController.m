@@ -84,6 +84,7 @@
             _saleCountLbl.text=[NSString stringWithFormat:@"已售：%@",detail3.saleCount ];
             _useDateLbl.text=detail3.useDate;
             _eFeatureLbl.text=detail3.eFeature;
+            _priceLbl.text=detail3.currentPrice;
             
            // _priceLbl.text = [NSString stringWithFormat:@"¥ %@",detail.hotelMoney];
             // [_arr5 addObject:detail];
