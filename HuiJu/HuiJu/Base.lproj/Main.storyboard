@@ -155,6 +155,13 @@
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wIQ-ti-G8d">
                                 <rect key="frame" x="0.0" y="64" width="375" height="130"/>
+                                <subviews>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QXp-Fn-yPU">
+                                        <rect key="frame" x="164" y="50" width="46" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Button"/>
+                                    </button>
+                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="130" id="WFh-Ig-LdJ"/>
@@ -176,6 +183,7 @@
                     <connections>
                         <outlet property="HomeTableView" destination="tt7-Pm-S46" id="HBy-0N-pa4"/>
                         <outlet property="adView" destination="wIQ-ti-G8d" id="ivJ-Yl-dxz"/>
+                        <outlet property="cityBtn" destination="QXp-Fn-yPU" id="GLo-4B-CGt"/>
                         <segue destination="Y3b-iV-imK" kind="show" identifier="ShouYe2Detail" id="RlF-Mt-CNn"/>
                     </connections>
                 </viewController>
@@ -194,7 +202,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="9LX-4w-N3z">
             <objects>
-                <tabBarController useStoryboardIdentifierAsRestorationIdentifier="YES" id="Dh0-VK-WpR" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="ABC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Dh0-VK-WpR" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="IQ2-BE-hjA">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>

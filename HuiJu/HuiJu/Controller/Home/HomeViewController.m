@@ -14,13 +14,20 @@
 #import "DetailViewController.h"
 #import "ZLImageViewDisplayView.h"
 @interface HomeViewController ()<UITableViewDataSource,UITableViewDelegate,CLLocationManagerDelegate>{
+    NSInteger page;
     BOOL flag;
+    BOOL isLoading;
+    BOOL firstVisit;
 }
 @property (strong, nonatomic) UIActivityIndicatorView *avi;
 @property (weak, nonatomic) IBOutlet UIView *adView;
 @property (weak, nonatomic) IBOutlet UITableView *HomeTableView;
+@property (weak, nonatomic) IBOutlet UIButton *cityBtn;
+
 @property (strong, nonatomic) NSMutableArray *arr;
 @property (strong, nonatomic) NSMutableArray *arr3;
+@property(strong,nonatomic) CLLocationManager *locMgr;
+@property(strong,nonatomic) CLLocation *location;
 @end
 
 @implementation HomeViewController
@@ -30,16 +37,45 @@
     _arr = [NSMutableArray new];
     _arr3 = [NSMutableArray new];
     flag =YES;
+    _cityBtn.titleLabel.text = @"无锡";
     [self naviConfig];
     // Do any additional setup after loading the view.
     //创建菊花膜
-    _avi = [Utilities getCoverOnView:self.view];
-    [self networkRequest];
+    //_avi = [Utilities getCoverOnView:self.view];
+    [self locationConfig];
+    [self dataInitialize];
     [self uiLayout];
-    
+    //监听
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(checkCityState:) name:@"ResetHome" object:nil];
     
     
 }
+//这个方法专门处理定位的基本设置
+-(void)locationConfig{
+    _locMgr=[CLLocationManager new];
+    //签协议
+    _locMgr.delegate = self;
+    //设置定位到的设备，位移多少距离进行一次识别
+    _locMgr.distanceFilter = kCLDistanceFilterNone ;
+    //设置把地球分割成边长多少精度的方块
+    _locMgr.desiredAccuracy =  kCLLocationAccuracyBest;
+}
+//这个方法处理开始定位
+-(void)locationStart{
+    //判断用户有没有选择过是否使用定位
+    if([CLLocationManager authorizationStatus]==kCLAuthorizationStatusNotDetermined){
+        //询问用户是否愿意使用定位
+#ifdef __IPHONE_8_0
+        if([_locMgr respondsToSelector:@selector(requestWhenInUseAuthorization)]){
+            //使用“使用中打开定位”这个策略去运用定位功能
+            [_locMgr requestWhenInUseAuthorization];
+        }
+#endif
+    }
+    //打开定位服务的开关（开始定位)
+    [_locMgr startUpdatingLocation];
+}
+
 //这个方法专门做导航条的控制
 - (void)naviConfig {
     // 设置导航条标题文字
@@ -75,13 +111,50 @@
     
 }
 
+//这个方法专门做数据的处理
+- (void)dataInitialize {
+    BOOL appInit = NO;
+    
+    if ([[Utilities getUserDefaults:@"UserCity"] isKindOfClass:[NSNull class]]) {
+        //说明是第一次打开APP
+        appInit =  YES;
+    }else{
+        if ([Utilities getUserDefaults:@"UserCity"] ==nil) {
+            //也说明是第一次打开APP
+            appInit = YES;
+        }
+    }
+    if (appInit) {
+        //第一次来到APP将默认城市与记忆城市同步
+        NSString *userCity = _cityBtn.titleLabel.text;
+        [Utilities setUserDefaults:@"UserCity" content:userCity];
+    }else{
+        //不是第一次来到APP则将记忆城市与安宁上的城市名反向同步
+        NSString *userCity =[Utilities getUserDefaults:@"UserCity"];
+        [_cityBtn setTitle:userCity forState:UIControlStateNormal];
+        
+    }
+    
+    
+    firstVisit = YES;
+    isLoading = NO;
+    _arr = [NSMutableArray new];
+    //创建菊花膜
+    _avi = [Utilities getCoverOnView:self.view];
+    [self refreshPage];
+}
+- (void)refreshPage {
+    page = 1;
+    [self networkRequest];
+}
 
 
 //执行网络请求
 - (void)networkRequest{
-    NSDictionary *para = @{@"city":@"无锡", @"jing":@"31.568",@"wei":@"120.299",@"page" : @1,@"perPage":@10};
+    NSDictionary *para = @{@"city":_cityBtn.titleLabel.text, @"jing":@"31.568",@"wei":@"120.299",@"page" : @(page),@"perPage":@10};
     [RequestAPI requestURL:@"/homepage/choice" withParameters:para andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
         [_avi stopAnimating];
+        
         //NSLog(@"%@",responseObject);
         if ([responseObject[@"resultFlag"] integerValue] == 8001) {
             NSLog(@"%@",responseObject);
@@ -230,5 +303,101 @@
         detailVC.detailB=activity2;
     }
 }
+
+//定位失败时
+- (void)locationManager:(CLLocationManager *)manager
+       didFailWithError:(NSError *)error{
+    if(error){
+        switch (error.code) {
+            case kCLErrorNetwork:
+                [Utilities popUpAlertViewWithMsg:NSLocalizedString(@"NetworkError", nil) andTitle:nil onView:self];
+                break;
+            case kCLErrorDenied:
+                [Utilities popUpAlertViewWithMsg:NSLocalizedString(@"GPSDisabled", nil) andTitle:nil onView:self];
+                break;
+            case kCLErrorLocationUnknown:
+                [Utilities popUpAlertViewWithMsg:NSLocalizedString(@"LocationUnkonw" , nil) andTitle:nil onView:self];
+                break;
+            default:
+                [Utilities popUpAlertViewWithMsg:NSLocalizedString(@"SystemError" , nil) andTitle:nil onView:self];
+                break;
+        }
+    }
+}
+//定位成功时
+- (void)locationManager:(CLLocationManager *)manager
+    didUpdateToLocation:(CLLocation *)newLocation
+           fromLocation:(CLLocation *)oldLocation{
+    // NSLog(@"维度：%f",newLocation.coordinate.latitude);
+    //  NSLog(@"经度：%f",newLocation.coordinate.longitude);
+    _location = newLocation;
+    //用flag思想判断是否可以去根据定位拿城市
+    if(firstVisit){
+        firstVisit = ! firstVisit;
+        //根据定位拿城市
+        [self getRegeoViaCoordinate];
+        
+    }
+}
+
+-(void)getRegeoViaCoordinate{
+    //duration表示从now开始过3个SEC
+    dispatch_time_t duration = dispatch_time(DISPATCH_TIME_NOW, 3 * NSEC_PER_SEC);
+    //用duration这个设置好的策略去做某些事
+    dispatch_after(duration, dispatch_get_main_queue(), ^{
+        //正式做事情
+        CLGeocoder *geo = [CLGeocoder new];
+        //反向地理编码
+        [geo reverseGeocodeLocation:_location completionHandler:^(NSArray<CLPlacemark *> * _Nullable placemarks, NSError * _Nullable error) {
+            if(!error){
+                CLPlacemark *first = placemarks.firstObject;
+                NSDictionary *locDict = first.addressDictionary;
+                NSLog(@"locDict = %@",locDict);
+                NSString *cityStr = locDict[@"City"];
+                cityStr = [cityStr substringToIndex:(cityStr.length - 1)];
+                [[StorageMgr singletonStorageMgr] removeObjectForKey:@"LocCity"];
+                
+                //将定位的城市保存进单例化全局变量
+                [[StorageMgr singletonStorageMgr]addKey:@"LocCity" andValue:cityStr];
+                if (![cityStr isEqualToString:_cityBtn.titleLabel.text]) {
+                    //当定位到的城市和当前选择到的城市不一样的时候去弹窗询问用户是否切换城市
+                    UIAlertController *alertView =[UIAlertController alertControllerWithTitle:@"提示" message:[NSString stringWithFormat:@"当前定位到城市为%@， 你是否要切换",cityStr] preferredStyle:UIAlertControllerStyleAlert];
+                    UIAlertAction *yesAction = [UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                        //修改城市按钮标题
+                        [_cityBtn setTitle:cityStr forState:UIControlStateNormal];
+                        //修改用户选择的城市记忆体
+                        [Utilities removeUserDefaults:@"UserCity"];
+                        [Utilities setUserDefaults:@"UserCity" content:cityStr];
+                        //重新执行网络请求
+                        [self networkRequest];
+                    }];
+                    UIAlertAction *noAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+                    [alertView addAction:yesAction];
+                    [alertView addAction:noAction];
+                    [self presentViewController:alertView animated:YES completion:nil];
+                    
+                    
+                }
+            }
+        }];
+        //关掉开关
+        [_locMgr stopUpdatingLocation];
+    });
+}
+-(void)checkCityState:(NSNotification *)note {
+    NSString *cityStr=note.object;
+    if (![cityStr isEqualToString:_cityBtn.titleLabel.text]) {
+        
+        //修改城市按钮标题
+        [_cityBtn setTitle:cityStr forState:UIControlStateNormal];
+        //修改用户选择的城市记忆体
+        [Utilities removeUserDefaults:@"UserCity"];
+        [Utilities setUserDefaults:@"UserCity" content:cityStr];
+        //重新执行网络请求
+        [self networkRequest];
+        
+    }
+}
+
 
 @end

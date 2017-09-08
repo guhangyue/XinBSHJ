@@ -68,6 +68,8 @@
 		8862D0921F5A99AB00D828E6 /* SignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8862D0911F5A99AB00D828E6 /* SignInViewController.m */; };
 		8862D0951F5A99BB00D828E6 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8862D0941F5A99BB00D828E6 /* SignUpViewController.m */; };
 		8862D0981F5A99EC00D828E6 /* SheZhi.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8862D0971F5A99EC00D828E6 /* SheZhi.storyboard */; };
+		88F5BCEC1F626B4200766D4F /* Cities.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88F5BCEB1F626B4200766D4F /* Cities.storyboard */; };
+		88F5BCEF1F626B6200766D4F /* CitilesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88F5BCEE1F626B6200766D4F /* CitilesViewController.m */; };
 		88FF9C5C1F61161A0074F897 /* Cities.plist in Resources */ = {isa = PBXBuildFile; fileRef = 88FF9C5B1F61161A0074F897 /* Cities.plist */; };
 		B23E9C1D1F613BDC00AE98AB /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B23E9C121F613BDC00AE98AB /* AboutViewController.m */; };
 		B23E9C1E1F613BDC00AE98AB /* CallUsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B23E9C141F613BDC00AE98AB /* CallUsViewController.m */; };
@@ -231,6 +233,9 @@
 		8862D0931F5A99BB00D828E6 /* SignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
 		8862D0941F5A99BB00D828E6 /* SignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
 		8862D0971F5A99EC00D828E6 /* SheZhi.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SheZhi.storyboard; sourceTree = "<group>"; };
+		88F5BCEB1F626B4200766D4F /* Cities.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Cities.storyboard; sourceTree = "<group>"; };
+		88F5BCED1F626B6200766D4F /* CitilesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CitilesViewController.h; sourceTree = "<group>"; };
+		88F5BCEE1F626B6200766D4F /* CitilesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CitilesViewController.m; sourceTree = "<group>"; };
 		88FF9C5B1F61161A0074F897 /* Cities.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Cities.plist; sourceTree = "<group>"; };
 		B23E9C111F613BDC00AE98AB /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
 		B23E9C121F613BDC00AE98AB /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
@@ -335,6 +340,7 @@
 		88022E511F5CFFA6005CF9F7 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				88F5BCEB1F626B4200766D4F /* Cities.storyboard */,
 				88022E521F5D00BE005CF9F7 /* YeMianTableViewCell.h */,
 				88022E531F5D00BE005CF9F7 /* YeMianTableViewCell.m */,
 				88022E551F5D00E3005CF9F7 /* experienceCellTableViewCell.h */,
@@ -628,6 +634,8 @@
 		882119861F5946DD003258C6 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				88F5BCED1F626B6200766D4F /* CitilesViewController.h */,
+				88F5BCEE1F626B6200766D4F /* CitilesViewController.m */,
 				882119871F5946DD003258C6 /* HomeViewController.h */,
 				882119881F5946DD003258C6 /* HomeViewController.m */,
 			);
@@ -861,6 +869,7 @@
 				882119961F594791003258C6 /* Find.storyboard in Resources */,
 				88FF9C5C1F61161A0074F897 /* Cities.plist in Resources */,
 				882118791F5937CB003258C6 /* Assets.xcassets in Resources */,
+				88F5BCEC1F626B4200766D4F /* Cities.storyboard in Resources */,
 				882118741F5937CB003258C6 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -980,6 +989,7 @@
 				8862D0951F5A99BB00D828E6 /* SignUpViewController.m in Sources */,
 				B2A129E61F5FCD03008AF2DF /* nichenViewController.m in Sources */,
 				B23E9C211F613BDC00AE98AB /* SafetyViewController.m in Sources */,
+				88F5BCEF1F626B6200766D4F /* CitilesViewController.m in Sources */,
 				882119401F593B6F003258C6 /* DataSigner.m in Sources */,
 				B23E9C221F613BDC00AE98AB /* UsViewController.m in Sources */,
 				88034F461F5EAECD00615C92 /* ZLImageViewDisplayView.m in Sources */,
