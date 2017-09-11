@@ -12,7 +12,7 @@
 #import "ScreeningTableViewCell.h"
 @interface FindViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,UIGestureRecognizerDelegate>
 {
-    NSInteger fiag;
+    NSInteger flag;
     NSInteger totalPage;
     NSInteger PageNum;
     NSInteger pageSize;
@@ -103,27 +103,27 @@
     return 40.f;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if(fiag == 1){
+    if(flag == 1){
         return _cityArr.count;
     }
-    if(fiag == 2){
+    if(flag == 2){
         return _classificationArr.count;
     }
-    if(fiag == 3){
+    if(flag == 3){
         return _distanceArr.count;
     }
     return 0;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     ScreeningTableViewCell*cell = [tableView dequeueReusableCellWithIdentifier:@"tableViewCell" forIndexPath:indexPath];
-    if(fiag == 1){
+    if(flag == 1){
         cell.Label.text = _cityArr[indexPath.row];
     }
-    if(fiag == 2){
+    if(flag == 2){
         cell.Label.text = _classificationArr[indexPath.row];
         
     }
-    if(fiag == 3){
+    if(flag == 3){
         cell.Label.text = _distanceArr[indexPath.row];
     }
     return cell;
@@ -132,7 +132,7 @@
 //设置每一组中每一行被点击以后要做的事情
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    if(fiag == 1){
+    if(flag == 1){
         if(indexPath.row == 0){
             [self ClubRequest];//默认按距离请求
         }
@@ -155,7 +155,7 @@
         
         
     }
-    if(fiag == 2){
+    if(flag == 2){
         
         if(indexPath.row == 0){
             [self ClubRequest];
@@ -178,7 +178,7 @@
         }
         
     }
-    if(fiag == 3){
+    if(flag == 3){
         if(indexPath.row == 0){
             [self ClubRequest];
         }
@@ -232,15 +232,15 @@
 //会所列表下拉刷新事件
 - (void)acquireRef{
     PageNum = 1;
-    if(fiag == 1){
+    if(flag == 1){
         // _distance = @"5000";
         _avi = [Utilities getCoverOnView:self.view];
         [self qianmiTypeRequest];
     }
-    if(fiag == 2){
+    if(flag == 2){
         [self classificationClubRequest];
     }
-    if(fiag == 3){
+    if(flag == 3){
         
         [self TypeClubRequest];
     }else{
@@ -411,7 +411,7 @@
     
 }
 - (IBAction)cityAction:(UIButton *)sender forEvent:(UIEvent *)event {
-    fiag = 1;
+    flag = 1;
     self.HeightConstraint.constant = _cityArr.count *40 ;
     _brightView.hidden = NO;
     [_tableView reloadData];
@@ -419,14 +419,14 @@
 }
 
 - (IBAction)distanceAction:(UIButton *)sender forEvent:(UIEvent *)event {
-    fiag = 2;
+    flag = 2;
     self.HeightConstraint.constant = _cityArr.count *40 ;
     _brightView.hidden = NO;
     [_tableView reloadData];
 }
 
 - (IBAction)classificationAction:(UIButton *)sender forEvent:(UIEvent *)event {
-    fiag = 3;
+    flag = 3;
     self.HeightConstraint.constant = _distanceArr.count *40;
     _brightView.hidden = NO;
     [_tableView reloadData];
