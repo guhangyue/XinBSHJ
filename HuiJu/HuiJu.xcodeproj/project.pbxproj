@@ -85,6 +85,7 @@
 		B24C64261F5D379A00A76F39 /* PayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B24C641F1F5D379A00A76F39 /* PayViewController.m */; };
 		B24C64271F5D379A00A76F39 /* TiYanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B24C64211F5D379A00A76F39 /* TiYanViewController.m */; };
 		B24C64281F5D379A00A76F39 /* ZhiFuBaoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B24C64231F5D379A00A76F39 /* ZhiFuBaoViewController.m */; };
+		B2690F861F66646A00E9CA78 /* Annotation.m in Sources */ = {isa = PBXBuildFile; fileRef = B2690F851F66646A00E9CA78 /* Annotation.m */; };
 		B284F97D1F61369100DD48FD /* zhifu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B284F97A1F61369100DD48FD /* zhifu.storyboard */; };
 		B284F97E1F61369100DD48FD /* zhifuTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B284F97C1F61369100DD48FD /* zhifuTableViewController.m */; };
 		B2A129E61F5FCD03008AF2DF /* nichenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2A129E51F5FCD03008AF2DF /* nichenViewController.m */; };
@@ -264,6 +265,8 @@
 		B24C64211F5D379A00A76F39 /* TiYanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TiYanViewController.m; sourceTree = "<group>"; };
 		B24C64221F5D379A00A76F39 /* ZhiFuBaoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZhiFuBaoViewController.h; sourceTree = "<group>"; };
 		B24C64231F5D379A00A76F39 /* ZhiFuBaoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZhiFuBaoViewController.m; sourceTree = "<group>"; };
+		B2690F841F66646A00E9CA78 /* Annotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Annotation.h; sourceTree = "<group>"; };
+		B2690F851F66646A00E9CA78 /* Annotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Annotation.m; sourceTree = "<group>"; };
 		B284F97A1F61369100DD48FD /* zhifu.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = zhifu.storyboard; sourceTree = "<group>"; };
 		B284F97B1F61369100DD48FD /* zhifuTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zhifuTableViewController.h; sourceTree = "<group>"; };
 		B284F97C1F61369100DD48FD /* zhifuTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = zhifuTableViewController.m; sourceTree = "<group>"; };
@@ -618,6 +621,8 @@
 				B24C64211F5D379A00A76F39 /* TiYanViewController.m */,
 				B24C64221F5D379A00A76F39 /* ZhiFuBaoViewController.h */,
 				B24C64231F5D379A00A76F39 /* ZhiFuBaoViewController.m */,
+				B2690F841F66646A00E9CA78 /* Annotation.h */,
+				B2690F851F66646A00E9CA78 /* Annotation.m */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -958,6 +963,7 @@
 				88022E571F5D00E3005CF9F7 /* experienceCellTableViewCell.m in Sources */,
 				B23E9C1D1F613BDC00AE98AB /* AboutViewController.m in Sources */,
 				882118E71F5938E5003258C6 /* HuiJu.xcdatamodeld in Sources */,
+				B2690F861F66646A00E9CA78 /* Annotation.m in Sources */,
 				882119641F593BBF003258C6 /* rscode.m in Sources */,
 				882119601F593BBF003258C6 /* mask.m in Sources */,
 				882118E31F5938E5003258C6 /* SKTag.m in Sources */,
