@@ -151,6 +151,7 @@
                     <navigationItem key="navigationItem" id="uli-h7-uEV"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
+                        <outlet property="shezhiTableview" destination="DSq-pL-acO" id="MeR-SL-fgI"/>
                         <outlet property="touxiang" destination="HYr-Ka-uJ0" id="LLx-Zf-YEv"/>
                         <outlet property="xiugaiTX" destination="XSH-1p-Aqe" id="XSM-q3-TWk"/>
                         <segue destination="21V-St-8gU" kind="show" identifier="shezhitonichen" id="f9a-Wo-vXr">

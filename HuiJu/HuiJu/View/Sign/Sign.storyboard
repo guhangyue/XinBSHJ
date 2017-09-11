@@ -90,6 +90,7 @@
                     <navigationItem key="navigationItem" title="登录" id="Kyu-ZU-upy"/>
                     <connections>
                         <outlet property="passWordtextword" destination="NZW-mg-Kjd" id="b9Y-Yi-yOb"/>
+                        <outlet property="signinBtn" destination="fC5-xe-2QZ" id="hnN-a4-CEc"/>
                         <outlet property="userNametextword" destination="1mN-zK-OWx" id="tyg-nm-F2Y"/>
                     </connections>
                 </viewController>

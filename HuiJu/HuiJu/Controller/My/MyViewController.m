@@ -155,6 +155,7 @@
 }
 - (IBAction)settingAction:(UIBarButtonItem *)sender {
     if ([Utilities loginCheck]) {
+        //[self.navigationController setNavigationBarHidden:NO];
         [self performSegueWithIdentifier:@"LLL" sender:self];
     }else{
         

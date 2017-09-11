@@ -13,6 +13,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *userNametextword;
 @property (weak, nonatomic) IBOutlet UITextField *passWordtextword;
 - (IBAction)signinAction:(UIButton *)sender forEvent:(UIEvent *)event;
+@property (weak, nonatomic) IBOutlet UIButton *signinBtn;
+
 
 @property(strong,nonatomic) UIActivityIndicatorView *aiv;
 @end
@@ -105,6 +107,9 @@
     //无输入异常的情况下，开始正式执行登录接口
     [self readyForEncoding];
 }
+
+- (IBAction)signinBtn:(UIButton *)sender forEvent:(UIEvent *)event {
+}
 -(void)readyForEncoding
 {
     _aiv=[Utilities getCoverOnView:self.view];
@@ -127,6 +132,12 @@
              [_aiv stopAnimating];
              NSString *errorMsg=[ErrorHandler getProperErrorString:[responseObject[@"resultFlag"] integerValue]];
              [Utilities popUpAlertViewWithMsg:errorMsg andTitle:nil onView:self];
+             //保存用户名
+             [Utilities removeUserDefaults:@"Username"];
+             [Utilities setUserDefaults:@"Username" content:_userNametextword.text];
+             _passWordtextword.text=@"";
+             _signinBtn.enabled=NO;
+             //[self performSegueWithIdentifier:@"loginToTask" sender:self];
          }
      }failure:^(NSInteger statusCode, NSError *error) {
          [_aiv stopAnimating];
