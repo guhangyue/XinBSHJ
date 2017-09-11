@@ -37,12 +37,14 @@
     _arr = [NSMutableArray new];
     _arr3 = [NSMutableArray new];
     flag =YES;
-    _cityBtn.titleLabel.text = @"无锡";
+    
+    //_cityBtn.titleLabel.text = @"无锡";
     [self naviConfig];
     // Do any additional setup after loading the view.
     //创建菊花膜
     //_avi = [Utilities getCoverOnView:self.view];
     [self locationConfig];
+    [self locationStart];
     [self dataInitialize];
     [self uiLayout];
     //监听
@@ -151,11 +153,12 @@
 
 //执行网络请求
 - (void)networkRequest{
-    NSDictionary *para = @{@"city":_cityBtn.titleLabel.text, @"jing":@"31.568",@"wei":@"120.299",@"page" : @(page),@"perPage":@10};
+    NSDictionary *para = @{@"city":[Utilities getUserDefaults:@"UserCity"], @"jing":@"31.568",@"wei":@"120.299",@"page" : @(page),@"perPage":@10};
+    NSLog(@"para = %@", para);
     [RequestAPI requestURL:@"/homepage/choice" withParameters:para andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
         [_avi stopAnimating];
         
-        //NSLog(@"%@",responseObject);
+        NSLog(@"%@",responseObject);
         if ([responseObject[@"resultFlag"] integerValue] == 8001) {
             NSLog(@"%@",responseObject);
             NSDictionary *result =responseObject[@"result"];
@@ -181,13 +184,16 @@
                 [_arr addObject:models];
             }
             [_HomeTableView reloadData];
-        }else{
+        }else if([responseObject[@"resultFlag"] integerValue] == 8020){
+               [Utilities popUpAlertViewWithMsg:@"该城市并未有加入该APP的会所" andTitle:nil onView:self];
+            }
+            else{
             //业务逻辑失败的情况下
             NSString *errorMsg = [ErrorHandler getProperErrorString:[responseObject[@"resultFlag"] integerValue]];
             [Utilities popUpAlertViewWithMsg:errorMsg andTitle:nil onView:self];
         }
-        
-    }failure:^(NSInteger statusCode, NSError *error) {
+    }
+    failure:^(NSInteger statusCode, NSError *error) {
         [_avi stopAnimating];
         [Utilities popUpAlertViewWithMsg:@"网络不稳定" andTitle:nil onView:self];
         
@@ -365,6 +371,7 @@
                     UIAlertAction *yesAction = [UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
                         //修改城市按钮标题
                         [_cityBtn setTitle:cityStr forState:UIControlStateNormal];
+                        _cityBtn.titleLabel.text = cityStr;
                         //修改用户选择的城市记忆体
                         [Utilities removeUserDefaults:@"UserCity"];
                         [Utilities setUserDefaults:@"UserCity" content:cityStr];
@@ -390,10 +397,13 @@
         
         //修改城市按钮标题
         [_cityBtn setTitle:cityStr forState:UIControlStateNormal];
+        _cityBtn.titleLabel.text = cityStr;
+        
         //修改用户选择的城市记忆体
         [Utilities removeUserDefaults:@"UserCity"];
         [Utilities setUserDefaults:@"UserCity" content:cityStr];
         //重新执行网络请求
+        NSLog(@"%@",cityStr);
         [self networkRequest];
         
     }
