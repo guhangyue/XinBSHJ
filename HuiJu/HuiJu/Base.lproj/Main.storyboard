@@ -238,11 +238,11 @@
             </objects>
             <point key="canvasLocation" x="239" y="253"/>
         </scene>
-        <!--Item 1-->
+        <!--首页-->
         <scene sceneID="dPF-mK-04B">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ecq-ha-hQ3" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item 1" id="o3f-xo-pg7"/>
+                    <tabBarItem key="tabBarItem" title="首页" image="Home" id="o3f-xo-pg7"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="yH9-Jc-M5F">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -258,4 +258,7 @@
             <point key="canvasLocation" x="428" y="-317.09145427286359"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Home" width="30" height="30"/>
+    </resources>
 </document>

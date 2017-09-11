@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Fcq-g2-EEP">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Fcq-g2-EEP">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -221,11 +221,13 @@
             </objects>
             <point key="canvasLocation" x="2836" y="94.902548725637189"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--发现-->
         <scene sceneID="PDU-uq-Axq">
             <objects>
                 <navigationController storyboardIdentifier="Find" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Fcq-g2-EEP" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="发现" image="Find" id="DlY-y2-XDW"/>
                     <toolbarItems/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="vsb-aP-XqK">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -242,5 +244,6 @@
     </scenes>
     <resources>
         <image name="Default" width="300" height="200"/>
+        <image name="Find" width="30" height="30"/>
     </resources>
 </document>
