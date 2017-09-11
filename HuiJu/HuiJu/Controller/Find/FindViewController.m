@@ -23,7 +23,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *cityBtn;
 @property (weak, nonatomic) IBOutlet UIButton *distanceBtn;
 @property (weak, nonatomic) IBOutlet UIButton *classificationBtn;
-@property (weak,nonatomic) IBOutlet UIView *brightView;
+@property (weak, nonatomic) IBOutlet UIView *brightView;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *HeightConstraint;
 
@@ -47,7 +47,7 @@
     _ClubArr = [NSMutableArray new];
     _Type=[NSMutableArray new];
     _classificationArr=[[NSMutableArray alloc] initWithObjects:@"全部分类", nil];
-    _cityArr=[[NSArray alloc] initWithObjects:@"全城",@"1千米",@"2千米",@"3千米",@"4千米", nil];
+    _cityArr=[[NSArray alloc] initWithObjects:@"全城",@"1qianmi",@"2qianmi",@"3qianmi",@"4qianmi", nil];
     _distanceArr=[[NSArray alloc] initWithObjects:@"按距离",@"按人气", nil];
     PageNum=1;
     pageSize =10;
@@ -107,7 +107,7 @@
         return _cityArr.count;
     }
     if(fiag == 2){
-        return _cityArr.count;
+        return _classificationArr.count;
     }
     if(fiag == 3){
         return _distanceArr.count;
@@ -120,7 +120,7 @@
         cell.Label.text = _cityArr[indexPath.row];
     }
     if(fiag == 2){
-        cell.Label.text = _cityArr[indexPath.row];
+        cell.Label.text = _classificationArr[indexPath.row];
         
     }
     if(fiag == 3){
@@ -191,6 +191,73 @@
     
 }
 
+
+//每组有多少个细胞（item）
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
+    return _ClubArr.count;
+}
+//每个items长什么样
+- (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
+    PhotoCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"Cell" forIndexPath:indexPath];
+    FindModel *model = _ClubArr[indexPath.item];
+    cell.clubName.text = model.clubName;
+    cell.clubaddress.text = model.address;
+    //NSLog(@"%@",model.address);
+    cell.clubdistance.text = [NSString stringWithFormat:@"%@米",model.distance];
+    NSURL *URL = [NSURL URLWithString:model.Image];
+    [cell.clubImage sd_setImageWithURL:URL placeholderImage:[UIImage imageNamed:@"默认"]];
+    //cell.clubImage.image=[UIImage imageNamed:@"Default"];
+    return cell;
+}
+//设置每个cell的尺寸
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
+    return CGSizeMake((UI_SCREEN_W - 5)/2,185);
+}
+//最小的行间距
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section{
+    return 5;
+}
+//cell的最小列间距
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section{
+    return 5;
+}
+- (void)setRefreshControl{
+    
+    UIRefreshControl *acquireRef = [UIRefreshControl new];
+    [acquireRef addTarget:self action:@selector(acquireRef) forControlEvents:UIControlEventValueChanged];
+    acquireRef.tag = 10001;
+    [_collectionView addSubview:acquireRef];
+    
+}
+//会所列表下拉刷新事件
+- (void)acquireRef{
+    PageNum = 1;
+    if(fiag == 1){
+        // _distance = @"5000";
+        _avi = [Utilities getCoverOnView:self.view];
+        [self qianmiTypeRequest];
+    }
+    if(fiag == 2){
+        [self classificationClubRequest];
+    }
+    if(fiag == 3){
+        
+        [self TypeClubRequest];
+    }else{
+        [self ClubRequest];
+    }
+}
+//细胞将要出现时调用
+- (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(nonnull UICollectionViewCell *)cell forItemAtIndexPath:(nonnull NSIndexPath *)indexPath{
+    if(indexPath.row == _ClubArr.count -1){
+        if(PageNum != totalPage){
+            PageNum ++;
+            [self ClubRequest];
+            NSLog(@"不是最后一页");
+        }
+    }
+    
+}
 #pragma mark - request
 -(void)dataInitialize{
     // [self hotRequest];
@@ -223,38 +290,50 @@
         [Utilities popUpAlertViewWithMsg:@"请保持网络连接畅通" andTitle:nil onView:self];
     }];
     
-}
-//每组有多少个细胞（item）
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    return _ClubArr.count;
-}
-//每个items长什么样
-- (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
-    PhotoCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"Cell" forIndexPath:indexPath];
-    FindModel *model = _ClubArr[indexPath.item];
-    cell.clubName.text = model.clubName;
-    cell.clubaddress.text = model.address;
-    //NSLog(@"%@",model.address);
-    cell.clubdistance.text = [NSString stringWithFormat:@"%@米",model.distance];
-    NSURL *URL = [NSURL URLWithString:model.Image];
-    [cell.clubImage sd_setImageWithURL:URL placeholderImage:[UIImage imageNamed:@"默认"]];
-    //cell.clubImage.image=[UIImage imageNamed:@"Default"];
-    return cell;
-}
-//设置每个cell的尺寸
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
-    return CGSizeMake((UI_SCREEN_W - 5)/2,185);
-}
-//最小的行间距
-- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section{
-    return 5;
-}
-//cell的最小列间距
-- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section{
-    return 5;
-}
--(void)qianmiTypeRequest{
+}-(void)qianmiTypeRequest{
+    _brightView.hidden = YES;
     
+    NSDictionary *para =  @{@"city":@"无锡",@"jing":@"120.300000",@"wei":@"31.570000",@"page":@(PageNum),@"perPage":@(pageSize),@"Type":@0,@"distance":_distance};
+    [RequestAPI requestURL:@"/clubController/nearSearchClub" withParameters:para andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
+        //  NSLog(@"responseObject:%@", responseObject);
+        [_avi stopAnimating];
+        UIRefreshControl *ref = (UIRefreshControl *)[_collectionView viewWithTag:10001];
+        [ref endRefreshing];
+        NSLog(@"为什么不停止");
+        if([responseObject[@"resultFlag"] integerValue] == 8001){
+            NSDictionary *result = responseObject[@"result"];
+            NSArray *array = result[@"models"];
+            NSDictionary  *pageDict =result[@"pagingInfo"];
+            totalPage = [pageDict[@"totalPage"]integerValue];
+            
+            if(PageNum == 1){
+                [_ClubArr removeAllObjects];
+            }
+            
+            for(NSDictionary *dict in array){
+                FindModel *model = [[FindModel alloc]initWithClub:dict];
+                
+                [_ClubArr addObject:model];
+                // NSLog(@"数组里的是%@",model);
+                
+            }
+            NSLog(@"按%@米请求",_distance);
+            [_collectionView reloadData];
+            
+        }else{
+            //业务逻辑失败的情况下
+            NSString *errorMsg = [ErrorHandler getProperErrorString:[responseObject[@"result"] integerValue]];
+            [Utilities popUpAlertViewWithMsg:errorMsg andTitle:nil onView:self];
+        }
+        
+    } failure:^(NSInteger statusCode, NSError *error) {
+        [_avi stopAnimating];
+        UIRefreshControl *ref = (UIRefreshControl *)[_collectionView viewWithTag:10001];
+        [ref endRefreshing];
+        [Utilities popUpAlertViewWithMsg:@"请保持网络连接畅通" andTitle:nil onView:self];
+    }];
+    
+ 
 }
 -(void)classificationClubRequest{
     _brightView.hidden = YES;
