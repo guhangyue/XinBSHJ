@@ -35,7 +35,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vyJ-1F-FCC">
-                                            <rect key="frame" x="251.5" y="7" width="46" height="30"/>
+                                            <rect key="frame" x="236.5" y="7" width="46" height="30"/>
                                             <state key="normal" title="Button">
                                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
@@ -46,7 +46,7 @@
                                     </subviews>
                                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
-                                        <constraint firstAttribute="trailing" secondItem="vyJ-1F-FCC" secondAttribute="trailing" constant="15" id="BKp-0g-dPu"/>
+                                        <constraint firstAttribute="trailing" secondItem="vyJ-1F-FCC" secondAttribute="trailing" constant="30" id="BKp-0g-dPu"/>
                                         <constraint firstItem="vyJ-1F-FCC" firstAttribute="centerY" secondItem="2wn-fx-w0U" secondAttribute="centerY" id="Bh8-C4-lcP"/>
                                         <constraint firstItem="Xhq-Qr-ys2" firstAttribute="centerY" secondItem="2wn-fx-w0U" secondAttribute="centerY" id="Bqy-Gh-jhc"/>
                                         <constraint firstItem="Xhq-Qr-ys2" firstAttribute="leading" secondItem="2wn-fx-w0U" secondAttribute="leading" constant="15" id="F8W-OH-d8L"/>
@@ -54,7 +54,7 @@
                                 </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CityCell" textLabel="yMi-YV-ts5" style="IBUITableViewCellStyleDefault" id="IST-Of-cWu">
-                                        <rect key="frame" x="0.0" y="72" width="313" height="44"/>
+                                        <rect key="frame" x="0.0" y="72" width="312" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="IST-Of-cWu" id="sWh-yb-nqz">
                                             <rect key="frame" x="0.0" y="0.0" width="312.5" height="43.5"/>
@@ -87,6 +87,7 @@
                     </view>
                     <connections>
                         <outlet property="cityBtn" destination="vyJ-1F-FCC" id="gLM-LU-NsX"/>
+                        <outlet property="tableView" destination="qcE-PX-6BZ" id="e5x-Ni-hVd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="giu-kv-Sfb" userLabel="First Responder" sceneMemberID="firstResponder"/>

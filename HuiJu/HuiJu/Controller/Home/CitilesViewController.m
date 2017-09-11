@@ -17,6 +17,7 @@
 @property(strong,nonatomic) CLLocation *location;
 @property (weak, nonatomic) IBOutlet UIButton *cityBtn;
 - (IBAction)cityAction:(UIButton *)sender forEvent:(UIEvent *)event;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
 
