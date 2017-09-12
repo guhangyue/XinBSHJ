@@ -17,6 +17,8 @@
 @property (strong, nonatomic) NSMutableArray *shezhiArr;
 @property (strong, nonatomic) UIActivityIndicatorView *juhua;
 @property (strong, nonatomic) UserModel *user;
+@property (weak, nonatomic) IBOutlet UIButton *tuichu;
+- (IBAction)tuichuAction:(UIButton *)sender forEvent:(UIEvent *)event;
 
 
 @end
@@ -165,4 +167,20 @@
 
 - (IBAction)xiugaiAction:(UIButton *)sender forEvent:(UIEvent *)event {
 }
+- (IBAction)tuichuAction:(UIButton *)sender forEvent:(UIEvent *)event {
+    UIAlertController *alert=[UIAlertController alertControllerWithTitle:@"提示" message:@"是否退出登录" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *actionA=[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self exit];
+    }];
+    UIAlertAction *actionB=[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+    [alert addAction:actionA];
+    [alert addAction:actionB];
+    [self presentViewController:alert animated:YES completion:nil];
+}
+-(void)exit{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+
+
 @end
