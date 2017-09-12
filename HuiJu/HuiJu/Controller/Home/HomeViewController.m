@@ -44,7 +44,6 @@
     //创建菊花膜
     //_avi = [Utilities getCoverOnView:self.view];
     [self locationConfig];
-    [self locationStart];
     [self dataInitialize];
     [self uiLayout];
     //监听
@@ -52,6 +51,12 @@
     
     
 }
+//每次将要来到这个页面的时候
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self locationStart];
+}
+
 //这个方法专门处理定位的基本设置
 -(void)locationConfig{
     _locMgr=[CLLocationManager new];
@@ -83,7 +88,7 @@
     // 设置导航条标题文字
     self.navigationItem.title = @"首页";
     //设置导航条颜色（风格颜色）
-    self.navigationController.navigationBar.barTintColor = [UIColor redColor];
+    self.navigationController.navigationBar.barTintColor = [UIColor blueColor];
     //设置导航条是否隐藏.
     self.navigationController.navigationBar.hidden = NO;
     //设置导航条标题颜色
@@ -147,13 +152,13 @@
 }
 - (void)refreshPage {
     page = 1;
-    [self networkRequest];
+    //[self networkRequest];
 }
 
 
 //执行网络请求
 - (void)networkRequest{
-    NSDictionary *para = @{@"city":[Utilities getUserDefaults:@"UserCity"], @"jing":@"31.568",@"wei":@"120.299",@"page" : @(page),@"perPage":@10};
+    NSDictionary *para = @{@"city":[Utilities getUserDefaults:@"UserCity"], @"jing":[NSString stringWithFormat:@"%f",_location.coordinate.latitude],@"wei":[NSString stringWithFormat:@"%f",_location.coordinate.longitude],@"page" : @(page),@"perPage":@10};
     NSLog(@"para = %@", para);
     [RequestAPI requestURL:@"/homepage/choice" withParameters:para andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
         [_avi stopAnimating];
@@ -264,7 +269,14 @@
         [cell.image sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@""]];
         cell.name.text = hotel.name;
         cell.address.text = hotel.address;
-        cell.distance.text = hotel.distance;
+        NSInteger a = [hotel.distance integerValue];
+        if (a >10000){
+            NSInteger b =a/1000;
+            cell.distance.text = [NSString stringWithFormat:@"%ld千米",(long)b];
+        }else{
+            cell.distance.text = [NSString stringWithFormat:@"%@米",hotel.distance];
+        }
+        //cell.distance.text = hotel.distance;
         return cell;
     } else {
         experienceCellTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"experienceCell" forIndexPath:indexPath];
@@ -334,8 +346,8 @@
 - (void)locationManager:(CLLocationManager *)manager
     didUpdateToLocation:(CLLocation *)newLocation
            fromLocation:(CLLocation *)oldLocation{
-    // NSLog(@"维度：%f",newLocation.coordinate.latitude);
-    //  NSLog(@"经度：%f",newLocation.coordinate.longitude);
+     NSLog(@"维度：%f",newLocation.coordinate.latitude);
+    NSLog(@"经度：%f",newLocation.coordinate.longitude);
     _location = newLocation;
     //用flag思想判断是否可以去根据定位拿城市
     if(firstVisit){
@@ -344,6 +356,7 @@
         [self getRegeoViaCoordinate];
         
     }
+    [self networkRequest];
 }
 
 -(void)getRegeoViaCoordinate{
