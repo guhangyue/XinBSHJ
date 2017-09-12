@@ -46,7 +46,7 @@
     [super viewDidLoad];
     _ClubArr = [NSMutableArray new];
     _TypeArr=[NSMutableArray new];
-    _classificationArr=[[NSMutableArray alloc] initWithObjects:@"全部分类", nil];
+    //_classificationArr=[[NSMutableArray alloc] initWithObjects:@"全部分类", nil];
     _cityArr=[[NSArray alloc] initWithObjects:@"全城",@"1qianmi",@"2qianmi",@"3qianmi",@"4qianmi", nil];
     _distanceArr=[[NSArray alloc] initWithObjects:@"按距离",@"按人气", nil];
     PageNum=1;
