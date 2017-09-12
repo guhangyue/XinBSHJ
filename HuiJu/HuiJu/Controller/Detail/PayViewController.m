@@ -58,6 +58,10 @@
     stepper.stepValue = 1;
 }
 -(void)uiLayout{
+    _eNameLbl.text=_payModel.eName2;
+    _ClubNameLbl.text=[NSString stringWithFormat:@"用于 %@",_payModel.eClubName];
+    _PirceLbl.text=[NSString stringWithFormat:@"单价：%@元",_payModel.currentPrice];
+    _zhongPirceLbl.text=[NSString stringWithFormat:@"%@元",_payModel.currentPrice];
     // _nameLabel.text= _activity.name;
     // _contenLabel.text= _activity.content;
     // _priceLabel.text=[NSString stringWithFormat:@"%@元",_activity.applyFee];
@@ -120,7 +124,8 @@
 
 - (IBAction)stepperAction:(UIStepper *)sender forEvent:(UIEvent *)event {
     int i = sender.value ;
+    NSInteger  s=[_payModel.currentPrice intValue];
     _numLbl.text =[NSString stringWithFormat:@"%d",i];
-    _zhongPirceLbl.text=[NSString stringWithFormat:@"%d元",i*60];
+    _zhongPirceLbl.text=[NSString stringWithFormat:@"%ld元",i*s];
 }
 @end

@@ -68,7 +68,7 @@
                                                     <action selector="callingAction:forEvent:" destination="txY-qK-bv7" eventType="touchUpInside" id="gTx-r4-hEP"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ha3-eY-hDE">
+                                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ha3-eY-hDE">
                                                 <rect key="frame" x="49" y="36" width="286" height="28"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                 <state key="normal" title="无锡市南长区阳光城市花园B区76号1楼">
@@ -449,7 +449,7 @@
                                                     <action selector="callingAction:forEvent:" destination="9Zu-OG-LH5" eventType="touchUpInside" id="sMY-7b-Yzl"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o2p-gD-B8c">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o2p-gD-B8c">
                                                 <rect key="frame" x="49" y="36" width="229" height="28"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                 <state key="normal" title="无锡市南长区阳光城市花园B区76号1楼">
@@ -835,6 +835,6 @@
         <image name="地址" width="48" height="48"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="wmk-mv-alp"/>
+        <segue reference="424-OX-C1w"/>
     </inferredMetricsTieBreakers>
 </document>
