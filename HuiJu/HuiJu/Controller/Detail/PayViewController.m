@@ -8,7 +8,16 @@
 
 #import "PayViewController.h"
 
-@interface PayViewController ()
+@interface PayViewController ()<UITableViewDataSource,UITableViewDelegate>
+@property (weak, nonatomic) IBOutlet UILabel *eNameLbl;
+@property (weak, nonatomic) IBOutlet UILabel *ClubNameLbl;
+@property (weak, nonatomic) IBOutlet UILabel *PirceLbl;
+@property (weak, nonatomic) IBOutlet UILabel *numLbl;
+@property (weak, nonatomic) IBOutlet UILabel *zhongPirceLbl;
+@property (weak, nonatomic) IBOutlet UIStepper *stepper;
+- (IBAction)stepperAction:(UIStepper *)sender forEvent:(UIEvent *)event;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (strong,nonatomic)NSArray *arr;
 
 @end
 
@@ -17,6 +26,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setNavigationItem];
+    [self uiLayout];
+    [self dataInitialize];
     // Do any additional setup after loading the view.
 }
 
@@ -35,6 +46,68 @@
     [self dismissViewControllerAnimated:YES completion:nil];
     //[self.navigationController popViewControllerAnimated:YES];
 }
+// 设置最大最小值 初始值
+- (void)setStepper:(UIStepper *)stepper {
+    // 初始值
+    stepper.value = 1;
+    // 最大值
+    stepper.maximumValue = 100;
+    // 最小值
+    stepper.minimumValue = 1;
+    // 点击增减值
+    stepper.stepValue = 1;
+}
+-(void)uiLayout{
+    // _nameLabel.text= _activity.name;
+    // _contenLabel.text= _activity.content;
+    // _priceLabel.text=[NSString stringWithFormat:@"%@元",_activity.applyFee];
+    
+    self.tableView.tableFooterView =[UIView new];
+    //将表格视图设置为"编辑中"
+    self.tableView.editing = YES;
+}
+-(void)dataInitialize{
+    _arr=@[@"支付宝支付",@"微信支付",@"银联支付"];
+}
+#pragma mark - Table view data source
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+#warning Incomplete implementation, return the number of sections
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+#warning Incomplete implementation, return the number of rows
+    return _arr.count;
+}
+
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PayCell" forIndexPath:indexPath];
+    cell.textLabel.text=_arr[indexPath.row];
+    // Configure the cell...
+    
+    return cell;
+}
+//设置cell的高度
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 50.f;
+}
+//设置组的标题文字
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
+    return @"支付方式";
+}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    //遍历表格视图中所有选中状态下的细胞
+    for (NSIndexPath*eachIP in tableView.indexPathsForSelectedRows) {
+        //当选中的细胞不是当前正在按的这个细胞的情况下
+        if (eachIP !=indexPath) {
+            //将细胞从选中状态改为不选中状态
+            [tableView deselectRowAtIndexPath:eachIP animated:YES];
+            
+        }
+    }
+}
 /*
 #pragma mark - Navigation
 
@@ -45,4 +118,9 @@
 }
 */
 
+- (IBAction)stepperAction:(UIStepper *)sender forEvent:(UIEvent *)event {
+    int i = sender.value ;
+    _numLbl.text =[NSString stringWithFormat:@"%d",i];
+    _zhongPirceLbl.text=[NSString stringWithFormat:@"%d元",i*60];
+}
 @end
