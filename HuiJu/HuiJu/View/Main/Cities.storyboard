@@ -35,8 +35,8 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vyJ-1F-FCC">
-                                            <rect key="frame" x="236.5" y="7" width="46" height="30"/>
-                                            <state key="normal" title="Button">
+                                            <rect key="frame" x="251.5" y="7" width="31" height="30"/>
+                                            <state key="normal" title="无锡">
                                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                             <connections>
