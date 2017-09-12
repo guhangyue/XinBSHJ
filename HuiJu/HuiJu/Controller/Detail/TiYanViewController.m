@@ -9,8 +9,12 @@
 #import "TiYanViewController.h"
 #import "DetailViewController.h"
 #import "ShouYe.h"
+#import "PayViewController.h"
 
-@interface TiYanViewController ()
+@interface TiYanViewController (){
+    ShouYe *detail3;
+}
+
 @property (weak, nonatomic) IBOutlet UILabel *clubNameLbl;
 @property (weak, nonatomic) IBOutlet UIButton *clubAddressbBtn;
 - (IBAction)clubAddressbAction:(UIButton *)sender forEvent:(UIEvent *)event;
@@ -71,7 +75,7 @@
         if([responseObject[@"resultFlag"]integerValue]==8001){
             NSDictionary *result = responseObject[@"result"];
             // NSDictionary *models =result [@"models"];
-            ShouYe *detail3 = [[ ShouYe alloc]initWithExDictionary3:result];
+                detail3 = [[ ShouYe alloc]initWithExDictionary3:result];
             _beginDateLbl.text=detail3.beginDate;
             _endDateLbl.text=[NSString stringWithFormat:@"至%@",detail3.endDate];
             NSURL *url = [NSURL URLWithString:detail3.eLogo2];
@@ -129,6 +133,23 @@
     // Pass the selected object to the new view controller.
 }
 */
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if ([segue.identifier isEqualToString:@"TiYanJuanToPay"]) {
+        //当从列表页到详情页的这个跳转要发生的时候
+        //获取要传递到下一页的数据
+        PayViewController *detailVC= segue.destinationViewController;
+        detailVC.payModel=detail3;
+        NSLog(@"传的什么鬼%@",detail3);
+        //        ShouYe *activity=_arr[indexPath.section];
+        //        ShouYe *activity2=_arr[indexPath.row];
+        //        // NSLog(@"%@",_arr[indexPath.row]);
+        //        //获取下一页的这个实例
+        //        DetailViewController *detailVC= segue.destinationViewController;
+        //        //把数据给下一页预备好的接收容器
+        //        detailVC.detailA=activity;
+        //        detailVC.detailB=activity2;
+    }
+}
 
 - (IBAction)clubAddressbAction:(UIButton *)sender forEvent:(UIEvent *)event {
     [self performSegueWithIdentifier:@"TiYanJuanToMap" sender:nil];

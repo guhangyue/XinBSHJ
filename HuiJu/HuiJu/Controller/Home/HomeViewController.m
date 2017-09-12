@@ -38,6 +38,8 @@
     _arr = [NSMutableArray new];
     _arr3 = [NSMutableArray new];
     flag =YES;
+    firstVisit = YES;
+    isLoading = NO;
     
     //_cityBtn.titleLabel.text = @"无锡";
     [self naviConfig];
@@ -45,13 +47,12 @@
     //创建菊花膜
     //_avi = [Utilities getCoverOnView:self.view];
     [self locationConfig];
-    [self dataInitialize];
+    //[self dataInitialize];
     [self uiLayout];
     //监听
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(checkCityState:) name:@"ResetHome" object:nil];
-    
-    
 }
+
 //每次将要来到这个页面的时候
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
@@ -178,11 +179,7 @@
         [_cityBtn setTitle:userCity forState:UIControlStateNormal];
         
     }
-    
-    
-    firstVisit = YES;
-    isLoading = NO;
-    _arr = [NSMutableArray new];
+    //_arr = [NSMutableArray new];
     //创建菊花膜
     _avi = [Utilities getCoverOnView:self.view];
     [self refreshPage];
@@ -195,7 +192,7 @@
 
 //执行网络请求
 - (void)networkRequest{
-    NSDictionary *para = @{@"city":[Utilities getUserDefaults:@"UserCity"], @"jing":[NSString stringWithFormat:@"%f",_location.coordinate.latitude],@"wei":[NSString stringWithFormat:@"%f",_location.coordinate.longitude],@"page" : @(page),@"perPage":@10};
+    NSDictionary *para = @{@"city":[Utilities getUserDefaults:@"UserCity"], @"jing":[NSString stringWithFormat:@"%f",_location.coordinate.longitude],@"wei":[NSString stringWithFormat:@"%f",_location.coordinate.latitude],@"page" : @(page),@"perPage":@10};
     NSLog(@"para = %@", para);
     [RequestAPI requestURL:@"/homepage/choice" withParameters:para andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
         [_avi stopAnimating];
@@ -207,22 +204,22 @@
             NSArray *advertisement =   responseObject[@"advertisement"];
             NSArray *models =result [@"models"];
             NSDictionary *pagingInfo = result[@"pagingInfo"];
-            [_arr removeAllObjects];
-            [_arr3 removeAllObjects];
+            //[_arr removeAllObjects];
+            //[_arr3 removeAllObjects];
             totalPage = [pagingInfo[@"totalPage"] integerValue];
             if (page == 1) {
                 //清空数组
                 [_arr removeAllObjects];
             }
-            for (NSDictionary *dict3 in advertisement) {
-                ShouYe *TuP =[[ShouYe alloc] initWithDictionary:dict3];
-                [_arr3 addObject:TuP.adView];
-                NSLog(@"图片地址是：%@",TuP.adView);
-                
-            }
             //第一次来才加载广告图片
             if (flag) {
                 flag = NO;
+                for (NSDictionary *dict3 in advertisement) {
+                    ShouYe *TuP =[[ShouYe alloc] initWithDictionary:dict3];
+                    [_arr3 addObject:TuP.adView];
+                    NSLog(@"图片地址是：%@",TuP.adView);
+                    
+                }
                 [self addZLImageViewDisPlayView:_arr3];
             }
             for (NSDictionary *dict in models) {
@@ -382,6 +379,7 @@
 - (void)locationManager:(CLLocationManager *)manager
        didFailWithError:(NSError *)error{
     if(error){
+        [self dataInitialize];
         switch (error.code) {
             case kCLErrorNetwork:
                 [Utilities popUpAlertViewWithMsg:NSLocalizedString(@"NetworkError", nil) andTitle:nil onView:self];
@@ -402,17 +400,19 @@
 - (void)locationManager:(CLLocationManager *)manager
     didUpdateToLocation:(CLLocation *)newLocation
            fromLocation:(CLLocation *)oldLocation{
-     NSLog(@"维度：%f",newLocation.coordinate.latitude);
-    NSLog(@"经度：%f",newLocation.coordinate.longitude);
+    //NSLog(@"维度：%f",newLocation.coordinate.latitude);
+    //NSLog(@"经度：%f",newLocation.coordinate.longitude);
     _location = newLocation;
     //用flag思想判断是否可以去根据定位拿城市
     if(firstVisit){
         firstVisit = ! firstVisit;
+        [self dataInitialize];
         //根据定位拿城市
         [self getRegeoViaCoordinate];
         
     }
-    [self networkRequest];
+    //关掉开关
+    [_locMgr stopUpdatingLocation];
 }
 
 -(void)getRegeoViaCoordinate{
@@ -456,8 +456,7 @@
                 }
             }
         }];
-        //关掉开关
-        [_locMgr stopUpdatingLocation];
+        
     });
 }
 -(void)checkCityState:(NSNotification *)note {

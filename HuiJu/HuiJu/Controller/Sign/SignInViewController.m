@@ -34,7 +34,7 @@
 }
 - (void)naviConfig {
     //设置导航条标题文字
-    self.navigationItem.title = @"发布活动";
+    self.navigationItem.title = @"登录";
     //设置导航条颜色（风格颜色）
     self.navigationController.navigationBar.barTintColor = [UIColor darkGrayColor];
     //设置导航条标题颜色
@@ -118,6 +118,7 @@
          //NSLog(@"responseObject":%@,responseObject);
          if ([responseObject[@"resultFlag"]integerValue]==8001)
          {
+             [_aiv stopAnimating];
              NSDictionary *result=responseObject[@"result"];
              NSString *modulus = result[@"modulus"];
              NSString *exponent = result[@"exponent"];
@@ -129,7 +130,7 @@
              NSString *rsaStr=[NSString encryptWithPublicKeyFromModulusAndExponent:md5Str.UTF8String modulus:modulus exponent:exponent];
              [self signInWithEncryptPwd:rsaStr];
          }else{
-             [_aiv stopAnimating];
+             //[_aiv stopAnimating];
              NSString *errorMsg=[ErrorHandler getProperErrorString:[responseObject[@"resultFlag"] integerValue]];
              [Utilities popUpAlertViewWithMsg:errorMsg andTitle:nil onView:self];
              //保存用户名

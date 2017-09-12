@@ -41,7 +41,7 @@
 //当前页面将要显示的时候，隐藏导航栏
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [self.navigationController setNavigationBarHidden:YES animated:NO];
+    //[self.navigationController setNavigationBarHidden:YES animated:NO];
     if ([Utilities loginCheck]) {
         //已登录
         _loginBtn.hidden=YES;
