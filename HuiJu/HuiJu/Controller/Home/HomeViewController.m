@@ -15,6 +15,7 @@
 #import "ZLImageViewDisplayView.h"
 @interface HomeViewController ()<UITableViewDataSource,UITableViewDelegate,CLLocationManagerDelegate>{
     NSInteger page;
+    NSInteger totalPage;
     BOOL flag;
     BOOL isLoading;
     BOOL firstVisit;
@@ -106,7 +107,43 @@
 - (void)uiLayout {
     //为表格视图创建footer(该方法可以去除表格视图底部多余的下划线)
     _HomeTableView.tableFooterView = [UIView new];
+    //创建下拉刷新器
+    [self refreshConfiguration];
 }
+- (void)refreshConfiguration{
+    //初始化一个下拉刷新控件
+    UIRefreshControl *refreshControl = [[UIRefreshControl alloc]init];
+    
+    refreshControl.tag = 10001;
+    //设置标题
+    NSString *title = @"刷新中...";
+    
+    //创建属性字典
+    NSDictionary *attrDict = @{NSForegroundColorAttributeName : [UIColor redColor],NSBackgroundColorAttributeName : [UIColor yellowColor]};
+    
+    
+    //将文字和属性字典包裹成一个带属性的字符串
+    NSAttributedString *attriTitle = [[NSAttributedString alloc]initWithString:title attributes:attrDict];
+    
+    refreshControl.attributedTitle = attriTitle;
+    //设置风格颜色为黑色（风格颜色：刷新指示器的颜色）
+    refreshControl.tintColor = [UIColor blueColor];
+    
+    //设置背景色
+    refreshControl.backgroundColor = [UIColor whiteColor];
+    //定义用户触发下拉事件时执行的方法
+    [refreshControl addTarget:self action:@selector(refreshPage) forControlEvents:UIControlEventValueChanged];
+    //将下拉刷新控件添加到tableView中(在tableView中，下拉刷新控件会自动放置在表格视图顶部后侧位置)
+    [self.HomeTableView addSubview:refreshControl];
+    
+}
+- (void)end{
+    //在activityTableView中，根据下标为10001获得其子视图：下拉刷新控件
+    UIRefreshControl *refresh = (UIRefreshControl *)[self.HomeTableView viewWithTag:10001];
+    //结束刷新
+    [refresh endRefreshing];
+}
+
 -(void) addZLImageViewDisPlayView:(NSArray *)arr{
     CGRect frame = CGRectMake(0,0, UI_SCREEN_W, 150);
     //初始化控件
@@ -152,7 +189,7 @@
 }
 - (void)refreshPage {
     page = 1;
-    //[self networkRequest];
+    [self networkRequest];
 }
 
 
@@ -162,15 +199,21 @@
     NSLog(@"para = %@", para);
     [RequestAPI requestURL:@"/homepage/choice" withParameters:para andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
         [_avi stopAnimating];
-        
+        [self end];
         NSLog(@"%@",responseObject);
         if ([responseObject[@"resultFlag"] integerValue] == 8001) {
             NSLog(@"%@",responseObject);
             NSDictionary *result =responseObject[@"result"];
             NSArray *advertisement =   responseObject[@"advertisement"];
             NSArray *models =result [@"models"];
+            NSDictionary *pagingInfo = result[@"pagingInfo"];
             [_arr removeAllObjects];
             [_arr3 removeAllObjects];
+            totalPage = [pagingInfo[@"totalPage"] integerValue];
+            if (page == 1) {
+                //清空数组
+                [_arr removeAllObjects];
+            }
             for (NSDictionary *dict3 in advertisement) {
                 ShouYe *TuP =[[ShouYe alloc] initWithDictionary:dict3];
                 [_arr3 addObject:TuP.adView];
@@ -254,6 +297,18 @@
     }
     
 }
+//设置当一个细胞将要出现的时候也要做的事情
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    //判断是不是最后一行细胞将要出现
+    if (indexPath.section == _arr.count -1) {
+        //判断是否有下一页存在
+        if (page <totalPage) {
+            //在这里执行上拉翻页的数据操作
+            page ++;
+            [self networkRequest];
+        }
+    }
+}
 //设置每一组中每一行的cell（细胞）长什么样
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     ShouYe *model = _arr[indexPath.section];
@@ -297,6 +352,7 @@
         return cell;
     }
 }
+
 
 //细胞选中后调用
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
