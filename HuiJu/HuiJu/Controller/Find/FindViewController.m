@@ -284,14 +284,51 @@
 #pragma mark - request
 -(void)dataInitialize{
     // [self hotRequest];
-    [self ClubRequest];
+    [self TypeRequest];
 }
+//请求健身类型ID
+-(void)TypeRequest{
+    _avi = [Utilities getCoverOnView:self.view];
+    NSDictionary *para =  @{@"city":@"无锡"};
+    [RequestAPI requestURL:@"/clubController/getNearInfos" withParameters:para andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
+        // NSLog(@"responseObject:%@", responseObject);
+        [_avi stopAnimating];
+        if([responseObject[@"resultFlag"] integerValue] == 8001){
+            NSDictionary *features = responseObject[@"result"][@"features"];
+            NSArray *featureForm = features[@"featureForm"];
+            for(NSDictionary *dict in featureForm){
+                ShouYe *model = [[ShouYe alloc]initWithType:dict];
+                [_TypeArr addObject:model];
+                //    NSLog(@"数组里的是：%@",model.fName);
+            }
+            [_classificationArr removeAllObjects];
+            _classificationArr  = [[NSMutableArray alloc]initWithObjects:@"全部分类", nil];
+            for(int i = 0; i < 4;i++){
+                ShouYe *model = _TypeArr[i];
+                [_classificationArr addObject:model.fName];
+            }
+            
+            //[_tableView reloadData];
+            [self ClubRequest];
+            
+        }else{
+            //业务逻辑失败的情况下
+            NSString *errorMsg = [ErrorHandler getProperErrorString:[responseObject[@"result"] integerValue]];
+            [Utilities popUpAlertViewWithMsg:errorMsg andTitle:nil onView:self];
+        }
+        
+    } failure:^(NSInteger statusCode, NSError *error) {
+        [_avi stopAnimating];
+        [Utilities popUpAlertViewWithMsg:@"请保持网络连接畅通" andTitle:nil onView:self];
+    }];
+        
+    }
 - (void)ClubRequest{
     _brightView.hidden = YES;
     _avi = [Utilities getCoverOnView:self.view];
     NSDictionary *para =  @{@"city":@"无锡",@"jing":@"120.300000",@"wei":@"31.570000",@"page":@(PageNum2),@"perPage":@(pageSize2),@"Type":@0};
     [RequestAPI requestURL:@"/clubController/nearSearchClub" withParameters:para andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
-        NSLog(@"responseObject:%@", responseObject);
+        // NSLog(@"responseObject:%@", responseObject);
         [_avi stopAnimating];
         UIRefreshControl *ref = (UIRefreshControl *)[_collectionView viewWithTag:10001];
         [ref endRefreshing];
@@ -325,45 +362,6 @@
     }];
     
 }
-//请求健身类型ID
--(void)TypeRequest{
-        
-    _avi = [Utilities getCoverOnView:self.view];
-    NSDictionary *para =  @{@"city":@"无锡"};
-    [RequestAPI requestURL:@"/clubController/getNearInfos" withParameters:para andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
-            // NSLog(@"responseObject:%@", responseObject);
-        [_avi stopAnimating];
-        if([responseObject[@"resultFlag"] integerValue] == 8001){
-            NSDictionary *features = responseObject[@"result"][@"features"];
-            NSArray *featureForm = features[@"featureForm"];
-            for(NSDictionary *dict in featureForm){
-                    ShouYe *model = [[ShouYe alloc]initWithType:dict];
-                    [_TypeArr addObject:model];
-                    //    NSLog(@"数组里的是：%@",model.fName);
-                }
-            [_TypeArr removeAllObjects];
-            _classificationArr  = [[NSMutableArray alloc]initWithObjects:@"全部分类", nil];
-            for(int i = 0; i < 4;i++){
-                    ShouYe *model = _TypeArr[i];
-                    [_classificationArr addObject:model.fName];
-                }
-                
-                //[_tableView reloadData];
-            [self ClubRequest];
-                
-        }else{
-                //业务逻辑失败的情况下
-            NSString *errorMsg = [ErrorHandler getProperErrorString:[responseObject[@"result"] integerValue]];
-            [Utilities popUpAlertViewWithMsg:errorMsg andTitle:nil onView:self];
-            }
-            
-        } failure:^(NSInteger statusCode, NSError *error) {
-            [_avi stopAnimating];
-            [Utilities popUpAlertViewWithMsg:@"请保持网络连接畅通" andTitle:nil onView:self];
-        }];
-        
-    }
-
 //距离
 -(void)qianmiTypeRequest{
     _brightView.hidden = YES;
@@ -451,34 +449,34 @@
 - (void)TypeClubRequest{
         _brightView.hidden = YES;
         _avi = [Utilities getCoverOnView:self.view];
-        NSDictionary *para =  @{@"city":@"无锡",@"jing":@"120.300000",@"wei":@"31.570000",@"page":@(PageNum2),@"perPage":@(pageSize2),@"Type":@1};
-        [RequestAPI requestURL:@"/clubController/nearSearchClub" withParameters:para andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
-            //  NSLog(@"responseObject:%@", responseObject);
-            [_avi stopAnimating];
-            UIRefreshControl *ref = (UIRefreshControl *)[_collectionView viewWithTag:10001];
-            [ref endRefreshing];
-            if([responseObject[@"resultFlag"] integerValue] == 8001){
-                NSDictionary *result = responseObject[@"result"];
-                NSArray *array = result[@"models"];
-                [_ClubArr removeAllObjects];
-                for(NSDictionary *dict in array){
-                    ShouYe *model = [[ShouYe alloc]initWithClub:dict];
-                    
-                    [_ClubArr addObject:model];
-                    
-                }
-                [_collectionView reloadData];
-            }else{
-                //业务逻辑失败的情况下
-                NSString *errorMsg = [ErrorHandler getProperErrorString:[responseObject[@"resultFlag"] integerValue]];
-                [Utilities popUpAlertViewWithMsg:errorMsg andTitle:nil onView:self];
+    NSDictionary *para =  @{@"city":@"无锡",@"jing":@"120.300000",@"wei":@"31.570000",@"page":@(PageNum2),@"perPage":@(pageSize2),@"Type":@1};
+    [RequestAPI requestURL:@"/clubController/nearSearchClub" withParameters:para andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
+        //  NSLog(@"responseObject:%@", responseObject);
+        [_avi stopAnimating];
+        UIRefreshControl *ref = (UIRefreshControl *)[_collectionView viewWithTag:10001];
+        [ref endRefreshing];
+        if([responseObject[@"resultFlag"] integerValue] == 8001){
+            NSDictionary *result = responseObject[@"result"];
+            NSArray *array = result[@"models"];
+            [_ClubArr removeAllObjects];
+            for(NSDictionary *dict in array){
+                ShouYe *model = [[ShouYe alloc]initWithClub:dict];
+                
+                [_ClubArr addObject:model];
+                
             }
-            
-        } failure:^(NSInteger statusCode, NSError *error) {
-            [_avi stopAnimating];
-            UIRefreshControl *ref = (UIRefreshControl *)[_collectionView viewWithTag:10001];
-            [ref endRefreshing];
-            [Utilities popUpAlertViewWithMsg:@"请保持网络连接畅通" andTitle:nil onView:self];
+            [_collectionView reloadData];
+        }else{
+            //业务逻辑失败的情况下
+            NSString *errorMsg = [ErrorHandler getProperErrorString:[responseObject[@"resultFlag"] integerValue]];
+            [Utilities popUpAlertViewWithMsg:errorMsg andTitle:nil onView:self];
+        }
+        
+    } failure:^(NSInteger statusCode, NSError *error) {
+        [_avi stopAnimating];
+        UIRefreshControl *ref = (UIRefreshControl *)[_collectionView viewWithTag:10001];
+        [ref endRefreshing];
+        [Utilities popUpAlertViewWithMsg:@"请保持网络连接畅通" andTitle:nil onView:self];
         }];
         
     }
@@ -507,15 +505,15 @@
 }
 
 - (IBAction)distanceAction:(UIButton *)sender forEvent:(UIEvent *)event {
-    flag2 = 2;
-    self.HeightConstraint.constant = _cityArr.count *40 ;
+    flag2 = 3;
+    self.HeightConstraint.constant = _distanceArr.count *40 ;
     _brightView.hidden = NO;
     [_tableView reloadData];
 }
 
 - (IBAction)classificationAction:(UIButton *)sender forEvent:(UIEvent *)event {
-    flag2 = 3;
-    self.HeightConstraint.constant = _distanceArr.count *40;
+    flag2 = 2;
+    self.HeightConstraint.constant = _classificationArr.count *40;
     _brightView.hidden = NO;
     [_tableView reloadData];
 }

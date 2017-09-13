@@ -32,15 +32,6 @@
                                             <action selector="cityAction:forEvent:" destination="IgQ-yq-aWg" eventType="touchUpInside" id="jRG-vp-lAl"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9G8-iU-CL5">
-                                        <rect key="frame" x="288" y="0.0" width="87" height="30"/>
-                                        <state key="normal" title="      按距离        ">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="distanceAction:forEvent:" destination="IgQ-yq-aWg" eventType="touchUpInside" id="pqd-CC-EK0"/>
-                                        </connections>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="27P-g0-AyH">
                                         <rect key="frame" x="87" y="0.0" width="201" height="30"/>
                                         <state key="normal" title="全部分类">
@@ -48,6 +39,15 @@
                                         </state>
                                         <connections>
                                             <action selector="classificationAction:forEvent:" destination="IgQ-yq-aWg" eventType="touchUpInside" id="HgA-CJ-PRt"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9G8-iU-CL5">
+                                        <rect key="frame" x="288" y="0.0" width="87" height="30"/>
+                                        <state key="normal" title="      按距离        ">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="distanceAction:forEvent:" destination="IgQ-yq-aWg" eventType="touchUpInside" id="pqd-CC-EK0"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -158,8 +158,8 @@
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lir-vk-G1K">
                                                             <rect key="frame" x="15" y="10" width="345" height="23.5"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <nil key="textColor"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                            <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
