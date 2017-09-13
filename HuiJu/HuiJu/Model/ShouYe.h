@@ -44,7 +44,13 @@
 @property (nonatomic) NSString *orginPrice;
 @property (nonatomic) NSString *rules;
 @property (nonatomic) NSString *useDate;
-
+@property(strong,nonatomic)NSString *fId;//健身类型id
+@property(strong,nonatomic)NSString *fName;//健身类型名称
+@property(strong,nonatomic)NSString *total;//包含该健身类型的健身会所数量
+@property(strong,nonatomic)NSString *clubID;//会所id
+@property(strong,nonatomic)NSString *Image2;//会所图片地址
+@property(strong,nonatomic)NSString *clubName;//会所名字
+@property(strong,nonatomic)NSString *clubLogo2;//会所图片地址
 
 
 @property (nonatomic) NSInteger i;
@@ -56,5 +62,6 @@
 - (id)initWithExDictionary: (NSDictionary *)dict;
 - (id)initWithExDictionary2: (NSDictionary *)dict;
 - (id)initWithExDictionary3: (NSDictionary *)dict;
-
+-(instancetype)initWithType:(NSDictionary *)dict;
+-(instancetype)initWithClub:(NSDictionary *)dict;
 @end

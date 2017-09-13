@@ -8,7 +8,8 @@
 
 #import "FindViewController.h"
 #import "PhotoCollectionViewCell.h"
-#import "FindModel.h"
+//#import "FindModel.h"
+#import "ShouYe.h"
 #import "ScreeningTableViewCell.h"
 #import "DetailViewController.h"
 @interface FindViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,UIGestureRecognizerDelegate>
@@ -199,12 +200,12 @@
 //每个items长什么样
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     PhotoCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"Cell" forIndexPath:indexPath];
-    FindModel *model = _ClubArr[indexPath.item];
+    ShouYe *model = _ClubArr[indexPath.item];
     cell.clubName.text = model.clubName;
     cell.clubaddress.text = model.address;
     //NSLog(@"%@",model.address);
     cell.clubdistance.text = [NSString stringWithFormat:@"%@米",model.distance];
-    NSURL *URL = [NSURL URLWithString:model.Image];
+    NSURL *URL = [NSURL URLWithString:model.Image2];
     [cell.clubImage sd_setImageWithURL:URL placeholderImage:[UIImage imageNamed:@"默认"]];
     //cell.clubImage.image=[UIImage imageNamed:@"Default"];
     UIView *tgp = [UIView new];
@@ -285,50 +286,12 @@
     // [self hotRequest];
     [self ClubRequest];
 }
-//请求健身类型ID
--(void)TypeRequest{
-        
-    _avi = [Utilities getCoverOnView:self.view];
-    NSDictionary *para =  @{@"city":@"无锡"};
-    [RequestAPI requestURL:@"/clubController/getNearInfos" withParameters:para andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
-            // NSLog(@"responseObject:%@", responseObject);
-        [_avi stopAnimating];
-        if([responseObject[@"resultFlag"] integerValue] == 8001){
-            NSDictionary *features = responseObject[@"result"][@"features"];
-            NSArray *featureForm = features[@"featureForm"];
-            for(NSDictionary *dict in featureForm){
-                    FindModel *model = [[FindModel alloc]initWithType:dict];
-                    [_TypeArr addObject:model];
-                    //    NSLog(@"数组里的是：%@",model.fName);
-                }
-            [_TypeArr removeAllObjects];
-            _classificationArr  = [[NSMutableArray alloc]initWithObjects:@"全部分类", nil];
-            for(int i = 0; i < 4;i++){
-                    FindModel *model = _TypeArr[i];
-                    [_classificationArr addObject:model.fName];
-                }
-                
-                //[_tableView reloadData];
-            [self ClubRequest];
-                
-        }else{
-                //业务逻辑失败的情况下
-            NSString *errorMsg = [ErrorHandler getProperErrorString:[responseObject[@"result"] integerValue]];
-            [Utilities popUpAlertViewWithMsg:errorMsg andTitle:nil onView:self];
-            }
-            
-        } failure:^(NSInteger statusCode, NSError *error) {
-            [_avi stopAnimating];
-            [Utilities popUpAlertViewWithMsg:@"请保持网络连接畅通" andTitle:nil onView:self];
-        }];
-        
-    }
 - (void)ClubRequest{
     _brightView.hidden = YES;
     _avi = [Utilities getCoverOnView:self.view];
     NSDictionary *para =  @{@"city":@"无锡",@"jing":@"120.300000",@"wei":@"31.570000",@"page":@(PageNum2),@"perPage":@(pageSize2),@"Type":@0};
     [RequestAPI requestURL:@"/clubController/nearSearchClub" withParameters:para andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
-        // NSLog(@"responseObject:%@", responseObject);
+        NSLog(@"responseObject:%@", responseObject);
         [_avi stopAnimating];
         UIRefreshControl *ref = (UIRefreshControl *)[_collectionView viewWithTag:10001];
         [ref endRefreshing];
@@ -342,7 +305,7 @@
                 [_ClubArr removeAllObjects];
             }
             for(NSDictionary *dict in array){
-                FindModel *model = [[FindModel alloc]initWithClub:dict];
+                ShouYe *model = [[ShouYe alloc]initWithClub:dict];
                 [_ClubArr addObject:model];
                 
             }
@@ -362,6 +325,45 @@
     }];
     
 }
+//请求健身类型ID
+-(void)TypeRequest{
+        
+    _avi = [Utilities getCoverOnView:self.view];
+    NSDictionary *para =  @{@"city":@"无锡"};
+    [RequestAPI requestURL:@"/clubController/getNearInfos" withParameters:para andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
+            // NSLog(@"responseObject:%@", responseObject);
+        [_avi stopAnimating];
+        if([responseObject[@"resultFlag"] integerValue] == 8001){
+            NSDictionary *features = responseObject[@"result"][@"features"];
+            NSArray *featureForm = features[@"featureForm"];
+            for(NSDictionary *dict in featureForm){
+                    ShouYe *model = [[ShouYe alloc]initWithType:dict];
+                    [_TypeArr addObject:model];
+                    //    NSLog(@"数组里的是：%@",model.fName);
+                }
+            [_TypeArr removeAllObjects];
+            _classificationArr  = [[NSMutableArray alloc]initWithObjects:@"全部分类", nil];
+            for(int i = 0; i < 4;i++){
+                    ShouYe *model = _TypeArr[i];
+                    [_classificationArr addObject:model.fName];
+                }
+                
+                //[_tableView reloadData];
+            [self ClubRequest];
+                
+        }else{
+                //业务逻辑失败的情况下
+            NSString *errorMsg = [ErrorHandler getProperErrorString:[responseObject[@"result"] integerValue]];
+            [Utilities popUpAlertViewWithMsg:errorMsg andTitle:nil onView:self];
+            }
+            
+        } failure:^(NSInteger statusCode, NSError *error) {
+            [_avi stopAnimating];
+            [Utilities popUpAlertViewWithMsg:@"请保持网络连接畅通" andTitle:nil onView:self];
+        }];
+        
+    }
+
 //距离
 -(void)qianmiTypeRequest{
     _brightView.hidden = YES;
@@ -383,7 +385,7 @@
             }
             
             for(NSDictionary *dict in array){
-                FindModel *model = [[FindModel alloc]initWithClub:dict];
+                ShouYe *model = [[ShouYe alloc]initWithClub:dict];
                 
                 [_ClubArr addObject:model];
                 // NSLog(@"数组里的是%@",model);
@@ -425,7 +427,7 @@
             }
             
             for(NSDictionary *dict in array){
-                FindModel *model = [[FindModel alloc]initWithClub:dict];
+                ShouYe *model = [[ShouYe alloc]initWithClub:dict];
                 
                 [_ClubArr addObject:model];
                 
@@ -460,7 +462,7 @@
                 NSArray *array = result[@"models"];
                 [_ClubArr removeAllObjects];
                 for(NSDictionary *dict in array){
-                    FindModel *model = [[FindModel alloc]initWithClub:dict];
+                    ShouYe *model = [[ShouYe alloc]initWithClub:dict];
                     
                     [_ClubArr addObject:model];
                     
