@@ -10,12 +10,13 @@
 #import "PhotoCollectionViewCell.h"
 #import "FindModel.h"
 #import "ScreeningTableViewCell.h"
+#import "DetailViewController.h"
 @interface FindViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,UIGestureRecognizerDelegate>
 {
-    NSInteger flag;
+    NSInteger flag2;
     NSInteger totalPage;
-    NSInteger PageNum;
-    NSInteger pageSize;
+    NSInteger PageNum2;
+    NSInteger pageSize2;
     BOOL isLast;
 }
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
@@ -49,8 +50,8 @@
     //_classificationArr=[[NSMutableArray alloc] initWithObjects:@"全部分类", nil];
     _cityArr=[[NSArray alloc] initWithObjects:@"全城",@"1qianmi",@"2qianmi",@"3qianmi",@"4qianmi", nil];
     _distanceArr=[[NSArray alloc] initWithObjects:@"按距离",@"按人气", nil];
-    PageNum=1;
-    pageSize =10;
+    PageNum2=1;
+    pageSize2 =10;
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickView)];
     tapGesture.delegate = self;
     [self.brightView addGestureRecognizer:tapGesture];
@@ -102,27 +103,27 @@
     return 40.f;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if(flag == 1){
+    if(flag2 == 1){
         return _cityArr.count;
     }
-    if(flag == 2){
+    if(flag2 == 2){
         return _classificationArr.count;
     }
-    if(flag == 3){
+    if(flag2 == 3){
         return _distanceArr.count;
     }
     return 0;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     ScreeningTableViewCell*cell = [tableView dequeueReusableCellWithIdentifier:@"tableViewCell" forIndexPath:indexPath];
-    if(flag == 1){
+    if(flag2 == 1){
         cell.Label.text = _cityArr[indexPath.row];
     }
-    if(flag == 2){
+    if(flag2 == 2){
         cell.Label.text = _classificationArr[indexPath.row];
         
     }
-    if(flag == 3){
+    if(flag2 == 3){
         cell.Label.text = _distanceArr[indexPath.row];
     }
     return cell;
@@ -131,7 +132,7 @@
 //设置每一组中每一行被点击以后要做的事情
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    if(flag == 1){
+    if(flag2 == 1){
         if(indexPath.row == 0){
             [self ClubRequest];//默认按距离请求
         }
@@ -154,7 +155,7 @@
         
         
     }
-    if(flag == 2){
+    if(flag2 == 2){
         
         if(indexPath.row == 0){
             [self ClubRequest];
@@ -177,7 +178,7 @@
         }
         
     }
-    if(flag == 3){
+    if(flag2 == 3){
         if(indexPath.row == 0){
             [self ClubRequest];
         }
@@ -234,18 +235,18 @@
 }
 //会所列表下拉刷新事件
 - (void)acquireRef{
-    PageNum = 1;
-    if(flag == 1){
+    PageNum2 = 1;
+    if(flag2 == 1){
         // _distance = @"5000";
         //_avi = [Utilities getCoverOnView:self.view];
         [self qianmiTypeRequest];
         return;
     }
-    if(flag == 2){
+    if(flag2 == 2){
         [self classificationClubRequest];
         return;
     }
-    if(flag == 3){
+    if(flag2 == 3){
         [self TypeClubRequest];
         return;
     }else{
@@ -255,17 +256,17 @@
 //细胞将要出现时调用
 - (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(nonnull UICollectionViewCell *)cell forItemAtIndexPath:(nonnull NSIndexPath *)indexPath{
     if(indexPath.row == _ClubArr.count -1){
-        if(PageNum != totalPage){
-            PageNum ++;
-            if(flag == 1){
+        if(PageNum2 != totalPage){
+            PageNum2 ++;
+            if(flag2 == 1){
                 [self qianmiTypeRequest];
                 return;
             }
-            if(flag == 2){
+            if(flag2 == 2){
                 [self classificationClubRequest];
                 return;
             }
-            if(flag == 3){
+            if(flag2 == 3){
                 [self TypeClubRequest];
                 return;
             }
@@ -325,7 +326,7 @@
 - (void)ClubRequest{
     _brightView.hidden = YES;
     _avi = [Utilities getCoverOnView:self.view];
-    NSDictionary *para =  @{@"city":@"无锡",@"jing":@"120.300000",@"wei":@"31.570000",@"page":@(PageNum),@"perPage":@(pageSize),@"Type":@0};
+    NSDictionary *para =  @{@"city":@"无锡",@"jing":@"120.300000",@"wei":@"31.570000",@"page":@(PageNum2),@"perPage":@(pageSize2),@"Type":@0};
     [RequestAPI requestURL:@"/clubController/nearSearchClub" withParameters:para andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
         // NSLog(@"responseObject:%@", responseObject);
         [_avi stopAnimating];
@@ -337,7 +338,7 @@
             NSDictionary  *pageDict =result[@"pagingInfo"];
             totalPage = [pageDict[@"totalPage"]integerValue];
             
-            if(PageNum == 1){
+            if(PageNum2 == 1){
                 [_ClubArr removeAllObjects];
             }
             for(NSDictionary *dict in array){
@@ -365,7 +366,7 @@
 -(void)qianmiTypeRequest{
     _brightView.hidden = YES;
     _avi = [Utilities getCoverOnView:self.view];
-    NSDictionary *para =  @{@"city":@"无锡",@"jing":@"120.300000",@"wei":@"31.570000",@"page":@(PageNum),@"perPage":@(pageSize),@"Type":@0,@"distance":_distance};
+    NSDictionary *para =  @{@"city":@"无锡",@"jing":@"120.300000",@"wei":@"31.570000",@"page":@(PageNum2),@"perPage":@(pageSize2),@"Type":@0,@"distance":_distance};
     [RequestAPI requestURL:@"/clubController/nearSearchClub" withParameters:para andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
         //  NSLog(@"responseObject:%@", responseObject);
         [_avi stopAnimating];
@@ -377,7 +378,7 @@
             NSDictionary  *pageDict =result[@"pagingInfo"];
             totalPage = [pageDict[@"totalPage"]integerValue];
             
-            if(PageNum == 1){
+            if(PageNum2 == 1){
                 [_ClubArr removeAllObjects];
             }
             
@@ -410,7 +411,7 @@
 -(void)classificationClubRequest{
     _brightView.hidden = YES;
     _avi = [Utilities getCoverOnView:self.view];
-    NSDictionary *para =  @{@"city":@"无锡",@"jing":@"120.300000",@"wei":@"31.570000",@"page":@(PageNum),@"perPage":@(pageSize),@"Type":@0,@"featureId":_classificationId};
+    NSDictionary *para =  @{@"city":@"无锡",@"jing":@"120.300000",@"wei":@"31.570000",@"page":@(PageNum2),@"perPage":@(pageSize2),@"Type":@0,@"featureId":_classificationId};
     [RequestAPI requestURL:@"/clubController/nearSearchClub" withParameters:para andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
         //  NSLog(@"responseObject:%@", responseObject);
         [_avi stopAnimating];
@@ -419,7 +420,7 @@
         if([responseObject[@"resultFlag"] integerValue] == 8001){
             NSDictionary *result = responseObject[@"result"];
             NSArray *array = result[@"models"];
-            if(PageNum == 1){
+            if(PageNum2 == 1){
                 [_ClubArr removeAllObjects];
             }
             
@@ -448,7 +449,7 @@
 - (void)TypeClubRequest{
         _brightView.hidden = YES;
         _avi = [Utilities getCoverOnView:self.view];
-        NSDictionary *para =  @{@"city":@"无锡",@"jing":@"120.300000",@"wei":@"31.570000",@"page":@(PageNum),@"perPage":@(pageSize),@"Type":@1};
+        NSDictionary *para =  @{@"city":@"无锡",@"jing":@"120.300000",@"wei":@"31.570000",@"page":@(PageNum2),@"perPage":@(pageSize2),@"Type":@1};
         [RequestAPI requestURL:@"/clubController/nearSearchClub" withParameters:para andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
             //  NSLog(@"responseObject:%@", responseObject);
             [_avi stopAnimating];
@@ -491,11 +492,12 @@
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     //写跳转语句
-    
-    
+    //[self performSegueWithIdentifier:@"Find2Detail" sender:nil];
+    //DetailViewController  *controller = [Utilities getStoryboardInstance:@"Detail" byIdentity:@"Detail2"];
+    //[self.navigationController pushViewController:controller animated:YES];
 }
 - (IBAction)cityAction:(UIButton *)sender forEvent:(UIEvent *)event {
-    flag = 1;
+    flag2 = 1;
     self.HeightConstraint.constant = _cityArr.count *40 ;
     _brightView.hidden = NO;
     [_tableView reloadData];
@@ -503,14 +505,14 @@
 }
 
 - (IBAction)distanceAction:(UIButton *)sender forEvent:(UIEvent *)event {
-    flag = 2;
+    flag2 = 2;
     self.HeightConstraint.constant = _cityArr.count *40 ;
     _brightView.hidden = NO;
     [_tableView reloadData];
 }
 
 - (IBAction)classificationAction:(UIButton *)sender forEvent:(UIEvent *)event {
-    flag = 3;
+    flag2 = 3;
     self.HeightConstraint.constant = _distanceArr.count *40;
     _brightView.hidden = NO;
     [_tableView reloadData];

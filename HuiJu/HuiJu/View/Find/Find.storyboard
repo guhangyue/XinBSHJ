@@ -130,6 +130,7 @@
                                             <outlet property="clubName" destination="nrc-hH-93U" id="Doc-1e-UqR"/>
                                             <outlet property="clubaddress" destination="MNa-MX-Lbc" id="Z3J-6a-cPw"/>
                                             <outlet property="clubdistance" destination="OZ1-0m-bKe" id="nRH-Z2-I7d"/>
+                                            <segue destination="PaD-Vo-Bsy" kind="show" identifier="Find2Detail" id="fdd-NE-MXv"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -220,6 +221,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Uap-1x-KL2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2836" y="94.902548725637189"/>
+        </scene>
+        <!--Detail2-->
+        <scene sceneID="oit-PL-I0E">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Detail" referencedIdentifier="Detail2" id="PaD-Vo-Bsy" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="ZoY-LI-HCP"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oSH-Xa-dwU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3678" y="85"/>
         </scene>
         <!--发现-->
         <scene sceneID="PDU-uq-Axq">
