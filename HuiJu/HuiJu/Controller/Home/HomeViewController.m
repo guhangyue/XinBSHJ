@@ -357,6 +357,11 @@
     //[tableView deselectRowAtIndexPath:indexPath animated:YES];
     //    DetailViewController *detailVC = [Utilities getStoryboardInstance:@"Detail" byIdentity:@"Detail2"];
     //    [self.navigationController pushViewController:detailVC animated:YES];
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    ShouYe *model = _arr[indexPath.section];
+    NSString *Id =  [NSString stringWithFormat:@"%ld",model.nameId2];
+    //NSLog(@"id是：%@",Id);
+    [[StorageMgr singletonStorageMgr] addKey:@"clubId" andValue:Id];
     if (indexPath.row==0) {
         [self performSegueWithIdentifier:@"ShouYe2Detail" sender:nil];
     }else{
@@ -366,21 +371,6 @@
     
 }
 
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-    if ([segue.identifier isEqualToString:@"ShouYe2Detail"]) {
-        //当从列表页到详情页的这个跳转要发生的时候
-        //获取要传递到下一页的数据
-        NSIndexPath *indexPath=[_HomeTableView indexPathForSelectedRow];
-        ShouYe *activity=_arr[indexPath.section];
-        ShouYe *activity2=_arr[indexPath.row];
-        // NSLog(@"%@",_arr[indexPath.row]);
-        //获取下一页的这个实例
-        DetailViewController *detailVC= segue.destinationViewController;
-        //把数据给下一页预备好的接收容器
-        detailVC.detailA=activity;
-        detailVC.detailB=activity2;
-    }
-}
 
 //定位失败时
 - (void)locationManager:(CLLocationManager *)manager

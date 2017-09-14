@@ -66,8 +66,8 @@
     UIActivityIndicatorView *aiv = [Utilities getCoverOnView:self.view];
     //NSLog(@"%@",_hotelid);
     // HotelModel *user=[ HotelModel alloc];
-    NSDictionary *para1 = @{@"clubKeyId":@(_detailA.nameId2)};
-     //NSLog(@"反馈：%ld",(long)_detailA.nameId);
+    NSString *Id = [[StorageMgr singletonStorageMgr]objectForKey:@"clubId"];
+    NSDictionary *para1 = @{@"clubKeyId":Id};
     [RequestAPI requestURL:@"/clubController/getClubDetails" withParameters:para1 andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
         [aiv stopAnimating];
         NSLog(@"result:%@",responseObject);

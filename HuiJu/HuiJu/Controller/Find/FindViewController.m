@@ -491,6 +491,9 @@
 */
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    ShouYe *model = _ClubArr[indexPath.row];
+    NSString *clubId = model.clubID;
+    [[StorageMgr singletonStorageMgr] addKey:@"clubId" andValue:clubId];
     //写跳转语句
     //[self performSegueWithIdentifier:@"Find2Detail" sender:nil];
     //DetailViewController  *controller = [Utilities getStoryboardInstance:@"Detail" byIdentity:@"Detail2"];
