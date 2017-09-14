@@ -117,7 +117,6 @@
                         <barButtonItem key="rightBarButtonItem" image="设置" id="9WU-0H-NbT">
                             <connections>
                                 <action selector="settingAction:" destination="eMb-cf-IeH" id="E1D-iF-A4i"/>
-                                <segue destination="SbV-Zk-rvx" kind="show" identifier="LLL" id="hrI-IL-qDi"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -133,6 +132,7 @@
                         <segue destination="dnH-HW-8bR" kind="show" identifier="DDD" id="sa8-AT-6Wj"/>
                         <segue destination="q8n-Xi-Yjh" kind="show" identifier="EEE" id="s3F-3f-xTa"/>
                         <segue destination="dWi-e0-Ye1" kind="show" identifier="HHH" id="Uc2-kl-3m8"/>
+                        <segue destination="SbV-Zk-rvx" kind="show" identifier="LLL" id="XLs-Po-uj1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9eV-Op-X0D" userLabel="First Responder" sceneMemberID="firstResponder"/>

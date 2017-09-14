@@ -158,8 +158,9 @@
         //[self.navigationController setNavigationBarHidden:NO];
         [self performSegueWithIdentifier:@"LLL" sender:self];
     }else{
-        
-        UINavigationController *shezhiww=[Utilities getStoryboardInstance:@"SheZhi" byIdentity:@"SheZhiNavi"];
-        [self presentViewController:shezhiww animated:YES completion:nil];    }
+        [self performSegueWithIdentifier:@"HHH" sender:self];
+//        UINavigationController *shezhiww=[Utilities getStoryboardInstance:@"SheZhi" byIdentity:@"SheZhiNavi"];
+//        [self presentViewController:shezhiww animated:YES completion:nil];
+    }
 }
 @end

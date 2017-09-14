@@ -7,9 +7,16 @@
 //
 
 #import "xingbieViewController.h"
-
+#import "UserModel.h"
 @interface xingbieViewController ()
-
+@property (weak, nonatomic) IBOutlet UIButton *xingbieBtn;
+- (IBAction)xingbieAction:(UIButton *)sender forEvent:(UIEvent *)event;
+@property (weak, nonatomic) IBOutlet UIToolbar *Toolbar;
+- (IBAction)quxiao:(UIBarButtonItem *)sender;
+- (IBAction)queding:(UIBarButtonItem *)sender;
+@property (weak, nonatomic) IBOutlet UIPickerView *datePicker;
+@property (weak, nonatomic) UserModel*user;
+@property (strong, nonatomic) NSArray*pickerArr;
 @end
 
 @implementation xingbieViewController
@@ -17,12 +24,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self naviConfig];
+    _pickerArr = @[@"男", @"女"];
     // Do any additional setup after loading the view.
+    _user=[[StorageMgr singletonStorageMgr]objectForKey:@"MemberInfo"];
+    _xingbieBtn.titleLabel.text=_user.gender;
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+    
 }
 //当前页面将要显示的时候，显示导航栏
 - (void)viewWillAppear:(BOOL)animated{
@@ -53,6 +64,22 @@
     [self dismissViewControllerAnimated:YES completion:nil];
     //[self.navigationController popViewControllerAnimated:YES];
 }
+#pragma mark - Picker View Delegates
+
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
+    return 1;
+}
+
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
+    return _pickerArr.count;
+}
+
+- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
+    return _pickerArr[row];
+}
+
+
+
 /*
 #pragma mark - Navigation
 
@@ -63,4 +90,13 @@
 }
 */
 
+- (IBAction)xingbieAction:(UIButton *)sender forEvent:(UIEvent *)event {
+    _Toolbar.hidden =NO;
+    _datePicker.hidden =NO;
+}
+- (IBAction)quxiao:(UIBarButtonItem *)sender {
+}
+
+- (IBAction)queding:(UIBarButtonItem *)sender {
+}
 @end

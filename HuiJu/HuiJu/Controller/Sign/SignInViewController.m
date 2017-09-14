@@ -25,7 +25,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self naviConfig];
-
+    [self uiLayout];
+//    _signinBtn.enabled = NO;
+//    _signinBtn.backgroundColor = UIColorFromRGB(200, 200, 200);
 }
 
 - (void)didReceiveMemoryWarning {
@@ -108,8 +110,7 @@
     [self readyForEncoding];
 }
 
-- (IBAction)signinBtn:(UIButton *)sender forEvent:(UIEvent *)event {
-}
+//- (IBAction)signinBtn:(UIButton *)sender forEvent:(UIEvent *)event {}
 -(void)readyForEncoding
 {
     _aiv=[Utilities getCoverOnView:self.view];
@@ -130,14 +131,14 @@
              NSString *rsaStr=[NSString encryptWithPublicKeyFromModulusAndExponent:md5Str.UTF8String modulus:modulus exponent:exponent];
              [self signInWithEncryptPwd:rsaStr];
          }else{
-             //[_aiv stopAnimating];
+             [_aiv stopAnimating];
              NSString *errorMsg=[ErrorHandler getProperErrorString:[responseObject[@"resultFlag"] integerValue]];
              [Utilities popUpAlertViewWithMsg:errorMsg andTitle:nil onView:self];
              //保存用户名
-             [Utilities removeUserDefaults:@"Username"];
-             [Utilities setUserDefaults:@"Username" content:_userNametextword.text];
-             _passWordtextword.text=@"";
-             _signinBtn.enabled=NO;
+//             [Utilities removeUserDefaults:@"Username"];
+//             [Utilities setUserDefaults:@"Username" content:_userNametextword.text];
+//             _passWordtextword.text=@"";
+//             _signinBtn.enabled=NO;
              //[self performSegueWithIdentifier:@"loginToTask" sender:self];
          }
      }failure:^(NSInteger statusCode, NSError *error) {

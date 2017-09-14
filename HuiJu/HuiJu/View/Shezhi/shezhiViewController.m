@@ -9,6 +9,7 @@
 #import "shezhiViewController.h"
 #import "shezhiTableViewCell.h"
 #import "UserModel.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 @interface shezhiViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *touxiang;
 @property (weak, nonatomic) IBOutlet UIButton *xiugaiTX;
@@ -75,12 +76,12 @@
     return cell;
 }
 //设置组的底部视图高度
-- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
-    if (section == 0) {
-        return 5.f;
-    }
-    return 1.f;
-}
+//- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+//    if (section == 0) {
+//        return 5.f;
+//    }
+//    return 1.f;
+//}
 
 /*
 #pragma mark - Navigation
@@ -120,6 +121,7 @@
 
 //细胞选中后调用
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    //取消细胞的选中状态
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     //if([Utilities loginCheck]){
     switch (indexPath.section) {
