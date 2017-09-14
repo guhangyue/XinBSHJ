@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="txY-qK-bv7">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="txY-qK-bv7">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -333,10 +333,10 @@
             </objects>
             <point key="canvasLocation" x="88.799999999999997" y="111.99400299850076"/>
         </scene>
-        <!--Ti Yan View Controller-->
+        <!--TiYan-->
         <scene sceneID="rDv-X1-7Ck">
             <objects>
-                <viewController id="9Zu-OG-LH5" customClass="TiYanViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TiYan" title="TiYan" useStoryboardIdentifierAsRestorationIdentifier="YES" id="9Zu-OG-LH5" customClass="TiYanViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="bPc-6H-00Z"/>
                         <viewControllerLayoutGuide type="bottom" id="DN6-8C-HSq"/>
@@ -835,6 +835,6 @@
         <image name="地址" width="48" height="48"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="424-OX-C1w"/>
+        <segue reference="wmk-mv-alp"/>
     </inferredMetricsTieBreakers>
 </document>

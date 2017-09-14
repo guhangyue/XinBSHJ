@@ -13,6 +13,7 @@
 #import "ShouYe.h"
 #import "DetailViewController.h"
 #import "ZLImageViewDisplayView.h"
+#import "TiYanViewController.h"
 @interface HomeViewController ()<UITableViewDataSource,UITableViewDelegate,CLLocationManagerDelegate>{
     NSInteger page;
     NSInteger totalPage;
@@ -287,8 +288,8 @@
 }
 //每行高度
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    if (indexPath.row == 0) {
-        return 150.f;
+   if (indexPath.row == 0) {
+      return 200.f;
     }else{
         return 100.f;
     }
@@ -356,7 +357,13 @@
     //[tableView deselectRowAtIndexPath:indexPath animated:YES];
     //    DetailViewController *detailVC = [Utilities getStoryboardInstance:@"Detail" byIdentity:@"Detail2"];
     //    [self.navigationController pushViewController:detailVC animated:YES];
-    [self performSegueWithIdentifier:@"ShouYe2Detail" sender:nil];
+    if (indexPath.row==0) {
+        [self performSegueWithIdentifier:@"ShouYe2Detail" sender:nil];
+    }else{
+        DetailViewController  *controller = [Utilities getStoryboardInstance:@"Detail" byIdentity:@"TiYan"];
+        [self.navigationController pushViewController:controller animated:YES];
+    }
+    
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
