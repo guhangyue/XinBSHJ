@@ -64,10 +64,12 @@
     UIActivityIndicatorView *aiv = [Utilities getCoverOnView:self.view];
     //NSLog(@"%@",_hotelid);
     // HotelModel *user=[ HotelModel alloc];
-    NSInteger  s=[_eid intValue];
-    NSDictionary *para1 = @{@"experienceId":@(s)};
+    //NSInteger  s=[_eid intValue];
+    NSString *eId =  [[StorageMgr singletonStorageMgr]objectForKey:@"eId"];
+    NSLog(@"又是什么东西啊%@",eId);
+    NSDictionary *para1 = @{@"experienceId":eId};
     
-    NSLog(@"又是什么东西啊%ld",(long)s);
+   // NSLog(@"又是什么东西啊%ld",(long)s);
     //NSLog(@"反馈：%ld",(long)_detailA.nameId);
     [RequestAPI requestURL:@"/clubController/experienceDetail" withParameters:para1 andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
         [aiv stopAnimating];

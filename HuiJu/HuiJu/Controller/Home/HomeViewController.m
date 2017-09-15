@@ -363,11 +363,19 @@
     NSString *Id =  [NSString stringWithFormat:@"%ld",model.nameId2];
      tiyan=model.i;
     
-    //NSLog(@"id是：%@",Id);
+    NSLog(@"id是：%@",Id);
     [[StorageMgr singletonStorageMgr] addKey:@"clubId" andValue:Id];
     if (indexPath.row==0) {
         [self performSegueWithIdentifier:@"ShouYe2Detail" sender:nil];
     }else{
+        //ShouYe *model=[[ ShouYe alloc]initWithDetialDictionary:result];
+//        NSArray *array = model.experience;
+//        NSDictionary *dict = array[indexPath.row-1];
+        NSString *eId1 = model.experience[indexPath.row-1][5];
+        NSLog(@"shi%@",model.experience[indexPath.row-1][5]);
+       // NSLog(@"你妈耶%ld",(long)model.nameId2);
+       // NSString *eId1=[NSString stringWithFormat:@"%ld",(long)eId];
+        [[StorageMgr singletonStorageMgr] addKey:@"eId" andValue:eId1];
         DetailViewController  *controller = [Utilities getStoryboardInstance:@"Detail" byIdentity:@"TiYan"];
         [self.navigationController pushViewController:controller animated:YES];
     }
@@ -393,6 +401,8 @@
         //        //把数据给下一页预备好的接收容器
         //        detailVC.detailA=activity;
         //        detailVC.detailB=activity2;
+    }else{
+        
     }
 }
 

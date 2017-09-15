@@ -32,6 +32,7 @@
                 [experiences addObject:shouye.price];
                 [experiences addObject:shouye.TName];
                 [experiences addObject:shouye.sellNumber];
+                [experiences addObject:shouye.id2];
                 self.i++;
                 [self.experience addObject:experiences];
                 
@@ -103,6 +104,7 @@
         _price=[Utilities nullAndNilCheck:dict[@"price"] replaceBy:@"111"];
         _TName=[Utilities nullAndNilCheck:dict[@"name"] replaceBy:@"000"];
         _sellNumber=[Utilities nullAndNilCheck:dict[@"sellNumber"] replaceBy:@"000"];
+        _id2=[Utilities nullAndNilCheck:dict[@"id"] replaceBy:@"1"];
     }
     return self;
 }

@@ -51,6 +51,7 @@
 @property(strong,nonatomic)NSString *Image2;//会所图片地址
 @property(strong,nonatomic)NSString *clubName;//会所名字
 @property(strong,nonatomic)NSString *clubLogo2;//会所图片地址
+@property(strong,nonatomic)NSString *id2;
 
 
 @property (nonatomic) NSInteger i;

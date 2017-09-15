@@ -196,9 +196,9 @@
         NSIndexPath *indexPath=[_TiYanJuanTableView indexPathForSelectedRow];
         
         NSString *club=detail.experienceInfos[indexPath.row][4];
-        
-        TiYanViewController *detailVC= segue.destinationViewController;
-        detailVC.eid=club;
+        [[StorageMgr singletonStorageMgr] addKey:@"eId" andValue:club];
+//        TiYanViewController *detailVC= segue.destinationViewController;
+//        detailVC.eid=club;
        // NSLog(@"传的什么鬼%@",detailVC.detailC);
         //        ShouYe *activity=_arr[indexPath.section];
 //        ShouYe *activity2=_arr[indexPath.row];
