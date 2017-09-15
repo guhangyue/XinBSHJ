@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="jun-aY-etd">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="jun-aY-etd">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -249,6 +249,10 @@
                         <subviews>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fdl-26-HAy">
                                 <rect key="frame" x="0.0" y="451" width="375" height="216"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="HkW-AB-cwN" id="cx7-Q6-V7v"/>
+                                    <outlet property="delegate" destination="HkW-AB-cwN" id="WI6-8M-vY3"/>
+                                </connections>
                             </pickerView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1wZ-Ym-XNg">
                                 <rect key="frame" x="0.0" y="407" width="375" height="44"/>
@@ -266,38 +270,30 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yle-26-XqC">
-                                <rect key="frame" x="55" y="114" width="265" height="30"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lDK-ey-lEf">
-                                        <rect key="frame" x="0.0" y="0.0" width="265" height="30"/>
-                                        <state key="normal" title="性别"/>
-                                        <connections>
-                                            <action selector="xingbieAction:forEvent:" destination="HkW-AB-cwN" eventType="touchUpInside" id="lFO-ZJ-lW4"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fg6-dT-6w5">
+                                <rect key="frame" x="80" y="124" width="215" height="50"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="lDK-ey-lEf" secondAttribute="trailing" id="3PH-zc-LHn"/>
-                                    <constraint firstItem="lDK-ey-lEf" firstAttribute="top" secondItem="Yle-26-XqC" secondAttribute="top" id="4m6-Ly-1M8"/>
-                                    <constraint firstItem="lDK-ey-lEf" firstAttribute="leading" secondItem="Yle-26-XqC" secondAttribute="leading" id="6o4-jr-GYS"/>
-                                    <constraint firstAttribute="bottom" secondItem="lDK-ey-lEf" secondAttribute="bottom" id="Pjv-r9-XMb"/>
-                                    <constraint firstAttribute="height" constant="30" id="xIL-oQ-etX"/>
+                                    <constraint firstAttribute="height" constant="50" id="KVa-UY-CEw"/>
                                 </constraints>
-                            </view>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="xbAction:forEvent:" destination="HkW-AB-cwN" eventType="editingDidEnd" id="X2c-7f-gre"/>
+                                </connections>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Yle-26-XqC" firstAttribute="leading" secondItem="c5I-jn-awJ" secondAttribute="leading" constant="55" id="9Kn-Ql-RSm"/>
+                            <constraint firstAttribute="trailing" secondItem="fg6-dT-6w5" secondAttribute="trailing" constant="80" id="5F4-U5-hYT"/>
                             <constraint firstItem="Fdl-26-HAy" firstAttribute="top" secondItem="1wZ-Ym-XNg" secondAttribute="bottom" id="AnJ-2e-Asi"/>
                             <constraint firstItem="XXb-PW-Q6S" firstAttribute="top" secondItem="Fdl-26-HAy" secondAttribute="bottom" id="ArT-8Z-SM5"/>
                             <constraint firstItem="Fdl-26-HAy" firstAttribute="leading" secondItem="c5I-jn-awJ" secondAttribute="leading" id="FA3-vu-c92"/>
-                            <constraint firstItem="Yle-26-XqC" firstAttribute="top" secondItem="fQC-lT-Tfw" secondAttribute="bottom" constant="50" id="Oc1-zM-7ji"/>
                             <constraint firstAttribute="trailing" secondItem="1wZ-Ym-XNg" secondAttribute="trailing" id="dgI-lS-7J4"/>
                             <constraint firstAttribute="trailing" secondItem="Fdl-26-HAy" secondAttribute="trailing" id="dvf-XG-IFb"/>
                             <constraint firstItem="1wZ-Ym-XNg" firstAttribute="leading" secondItem="c5I-jn-awJ" secondAttribute="leading" id="fug-OR-COs"/>
-                            <constraint firstAttribute="trailing" secondItem="Yle-26-XqC" secondAttribute="trailing" constant="55" id="gjH-WD-OhC"/>
+                            <constraint firstItem="fg6-dT-6w5" firstAttribute="top" secondItem="fQC-lT-Tfw" secondAttribute="bottom" constant="60" id="waa-dT-aC1"/>
+                            <constraint firstItem="fg6-dT-6w5" firstAttribute="leading" secondItem="c5I-jn-awJ" secondAttribute="leading" constant="80" id="wbf-WP-Yz7"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="修改性别" id="r5t-We-dOH"/>
@@ -305,7 +301,7 @@
                     <connections>
                         <outlet property="Toolbar" destination="1wZ-Ym-XNg" id="gKy-UC-LGW"/>
                         <outlet property="datePicker" destination="Fdl-26-HAy" id="hJ2-Mi-U9s"/>
-                        <outlet property="xingbieBtn" destination="lDK-ey-lEf" id="v7B-wt-peh"/>
+                        <outlet property="xbtextfiled" destination="fg6-dT-6w5" id="e4G-l1-cNM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TMH-qB-eio" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -335,18 +331,52 @@
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="27b-Mp-G4W">
                                 <rect key="frame" x="0.0" y="104" width="375" height="563"/>
-                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <subviews>
+                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="aSs-2m-T6K">
+                                        <rect key="frame" x="0.0" y="347" width="375" height="216"/>
+                                        <date key="date" timeIntervalSinceReferenceDate="527068093.019728">
+                                            <!--2017-09-14 07:48:13 +0000-->
+                                        </date>
+                                    </datePicker>
+                                    <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CTy-Bu-ULn">
+                                        <rect key="frame" x="0.0" y="303" width="375" height="44"/>
+                                        <items>
+                                            <barButtonItem title="取消" id="tpf-z4-fSP"/>
+                                            <barButtonItem style="plain" systemItem="flexibleSpace" id="LzW-U4-KTW"/>
+                                            <barButtonItem title="确定" id="zJJ-Ig-SmV"/>
+                                        </items>
+                                    </toolbar>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="aSs-2m-T6K" secondAttribute="trailing" id="5eC-nR-PKV"/>
+                                    <constraint firstItem="CTy-Bu-ULn" firstAttribute="leading" secondItem="27b-Mp-G4W" secondAttribute="leading" id="Qbd-9a-Mdf"/>
+                                    <constraint firstItem="aSs-2m-T6K" firstAttribute="top" secondItem="CTy-Bu-ULn" secondAttribute="bottom" id="hAB-ZI-7MC"/>
+                                    <constraint firstAttribute="trailing" secondItem="CTy-Bu-ULn" secondAttribute="trailing" id="nj5-iJ-UWo"/>
+                                    <constraint firstAttribute="bottom" secondItem="aSs-2m-T6K" secondAttribute="bottom" id="oEc-FF-LvK"/>
+                                    <constraint firstItem="aSs-2m-T6K" firstAttribute="leading" secondItem="27b-Mp-G4W" secondAttribute="leading" id="yOH-dA-UfE"/>
+                                </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TOp-cy-sf2">
+                                <rect key="frame" x="0.0" y="66" width="375" height="38"/>
+                                <state key="normal" title="2017-09-08">
+                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="27b-Mp-G4W" firstAttribute="top" secondItem="EFT-SV-rn4" secondAttribute="bottom" id="5IS-Rg-Sti"/>
                             <constraint firstItem="EFT-SV-rn4" firstAttribute="leading" secondItem="q7j-IY-L53" secondAttribute="leading" id="D5Q-U0-3sY"/>
+                            <constraint firstItem="27b-Mp-G4W" firstAttribute="top" secondItem="TOp-cy-sf2" secondAttribute="bottom" id="Jdz-an-lhZ"/>
                             <constraint firstItem="27b-Mp-G4W" firstAttribute="leading" secondItem="q7j-IY-L53" secondAttribute="leading" id="S6D-pZ-GiA"/>
                             <constraint firstAttribute="trailing" secondItem="EFT-SV-rn4" secondAttribute="trailing" id="TQw-qw-B2t"/>
                             <constraint firstItem="EFT-SV-rn4" firstAttribute="top" secondItem="jeu-Ac-8ts" secondAttribute="bottom" id="b2l-Ps-ocz"/>
                             <constraint firstItem="ngH-Nx-uFO" firstAttribute="top" secondItem="27b-Mp-G4W" secondAttribute="bottom" id="chp-Ji-RWa"/>
+                            <constraint firstItem="TOp-cy-sf2" firstAttribute="leading" secondItem="q7j-IY-L53" secondAttribute="leading" id="hIJ-ZV-hHh"/>
+                            <constraint firstAttribute="trailing" secondItem="TOp-cy-sf2" secondAttribute="trailing" id="jZ3-OL-bjE"/>
                             <constraint firstAttribute="trailing" secondItem="27b-Mp-G4W" secondAttribute="trailing" id="mSF-rT-aVB"/>
+                            <constraint firstItem="TOp-cy-sf2" firstAttribute="top" secondItem="q7j-IY-L53" secondAttribute="top" constant="66" id="zPp-Fi-UR7"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="修改出生日期" id="0Ij-Hl-QUv"/>

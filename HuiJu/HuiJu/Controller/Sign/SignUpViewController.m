@@ -26,12 +26,29 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self naviConfig];
     // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)uiLayout{
+    //判断是否存在记忆体
+    if (![[Utilities  getUserDefaults:@"userPhone"] isKindOfClass:[NSNull class]]) {
+        if ([Utilities  getUserDefaults:@"userPhone"] != nil) {
+            //将它显示在用户名输入框中
+            _userNameTextField.text = [Utilities getUserDefaults:@"userPhone"];
+        }
+    }
+    
+}
+
+//让根视图结束编辑状态，到达收起键盘的目的
+- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    [self.view endEditing:YES];
 }
 
 /*
@@ -79,6 +96,22 @@
      }];
     
 }
+
+- (void)naviConfig {
+    //设置导航条标题文字
+    self.navigationItem.title = @"注册";
+    //设置导航条颜色（风格颜色）
+    self.navigationController.navigationBar.barTintColor = [UIColor darkGrayColor];
+    //设置导航条标题颜色
+    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor whiteColor]};
+    //设置导航条是否隐藏.
+    self.navigationController.navigationBar.hidden = NO;
+    //设置导航条上按钮的风格颜色
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    //设置是否需要毛玻璃效果
+    self.navigationController.navigationBar.translucent = YES;
+}
+
 -(void)signInWithEncryptPwd:(NSString *)encryptPwd
 {
     NSDictionary *parameter = @{@"memberId" : _userNameTextField.text, @"userPwd" : _passWordTextField.text,@"nickname": _nickNameTextField.text};
@@ -111,6 +144,8 @@
         [Utilities popUpAlertViewWithMsg:@"网络错误，请稍后再试" andTitle:@"提示" onView:self];
     }];
 }
+
+
 
 
 - (IBAction)registerAction:(UIButton *)sender forEvent:(UIEvent *)event {
