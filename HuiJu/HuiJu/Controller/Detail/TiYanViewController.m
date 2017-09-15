@@ -32,6 +32,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *rulesLbl;
 @property (weak, nonatomic) IBOutlet UIImageView *eLogoImage;
 @property (weak, nonatomic) IBOutlet UILabel *eFeatureLbl;
+@property (strong, nonatomic)NSArray *arr1;
 
 @end
 
@@ -157,6 +158,30 @@
     [self performSegueWithIdentifier:@"TiYanJuanToMap" sender:nil];
 }
 - (IBAction)callingAction:(UIButton *)sender forEvent:(UIEvent *)event {
+    //配置电话APP的路径，并将要拨打的号码组合到路径中
+    NSString *targetAppStr = [NSString stringWithFormat:@"tel:%@",detail3.clubTel];
+    NSString *string = detail3.clubTel;
+    NSLog(@"12%@",detail3.clubTel);
+    //按逗号截取字符串
+    _arr1 = [string componentsSeparatedByString:@","];
+    //创建一个从底部弹出的弹窗
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    //遍历判断数组中有几个值
+    for (int i = 0; i < _arr1.count; i++) {
+        UIAlertAction *action = [UIAlertAction actionWithTitle:_arr1[i] style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            
+        }];
+        [alert addAction:action];
+    }
+    UIAlertAction *actionA = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+    
+    [alert addAction:actionA];
+    [self presentViewController:alert animated:YES completion:nil];
+    UIWebView *callWebview =[[UIWebView alloc]init];
+    [callWebview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:targetAppStr]]];
+    [[UIApplication sharedApplication].keyWindow addSubview:callWebview];
+    
+
 }
 - (IBAction)payAction:(UIButton *)sender forEvent:(UIEvent *)event {
     [self performSegueWithIdentifier:@"TiYanJuanToPay" sender:nil];

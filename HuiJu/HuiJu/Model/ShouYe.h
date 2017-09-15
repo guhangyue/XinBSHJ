@@ -52,7 +52,7 @@
 @property(strong,nonatomic)NSString *clubName;//会所名字
 @property(strong,nonatomic)NSString *clubLogo2;//会所图片地址
 @property(strong,nonatomic)NSString *id2;
-
+@property(strong,nonatomic)NSString *clubTel;//俱乐部电话
 
 @property (nonatomic) NSInteger i;
 @property (strong,nonatomic) NSString *sellNumber;

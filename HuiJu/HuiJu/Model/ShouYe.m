@@ -68,6 +68,7 @@
         self.clubPerson= [Utilities nullAndNilCheck:dict[@"clubPerson"] replaceBy:@"未知"];
         self.clubIntroduce= [Utilities nullAndNilCheck:dict[@"clubIntroduce"] replaceBy:@"未知"];
         self.clubLogo= [Utilities nullAndNilCheck:dict[@"clubLogo"] replaceBy:@"未知"];
+        self.clubTel =[Utilities nullAndNilCheck:dict[@"clubTel"] replaceBy:@"未知"];
         
        // self.eName= [Utilities nullAndNilCheck:dict[@"eName"] replaceBy:@"未知"];
         if (![dict[@"experienceInfos"] isKindOfClass:[NSNull class]]) {
@@ -134,7 +135,7 @@
         self.rules= [Utilities nullAndNilCheck:dict[@"rules"] replaceBy:@"未知"];
         self.saleCount= [Utilities nullAndNilCheck:dict[@"saleCount"] replaceBy:@"未知"];
         self.useDate= [Utilities nullAndNilCheck:dict[@"useDate"] replaceBy:@"未知"];
-        
+        self.clubTel =[Utilities nullAndNilCheck:dict[@"clubTel"] replaceBy:@"未知"];
         
        
     }
