@@ -197,6 +197,14 @@
 //    _Toolbar.hidden = YES;
 //    _datePicker.hidden = YES;
 }
+-(BOOL)textFieldShouldBeginEditing:(UITextField *)xbtextfiled
+{
+    _Toolbar.hidden =NO;
+    _datePicker.hidden =NO;
+    return NO;
+}
+
+
 - (IBAction)xbAction:(UITextField *)sender forEvent:(UIEvent *)event {
     _Toolbar.hidden =NO;
     _datePicker.hidden =NO;

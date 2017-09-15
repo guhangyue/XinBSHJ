@@ -54,6 +54,8 @@
     
     UIBarButtonItem *rightBarItem = [[UIBarButtonItem alloc] initWithTitle:@"保存" style:UIBarButtonItemStylePlain target:self action:@selector(save)];
     self.navigationItem.rightBarButtonItem = rightBarItem;
+    UIBarButtonItem *left = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemStop target:self action:@selector(backAction)];
+    self.navigationItem.leftBarButtonItem = left;
     
 }
 //用Model的方式返回上一页
