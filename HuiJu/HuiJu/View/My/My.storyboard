@@ -263,7 +263,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="145" id="0ZQ-rP-jGZ">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HistoryCell" rowHeight="145" id="0ZQ-rP-jGZ" customClass="HistoryTableViewCell">
                                         <rect key="frame" x="0.0" y="28" width="375" height="145"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0ZQ-rP-jGZ" id="xZd-Im-1hC">
@@ -319,8 +319,19 @@
                                                 <constraint firstItem="0jU-jE-yca" firstAttribute="leading" secondItem="hXY-zA-pEZ" secondAttribute="leading" id="uIW-dd-oMA"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="dianMingLabel" destination="hXY-zA-pEZ" id="UCx-tW-T55"/>
+                                            <outlet property="dingdanLabel" destination="nw9-WD-ulE" id="mzH-rK-CAe"/>
+                                            <outlet property="imageView" destination="tt7-pJ-1bV" id="lZJ-rK-Ynb"/>
+                                            <outlet property="moneyLabel" destination="0jU-jE-yca" id="V9K-GX-liI"/>
+                                            <outlet property="tiYanLabel" destination="f6v-xH-oXV" id="oh7-2y-MVb"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="8Ey-DV-IOy" id="5GD-oX-bnb"/>
+                                    <outlet property="delegate" destination="8Ey-DV-IOy" id="bqF-k1-vxb"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -331,6 +342,9 @@
                             <constraint firstAttribute="bottom" secondItem="zl2-bM-DJU" secondAttribute="bottom" id="YRG-yx-3Xj"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="zl2-bM-DJU" id="eb2-kN-9f0"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eyt-7o-UIq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
