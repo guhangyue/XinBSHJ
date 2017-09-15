@@ -37,7 +37,7 @@
                     _gender=@"女";
                     break;
                 default:
-                    _gender=@"未知";
+                    _gender=@"未设置";
                     break;
             }
         }

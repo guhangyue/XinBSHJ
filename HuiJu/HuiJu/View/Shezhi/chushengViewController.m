@@ -7,8 +7,19 @@
 //
 
 #import "chushengViewController.h"
+#import "UserModel.h"
+#import "shezhiTableViewCell.h"
+#import "shezhiViewController.h"
 
 @interface chushengViewController ()
+@property (weak, nonatomic) IBOutlet UITextField *dobTextField;
+@property (weak, nonatomic) IBOutlet UIToolbar *toolbar;
+@property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
+- (IBAction)cancelAction:(UIBarButtonItem *)sender;
+- (IBAction)doneAction:(UIBarButtonItem *)sender;
+@property(strong,nonatomic)NSArray *pickerArr;
+@property (strong,nonatomic)UserModel *user;
+@property (strong,nonatomic) UIActivityIndicatorView *avi;
 
 @end
 
@@ -18,17 +29,16 @@
     [super viewDidLoad];
     [self naviConfig];
     // Do any additional setup after loading the view.
+    _user=[[StorageMgr singletonStorageMgr]objectForKey:@"MemberInfo"];
+    _dobTextField.text=_user.dob;
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-//当前页面将要显示的时候，显示导航栏
-- (void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
-    [self.navigationController setNavigationBarHidden:NO animated:animated];
-}
+
+
 // 这个方法专门做导航条的控制
 -(void)naviConfig{
     //设置导航条标题文字
@@ -43,9 +53,9 @@
     self.navigationController.navigationBar.tintColor=[UIColor whiteColor];
     //设置是否需要毛玻璃效果
     self.navigationController.navigationBar.translucent=YES;
-    //为导航条左上角创建一个按钮
-    UIBarButtonItem *left = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemStop target:self action:@selector(backAction)];
-    self.navigationItem.leftBarButtonItem = left;
+
+    UIBarButtonItem *rightBarItem = [[UIBarButtonItem alloc] initWithTitle:@"保存" style:UIBarButtonItemStylePlain target:self action:@selector(save)];
+    self.navigationItem.rightBarButtonItem = rightBarItem;
     
 }
 //用Model的方式返回上一页
@@ -53,6 +63,46 @@
     [self dismissViewControllerAnimated:YES completion:nil];
     //[self.navigationController popViewControllerAnimated:YES];
 }
+
+-(void)save{
+    NSString *sr=_dobTextField.text;
+    [[StorageMgr singletonStorageMgr]addKey:@"SR" andValue:sr];
+    
+    _avi=[Utilities getCoverOnView:self.view];
+    
+    //NSLog(@"%@",_user.nickname);
+    
+    NSDictionary *para = @{@"memberId":_user.memberId,@"birthday":sr};
+    [RequestAPI requestURL:@"/mySelfController/updateMyselfInfos" withParameters:para andHeader:nil byMethod:kPost andSerializer:kJson success:^(id responseObject) {
+        [_avi stopAnimating];
+        NSLog(@"responseObject:%@",responseObject);
+        if([responseObject[@"resultFlag"]integerValue] == 8001){
+            //  NSDictionary *result= responseObject[@"result"];
+            
+            NSNotification *note = [NSNotification notificationWithName:@"refresh" object:nil userInfo:nil];
+            
+            [[NSNotificationCenter defaultCenter] performSelectorOnMainThread:@selector(postNotification:) withObject:note waitUntilDone:YES];
+            
+            
+            
+            
+        }else{
+            NSString *errorMsg=[ErrorHandler getProperErrorString:[responseObject[@"resultFlag"]integerValue]];
+            [Utilities popUpAlertViewWithMsg:errorMsg andTitle:nil onView:self];
+            
+        }
+    } failure:^(NSInteger statusCode, NSError *error) {
+        [_avi stopAnimating];
+        //业务逻辑失败的情况下
+        [Utilities popUpAlertViewWithMsg:@"网络请求失败😂" andTitle:nil onView:self];
+    }];
+    
+    
+    
+    
+    
+}
+
 /*
 #pragma mark - Navigation
 
@@ -62,5 +112,28 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+- (IBAction)cancelAction:(UIBarButtonItem *)sender {
+    _toolbar.hidden = YES;
+    _datePicker.hidden = YES;
+
+}
+
+- (IBAction)doneAction:(UIBarButtonItem *)sender {
+    NSDate *date = _datePicker.date;
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    formatter.dateFormat = @"yyyy-MM-dd";
+    NSString *theDate = [formatter stringFromDate:date];
+    _dobTextField.text = theDate;
+    _toolbar.hidden = YES;
+    _datePicker.hidden = YES;
+}
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
+    //写你要实现的
+    _datePicker.hidden = NO;
+    _toolbar.hidden = NO;
+    return NO;
+}
 
 @end
