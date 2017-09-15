@@ -121,10 +121,11 @@
 }
 //设置表格视图中每一组有多少行
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    //
-    ShouYe *model = _detailA;
+   // NSInteger s=_suliang;
+    //ShouYe *model = _detailA;
     //当前正在渲染的细胞会所的体验券的数量加上一个会所的数量
-    return model.i ;
+    return detail.experienceInfos.count ;
+    //NSLog(@"ggggggg%ld",(long)s);
 }
 //每行高度
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{

@@ -11,4 +11,5 @@
 @interface DetailViewController : UIViewController
 @property (strong,nonatomic) ShouYe *detailA;
 @property (strong,nonatomic) ShouYe *detailB;
+@property(nonatomic)NSInteger suliang;
 @end

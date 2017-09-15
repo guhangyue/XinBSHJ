@@ -17,6 +17,7 @@
 @interface HomeViewController ()<UITableViewDataSource,UITableViewDelegate,CLLocationManagerDelegate>{
     NSInteger page;
     NSInteger totalPage;
+    NSInteger tiyan;
     BOOL flag;
     BOOL isLoading;
     BOOL firstVisit;
@@ -360,6 +361,8 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     ShouYe *model = _arr[indexPath.section];
     NSString *Id =  [NSString stringWithFormat:@"%ld",model.nameId2];
+     tiyan=model.i;
+    
     //NSLog(@"id是：%@",Id);
     [[StorageMgr singletonStorageMgr] addKey:@"clubId" andValue:Id];
     if (indexPath.row==0) {
@@ -369,6 +372,28 @@
         [self.navigationController pushViewController:controller animated:YES];
     }
     
+}
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if ([segue.identifier isEqualToString:@"ShouYe2Detail"]) {
+        //当从列表页到详情页的这个跳转要发生的时候
+        //获取要传递到下一页的数据
+        //NSIndexPath *indexPath=[_HomeTableView indexPathForSelectedRow];
+    
+        
+        
+        DetailViewController *detailVC= segue.destinationViewController;
+        detailVC.suliang=tiyan;
+        NSLog(@"123133131321%ld",(long)tiyan);
+        // NSLog(@"传的什么鬼%@",detailVC.detailC);
+        //        ShouYe *activity=_arr[indexPath.section];
+        //        ShouYe *activity2=_arr[indexPath.row];
+        //        // NSLog(@"%@",_arr[indexPath.row]);
+        //        //获取下一页的这个实例
+        //        DetailViewController *detailVC= segue.destinationViewController;
+        //        //把数据给下一页预备好的接收容器
+        //        detailVC.detailA=activity;
+        //        detailVC.detailB=activity2;
+    }
 }
 
 
