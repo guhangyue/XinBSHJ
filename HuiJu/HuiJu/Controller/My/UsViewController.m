@@ -9,6 +9,8 @@
 #import "UsViewController.h"
 
 @interface UsViewController ()
+@property (weak, nonatomic) IBOutlet UILabel *huiLabel;
+@property (weak, nonatomic) IBOutlet UILabel *juLabel;
 
 @end
 
@@ -17,6 +19,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+     [self setNavigationItem];
+    _huiLabel.font = [UIFont fontWithName:@"AmericanTypewriter" size:62];
+    _juLabel.font = [UIFont fontWithName:@"AmericanTypewriter" size:62];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -32,7 +37,17 @@
 //设置导航栏样式
 - (void)setNavigationItem{
     self.navigationController.navigationBar.backgroundColor = [UIColor whiteColor];
-    //[self.navigationController.navigationBar setBarTintColor:HEAD_THEMECOLOR];
+    self.navigationItem.title = @"关于我们";
+    self.navigationController.navigationBar.barTintColor = UIColorFromRGB(20, 124, 236);
+    //设置导航条标题颜色
+    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor whiteColor]};
+    //设置导航条是否被隐藏
+    self.navigationController.navigationBar.hidden = NO;
+    
+    //设置导航条上按钮的风格颜色
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    //设置是否需要毛玻璃效果
+    self.navigationController.navigationBar.translucent = YES;
     //实例化一个button 类型为UIButtonTypeSystem
     UIButton *leftBtn = [UIButton buttonWithType:UIButtonTypeSystem];
     //设置位置大小
@@ -44,6 +59,7 @@
     
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:leftBtn];
 }
+
 //自定的返回按钮的事件
 - (void)leftButtonAction: (UIButton *)sender{
     [self.navigationController popViewControllerAnimated:YES];
