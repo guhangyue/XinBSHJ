@@ -31,6 +31,7 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:NO animated:animated];
+    
 }
 // 这个方法专门做导航条的控制
 -(void)naviConfig{

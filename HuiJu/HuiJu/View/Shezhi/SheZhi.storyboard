@@ -442,6 +442,9 @@
                     </view>
                     <navigationItem key="navigationItem" title="修改身份证号" id="z6w-ij-kfl"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="numTextField" destination="eD4-JK-Jif" id="a4c-r0-4F3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RQv-4s-PcL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
