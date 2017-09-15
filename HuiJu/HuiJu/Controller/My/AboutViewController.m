@@ -8,6 +8,7 @@
 
 #import "AboutViewController.h"
 #import <CoreImage/CoreImage.h>
+#import "UserModel.h"
 @interface AboutViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *codeImage;
 @property (strong, nonatomic) UIActivityIndicatorView *avi;
@@ -18,6 +19,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [self setNavigationItem];
+    [self netRequest];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -32,8 +35,20 @@
 
 //设置导航栏样式
 - (void)setNavigationItem{
+    //设置标题文字
+    self.navigationItem.title = @"我的推广";
     self.navigationController.navigationBar.backgroundColor = [UIColor whiteColor];
     //[self.navigationController.navigationBar setBarTintColor:HEAD_THEMECOLOR];
+    //设置导航条的风格颜色
+    self.navigationController.navigationBar.barTintColor=UIColorFromRGB(20, 124, 236);
+    //设置导航条的标题颜色
+    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName: [UIColor whiteColor]};
+    //设置导航条是否隐藏
+    self.navigationController.navigationBar.hidden = NO;
+    //设置导航条上按钮的风格颜色
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    //设置是否需要毛玻璃效果
+    self.navigationController.navigationBar.translucent = YES;
     //实例化一个button 类型为UIButtonTypeSystem
     UIButton *leftBtn = [UIButton buttonWithType:UIButtonTypeSystem];
     //设置位置大小
@@ -49,24 +64,56 @@
 - (void)leftButtonAction: (UIButton *)sender{
     [self.navigationController popViewControllerAnimated:YES];
 }
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
-    // 1.创建过滤器 -- 苹果没有将这个字符封装成常量
-    CIFilter *filter = [CIFilter filterWithName:@"CIQRCodeGenerator"];
-    
-    // 2.过滤器恢复默认设置
-    [filter setDefaults];
-    
-    // 3.给过滤器添加数据(正则表达式/帐号和密码) -- 通过KVC设置过滤器,只能设置NSData类型
-    NSString *dataString = @"http://www.baidu.com";
-    NSData *data = [dataString dataUsingEncoding:NSUTF8StringEncoding];
-    [filter setValue:data forKeyPath:@"inputMessage"];
-    
-    // 4.获取输出的二维码
-    CIImage *outputImage = [filter outputImage];
-    
-    // 5.显示二维码
-    self.codeImage.image = [UIImage imageWithCIImage:outputImage];
+-(void)netRequest{
+    NSMutableDictionary *para = [NSMutableDictionary new];
+    [para setObject:[[StorageMgr singletonStorageMgr]objectForKey:@"MemberId"] forKey:@"memberId"];
+    //    NSString *ID = [[StorageMgr singletonStorageMgr]objectForKey:@"MemberId"];
+    //    NSDictionary *para = @{@"memberId":ID};
+    [RequestAPI requestURL:@"/mySelfController/getInvitationCode" withParameters:para andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
+        NSLog(@"responseObject = %@",responseObject);
+        if ([responseObject[@"resultFlag"]integerValue]==8001) {
+            //    NSDictionary *result = responseObject[@"result"];
+            //   _QR = result[@"result"];
+            _avi =  responseObject[@"result"];
+            
+            //创建一个二维码滤镜实例（CIFilter）
+            CIFilter *filter = [CIFilter filterWithName:@"CIQRCodeGenerator"];
+            //滤镜恢复默认设置
+            [filter setDefaults];
+            //给滤镜添加数据
+            NSString *string = [NSString stringWithFormat:@"http://dwz.cn/%@",_avi];
+            //将字符串转成二进制数据
+            NSData *data = [string dataUsingEncoding:NSUTF8StringEncoding];
+            //通过KVC设置滤镜inputMessage数据
+            [filter setValue:data forKeyPath:@"inputMessage"];
+            //4.获取生成的图片
+            CIImage *ciImg = filter.outputImage;
+            //5.设置二维码的前景色和背景颜色
+            CIFilter *colorFilter = [CIFilter filterWithName:@"CIFalseColor"];
+            //5.1设置默认值
+            [colorFilter setDefaults];
+            [colorFilter setValue:ciImg forKey:@"inputImage"];
+            [colorFilter setValue:[CIColor colorWithRed:255 green:255 blue:255] forKey:@"inputColor0"];
+            [colorFilter setValue:[CIColor colorWithRed:255 green:0 blue:255 alpha:0] forKey:@"inputColor1"];
+            //[colorFilter setValue:[UIColor whiteColor] forKey:@"inputColor1"];
+            // 6.获取滤镜输出的图像
+            //CIImage *outputImage = [filter outputImage];
+            ciImg = colorFilter.outputImage;
+            // 7.将CIImage转成UIImage
+            UIImage *image = [self createNonInterpolatedUIImageFormCIImage:ciImg withSize:200];
+            
+            //显示二维码
+            _codeImage.image = image;
+        }
+    } failure:^(NSInteger statusCode, NSError *error) {
+        //失败以后要做的事情
+        NSLog(@"statusCode = %ld",(long)statusCode);
+        
+        [Utilities popUpAlertViewWithMsg:@"网络错误,请稍等再试" andTitle:nil onView:self];
+        
+    }];
 }
+
 - (UIImage *)createNonInterpolatedUIImageFormCIImage:(CIImage *)image withSize:(CGFloat) size
 {
     CGRect extent = CGRectIntegral(image.extent);
@@ -100,7 +147,7 @@
     // Pass the selected object to the new view controller.
 }
 */
--(void)requst{
+/*-(void)requst{
     _avi = [Utilities getCoverOnView:self.view];
     
     [RequestAPI requestURL:@"/mySelfController/getInvitationCode" withParameters:@{@"memberId":@2} andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
@@ -120,6 +167,6 @@
     }];
     
     
-}
+}*/
 
 @end
