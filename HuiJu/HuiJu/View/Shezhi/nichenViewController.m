@@ -8,9 +8,13 @@
 
 #import "nichenViewController.h"
 #import "UserModel.h"
+#import "shezhiTableViewCell.h"
+#import "shezhiViewController.h"
 @interface nichenViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *ncshuru;
 - (IBAction)queding:(UIBarButtonItem *)sender;
+@property (strong,nonatomic)UserModel *user;
+@property (strong,nonatomic) UIActivityIndicatorView *avi;
 
 @end
 
@@ -20,6 +24,8 @@
     [super viewDidLoad];
     [self naviConfig];
     // Do any additional setup after loading the view.
+    _user=[[StorageMgr singletonStorageMgr]objectForKey:@"MemberInfo"];
+    _ncshuru.text=_user.nickname;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -47,9 +53,9 @@
     self.navigationController.navigationBar.tintColor=[UIColor whiteColor];
     //设置是否需要毛玻璃效果
     self.navigationController.navigationBar.translucent=YES;
-    //为导航条左上角创建一个按钮
-    UIBarButtonItem *left = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemStop target:self action:@selector(backAction)];
-    self.navigationItem.leftBarButtonItem = left;
+    
+    UIBarButtonItem *rightBarItem = [[UIBarButtonItem alloc] initWithTitle:@"保存" style:UIBarButtonItemStylePlain target:self action:@selector(save)];
+    self.navigationItem.rightBarButtonItem = rightBarItem;
     
 }
 //用Model的方式返回上一页
@@ -57,6 +63,43 @@
     [self dismissViewControllerAnimated:YES completion:nil];
     //[self.navigationController popViewControllerAnimated:YES];
 }
+
+-(void)save{
+    NSString * nc  = _ncshuru.text;
+    // [[StorageMgr singletonStorageMgr]addKey:@"NC" andValue:nc];
+    
+    _avi=[Utilities getCoverOnView:self.view];
+    
+    //NSLog(@"%@",_user.nickname);
+    
+    NSDictionary *para = @{@"memberId":_user.memberId,@"name":nc};
+    [RequestAPI requestURL:@"/mySelfController/updateMyselfInfos" withParameters:para andHeader:nil byMethod:kPost andSerializer:kJson success:^(id responseObject) {
+        [_avi stopAnimating];
+        NSLog(@"responseObject:%@",responseObject);
+        if([responseObject[@"resultFlag"]integerValue] == 8001){
+            
+            NSNotification *note = [NSNotification notificationWithName:@"refresh" object:nil userInfo:nil];
+            
+            [[NSNotificationCenter defaultCenter] performSelectorOnMainThread:@selector(postNotification:) withObject:note waitUntilDone:YES];
+            
+            
+            
+            
+        }else{
+            NSString *errorMsg=[ErrorHandler getProperErrorString:[responseObject[@"resultFlag"]integerValue]];
+            [Utilities popUpAlertViewWithMsg:errorMsg andTitle:nil onView:self];
+            
+        }
+    } failure:^(NSInteger statusCode, NSError *error) {
+        [_avi stopAnimating];
+        //业务逻辑失败的情况下
+        [Utilities popUpAlertViewWithMsg:@"网络请求失败,我笑你" andTitle:nil onView:self];
+    }];
+    
+    
+    
+}
+
 
 /*
 #pragma mark - Navigation
