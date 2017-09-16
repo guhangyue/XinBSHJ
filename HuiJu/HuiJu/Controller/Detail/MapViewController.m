@@ -24,6 +24,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setNavigationItem];
+    [self annotation];
     // Do any additional setup after loading the view.
     count = 0;
     //初始化位置管理器对象作为定位功能的基础
@@ -162,6 +163,7 @@
     region.span = span;
     region.center = location;
     //将打包好的视角结构作为参数运用到map view的设置视角的方法中去
+    [self annotation];
     [mapView setRegion:region animated:YES];
 }
 
@@ -217,6 +219,8 @@
         //初始化一个大头针对象
         Annotation *annotation = [[Annotation alloc] init];
         //将方法参数中的坐标设置为大头针的坐标属性
+        
+       
         annotation.coordinate = mapCoordinate;
         if (info) {
             //设置大头针的标题与副标题属性
@@ -226,6 +230,55 @@
         //将大头针插入地图视图
         [weakSelf.mapView addAnnotation:annotation];
     }];
+}
+-(void)annotation{
+   // __weak MapViewController *weakSelf = self;
+    //设置大头针的标题与副标题
+    __weak MapViewController *weakSelf = self;
+    CLLocationCoordinate2D cool;
+    NSString *jing =  [[StorageMgr singletonStorageMgr]objectForKey:@"clubJing"];
+    float jing2 = [jing floatValue];
+    NSString *wei=[[StorageMgr singletonStorageMgr]objectForKey:@"clubWei"];
+    float wei2 = [wei floatValue];
+    cool.longitude=jing2;
+    cool.latitude=wei2;
+    //设置大头针的标题与副标题
+    [self setAnnotationWithDescriptionOnCoordinate:cool completionHandler:^(NSDictionary *info) {
+        //初始化一个大头针对象
+        Annotation *annotation = [[Annotation alloc] init];
+        //将方法参数中的坐标设置为大头针的坐标属性
+        
+        
+        annotation.coordinate = cool;
+        if (info) {
+            //设置大头针的标题与副标题属性
+            annotation.title = info[@"City"];
+            annotation.subtitle = info[@"Name"];
+        }
+        //将大头针插入地图视图
+        [weakSelf.mapView addAnnotation:annotation];
+    }];
+
+    
+    //初始化一个大头针对象
+   // MKPointAnnotation *pointAnnotation = [[MKPointAnnotation alloc] init];
+   // Annotation *annotation = [[Annotation alloc] init];
+  //  CLLocationCoordinate2D cool;
+    //将方法参数中的坐标设置为大头针的坐标属性
+//    NSString *jing =  [[StorageMgr singletonStorageMgr]objectForKey:@"clubJing"];
+//    float jing2 = [jing floatValue];
+//    NSString *wei=[[StorageMgr singletonStorageMgr]objectForKey:@"clubWei"];
+//    float wei2 = [wei floatValue];
+//    cool.longitude=jing2;
+//    cool.latitude=wei2;
+//    pointAnnotation.coordinate=cool;
+//    
+//    NSLog(@"经度：%f",jing2);
+//    NSLog(@"纬度：%f",wei2);
+//    
+//    [_mapView addAnnotation:pointAnnotation];
+    
+    
 }
 
 //逆地理编码方法（这里是block的声明方式（创建block甲方的方式），看！看！看！！！）
