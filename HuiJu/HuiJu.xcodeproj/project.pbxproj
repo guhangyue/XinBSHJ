@@ -71,6 +71,7 @@
 		88F5BCEC1F626B4200766D4F /* Cities.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88F5BCEB1F626B4200766D4F /* Cities.storyboard */; };
 		88F5BCEF1F626B6200766D4F /* CitilesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88F5BCEE1F626B6200766D4F /* CitilesViewController.m */; };
 		88FF9C5C1F61161A0074F897 /* Cities.plist in Resources */ = {isa = PBXBuildFile; fileRef = 88FF9C5B1F61161A0074F897 /* Cities.plist */; };
+		B20E291C1F6CB410007E9DE3 /* HistoryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B20E291B1F6CB410007E9DE3 /* HistoryTableViewCell.m */; };
 		B23E9C1D1F613BDC00AE98AB /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B23E9C121F613BDC00AE98AB /* AboutViewController.m */; };
 		B23E9C1E1F613BDC00AE98AB /* CallUsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B23E9C141F613BDC00AE98AB /* CallUsViewController.m */; };
 		B23E9C1F1F613BDC00AE98AB /* HistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B23E9C161F613BDC00AE98AB /* HistoryViewController.m */; };
@@ -95,7 +96,6 @@
 		B2AC874C1F5E357A00CB8589 /* FindViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2AC874B1F5E357A00CB8589 /* FindViewController.m */; };
 		B2AC874F1F5E412400CB8589 /* FindModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B2AC874E1F5E412400CB8589 /* FindModel.m */; };
 		B2BDC4311F6BB94C00E5B52F /* OrderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B2BDC4301F6BB94C00E5B52F /* OrderModel.m */; };
-		B2BDC4341F6BBB1C00E5B52F /* HistoryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B2BDC4331F6BBB1C00E5B52F /* HistoryTableViewCell.m */; };
 		B2F4EC1A1F5E33EE00C651D0 /* shezhiTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B2F4EC191F5E33EE00C651D0 /* shezhiTableViewCell.m */; };
 		B2FE370F1F5D39A6007E6621 /* shezhiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2FE370E1F5D39A6007E6621 /* shezhiViewController.m */; };
 		B990D25BAC48C15119EEBA99 /* libPods-HuiJu.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C75145C4FBF4BD7AF8AF12F /* libPods-HuiJu.a */; };
@@ -240,6 +240,8 @@
 		88F5BCED1F626B6200766D4F /* CitilesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CitilesViewController.h; sourceTree = "<group>"; };
 		88F5BCEE1F626B6200766D4F /* CitilesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CitilesViewController.m; sourceTree = "<group>"; };
 		88FF9C5B1F61161A0074F897 /* Cities.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Cities.plist; sourceTree = "<group>"; };
+		B20E291A1F6CB410007E9DE3 /* HistoryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryTableViewCell.h; sourceTree = "<group>"; };
+		B20E291B1F6CB410007E9DE3 /* HistoryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryTableViewCell.m; sourceTree = "<group>"; };
 		B23E9C111F613BDC00AE98AB /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
 		B23E9C121F613BDC00AE98AB /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; wrapsLines = 0; };
 		B23E9C131F613BDC00AE98AB /* CallUsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CallUsViewController.h; sourceTree = "<group>"; };
@@ -286,8 +288,6 @@
 		B2AC874E1F5E412400CB8589 /* FindModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FindModel.m; sourceTree = "<group>"; };
 		B2BDC42F1F6BB94C00E5B52F /* OrderModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderModel.h; sourceTree = "<group>"; };
 		B2BDC4301F6BB94C00E5B52F /* OrderModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderModel.m; sourceTree = "<group>"; };
-		B2BDC4321F6BBB1C00E5B52F /* HistoryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryTableViewCell.h; sourceTree = "<group>"; };
-		B2BDC4331F6BBB1C00E5B52F /* HistoryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryTableViewCell.m; sourceTree = "<group>"; };
 		B2F4EC181F5E33EE00C651D0 /* shezhiTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = shezhiTableViewCell.h; sourceTree = "<group>"; };
 		B2F4EC191F5E33EE00C651D0 /* shezhiTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = shezhiTableViewCell.m; sourceTree = "<group>"; };
 		B2FE370D1F5D39A6007E6621 /* shezhiViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = shezhiViewController.h; sourceTree = "<group>"; };
@@ -672,8 +672,8 @@
 				B23E9C1C1F613BDC00AE98AB /* UsViewController.m */,
 				8821198A1F5946DD003258C6 /* MyViewController.h */,
 				8821198B1F5946DD003258C6 /* MyViewController.m */,
-				B2BDC4321F6BBB1C00E5B52F /* HistoryTableViewCell.h */,
-				B2BDC4331F6BBB1C00E5B52F /* HistoryTableViewCell.m */,
+				B20E291A1F6CB410007E9DE3 /* HistoryTableViewCell.h */,
+				B20E291B1F6CB410007E9DE3 /* HistoryTableViewCell.m */,
 			);
 			path = My;
 			sourceTree = "<group>";
@@ -959,7 +959,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8862D0921F5A99AB00D828E6 /* SignInViewController.m in Sources */,
-				B2BDC4341F6BBB1C00E5B52F /* HistoryTableViewCell.m in Sources */,
+				B20E291C1F6CB410007E9DE3 /* HistoryTableViewCell.m in Sources */,
 				B246BEA31F60D447009DA8AA /* TiYanJuanTableViewCell.m in Sources */,
 				882119631F593BBF003258C6 /* qrspec.m in Sources */,
 				882119481F593B6F003258C6 /* ErrorHandler.m in Sources */,
