@@ -20,8 +20,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
      [self setNavigationItem];
-    _huiLabel.font = [UIFont fontWithName:@"AmericanTypewriter" size:62];
-    _juLabel.font = [UIFont fontWithName:@"AmericanTypewriter" size:62];
+    //_huiLabel.font = [UIFont fontWithName:@"AmericanTypewriter" size:62];
+    //_juLabel.font = [UIFont fontWithName:@"AmericanTypewriter" size:62];
 }
 
 - (void)didReceiveMemoryWarning {
