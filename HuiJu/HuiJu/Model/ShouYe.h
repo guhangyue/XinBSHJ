@@ -53,6 +53,12 @@
 @property(strong,nonatomic)NSString *clubLogo2;//会所图片地址
 @property(strong,nonatomic)NSString *id2;
 @property(strong,nonatomic)NSString *clubTel;//俱乐部电话
+@property(strong,nonatomic)NSString *clubJing;
+@property(strong,nonatomic)NSString *clubWei;
+@property(strong,nonatomic)NSString *longitude;
+@property(strong,nonatomic)NSString *latitude;
+
+
 
 @property (nonatomic) NSInteger i;
 @property (strong,nonatomic) NSString *sellNumber;

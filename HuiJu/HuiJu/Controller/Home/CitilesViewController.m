@@ -45,6 +45,7 @@
         if ([[StorageMgr singletonStorageMgr]objectForKey:@"LocCity"]!=nil) {
             //已经获得了定位，将定位到的城市显示在按钮上；
             [_cityBtn setTitle:[[StorageMgr singletonStorageMgr]objectForKey:@"LocCity"] forState:UIControlStateNormal];
+            //_cityBtn.titleLabel.text=[NSString stringWithFormat:@"%@您现在所在的城市:",_cityBtn];
             _cityBtn.enabled=YES;
             
             return;
@@ -69,10 +70,10 @@
     [_locMgr startUpdatingLocation];
 }
 //用Model的方式返回上一页
-- (void)backAction {
+/*- (void)backAction {
     [self dismissViewControllerAnimated:YES completion:nil];
     //[self.navigationController popViewControllerAnimated:YES];
-}
+}*/
 -(void)dataInitialize{
     firstVisit = YES;
     //创建文件管理器

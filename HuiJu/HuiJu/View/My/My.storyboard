@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="2NY-8H-Ody">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="2NY-8H-Ody">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -178,7 +178,7 @@
         <!--关于我们-->
         <scene sceneID="MyD-JE-e8w">
             <objects>
-                <viewController title="关于我们" id="q8n-Xi-Yjh" customClass="UsViewController" sceneMemberID="viewController">
+                <viewController title="关于我们" hidesBottomBarWhenPushed="YES" id="q8n-Xi-Yjh" customClass="UsViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="va4-ME-9dT"/>
                         <viewControllerLayoutGuide type="bottom" id="cVU-Se-oRf"/>
@@ -234,7 +234,7 @@
         <!--积分中心-->
         <scene sceneID="CkX-7E-GEB">
             <objects>
-                <viewController title="积分中心" id="bHK-8l-7rc" customClass="CallUsViewController" sceneMemberID="viewController">
+                <viewController title="积分中心" hidesBottomBarWhenPushed="YES" id="bHK-8l-7rc" customClass="CallUsViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="aNo-o4-s6H"/>
                         <viewControllerLayoutGuide type="bottom" id="Bkm-yt-eu3"/>
@@ -252,7 +252,7 @@
         <!--我的订单-->
         <scene sceneID="4TM-gc-8YY">
             <objects>
-                <viewController title="我的订单" id="8Ey-DV-IOy" customClass="HistoryViewController" sceneMemberID="viewController">
+                <viewController title="我的订单" hidesBottomBarWhenPushed="YES" id="8Ey-DV-IOy" customClass="HistoryViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="S3Z-wL-Jzf"/>
                         <viewControllerLayoutGuide type="bottom" id="Hgt-n8-JYp"/>
@@ -355,7 +355,7 @@
         <!--意见反馈-->
         <scene sceneID="aeZ-qh-gf9">
             <objects>
-                <viewController title="意见反馈" id="dnH-HW-8bR" customClass="SafetyViewController" sceneMemberID="viewController">
+                <viewController title="意见反馈" hidesBottomBarWhenPushed="YES" id="dnH-HW-8bR" customClass="SafetyViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="BGm-Re-r54"/>
                         <viewControllerLayoutGuide type="bottom" id="bTT-NO-Bim"/>
@@ -400,7 +400,7 @@
         <!--我的推广-->
         <scene sceneID="0TP-7B-0xY">
             <objects>
-                <viewController title="我的推广" id="22q-5q-Nch" customClass="AboutViewController" sceneMemberID="viewController">
+                <viewController title="我的推广" hidesBottomBarWhenPushed="YES" id="22q-5q-Nch" customClass="AboutViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="mQS-uv-3zW"/>
                         <viewControllerLayoutGuide type="bottom" id="m8e-b8-NFL"/>

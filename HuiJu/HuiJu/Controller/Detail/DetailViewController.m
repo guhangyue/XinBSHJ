@@ -222,6 +222,10 @@
 */
 
 - (IBAction)addressAction:(UIButton *)sender forEvent:(UIEvent *)event {
+    NSString *jing=detail.clubJing;
+    [[StorageMgr singletonStorageMgr] addKey:@"clubJing" andValue:jing];
+    NSString *wei=detail.clubWei;
+    [[StorageMgr singletonStorageMgr] addKey:@"clubWei" andValue:wei];
     [self performSegueWithIdentifier:@"detailToMap" sender:nil];
 }
 - (IBAction)callingAction:(UIButton *)sender forEvent:(UIEvent *)event {

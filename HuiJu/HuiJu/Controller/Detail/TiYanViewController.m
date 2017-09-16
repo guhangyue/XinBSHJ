@@ -155,6 +155,10 @@
 }
 
 - (IBAction)clubAddressbAction:(UIButton *)sender forEvent:(UIEvent *)event {
+    NSString *jing=detail3.longitude;
+    [[StorageMgr singletonStorageMgr] addKey:@"clubJing" andValue:jing];
+    NSString *wei=detail3.latitude;
+    [[StorageMgr singletonStorageMgr] addKey:@"clubWei" andValue:wei];
     [self performSegueWithIdentifier:@"TiYanJuanToMap" sender:nil];
 }
 - (IBAction)callingAction:(UIButton *)sender forEvent:(UIEvent *)event {
