@@ -157,8 +157,12 @@
     //初始化CLLocationCoordinate2D这个坐标对象
     CLLocationCoordinate2D location;
     //设置具体经纬度作为视角中心点
-    location.longitude = userLocation.coordinate.longitude;
-    location.latitude = userLocation.coordinate.latitude;
+    NSString *jing =  [[StorageMgr singletonStorageMgr]objectForKey:@"clubJing"];
+    float jing2 = [jing floatValue];
+    NSString *wei=[[StorageMgr singletonStorageMgr]objectForKey:@"clubWei"];
+    float wei2 = [wei floatValue];
+    location.longitude = jing2;
+    location.latitude = wei2;
     //将设置好点缩放值和中心点打包放入region结构中
     region.span = span;
     region.center = location;
