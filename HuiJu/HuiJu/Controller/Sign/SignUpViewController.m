@@ -74,6 +74,7 @@
          //NSLog(@"responseObject":%@,responseObject);
          if ([responseObject[@"resultFlag"]integerValue]==8001)
          {
+             [_aiv stopAnimating];
              NSDictionary *result=responseObject[@"result"];
              NSString *modulus = result[@"modulus"];
              NSString *exponent = result[@"exponent"];
@@ -85,16 +86,17 @@
              NSString *rsaStr=[NSString encryptWithPublicKeyFromModulusAndExponent:md5Str.UTF8String modulus:modulus exponent:exponent];
              [self signInWithEncryptPwd:rsaStr];
          }else{
-             [_aiv stopAnimating];
+             //[_aiv stopAnimating];
              NSString *errorMsg=[ErrorHandler getProperErrorString:[responseObject[@"resultFlag"] integerValue]];
              [Utilities popUpAlertViewWithMsg:errorMsg andTitle:nil onView:self];
          }
      }failure:^(NSInteger statusCode, NSError *error) {
-         [_aiv stopAnimating];
+        // [_aiv stopAnimating];
          //业务逻辑失败的情况下
          [Utilities popUpAlertViewWithMsg:@"网络错误，请稍后再试" andTitle:@"提示" onView:self];
      }];
-    
+    [_aiv stopAnimating];
+
 }
 
 - (void)naviConfig {
@@ -150,13 +152,48 @@
 
 - (IBAction)registerAction:(UIButton *)sender forEvent:(UIEvent *)event {
     NSLog(@"111");
+     [_aiv stopAnimating];
+    if(_userNameTextField.text.length == 0){
+        [Utilities popUpAlertViewWithMsg:@"请输入您的手机号" andTitle:nil onView:self];
+        return;
+    }
+    if(_passWordTextField.text.length == 0){
+        [Utilities popUpAlertViewWithMsg:@"请输入您的密码" andTitle:nil onView:self];
+        return;
+    }
+    if(_passWordTextField.text.length < 6 || _passWordTextField.text.length > 18){
+        [Utilities popUpAlertViewWithMsg:@"您的密码必须在6~18之间" andTitle:nil onView:self];
+        return;
+    }
+
     if (_confirmPwdTextField.text == _passWordTextField.text ) {
         [self readyForEncoding];
     }
     else {
         [Utilities popUpAlertViewWithMsg:@"两次输入密码不一致" andTitle:@"提示" onView:self];
     }
+    //判断某个字符串中是否每个字符都是数字(invertedSet:反向设置，Digits：数字)
+    NSCharacterSet *notDigits = [[NSCharacterSet decimalDigitCharacterSet]invertedSet];
+    if(_userNameTextField.text.length < 11 || [_userNameTextField.text rangeOfCharacterFromSet:notDigits].location != NSNotFound){
+        [Utilities popUpAlertViewWithMsg:@"请输入有效的手机号码" andTitle:nil onView:self];
+        return;
+    }
+    //无输入异常的情况下，开始正式执行登录接口
+    [self readyForEncoding];
 
+
+}
+
+#pragma mark - 收起键盘
+//按键盘上的Return键收起键盘
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+    [textField resignFirstResponder];
+    return YES;
+}
+//按键盘以外的任意部位收起键盘
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    //让根视图结束编辑状态达到收起键盘的目的
+    [self.view endEditing:YES];
 }
 
 - (IBAction)registrationBtn:(UIButton *)sender forEvent:(UIEvent *)event {
