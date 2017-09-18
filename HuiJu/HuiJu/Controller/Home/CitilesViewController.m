@@ -166,6 +166,7 @@
     [noteCenter performSelectorOnMainThread:@selector(postNotification:) withObject:note waitUntilDone:YES];
     //回到上一页
     [self dismissViewControllerAnimated:YES completion:nil];
+    //[self.navigationController popViewControllerAnimated:YES];
 }
 //定位失败时
 - (void)locationManager:(CLLocationManager *)manager
