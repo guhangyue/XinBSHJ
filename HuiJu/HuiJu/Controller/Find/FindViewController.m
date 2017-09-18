@@ -257,15 +257,10 @@
 //细胞将要出现时调用
 - (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(nonnull UICollectionViewCell *)cell forItemAtIndexPath:(nonnull NSIndexPath *)indexPath{
     if(indexPath.row == _ClubArr.count -1){
-        if(totalPage!=0){
+        if(PageNum2 != totalPage){
             PageNum2 ++;
             if(flag2 == 1){
-                if (_distance !=NULL) {
-                    [self qianmiTypeRequest];
-                }else{
-                    [self ClubRequest];
-                }
-                
+                [self qianmiTypeRequest];
                 return;
             }
             if(flag2 == 2){
@@ -278,7 +273,8 @@
             }
             else{
                 [self ClubRequest];
-                NSLog(@"不是最后一页");
+                //NSLog(@"不是最后一页");
+                return;
             }
 
     }
@@ -296,7 +292,7 @@
     _avi = [Utilities getCoverOnView:self.view];
     NSDictionary *para =  @{@"city":@"无锡"};
     [RequestAPI requestURL:@"/clubController/getNearInfos" withParameters:para andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
-        NSLog(@"responseObject:%@", responseObject);
+        //NSLog(@"responseObject:%@", responseObject);
         [_avi stopAnimating];
         if([responseObject[@"resultFlag"] integerValue] == 8001){
             NSDictionary *features = responseObject[@"result"][@"features"];
@@ -333,7 +329,7 @@
     _avi = [Utilities getCoverOnView:self.view];
     NSDictionary *para =  @{@"city":@"无锡",@"jing":@"120.300000",@"wei":@"31.570000",@"page":@(PageNum2),@"perPage":@(pageSize2),@"Type":@0};
     [RequestAPI requestURL:@"/clubController/nearSearchClub" withParameters:para andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
-        NSLog(@"responseObject:%@", responseObject);
+        //NSLog(@"responseObject:%@", responseObject);
         [_avi stopAnimating];
         UIRefreshControl *ref = (UIRefreshControl *)[_collectionView viewWithTag:10001];
         [ref endRefreshing];
@@ -373,7 +369,7 @@
     _avi = [Utilities getCoverOnView:self.view];
     NSDictionary *para =  @{@"city":@"无锡",@"jing":@"120.300000",@"wei":@"31.570000",@"page":@(PageNum2),@"perPage":@(pageSize2),@"Type":@0,@"distance":_distance};
     [RequestAPI requestURL:@"/clubController/nearSearchClub" withParameters:para andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
-        NSLog(@"responseObject:%@", responseObject);
+        //NSLog(@"responseObject:%@", responseObject);
         [_avi stopAnimating];
         UIRefreshControl *ref = (UIRefreshControl *)[_collectionView viewWithTag:10001];
         [ref endRefreshing];
