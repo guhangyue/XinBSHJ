@@ -10,6 +10,7 @@
 #import "shezhiTableViewCell.h"
 #import "UserModel.h"
 #import <SDWebImage/UIImageView+WebCache.h>
+#import "SignInViewController.h"
 @interface shezhiViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *touxiang;
 @property (weak, nonatomic) IBOutlet UIButton *xiugaiTX;
@@ -29,9 +30,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self naviConfig];
-    
+     
     // Do any additional setup after loading the view.
-    //_shezhiArr= @[@{@"biaoti":@"昵称",@"neirong":@"name"},@{@"biaoti":@"昵称",@"neirong":@"name"},@{@"biaoti":@"昵称",@"neirong":@"name"},@{@"biaoti":@"昵称",@"neirong":@"name"}];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(shuaxin) name:@"refresh" object:nil];
+    [self dengluzhihou];
+    
+}
+-(void)dengluzhihou
+{
     if ([Utilities loginCheck]) {
         //已登录
         
@@ -43,11 +50,12 @@
         
     }
 }
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
 
 //当前页面将要显示的时候，显示导航栏
 - (void)viewWillAppear:(BOOL)animated{
@@ -55,7 +63,9 @@
     [self.navigationController setNavigationBarHidden:NO animated:animated];
     
 }
-
+//-(void)refresh{
+//    
+//}
 #pragma mark - table view
 
 //有多少组
@@ -75,13 +85,6 @@
     cell.neirong.text = dict[@"neirong"];
     return cell;
 }
-//设置组的底部视图高度
-//- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
-//    if (section == 0) {
-//        return 5.f;
-//    }
-//    return 1.f;
-//}
 
 /*
 #pragma mark - Navigation
@@ -92,6 +95,10 @@
     // Pass the selected object to the new view controller.
 }
 */
+-(void)shuaxin
+{
+    [self request];
+}
 -(void)naviConfig{
     
     //设置导航条的颜色（风格颜色）
@@ -139,33 +146,73 @@
             break;
     }
 }
-//-(void)networkRequest{
-//    _juhua=[Utilities getCoverOnView:self.view];
-//    
-//    NSLog(@"%@",_user.nickname);
-//    NSDictionary *para = @{@"memberId":_user.memberId,@"name":_user.nickname,@"birthday":_user.dob,@"gender":_user.gender,@"identificationcard":_user.idCardNo};
-//    [RequestAPI requestURL:@"/mySelfController/updateMyselfInfos" withParameters:para andHeader:nil byMethod:kPost andSerializer:kForm success:^(id responseObject) {
-//        [_juhua stopAnimating];
-//        NSLog(@"responseObject:%@",responseObject);
-//        if([responseObject[@"resultFlag"]integerValue] == 8001){
-//            //         NSDictionary *result= responseObject[@"result"];
-//            
-//            
-//            
-//            
-//            
-//        }else{
-//            NSString *errorMsg=[ErrorHandler getProperErrorString:[responseObject[@"resultFlag"]integerValue]];
-//            [Utilities popUpAlertViewWithMsg:errorMsg andTitle:nil onView:self];
-//            
-//        }
-//    } failure:^(NSInteger statusCode, NSError *error) {
-//        [_juhua stopAnimating];
-//        //业务逻辑失败的情况下
-//        [Utilities popUpAlertViewWithMsg:@"网络请求失败" andTitle:nil onView:self];
-//    }];
-//    
-//}
+
+
+
+
+- (void)request{
+    NSString *str = [Utilities uniqueVendor];
+    //_juhua = [Utilities getCoverOnView:self.view];
+    NSDictionary *prarmeter = @{@"deviceType" : @7001, @"deviceId" : str};
+    //开始请求
+    [RequestAPI requestURL:@"/login/getKey" withParameters:prarmeter andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
+        //成功以后要做的事情
+        //NSLog(@"responseObject = %@",responseObject);
+        if ([responseObject[@"resultFlag"] integerValue] == 8001) {
+            //[_juhua stopAnimating];
+            NSDictionary *result = responseObject[@"result"];
+            NSString *exponent = result[@"exponent"];
+            NSString *modulus = result[@"modulus"];
+            NSString *string = [[StorageMgr singletonStorageMgr]objectForKey:@"pwd"];
+            //对内容进行MD5加密
+            NSString *md5Str = [string getMD5_32BitString];
+            //用模数与指数对MD5加密过后的密码进行加密
+            NSString *rsaStr = [NSString encryptWithPublicKeyFromModulusAndExponent:md5Str.UTF8String modulus:modulus exponent:exponent];
+            //加密完成执行接口
+            [self signInWithEncryptPwd:rsaStr];
+        }else{
+            //[_juhua stopAnimating];
+            NSString *errorMsg = [ErrorHandler getProperErrorString:[responseObject[@"resultFlag"] integerValue]];
+            [Utilities popUpAlertViewWithMsg:errorMsg andTitle:nil onView:self];
+        }
+    } failure:^(NSInteger statusCode, NSError *error) {
+        //[_juhua stopAnimating];
+        //失败以后要做的事情
+        [Utilities popUpAlertViewWithMsg:@"请保持网络连接畅通" andTitle:nil onView:self];
+    }];
+}
+
+
+
+-(void)signInWithEncryptPwd:(NSString *)encryptPwd
+{
+    NSString *userName = [[StorageMgr singletonStorageMgr]objectForKey:@"userName"];
+    [RequestAPI requestURL:@"/login" withParameters:@{@"userName":userName, @"password":encryptPwd,@"deviceType":@7001,@"deviceId":[Utilities uniqueVendor]} andHeader:nil byMethod:kPost andSerializer:kJson success:^(id responseObject){
+        //[_aiv stopAnimating];
+        NSLog(@"responseObject=%@",responseObject);
+        if ([responseObject[@"resultFlag"]integerValue]==8001) {
+            NSDictionary *result=responseObject[@"result"];
+            UserModel*user=[[UserModel alloc]initWithDictionary:result];
+            //将用户获取到的信息打包存储到单例化全局变量
+            [[StorageMgr singletonStorageMgr]addKey:@"MemberInfo" andValue:user];
+            [[StorageMgr singletonStorageMgr]addKey:@"MemberId" andValue:user.memberId];
+            //让根视图结束编辑状态达到收起键盘的目的
+            [self.view endEditing:YES];
+            //记忆用户名
+            [Utilities setUserDefaults:@"Username" content:userName];
+            [self dengluzhihou];
+            [_shezhiTableview reloadData];
+            
+        }else{
+            NSString *errorMsg=[ErrorHandler getProperErrorString:[responseObject[@"resultFlag"] integerValue]];
+            [Utilities popUpAlertViewWithMsg:errorMsg andTitle:nil onView:self];
+        }
+    } failure:^(NSInteger statusCode, NSError *error) {
+        //[_aiv stopAnimating];
+        //业务逻辑失败的情况下
+        [Utilities popUpAlertViewWithMsg:@"网络错误，请稍后再试" andTitle:@"提示" onView:self];
+    }];
+}
 
 - (IBAction)xiugaiAction:(UIButton *)sender forEvent:(UIEvent *)event {
 }
@@ -181,6 +228,9 @@
 }
 -(void)exit{
     [self dismissViewControllerAnimated:YES completion:nil];
+    [[StorageMgr singletonStorageMgr]removeObjectForKey:@"MemberId"];
+    NSNotification *note = [NSNotification notificationWithName:@"LeftSwitch" object:nil userInfo:nil];
+    [[NSNotificationCenter defaultCenter] performSelectorOnMainThread:@selector(postNotification:) withObject:note waitUntilDone:YES];
 }
 
 

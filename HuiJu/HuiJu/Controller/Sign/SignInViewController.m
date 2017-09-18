@@ -17,6 +17,7 @@
 
 
 @property(strong,nonatomic) UIActivityIndicatorView *aiv;
+//@property(strong,nonatomic) UIActivityIndicatorView *aiv1;
 @end
 
 @implementation SignInViewController
@@ -34,6 +35,19 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+//输入框内容改变的监听事件
+- (void)textChange: (UITextField *)textField{
+    //当文本框中的内容改变时判断内容长度是否为0，是：禁用按钮   否：启用按钮
+    if (_userNametextword.text.length != 0 && _passWordtextword.text.length != 0) {
+        _signinBtn.enabled = YES;
+        _signinBtn.backgroundColor = UIColorFromRGB(99, 163, 210);
+    }else{
+        _signinBtn.enabled = NO;
+        _signinBtn.backgroundColor = UIColorFromRGB(200, 200, 200);
+    }
+}
+
 - (void)naviConfig {
     //设置导航条标题文字
     self.navigationItem.title = @"登录";
@@ -95,10 +109,7 @@
         [Utilities popUpAlertViewWithMsg:@"您输入的密码必须在6到18位之间" andTitle:nil onView:self];
         return;
     }
-    //    if (_userNametextword.text.length<11) {
-    //        [Utilities popUpAlertViewWithMsg:@"请输入有效的手机号码" andTitle:nil onView:self];
-    //        return;
-    //    }
+    
     //判断某个字符串中是否都是数字
     NSCharacterSet *notDigits=[[NSCharacterSet decimalDigitCharacterSet]invertedSet];
     if ([_userNametextword.text rangeOfCharacterFromSet:notDigits].location!=NSNotFound||_userNametextword.text.length<11)
@@ -148,9 +159,12 @@
      }];
     
 }
+
+
+
 -(void)signInWithEncryptPwd:(NSString *)encryptPwd
 {
-    [RequestAPI requestURL:@"/login" withParameters:@{@"userName":_userNametextword.text, @"password":encryptPwd,@"deviceType":@7001,@"deviceId":[Utilities uniqueVendor]} andHeader:nil byMethod:kPost andSerializer:kJson success:^(id responseObject) {
+    [RequestAPI requestURL:@"/login" withParameters:@{@"userName":_userNametextword.text,@"password":encryptPwd,@"deviceType":@7001,@"deviceId":[Utilities uniqueVendor]} andHeader:nil byMethod:kPost andSerializer:kJson success:^(id responseObject) {
         [_aiv stopAnimating];
         NSLog(@"responseObject=%@",responseObject);
         if ([responseObject[@"resultFlag"]integerValue]==8001) {
@@ -160,6 +174,9 @@
             [[StorageMgr singletonStorageMgr]addKey:@"MemberInfo" andValue:user];
             //单独将用户的ID也存储进去单例化全局变量中来作为用户是否已经登录的判断依据，同时也方便其他所有的页面更快捷的使用用户ID这个参数
             [[StorageMgr singletonStorageMgr]addKey:@"MemberId" andValue:user.memberId];
+            [[StorageMgr singletonStorageMgr]addKey:@"userName" andValue:_userNametextword.text];
+//            [[StorageMgr singletonStorageMgr]addKey:@"password" andValue:encryptPwd];
+//            [[StorageMgr singletonStorageMgr]addKey:@"deviceId" andValue:[Utilities uniqueVendor]];
             //如果键盘还开着 就让他收回去
             [self.view endEditing:YES];
             //清空密码输入框的内容
@@ -184,6 +201,7 @@
 //按键盘上的return键使键盘收回
 -(BOOL)textFieldShouldReturn:(UITextField*)textField
 {
+    [textField resignFirstResponder];
     return YES;
 }
 

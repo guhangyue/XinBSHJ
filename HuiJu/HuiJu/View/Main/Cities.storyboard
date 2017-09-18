@@ -35,8 +35,8 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vyJ-1F-FCC">
-                                            <rect key="frame" x="251.5" y="7" width="31" height="30"/>
-                                            <state key="normal" title="无锡">
+                                            <rect key="frame" x="205.5" y="7" width="77" height="30"/>
+                                            <state key="normal" title="正在定位中">
                                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                             <connections>
@@ -54,7 +54,7 @@
                                 </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CityCell" textLabel="yMi-YV-ts5" style="IBUITableViewCellStyleDefault" id="IST-Of-cWu">
-                                        <rect key="frame" x="0.0" y="72" width="312" height="44"/>
+                                        <rect key="frame" x="0.0" y="72" width="313" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="IST-Of-cWu" id="sWh-yb-nqz">
                                             <rect key="frame" x="0.0" y="0.0" width="312.5" height="43.5"/>
