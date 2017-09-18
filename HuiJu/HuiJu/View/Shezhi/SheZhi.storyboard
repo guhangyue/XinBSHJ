@@ -164,9 +164,7 @@
                         <outlet property="touxiang" destination="HYr-Ka-uJ0" id="LLx-Zf-YEv"/>
                         <outlet property="tuichu" destination="JDr-1S-MSe" id="nQd-Jv-4k4"/>
                         <outlet property="xiugaiTX" destination="XSH-1p-Aqe" id="XSM-q3-TWk"/>
-                        <segue destination="pvT-Yr-Iez" kind="show" identifier="shezhitonichen" id="f9a-Wo-vXr">
-                            <nil key="action"/>
-                        </segue>
+                        <segue destination="pvT-Yr-Iez" kind="show" identifier="shezhitonichen" id="f9a-Wo-vXr"/>
                         <segue destination="WsJ-EC-Twq" kind="show" identifier="shezhitoxingbie" id="soP-M1-cj8">
                             <nil key="action"/>
                         </segue>
@@ -229,11 +227,12 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="ncshuru" destination="ZvZ-ct-8Ad" id="HdL-Qx-z1U"/>
+                        <outlet property="quedingBtn" destination="kJA-Y6-44w" id="ddj-Yj-4f2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hGN-Xg-z1J" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-207" y="1529"/>
+            <point key="canvasLocation" x="-207" y="1613"/>
         </scene>
         <!--修改性别-->
         <scene sceneID="1PY-0e-pPl">
@@ -473,6 +472,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="pvT-Yr-Iez" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="80Q-tB-ajk"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="eqX-X8-cTf">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>

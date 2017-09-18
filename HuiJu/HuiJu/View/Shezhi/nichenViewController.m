@@ -8,11 +8,13 @@
 
 #import "nichenViewController.h"
 #import "UserModel.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 #import "shezhiTableViewCell.h"
 #import "shezhiViewController.h"
 @interface nichenViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *ncshuru;
 - (IBAction)queding:(UIBarButtonItem *)sender;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *quedingBtn;
 @property (strong,nonatomic)UserModel *user;
 @property (strong,nonatomic) UIActivityIndicatorView *avi;
 
@@ -54,16 +56,19 @@
     //设置是否需要毛玻璃效果
     self.navigationController.navigationBar.translucent=YES;
     
-    UIBarButtonItem *rightBarItem = [[UIBarButtonItem alloc] initWithTitle:@"保存" style:UIBarButtonItemStylePlain target:self action:@selector(save)];
-    self.navigationItem.rightBarButtonItem = rightBarItem;
+//UIBarButtonItem *rightBarItem = [[UIBarButtonItem alloc] initWithTitle:@"保存" style:UIBarButtonItemStylePlain target:self action:@selector(save)];
+//self.navigationItem.rightBarButtonItem = rightBarItem;
     UIBarButtonItem *left = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemStop target:self action:@selector(backAction)];
     self.navigationItem.leftBarButtonItem = left;
     
 }
 //用Model的方式返回上一页
 - (void)backAction {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    //[_avi stopAnimating];
+    //[self dismissViewControllerAnimated:YES completion:nil];
     //[self.navigationController popViewControllerAnimated:YES];
+   // [self.navigationController pushViewController:nil animated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 -(void)save{
@@ -84,7 +89,7 @@
             
             [[NSNotificationCenter defaultCenter] performSelectorOnMainThread:@selector(postNotification:) withObject:note waitUntilDone:YES];
             
-            
+            [self backAction];
             
             
         }else{
@@ -115,6 +120,7 @@
 
 - (IBAction)queding:(UIBarButtonItem *)sender {
     //  _ncshuru.text;
-    [self backAction];
+    [self save];
+   // [self backAction];
 }
 @end
