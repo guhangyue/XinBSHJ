@@ -9,10 +9,11 @@
 #import <UIKit/UIKit.h>
 
 @interface HistoryTableViewCell : UITableViewCell
-@property (weak, nonatomic) IBOutlet UILabel *dingdanLabel;
+
 @property (weak, nonatomic) IBOutlet UILabel *tiYanLabel;
 @property (weak, nonatomic) IBOutlet UILabel *dianMingLabel;
 @property (weak, nonatomic) IBOutlet UILabel *moneyLabel;
-@property (weak, nonatomic) IBOutlet UIImageView *imageView;
+@property (weak, nonatomic) IBOutlet UIImageView *historyImageView;
+
 
 @end

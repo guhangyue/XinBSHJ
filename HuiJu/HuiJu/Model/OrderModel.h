@@ -13,8 +13,7 @@
 @property (strong, nonatomic) NSString *image;
 @property (strong, nonatomic) NSString *tiYan;
 @property (strong, nonatomic) NSString *dianMing;
-@property (nonatomic) NSInteger money;
+@property (nonatomic) NSString *money;
 
-
-- (instancetype)initWithDict: (NSDictionary *)dict;
+- (instancetype)initWithOrder: (NSDictionary *)dict;
 @end

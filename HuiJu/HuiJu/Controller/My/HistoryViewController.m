@@ -20,6 +20,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    _arr = [NSMutableArray new];
+    [self setNavigationItem];
+    [self request];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -64,17 +67,19 @@
 - (void)leftButtonAction: (UIButton *)sender{
     [self.navigationController popViewControllerAnimated:YES];
 }
-/*-(void)request{
+-(void)request{
     _avi = [Utilities getCoverOnView:self.view];
     NSDictionary *para = @{@"memberId":[[StorageMgr singletonStorageMgr]objectForKey:@"MemberId"],@"type":@0};
+    //NSLog(@"para11%@",para);
     [RequestAPI requestURL:@"/orderController/orderList" withParameters:para andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
-        // NSLog(@"responseObject:%@",responseObject);
+        NSLog(@"responseObject:%@",responseObject);
         [_avi stopAnimating];
         if([responseObject[@"resultFlag"] integerValue] == 8001){
             NSArray *array = responseObject[@"result"][@"orderList"];
+            
             for(NSDictionary *dict in array){
-               //OrderModel *model = [[OrderModel alloc]initWithOrder:dict];
-                //[_arr addObject:model];
+                OrderModel *history = [[OrderModel alloc] initWithOrder:dict];
+                [_arr addObject:history];
             }
             [_tableView reloadData];
         }
@@ -87,6 +92,7 @@
         
     } failure:^(NSInteger statusCode, NSError *error) {
         [_avi stopAnimating];
+        //[Utilities popUpAlertViewWithMsg:@"网络错误" andTitle:nil onView:self];
     }];
     
     
@@ -96,7 +102,7 @@
 #pragma mark - Table view data source
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 110.f;
+    return 120.f;
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return _arr.count;
@@ -121,19 +127,20 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     OrderModel *Model = _arr[section];
-   // NSString *upper = [OrderModel.orderNum uppercaseString];
-    //NSString *string = [NSString stringWithFormat:@"订单号:%@",upper];
-   // return string;
+    NSString *upper = [Model.dingdan uppercaseString];
+    NSString *string = [NSString stringWithFormat:@"订单号:%@",upper];
+    //NSLog(@"1111%@",upper);
+    return string;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    HistoryTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"orderCell"forIndexPath:indexPath];
+    HistoryTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HistoryCell"forIndexPath:indexPath];
     OrderModel *Model = _arr[indexPath.section];
-    //NSURL *url = [NSURL URLWithString: Model.imgUrl];
-    //[cell.imageView sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"默认"]];
-   // cell.OrderName.text = Model.productName;
-    //cell.dianMing.text = Model.dianMing;
-   // cell.moneyLabel.text = [NSString stringWithFormat:@"%@元",OrderModel.shouldpay];
+    NSURL *url = [NSURL URLWithString: Model.image];
+    [cell.historyImageView sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"结婚"]];
+    cell.tiYanLabel.text = Model.tiYan;
+    cell.dianMingLabel.text = Model.dianMing;
+    cell.moneyLabel.text = [NSString stringWithFormat:@"%@元",Model.money];
     
     return cell;
 }
@@ -143,10 +150,10 @@
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
-}
-*/
+//}
+
 
 @end
