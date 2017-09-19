@@ -12,7 +12,7 @@
         <!--Detail View Controller-->
         <scene sceneID="AAf-eb-3zL">
             <objects>
-                <viewController storyboardIdentifier="Detail2" useStoryboardIdentifierAsRestorationIdentifier="YES" id="txY-qK-bv7" customClass="DetailViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Detail2" hidesBottomBarWhenPushed="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="txY-qK-bv7" customClass="DetailViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="gjg-L8-Urb"/>
                         <viewControllerLayoutGuide type="bottom" id="DZH-tz-crg"/>
@@ -336,7 +336,7 @@
         <!--TiYan-->
         <scene sceneID="rDv-X1-7Ck">
             <objects>
-                <viewController storyboardIdentifier="TiYan" title="TiYan" useStoryboardIdentifierAsRestorationIdentifier="YES" id="9Zu-OG-LH5" customClass="TiYanViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TiYan" title="TiYan" hidesBottomBarWhenPushed="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="9Zu-OG-LH5" customClass="TiYanViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="bPc-6H-00Z"/>
                         <viewControllerLayoutGuide type="bottom" id="DN6-8C-HSq"/>
@@ -671,7 +671,7 @@
         <!--Pay View Controller-->
         <scene sceneID="NzE-PM-osl">
             <objects>
-                <viewController id="txt-9C-2dA" customClass="PayViewController" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="txt-9C-2dA" customClass="PayViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jSE-cH-4tW"/>
                         <viewControllerLayoutGuide type="bottom" id="nGR-Lu-is9"/>
@@ -794,7 +794,7 @@
         <!--Map View Controller-->
         <scene sceneID="aWo-7E-Sbc">
             <objects>
-                <viewController id="7HK-Sc-3SH" customClass="MapViewController" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="7HK-Sc-3SH" customClass="MapViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="kmw-se-AFg"/>
                         <viewControllerLayoutGuide type="bottom" id="8Qw-Pm-nZb"/>
@@ -813,7 +813,7 @@
         <!--Zhi Fu Bao View Controller-->
         <scene sceneID="7WX-Fg-xFW">
             <objects>
-                <viewController id="c7w-Hj-8Aq" customClass="ZhiFuBaoViewController" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="c7w-Hj-8Aq" customClass="ZhiFuBaoViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="SOt-m3-VKz"/>
                         <viewControllerLayoutGuide type="bottom" id="AmT-TW-rS6"/>
