@@ -439,7 +439,7 @@
                                                     <constraint firstAttribute="width" constant="21" id="sKK-MS-qnX"/>
                                                 </constraints>
                                             </imageView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ACX-Rb-NCR">
+                                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ACX-Rb-NCR">
                                                 <rect key="frame" x="340" y="40" width="20" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="20" id="Uth-cD-FGi"/>
@@ -450,8 +450,8 @@
                                                     <action selector="callingAction:forEvent:" destination="9Zu-OG-LH5" eventType="touchUpInside" id="sMY-7b-Yzl"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o2p-gD-B8c">
-                                                <rect key="frame" x="49" y="36" width="229" height="28"/>
+                                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o2p-gD-B8c">
+                                                <rect key="frame" x="49" y="36" width="291" height="28"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                 <state key="normal" title="无锡市南长区阳光城市花园B区76号1楼">
                                                     <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -466,6 +466,7 @@
                                             <constraint firstItem="o2p-gD-B8c" firstAttribute="centerY" secondItem="SQL-AX-i7M" secondAttribute="centerY" id="2yd-2H-nWw"/>
                                             <constraint firstItem="o2p-gD-B8c" firstAttribute="leading" secondItem="SQL-AX-i7M" secondAttribute="trailing" constant="15" id="7dB-yq-Wlq"/>
                                             <constraint firstAttribute="height" constant="70" id="8g4-yL-us9"/>
+                                            <constraint firstItem="ACX-Rb-NCR" firstAttribute="leading" secondItem="o2p-gD-B8c" secondAttribute="trailing" id="KlS-kf-RRu"/>
                                             <constraint firstItem="ACX-Rb-NCR" firstAttribute="centerY" secondItem="o2p-gD-B8c" secondAttribute="centerY" id="Kog-s8-c2c"/>
                                             <constraint firstItem="43R-AA-yhT" firstAttribute="leading" secondItem="1gI-i6-neR" secondAttribute="leading" constant="15" id="PkK-6x-Gt3"/>
                                             <constraint firstAttribute="trailing" secondItem="ACX-Rb-NCR" secondAttribute="trailing" constant="15" id="Zhe-rr-xZE"/>
@@ -837,6 +838,6 @@
         <image name="地址" width="48" height="48"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="424-OX-C1w"/>
+        <segue reference="wmk-mv-alp"/>
     </inferredMetricsTieBreakers>
 </document>
