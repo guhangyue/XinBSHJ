@@ -14,6 +14,7 @@
 @interface TiYanViewController (){
     ShouYe *detail3;
 }
+@property (weak, nonatomic) IBOutlet UIScrollView *tiyanjuanSV;
 
 @property (weak, nonatomic) IBOutlet UILabel *clubNameLbl;
 @property (weak, nonatomic) IBOutlet UIButton *clubAddressbBtn;
@@ -42,6 +43,7 @@
     [super viewDidLoad];
     [self setNavigationItem];
     [self Club2DetailRequest];
+    [self uiLayout];
     // Do any additional setup after loading the view.
 }
 
@@ -59,6 +61,45 @@
 - (void)backAction {
     [self dismissViewControllerAnimated:YES completion:nil];
     //[self.navigationController popViewControllerAnimated:YES];
+}
+- (void)uiLayout {
+    //为表格视图创建footer(该方法可以去除表格视图底部多余的下划线)
+    // _huisouscrollView.
+    //创建下拉刷新器
+    [self refreshConfiguration];
+}
+- (void)refreshConfiguration{
+    //初始化一个下拉刷新控件
+    UIRefreshControl *refreshControl = [[UIRefreshControl alloc]init];
+    
+    refreshControl.tag = 10001;
+    //设置标题
+    NSString *title = @"刷新中...";
+    
+    //创建属性字典
+    NSDictionary *attrDict = @{NSForegroundColorAttributeName : [UIColor redColor],NSBackgroundColorAttributeName : [UIColor yellowColor]};
+    
+    
+    //将文字和属性字典包裹成一个带属性的字符串
+    NSAttributedString *attriTitle = [[NSAttributedString alloc]initWithString:title attributes:attrDict];
+    
+    refreshControl.attributedTitle = attriTitle;
+    //设置风格颜色为黑色（风格颜色：刷新指示器的颜色）
+    refreshControl.tintColor = [UIColor blueColor];
+    
+    //设置背景色
+    refreshControl.backgroundColor = [UIColor whiteColor];
+    //定义用户触发下拉事件时执行的方法
+    [refreshControl addTarget:self action:@selector(Club2DetailRequest) forControlEvents:UIControlEventValueChanged];
+    //将下拉刷新控件添加到tableView中(在tableView中，下拉刷新控件会自动放置在表格视图顶部后侧位置)
+    [self.tiyanjuanSV addSubview:refreshControl];
+    
+}
+- (void)end{
+    //在activityTableView中，根据下标为10001获得其子视图：下拉刷新控件
+    UIRefreshControl *refresh = (UIRefreshControl *)[self.tiyanjuanSV viewWithTag:10001];
+    //结束刷新
+    [refresh endRefreshing];
 }
 - (void)Club2DetailRequest{
     //菊花膜
@@ -116,7 +157,7 @@
             //_priceLbl.text = [NSString stringWithFormat:@"¥ %@",detail.hotelMoney];
             
             // [_smallPictureImgView sd_setImageWithURL:[NSURL URLWithString:detail.hotelImg] placeholderImage:[UIImage imageNamed:@"11"]];设置默认图片
-            
+            [self end];
             
         }else{
             NSString *errorMsg = [ErrorHandler getProperErrorString:[responseObject[@"result"] integerValue]];

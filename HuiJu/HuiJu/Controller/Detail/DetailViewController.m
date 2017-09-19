@@ -14,6 +14,7 @@
     ShouYe *detail;
 
 }
+@property (weak, nonatomic) IBOutlet UIScrollView *huisouscrollView;
 @property (weak, nonatomic) IBOutlet UIButton *addressBtn;
 - (IBAction)addressAction:(UIButton *)sender forEvent:(UIEvent *)event;
 @property (weak, nonatomic) IBOutlet UILabel *clubNameLbl;
@@ -38,6 +39,7 @@
     _arr5 = [NSMutableArray new];
     [super viewDidLoad];
     [self setNavigationItem];
+    [self uiLayout];
 //    UITapGestureRecognizer *tap=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(Action:)];
 //    [_TiYanJuanView addGestureRecognizer:tap];//视图单击手势的创建
     
@@ -55,6 +57,45 @@
     //设置导航条的颜色（风格颜色）
     self.navigationController.navigationBar.barTintColor = UIColorFromRGB(0, 100, 255);
    
+}
+- (void)uiLayout {
+    //为表格视图创建footer(该方法可以去除表格视图底部多余的下划线)
+   // _huisouscrollView.
+    //创建下拉刷新器
+    [self refreshConfiguration];
+}
+- (void)refreshConfiguration{
+    //初始化一个下拉刷新控件
+    UIRefreshControl *refreshControl = [[UIRefreshControl alloc]init];
+    
+    refreshControl.tag = 10001;
+    //设置标题
+    NSString *title = @"刷新中...";
+    
+    //创建属性字典
+    NSDictionary *attrDict = @{NSForegroundColorAttributeName : [UIColor redColor],NSBackgroundColorAttributeName : [UIColor yellowColor]};
+    
+    
+    //将文字和属性字典包裹成一个带属性的字符串
+    NSAttributedString *attriTitle = [[NSAttributedString alloc]initWithString:title attributes:attrDict];
+    
+    refreshControl.attributedTitle = attriTitle;
+    //设置风格颜色为黑色（风格颜色：刷新指示器的颜色）
+    refreshControl.tintColor = [UIColor blueColor];
+    
+    //设置背景色
+    refreshControl.backgroundColor = [UIColor whiteColor];
+    //定义用户触发下拉事件时执行的方法
+    [refreshControl addTarget:self action:@selector(ClubDetailRequest) forControlEvents:UIControlEventValueChanged];
+    //将下拉刷新控件添加到tableView中(在tableView中，下拉刷新控件会自动放置在表格视图顶部后侧位置)
+    [self.huisouscrollView addSubview:refreshControl];
+    
+}
+- (void)end{
+    //在activityTableView中，根据下标为10001获得其子视图：下拉刷新控件
+    UIRefreshControl *refresh = (UIRefreshControl *)[self.huisouscrollView viewWithTag:10001];
+    //结束刷新
+    [refresh endRefreshing];
 }
 
 //-(void)Action:(id)sender{
@@ -103,6 +144,7 @@
             //_priceLbl.text = [NSString stringWithFormat:@"¥ %@",detail.hotelMoney];
             
            // [_smallPictureImgView sd_setImageWithURL:[NSURL URLWithString:detail.hotelImg] placeholderImage:[UIImage imageNamed:@"11"]];设置默认图片
+            [self end];
             [_TiYanJuanTableView reloadData];
            
         }else{

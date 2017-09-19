@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="txY-qK-bv7">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="txY-qK-bv7">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -203,10 +203,10 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="106" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="aA0-G8-WHQ">
-                                        <rect key="frame" x="0.0" y="524.5" width="375" height="150"/>
+                                        <rect key="frame" x="0.0" y="524.5" width="375" height="200"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="150" id="m0p-EF-Iap"/>
+                                            <constraint firstAttribute="height" constant="200" id="m0p-EF-Iap"/>
                                         </constraints>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TiyanJuanCell" rowHeight="106" id="Pp9-sj-Cll" customClass="TiYanJuanTableViewCell">
@@ -325,6 +325,7 @@
                         <outlet property="clubPic" destination="Ryj-io-gfu" id="A3R-XO-5pO"/>
                         <outlet property="clubSiteLbl" destination="pPg-k1-8pz" id="MTi-eb-FnN"/>
                         <outlet property="clubTimeLbl" destination="gzy-O0-A58" id="NaT-aF-Oor"/>
+                        <outlet property="huisouscrollView" destination="F9L-vJ-AHu" id="z3m-VZ-dmz"/>
                         <segue destination="9Zu-OG-LH5" kind="push" identifier="detailToTiyanjuan" id="jR1-vn-IJK"/>
                         <segue destination="7HK-Sc-3SH" kind="push" identifier="detailToMap" id="424-OX-C1w"/>
                     </connections>
@@ -659,6 +660,7 @@
                         <outlet property="priceLbl" destination="hmE-ff-4xy" id="aNP-f8-q04"/>
                         <outlet property="rulesLbl" destination="2Ap-pI-fBR" id="UvS-NJ-Gek"/>
                         <outlet property="saleCountLbl" destination="z2g-XG-Wqu" id="Rju-qe-SkU"/>
+                        <outlet property="tiyanjuanSV" destination="tkm-jv-OvR" id="gdo-dx-8Qy"/>
                         <outlet property="useDateLbl" destination="uHi-gd-IZ5" id="bHO-iL-nbc"/>
                         <segue destination="7HK-Sc-3SH" kind="push" identifier="TiYanJuanToMap" id="wmk-mv-alp"/>
                         <segue destination="txt-9C-2dA" kind="push" identifier="TiYanJuanToPay" id="U0I-YI-4XZ"/>
@@ -835,6 +837,6 @@
         <image name="地址" width="48" height="48"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="wmk-mv-alp"/>
+        <segue reference="424-OX-C1w"/>
     </inferredMetricsTieBreakers>
 </document>
