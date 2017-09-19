@@ -19,7 +19,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *myTableView;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *settingBtn;
 - (IBAction)settingAction:(UIBarButtonItem *)sender;
-
+//@property (strong, nonatomic) UserModel *user;
 @property (strong, nonatomic) NSArray *myInfoArr;
 @end
 
@@ -46,8 +46,10 @@
         //已登录
         _loginBtn.hidden=YES;
         _myNameLabel.hidden=NO;
-        UserModel *user=[[StorageMgr singletonStorageMgr]objectForKey:@"Myinfo"];
-        [_headImage sd_setImageWithURL:[NSURL URLWithString:user.avatarUrl] placeholderImage:[UIImage imageNamed:@"ic_user_head"]];
+        UserModel *user=[[StorageMgr singletonStorageMgr]objectForKey:@"MemberInfo"];
+        [_headImage sd_setImageWithURL:[NSURL URLWithString:user.avatarUrl] placeholderImage:[UIImage imageNamed:user.avatarUrl]];
+//        NSURL *url = [NSURL URLWithString:hotel.image];
+//        [cell.image sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@""]];
         _myNameLabel.text= user.nickname;
         
     }else{
