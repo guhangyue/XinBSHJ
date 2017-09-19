@@ -34,9 +34,19 @@
     // Do any additional setup after loading the view.
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(shuaxin) name:@"refresh" object:nil];
+    
     [self dengluzhihou];
     
 }
+
+//-(void)laidaojiemian
+//{
+//    if ([[Utilities getUserDefaults:@"nic"]isKindOfClass:nil])
+//    {
+//        [self ];
+//    }
+//}
+
 -(void)dengluzhihou
 {
     if ([Utilities loginCheck]) {
@@ -57,10 +67,17 @@
 
 
 
-//当前页面将要显示的时候，显示导航栏
+//每次当前页面将要显示的时候，显示导航栏
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:NO animated:animated];
+//    if ([[Utilities getUserDefaults:@"nic"]isKindOfClass:[NSNull class]])
+//    {
+//        
+//    }else
+//    {
+//        [self request];
+//    }
     
 }
 //-(void)refresh{
@@ -151,25 +168,38 @@
 
 
 - (void)request{
-    NSString *str = [Utilities uniqueVendor];
+    //NSString *str = [Utilities uniqueVendor];
     //_juhua = [Utilities getCoverOnView:self.view];
+//    NSDictionary *prarmeter = @{@"memberId" : _user.memberId,@"name":[[StorageMgr singletonStorageMgr] objectForKey:@"nic"],@"birthday":_user.dob,@"gender":_user.gender,@"identificationcard":_user.idCardNo/*, @"deviceId" : str*/};
+    NSString *str = [Utilities uniqueVendor];
+    
     NSDictionary *prarmeter = @{@"deviceType" : @7001, @"deviceId" : str};
+    NSLog(@"%@",prarmeter);
+
     //开始请求
-    [RequestAPI requestURL:@"/login/getKey" withParameters:prarmeter andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
+    [RequestAPI requestURL:@"/login/getKey" withParameters:prarmeter andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject)
+    //开始请求
+    //[RequestAPI requestURL:@"/mySelfController/updateMyselfInfos" withParameters:prarmeter andHeader:nil byMethod:kPost andSerializer:kJson success:^(id responseObject)
+    {
         //成功以后要做的事情
         //NSLog(@"responseObject = %@",responseObject);
         if ([responseObject[@"resultFlag"] integerValue] == 8001) {
-            //[_juhua stopAnimating];
-            NSDictionary *result = responseObject[@"result"];
-            NSString *exponent = result[@"exponent"];
-            NSString *modulus = result[@"modulus"];
-            NSString *string = [[StorageMgr singletonStorageMgr]objectForKey:@"pwd"];
-            //对内容进行MD5加密
-            NSString *md5Str = [string getMD5_32BitString];
-            //用模数与指数对MD5加密过后的密码进行加密
-            NSString *rsaStr = [NSString encryptWithPublicKeyFromModulusAndExponent:md5Str.UTF8String modulus:modulus exponent:exponent];
-            //加密完成执行接口
-            [self signInWithEncryptPwd:rsaStr];
+            
+//            shezhiTableViewCell *cell = [UITableView dequeueReusableCellWithIdentifier:@"shezhiTableViewCell" forIndexPath:indexPath];
+//            NSDictionary *dict = _shezhiArr[indexPath.section];
+//            cell.biaoti.text = dict[@"biaoti"];
+//            cell.neirong.text = dict[@"neirong"];
+//            //[_juhua stopAnimating];
+//            NSDictionary *result = responseObject[@"result"];
+//            NSString *exponent = result[@"exponent"];
+//            NSString *modulus = result[@"modulus"];
+//            NSString *string = [[StorageMgr singletonStorageMgr]objectForKey:@"pwd"];
+//            //对内容进行MD5加密
+//            NSString *md5Str = [string getMD5_32BitString];
+//            //用模数与指数对MD5加密过后的密码进行加密
+//            NSString *rsaStr = [NSString encryptWithPublicKeyFromModulusAndExponent:md5Str.UTF8String modulus:modulus exponent:exponent];
+//            //加密完成执行接口
+//            [self signInWithEncryptPwd:rsaStr];
         }else{
             //[_juhua stopAnimating];
             NSString *errorMsg = [ErrorHandler getProperErrorString:[responseObject[@"resultFlag"] integerValue]];

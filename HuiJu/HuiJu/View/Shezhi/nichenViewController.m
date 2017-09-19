@@ -84,7 +84,8 @@
         [_avi stopAnimating];
         NSLog(@"responseObject:%@",responseObject);
         if([responseObject[@"resultFlag"]integerValue] == 8001){
-            
+            [[StorageMgr singletonStorageMgr]removeObjectForKey:@"nic"];
+            [[StorageMgr singletonStorageMgr] addKey:@"nic" andValue:nc];
             NSNotification *note = [NSNotification notificationWithName:@"refresh" object:nil userInfo:nil];
             
             [[NSNotificationCenter defaultCenter] performSelectorOnMainThread:@selector(postNotification:) withObject:note waitUntilDone:YES];
