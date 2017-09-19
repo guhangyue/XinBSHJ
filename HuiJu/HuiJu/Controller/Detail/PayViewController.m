@@ -124,8 +124,11 @@
 
 - (IBAction)stepperAction:(UIStepper *)sender forEvent:(UIEvent *)event {
     int i = sender.value ;
-    NSInteger  s=[_payModel.currentPrice intValue];
+    //NSInteger  s=[_payModel.currentPrice intValue];
+    double s=[[NSString stringWithFormat:@"%.1f",[_payModel.currentPrice doubleValue]]doubleValue];
+    NSLog(@"%f",s);
     _numLbl.text =[NSString stringWithFormat:@"%d",i];
-    _zhongPirceLbl.text=[NSString stringWithFormat:@"%ld元",i*s];
+    
+    _zhongPirceLbl.text=[NSString stringWithFormat:@"%.1f元",i*s];
 }
 @end

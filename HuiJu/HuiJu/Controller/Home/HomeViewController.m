@@ -92,7 +92,7 @@
     // 设置导航条标题文字
     self.navigationItem.title = @"首页";
     //设置导航条颜色（风格颜色）
-    self.navigationController.navigationBar.barTintColor = [UIColor blueColor];
+    self.navigationController.navigationBar.barTintColor = UIColorFromRGB(0, 100, 255);
     //设置导航条是否隐藏.
     self.navigationController.navigationBar.hidden = NO;
     //设置导航条标题颜色
