@@ -140,10 +140,10 @@
     if ([segue.identifier isEqualToString:@"TiYanJuanToPay"]) {
         //当从列表页到详情页的这个跳转要发生的时候
         //获取要传递到下一页的数据
+        
         PayViewController *detailVC= segue.destinationViewController;
         detailVC.payModel=detail3;
-        NSLog(@"传的什么鬼%@",detail3);
-        //        ShouYe *activity=_arr[indexPath.section];
+        NSLog(@"传的什么鬼%@",detail3);        //        ShouYe *activity=_arr[indexPath.section];
         //        ShouYe *activity2=_arr[indexPath.row];
         //        // NSLog(@"%@",_arr[indexPath.row]);
         //        //获取下一页的这个实例
@@ -152,6 +152,7 @@
         //        detailVC.detailA=activity;
         //        detailVC.detailB=activity2;
     }
+    
 }
 
 - (IBAction)clubAddressbAction:(UIButton *)sender forEvent:(UIEvent *)event {
@@ -188,6 +189,13 @@
 
 }
 - (IBAction)payAction:(UIButton *)sender forEvent:(UIEvent *)event {
-    [self performSegueWithIdentifier:@"TiYanJuanToPay" sender:nil];
-}
+    if ([Utilities loginCheck]) {
+        [self performSegueWithIdentifier:@"TiYanJuanToPay" sender:nil];
+    }else{
+        
+        [Utilities popUpAlertViewWithMsg:@"该功能需要登录才会开放，请您登录" andTitle:@"提示" onView:self];
+    }
+    
+
+    }
 @end
