@@ -27,6 +27,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self naviConfig];
+    [_passWordTextField setSecureTextEntry:YES];
+    [_confirmPwdTextField setSecureTextEntry:YES];
     // Do any additional setup after loading the view.
 }
 

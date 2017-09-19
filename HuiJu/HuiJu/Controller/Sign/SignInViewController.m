@@ -27,6 +27,7 @@
     // Do any additional setup after loading the view.
     [self naviConfig];
     [self uiLayout];
+    [_passWordtextword setSecureTextEntry:YES];
 //    _signinBtn.enabled = NO;
 //    _signinBtn.backgroundColor = UIColorFromRGB(200, 200, 200);
 }
