@@ -8,7 +8,9 @@
 
 #import "PayViewController.h"
 
-@interface PayViewController ()<UITableViewDataSource,UITableViewDelegate>
+@interface PayViewController ()<UITableViewDataSource,UITableViewDelegate>{
+    NSInteger  selected;
+}
 @property (weak, nonatomic) IBOutlet UILabel *eNameLbl;
 @property (weak, nonatomic) IBOutlet UILabel *ClubNameLbl;
 @property (weak, nonatomic) IBOutlet UILabel *PirceLbl;
@@ -66,12 +68,16 @@
     // _contenLabel.text= _activity.content;
     // _priceLabel.text=[NSString stringWithFormat:@"%@元",_activity.applyFee];
     
-    self.tableView.tableFooterView =[UIView new];
-    //将表格视图设置为"编辑中"
-    self.tableView.editing = YES;
+       self.tableView.tableFooterView=[UIView new];
+    //将表格视图设置为“细胞中”
+    self.tableView.editing=YES;
+    NSIndexPath *indexPath=[NSIndexPath indexPathForRow:0 inSection:0];
+    //用代码来选中表格视图中的某个细胞
+    [self.tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:(UITableViewScrollPositionNone)];
 }
 -(void)dataInitialize{
     _arr=@[@"支付宝支付",@"微信支付",@"银联支付"];
+    selected=0;
 }
 #pragma mark - Table view data source
 
@@ -101,18 +107,27 @@
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
     return @"支付方式";
 }
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    //遍历表格视图中所有选中状态下的细胞
-    for (NSIndexPath*eachIP in tableView.indexPathsForSelectedRows) {
-        //当选中的细胞不是当前正在按的这个细胞的情况下
-        if (eachIP !=indexPath) {
-            //将细胞从选中状态改为不选中状态
-            [tableView deselectRowAtIndexPath:eachIP animated:YES];
-            
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.row != selected) {
+        selected = indexPath.row;
+        //遍历表格视图中所有选中状态下的细胞
+        for(NSIndexPath *eachIP in tableView.indexPathsForSelectedRows){
+            //当选中的细胞不是当前正在按的这个细胞情况下
+            if(eachIP != indexPath){
+                //将细胞从选中状态改为不选中状态
+                [tableView deselectRowAtIndexPath:eachIP animated:YES];
+            }else{
+                //[tableView deselectRowAtIndexPath:eachIP animated:YES];
+            }
         }
     }
 }
-/*
+
+- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.row == selected) {
+        [tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionNone];
+    }
+}/*
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
