@@ -86,7 +86,7 @@
             [[NSNotificationCenter defaultCenter] performSelectorOnMainThread:@selector(postNotification:) withObject:note waitUntilDone:YES];
             
             
-            [self backAction];
+            //[self backAction];
             
         }else{
             NSString *errorMsg=[ErrorHandler getProperErrorString:[responseObject[@"resultFlag"]integerValue]];
@@ -100,7 +100,7 @@
     }];
     
     
-    
+    [self backAction];
     
     
 }

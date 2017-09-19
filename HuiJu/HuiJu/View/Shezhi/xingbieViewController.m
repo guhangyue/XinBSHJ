@@ -96,12 +96,12 @@
     {
         [_avi stopAnimating];
         NSLog(@"responseObject:%@",responseObject);
-        if ([responseObject[@"responseObject"]integerValue]==8001)
+        if ([responseObject[@"resultFlag"]integerValue]==8001)
         {
             NSNotification *note = [NSNotification notificationWithName:@"refresh" object:nil userInfo:nil];
             [[NSNotificationCenter defaultCenter] performSelectorOnMainThread:@selector(postNotification:) withObject:note waitUntilDone:YES];
             
-            [self dismissViewControllerAnimated:YES completion:nil];
+            //[self dismissViewControllerAnimated:YES completion:nil];
         }else{
             NSString *errorMsg=[ErrorHandler getProperErrorString:[responseObject[@"resultFlag"]integerValue]];
             [Utilities popUpAlertViewWithMsg:errorMsg andTitle:nil onView:self];
@@ -114,7 +114,7 @@
     {
         [_avi stopAnimating];
         //业务逻辑失败的情况下
-        [Utilities popUpAlertViewWithMsg:@"网络请求失败😂" andTitle:nil onView:self];
+        [Utilities popUpAlertViewWithMsg:@"网络请求失败" andTitle:nil onView:self];
     }];
 }
 
@@ -131,7 +131,7 @@
     return _pickerArr.count;
 }
 //返回当前行的内容,此处是将数组中数值添加到滚动的那个显示栏上
-- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
+- (nullable NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
     return _pickerArr[row];
 }
 //- (CGFloat)pickerView:(UIPickerView *)pickerView widthForComponent:(NSInteger)component{
@@ -185,6 +185,7 @@
     _Toolbar.hidden=YES;
     _datePicker.hidden=YES;
     [self XB];
+    [self backAction];
     
 //    NSDate *date = _datePicker.date;
 //    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
