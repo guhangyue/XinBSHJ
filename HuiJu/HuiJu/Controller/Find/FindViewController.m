@@ -134,6 +134,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if(flag2 == 1){
+        PageNum2=1;
         if(indexPath.row == 0){
             [self ClubRequest];//默认按距离请求
         }
@@ -157,7 +158,7 @@
         
     }
     if(flag2 == 2){
-        
+        PageNum2=1;
         if(indexPath.row == 0){
             [self ClubRequest];
         }
@@ -180,6 +181,7 @@
         
     }
     if(flag2 == 3){
+        PageNum2=1;
         if(indexPath.row == 0){
             [self ClubRequest];
         }

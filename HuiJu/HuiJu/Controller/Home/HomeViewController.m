@@ -59,6 +59,7 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self locationStart];
+    [self refreshPage];
 }
 
 //这个方法专门处理定位的基本设置
@@ -122,7 +123,7 @@
     NSString *title = @"刷新中...";
     
     //创建属性字典
-    NSDictionary *attrDict = @{NSForegroundColorAttributeName : [UIColor redColor],NSBackgroundColorAttributeName : [UIColor yellowColor]};
+    NSDictionary *attrDict = @{NSForegroundColorAttributeName : [UIColor redColor],NSBackgroundColorAttributeName : UIColorFromRGB(0, 100, 255)};
     
     
     //将文字和属性字典包裹成一个带属性的字符串
