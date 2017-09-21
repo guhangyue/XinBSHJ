@@ -121,6 +121,14 @@
             }
         }
     }
+    if (indexPath.row == 0) {
+        [self performSegueWithIdentifier:@"1" sender:nil];
+    }else if (indexPath.row ==1){
+        [self performSegueWithIdentifier:@"2" sender:nil];
+    }else{
+        [self performSegueWithIdentifier:@"3" sender:nil];
+    }
+    
 }
 
 
@@ -128,13 +136,7 @@
     if (indexPath.row == selected) {
         [tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionNone];
     }
-    if (indexPath.row == 0) {
-        
-    }else if (indexPath.row ==1){
-        
-    }else{
-        
-    }
+    
 }/*
 #pragma mark - Navigation
 

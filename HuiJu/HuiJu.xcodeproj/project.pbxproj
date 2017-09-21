@@ -93,6 +93,8 @@
 		B2A129E91F5FCD29008AF2DF /* xingbieViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2A129E81F5FCD29008AF2DF /* xingbieViewController.m */; };
 		B2A129EC1F5FCD3B008AF2DF /* chushengViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2A129EB1F5FCD3B008AF2DF /* chushengViewController.m */; };
 		B2A129EF1F5FCD49008AF2DF /* shenfenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2A129EE1F5FCD49008AF2DF /* shenfenViewController.m */; };
+		B2A98DC81F734D8500F95A3E /* weixinViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2A98DC71F734D8500F95A3E /* weixinViewController.m */; };
+		B2A98DCB1F734D9B00F95A3E /* yinlianViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2A98DCA1F734D9B00F95A3E /* yinlianViewController.m */; };
 		B2AC874C1F5E357A00CB8589 /* FindViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2AC874B1F5E357A00CB8589 /* FindViewController.m */; };
 		B2AC874F1F5E412400CB8589 /* FindModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B2AC874E1F5E412400CB8589 /* FindModel.m */; };
 		B2BDC4311F6BB94C00E5B52F /* OrderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B2BDC4301F6BB94C00E5B52F /* OrderModel.m */; };
@@ -282,6 +284,10 @@
 		B2A129EB1F5FCD3B008AF2DF /* chushengViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = chushengViewController.m; sourceTree = "<group>"; };
 		B2A129ED1F5FCD49008AF2DF /* shenfenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = shenfenViewController.h; sourceTree = "<group>"; };
 		B2A129EE1F5FCD49008AF2DF /* shenfenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = shenfenViewController.m; sourceTree = "<group>"; };
+		B2A98DC61F734D8500F95A3E /* weixinViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = weixinViewController.h; sourceTree = "<group>"; };
+		B2A98DC71F734D8500F95A3E /* weixinViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = weixinViewController.m; sourceTree = "<group>"; };
+		B2A98DC91F734D9B00F95A3E /* yinlianViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = yinlianViewController.h; sourceTree = "<group>"; };
+		B2A98DCA1F734D9B00F95A3E /* yinlianViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = yinlianViewController.m; sourceTree = "<group>"; };
 		B2AC874A1F5E357A00CB8589 /* FindViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindViewController.h; sourceTree = "<group>"; };
 		B2AC874B1F5E357A00CB8589 /* FindViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FindViewController.m; sourceTree = "<group>"; };
 		B2AC874D1F5E412400CB8589 /* FindModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindModel.h; sourceTree = "<group>"; };
@@ -631,6 +637,10 @@
 				B24C64231F5D379A00A76F39 /* ZhiFuBaoViewController.m */,
 				B2690F841F66646A00E9CA78 /* Annotation.h */,
 				B2690F851F66646A00E9CA78 /* Annotation.m */,
+				B2A98DC61F734D8500F95A3E /* weixinViewController.h */,
+				B2A98DC71F734D8500F95A3E /* weixinViewController.m */,
+				B2A98DC91F734D9B00F95A3E /* yinlianViewController.h */,
+				B2A98DCA1F734D9B00F95A3E /* yinlianViewController.m */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -984,6 +994,7 @@
 				B284F97E1F61369100DD48FD /* zhifuTableViewController.m in Sources */,
 				8821198E1F5946DD003258C6 /* MyViewController.m in Sources */,
 				8821194D1F593B6F003258C6 /* StorageMgr.m in Sources */,
+				B2A98DCB1F734D9B00F95A3E /* yinlianViewController.m in Sources */,
 				882118E61F5938E5003258C6 /* ViewController.m in Sources */,
 				882119491F593B6F003258C6 /* JSONS.m in Sources */,
 				B23E9C1E1F613BDC00AE98AB /* CallUsViewController.m in Sources */,
@@ -1002,6 +1013,7 @@
 				88022E601F5D2FEA005CF9F7 /* PhotoCollectionViewCell.m in Sources */,
 				8821194C1F593B6F003258C6 /* RequestAPI.m in Sources */,
 				B2A129EF1F5FCD49008AF2DF /* shenfenViewController.m in Sources */,
+				B2A98DC81F734D8500F95A3E /* weixinViewController.m in Sources */,
 				88022E541F5D00BE005CF9F7 /* YeMianTableViewCell.m in Sources */,
 				8862D0951F5A99BB00D828E6 /* SignUpViewController.m in Sources */,
 				B2A129E61F5FCD03008AF2DF /* nichenViewController.m in Sources */,

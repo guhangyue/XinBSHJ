@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="txY-qK-bv7">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="txY-qK-bv7">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -376,9 +377,17 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mcv-4r-d7p">
-                                                <rect key="frame" x="298" y="46" width="62" height="30"/>
-                                                <color key="backgroundColor" red="0.85882352939999995" green="0.85882352939999995" blue="0.85882352939999995" alpha="1" colorSpace="calibratedRGB"/>
+                                                <rect key="frame" x="270" y="46" width="90" height="30"/>
+                                                <color key="backgroundColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="90" id="h4f-CR-5ac"/>
+                                                </constraints>
                                                 <state key="normal" title="立即下单"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="5"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="payAction:forEvent:" destination="9Zu-OG-LH5" eventType="touchUpInside" id="r4Y-Kd-zbC"/>
                                                 </connections>
@@ -490,6 +499,13 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="对勾" translatesAutoresizingMaskIntoConstraints="NO" id="DMC-Rp-64a">
+                                                <rect key="frame" x="15" y="36" width="15" height="15"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="15" id="WVj-GD-Spy"/>
+                                                    <constraint firstAttribute="width" secondItem="DMC-Rp-64a" secondAttribute="height" multiplier="1:1" id="eNk-pk-FKW"/>
+                                                </constraints>
+                                            </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="来前致电预约" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xUO-Ir-80r">
                                                 <rect key="frame" x="35" y="36" width="80" height="16"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -499,10 +515,13 @@
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
+                                            <constraint firstItem="DMC-Rp-64a" firstAttribute="leading" secondItem="jyr-os-xOy" secondAttribute="leading" constant="15" id="2Bk-hh-Phx"/>
+                                            <constraint firstItem="xUO-Ir-80r" firstAttribute="top" secondItem="DMC-Rp-64a" secondAttribute="top" id="3hS-ue-dPk"/>
                                             <constraint firstItem="z2g-XG-Wqu" firstAttribute="leading" secondItem="jyr-os-xOy" secondAttribute="leading" constant="15" id="8zl-fx-Tkj"/>
                                             <constraint firstAttribute="height" constant="70" id="BYV-iA-XbL"/>
-                                            <constraint firstItem="xUO-Ir-80r" firstAttribute="leading" secondItem="jyr-os-xOy" secondAttribute="leading" constant="35" id="CCM-7H-hjq"/>
                                             <constraint firstItem="z2g-XG-Wqu" firstAttribute="top" secondItem="jyr-os-xOy" secondAttribute="top" constant="10" id="CHp-2n-Ig0"/>
+                                            <constraint firstItem="xUO-Ir-80r" firstAttribute="leading" secondItem="DMC-Rp-64a" secondAttribute="trailing" constant="5" id="WmQ-B9-XSd"/>
+                                            <constraint firstItem="DMC-Rp-64a" firstAttribute="width" secondItem="DMC-Rp-64a" secondAttribute="height" multiplier="1:1" id="mAr-8c-ket"/>
                                             <constraint firstItem="xUO-Ir-80r" firstAttribute="top" secondItem="z2g-XG-Wqu" secondAttribute="bottom" constant="10" id="rDj-MW-PnG"/>
                                         </constraints>
                                     </view>
@@ -787,17 +806,19 @@
                         <outlet property="stepper" destination="w1U-SN-2m7" id="OrA-Pr-DWz"/>
                         <outlet property="tableView" destination="EZc-OJ-ddk" id="rbZ-IL-aas"/>
                         <outlet property="zhongPirceLbl" destination="ekX-Bz-r4y" id="9Er-N2-JM1"/>
-                        <segue destination="c7w-Hj-8Aq" kind="push" id="S7K-UV-5PG"/>
+                        <segue destination="c7w-Hj-8Aq" kind="push" identifier="1" id="S7K-UV-5PG"/>
+                        <segue destination="05A-3b-4qM" kind="push" identifier="3" id="ILH-eQ-f0X"/>
+                        <segue destination="Wjv-bU-5CP" kind="push" identifier="2" id="aOY-g4-MAb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GoC-qp-OPI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1552.8" y="116.49175412293854"/>
         </scene>
-        <!--View Controller-->
+        <!--Yinlian View Controller-->
         <scene sceneID="2S5-Cd-fzV">
             <objects>
-                <viewController id="05A-3b-4qM" sceneMemberID="viewController">
+                <viewController id="05A-3b-4qM" customClass="yinlianViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="VB6-hY-SxJ"/>
                         <viewControllerLayoutGuide type="bottom" id="5r3-YH-DtV"/>
@@ -806,13 +827,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="28G-pt-aZt">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="国家                      中国大陆+86" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="28G-pt-aZt">
                                 <rect key="frame" x="0.0" y="40" width="375" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2QA-ME-icL">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="手机号" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2QA-ME-icL">
                                 <rect key="frame" x="0.0" y="75" width="375" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -826,8 +847,8 @@
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9r0-o6-dUh">
-                                <rect key="frame" x="247" y="195" width="108" height="30"/>
-                                <state key="normal" title="支付宝账号登录"/>
+                                <rect key="frame" x="263" y="195" width="92" height="30"/>
+                                <state key="normal" title="银联账号登录"/>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -845,6 +866,7 @@
                             <constraint firstItem="9r0-o6-dUh" firstAttribute="top" secondItem="zbS-6X-rgv" secondAttribute="bottom" constant="30" id="xxy-E3-Z7B"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="obr-Ue-nDm"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BTj-CU-dBc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -881,27 +903,27 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="r4t-UX-QmA">
-                                <rect key="frame" x="0.0" y="55" width="375" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="手机号" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="r4t-UX-QmA">
+                                <rect key="frame" x="0.0" y="75" width="375" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1bc-eJ-VWy">
-                                <rect key="frame" x="0.0" y="20" width="375" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="国家                      中国大陆+86" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1bc-eJ-VWy">
+                                <rect key="frame" x="0.0" y="40" width="375" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oA0-SU-Udr">
-                                <rect key="frame" x="20" y="115" width="335" height="30"/>
+                                <rect key="frame" x="20" y="135" width="335" height="30"/>
                                 <color key="backgroundColor" red="0.0" green="0.53865272669999997" blue="0.85224066840000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Button">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D5h-gT-Kjt">
-                                <rect key="frame" x="247" y="175" width="108" height="30"/>
+                                <rect key="frame" x="247" y="195" width="108" height="30"/>
                                 <state key="normal" title="支付宝账号登录"/>
                             </button>
                         </subviews>
@@ -915,7 +937,7 @@
                             <constraint firstItem="1bc-eJ-VWy" firstAttribute="leading" secondItem="ND2-Wx-TRd" secondAttribute="leading" id="TCV-ho-leg"/>
                             <constraint firstAttribute="trailing" secondItem="r4t-UX-QmA" secondAttribute="trailing" id="YLI-nV-999"/>
                             <constraint firstAttribute="trailing" secondItem="oA0-SU-Udr" secondAttribute="trailing" constant="20" id="aGk-oM-xzi"/>
-                            <constraint firstItem="1bc-eJ-VWy" firstAttribute="top" secondItem="ND2-Wx-TRd" secondAttribute="top" constant="20" id="ncB-RJ-tn9"/>
+                            <constraint firstItem="1bc-eJ-VWy" firstAttribute="top" secondItem="SOt-m3-VKz" secondAttribute="bottom" constant="20" id="mAu-y8-yHF"/>
                             <constraint firstAttribute="trailing" secondItem="1bc-eJ-VWy" secondAttribute="trailing" id="p6e-XJ-WkB"/>
                             <constraint firstItem="r4t-UX-QmA" firstAttribute="leading" secondItem="ND2-Wx-TRd" secondAttribute="leading" id="sxh-ov-Ip0"/>
                         </constraints>
@@ -926,10 +948,10 @@
             </objects>
             <point key="canvasLocation" x="1553" y="878"/>
         </scene>
-        <!--View Controller-->
+        <!--Weixin View Controller-->
         <scene sceneID="cwv-Tp-yoT">
             <objects>
-                <viewController id="Wjv-bU-5CP" sceneMemberID="viewController">
+                <viewController id="Wjv-bU-5CP" customClass="weixinViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="0Vn-aM-Snj"/>
                         <viewControllerLayoutGuide type="bottom" id="t70-m5-5fL"/>
@@ -938,13 +960,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4nf-Ag-r8b">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="手机号" borderStyle="roundedRect" placeholder="                                    填写手机号码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4nf-Ag-r8b">
                                 <rect key="frame" x="0.0" y="75" width="375" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Wqy-uF-dR8">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="国家                      中国大陆+86" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Wqy-uF-dR8">
                                 <rect key="frame" x="0.0" y="40" width="375" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -958,8 +980,8 @@
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dX1-Nt-0wt">
-                                <rect key="frame" x="247" y="195" width="108" height="30"/>
-                                <state key="normal" title="支付宝账号登录"/>
+                                <rect key="frame" x="263" y="195" width="92" height="30"/>
+                                <state key="normal" title="微信账号登录"/>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -977,6 +999,7 @@
                             <constraint firstAttribute="trailing" secondItem="dX1-Nt-0wt" secondAttribute="trailing" constant="20" id="wmd-YM-lJL"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="NCr-Mx-zRO"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PWq-2i-IKe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -986,6 +1009,7 @@
     <resources>
         <image name="Call" width="48" height="48"/>
         <image name="地址" width="48" height="48"/>
+        <image name="对勾" width="15" height="15"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="wmk-mv-alp"/>
