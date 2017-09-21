@@ -33,6 +33,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *rulesLbl;
 @property (weak, nonatomic) IBOutlet UIImageView *eLogoImage;
 @property (weak, nonatomic) IBOutlet UILabel *eFeatureLbl;
+
 @property (strong, nonatomic)NSArray *arr1;
 
 @end
@@ -129,7 +130,8 @@
             _clubNameLbl.text=detail3.eClubName;
             _orginPriceLbl.text=[NSString stringWithFormat:@"原价：%@元",detail3.orginPrice];
             _rulesLbl.text=detail3.rules;
-            _saleCountLbl.text=[NSString stringWithFormat:@"已售：%@",detail3.saleCount ];
+            _saleCountLbl.text=[NSString stringWithFormat:@"已售：%@",detail3.saleCount];
+            NSLog(@"333666尴尬:%@",detail3.saleCount);
             _useDateLbl.text=detail3.useDate;
             _eFeatureLbl.text=detail3.eFeature;
             _priceLbl.text=detail3.currentPrice;

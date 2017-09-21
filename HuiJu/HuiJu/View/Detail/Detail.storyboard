@@ -679,7 +679,7 @@
                         <outlet property="payBtn" destination="Mcv-4r-d7p" id="7En-YA-D2Q"/>
                         <outlet property="priceLbl" destination="hmE-ff-4xy" id="aNP-f8-q04"/>
                         <outlet property="rulesLbl" destination="2Ap-pI-fBR" id="UvS-NJ-Gek"/>
-                        <outlet property="saleCountLbl" destination="z2g-XG-Wqu" id="Rju-qe-SkU"/>
+                        <outlet property="saleCountLbl" destination="z2g-XG-Wqu" id="d37-W8-BPm"/>
                         <outlet property="tiyanjuanSV" destination="tkm-jv-OvR" id="gdo-dx-8Qy"/>
                         <outlet property="useDateLbl" destination="uHi-gd-IZ5" id="bHO-iL-nbc"/>
                         <segue destination="7HK-Sc-3SH" kind="push" identifier="TiYanJuanToMap" id="wmk-mv-alp"/>
