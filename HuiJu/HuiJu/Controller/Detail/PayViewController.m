@@ -123,9 +123,17 @@
     }
 }
 
+
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row == selected) {
         [tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionNone];
+    }
+    if (indexPath.row == 0) {
+        
+    }else if (indexPath.row ==1){
+        
+    }else{
+        
     }
 }/*
 #pragma mark - Navigation
