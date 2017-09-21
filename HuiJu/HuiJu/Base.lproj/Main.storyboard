@@ -176,6 +176,9 @@
                                 <rect key="frame" x="16" y="7" width="46" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="cityAction:forEvent:" destination="sX1-Ub-lv6" eventType="touchUpInside" id="hYz-iq-uB1"/>
+                                </connections>
                             </button>
                         </barButtonItem>
                     </navigationItem>
