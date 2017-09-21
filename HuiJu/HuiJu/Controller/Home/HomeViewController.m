@@ -26,6 +26,7 @@
 @property (weak, nonatomic) IBOutlet UIView *adView;
 @property (weak, nonatomic) IBOutlet UITableView *HomeTableView;
 @property (weak, nonatomic) IBOutlet UIButton *cityBtn;
+- (IBAction)cityAction:(UIButton *)sender forEvent:(UIEvent *)event;
 
 @property (strong, nonatomic) NSMutableArray *arr;
 @property (strong, nonatomic) NSMutableArray *arr3;
@@ -144,6 +145,7 @@
 - (void)end{
     //在activityTableView中，根据下标为10001获得其子视图：下拉刷新控件
     UIRefreshControl *refresh = (UIRefreshControl *)[self.HomeTableView viewWithTag:10001];
+    [_avi stopAnimating];
     //结束刷新
     [refresh endRefreshing];
 }
@@ -198,7 +200,6 @@
     NSDictionary *para = @{@"city":[Utilities getUserDefaults:@"UserCity"], @"jing":[NSString stringWithFormat:@"%f",_location.coordinate.longitude],@"wei":[NSString stringWithFormat:@"%f",_location.coordinate.latitude],@"page" : @(page),@"perPage":@10};
     NSLog(@"para = %@", para);
     [RequestAPI requestURL:@"/homepage/choice" withParameters:para andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
-        [_avi stopAnimating];
         [self end];
         NSLog(@"%@",responseObject);
         if ([responseObject[@"resultFlag"] integerValue] == 8001) {
@@ -233,7 +234,7 @@
             }
             [_HomeTableView reloadData];
         }else if([responseObject[@"resultFlag"] integerValue] == 8020){
-               [Utilities popUpAlertViewWithMsg:@"该城市并未有加入该APP的会所" andTitle:nil onView:self];
+               [Utilities popUpAlertViewWithMsg:@"该城市并未有加入该APP的会所。您可以选择有加盟商的城市，如:无锡等" andTitle:nil onView:self];
             }
             else{
             //业务逻辑失败的情况下
@@ -511,4 +512,8 @@
 }
 
 
+- (IBAction)cityAction:(UIButton *)sender forEvent:(UIEvent *)event {
+    //发送注册按钮的通知
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"LeftSwitch" object:nil];
+}
 @end
