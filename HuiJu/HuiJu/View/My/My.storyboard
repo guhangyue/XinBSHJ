@@ -27,20 +27,20 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="283"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_user_head" translatesAutoresizingMaskIntoConstraints="NO" id="4pO-rB-isp">
-                                        <rect key="frame" x="140" y="28" width="95" height="95"/>
+                                        <rect key="frame" x="147.5" y="28" width="80" height="80"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="95" id="HJS-Om-sDc"/>
+                                            <constraint firstAttribute="height" constant="80" id="HJS-Om-sDc"/>
                                             <constraint firstAttribute="width" secondItem="4pO-rB-isp" secondAttribute="height" multiplier="1:1" id="uW1-9m-j2V"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="keyPath">
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                 <integer key="value" value="40"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x5f-Iv-9sm">
-                                        <rect key="frame" x="140" y="143" width="95" height="30"/>
+                                        <rect key="frame" x="147.5" y="128" width="80" height="30"/>
                                         <state key="normal" title="点击登录">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -49,7 +49,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="游 客" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t8J-ai-5sp">
-                                        <rect key="frame" x="140" y="143" width="95" height="18"/>
+                                        <rect key="frame" x="147.5" y="128" width="80" height="18"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
