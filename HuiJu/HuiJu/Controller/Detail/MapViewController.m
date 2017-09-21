@@ -244,6 +244,7 @@
     float jing2 = [jing floatValue];
     NSString *wei=[[StorageMgr singletonStorageMgr]objectForKey:@"clubWei"];
     float wei2 = [wei floatValue];
+    
     cool.longitude=jing2;
     cool.latitude=wei2;
     //设置大头针的标题与副标题
@@ -255,8 +256,9 @@
         
         annotation.coordinate = cool;
         if (info) {
+            NSString *clubname=[[StorageMgr singletonStorageMgr]objectForKey:@"clubName"];
             //设置大头针的标题与副标题属性
-            annotation.title = info[@"City"];
+            annotation.title =clubname;
             annotation.subtitle = info[@"Name"];
         }
         //将大头针插入地图视图

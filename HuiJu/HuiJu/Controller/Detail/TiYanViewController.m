@@ -203,6 +203,8 @@
     [[StorageMgr singletonStorageMgr] addKey:@"clubJing" andValue:jing];
     NSString *wei=detail3.latitude;
     [[StorageMgr singletonStorageMgr] addKey:@"clubWei" andValue:wei];
+    NSString *clubname=detail3.eClubName;
+    [[StorageMgr singletonStorageMgr] addKey:@"clubName" andValue:clubname];
     [self performSegueWithIdentifier:@"TiYanJuanToMap" sender:nil];
 }
 - (IBAction)callingAction:(UIButton *)sender forEvent:(UIEvent *)event {
@@ -235,8 +237,8 @@
     if ([Utilities loginCheck]) {
         [self performSegueWithIdentifier:@"TiYanJuanToPay" sender:nil];
     }else{
+        [self performSegueWithIdentifier:@"tiyanjuanTodelu" sender:nil];
         
-        [Utilities popUpAlertViewWithMsg:@"该功能需要登录才会开放，请您登录" andTitle:@"提示" onView:self];
     }
     
 
