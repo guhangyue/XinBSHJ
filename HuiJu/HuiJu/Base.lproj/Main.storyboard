@@ -28,13 +28,6 @@
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="wIQ-ti-G8d">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="130"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <subviews>
-                                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QXp-Fn-yPU">
-                                            <rect key="frame" x="164" y="50" width="46" height="30"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <state key="normal" title="Button"/>
-                                        </button>
-                                    </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="130" id="WFh-Ig-LdJ"/>
@@ -177,7 +170,15 @@
                             <constraint firstItem="tt7-Pm-S46" firstAttribute="leading" secondItem="vqo-v1-AFk" secondAttribute="leading" id="qM8-Ch-mFj"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="PAu-Jq-UT9"/>
+                    <navigationItem key="navigationItem" id="PAu-Jq-UT9">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="ebo-qu-Kdv">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="QXp-Fn-yPU">
+                                <rect key="frame" x="16" y="7" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="HomeTableView" destination="tt7-Pm-S46" id="HBy-0N-pa4"/>
                         <outlet property="adView" destination="wIQ-ti-G8d" id="ivJ-Yl-dxz"/>

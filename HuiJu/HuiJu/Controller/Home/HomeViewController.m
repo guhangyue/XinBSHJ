@@ -120,21 +120,21 @@
     
     refreshControl.tag = 10001;
     //设置标题
-    NSString *title = @"刷新中...";
+    //NSString *title = @"刷新中...";
     
     //创建属性字典
-    NSDictionary *attrDict = @{NSForegroundColorAttributeName : [UIColor redColor],NSBackgroundColorAttributeName : UIColorFromRGB(0, 100, 255)};
+    //NSDictionary *attrDict = @{NSForegroundColorAttributeName : [UIColor redColor],NSBackgroundColorAttributeName : UIColorFromRGB(0, 100, 255)};
     
     
     //将文字和属性字典包裹成一个带属性的字符串
-    NSAttributedString *attriTitle = [[NSAttributedString alloc]initWithString:title attributes:attrDict];
+    //NSAttributedString *attriTitle = [[NSAttributedString alloc]initWithString:title attributes:attrDict];
     
-    refreshControl.attributedTitle = attriTitle;
+    //refreshControl.attributedTitle = attriTitle;
     //设置风格颜色为黑色（风格颜色：刷新指示器的颜色）
-    refreshControl.tintColor = [UIColor blueColor];
+   // refreshControl.tintColor = [UIColor blueColor];
     
     //设置背景色
-    refreshControl.backgroundColor = [UIColor whiteColor];
+    refreshControl.backgroundColor = [UIColor lightGrayColor];
     //定义用户触发下拉事件时执行的方法
     [refreshControl addTarget:self action:@selector(refreshPage) forControlEvents:UIControlEventValueChanged];
     //将下拉刷新控件添加到tableView中(在tableView中，下拉刷新控件会自动放置在表格视图顶部后侧位置)
