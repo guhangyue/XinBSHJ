@@ -216,7 +216,7 @@
                 [cell.eLogoImage sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"Home"]];
     cell.eNameLbl.text=detail.experienceInfos[indexPath.row][0];
     
-                cell.priceLbl.text=detail.experienceInfos[indexPath.row][2];
+                cell.priceLbl.text=[NSString stringWithFormat:@"%@",detail.experienceInfos[indexPath.row][2]];
                 cell.saleCountLbl.text=[NSString stringWithFormat:@"已售：%@",detail.experienceInfos[indexPath.row][3]];
    
     
