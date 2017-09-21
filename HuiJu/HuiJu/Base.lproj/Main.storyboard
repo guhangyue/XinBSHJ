@@ -28,13 +28,6 @@
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="wIQ-ti-G8d">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="130"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <subviews>
-                                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QXp-Fn-yPU">
-                                            <rect key="frame" x="164" y="50" width="46" height="30"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <state key="normal" title="Button"/>
-                                        </button>
-                                    </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="130" id="WFh-Ig-LdJ"/>
@@ -49,13 +42,13 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fUT-Dl-0Z1">
-                                                    <rect key="frame" x="0.0" y="20" width="375" height="129.5"/>
+                                                    <rect key="frame" x="15" y="20" width="345" height="129.5"/>
                                                 </imageView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pby-j3-edo">
-                                                    <rect key="frame" x="0.0" y="105.5" width="375" height="43.5"/>
+                                                    <rect key="frame" x="10" y="105.5" width="355" height="43.5"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1J9-PQ-Iue">
-                                                            <rect key="frame" x="322.5" y="5" width="37.5" height="18"/>
+                                                            <rect key="frame" x="302.5" y="5" width="37.5" height="18"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
@@ -86,13 +79,13 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="Pby-j3-edo" firstAttribute="height" secondItem="fUT-Dl-0Z1" secondAttribute="height" multiplier="1:3" id="6De-Kg-Ee3"/>
-                                                <constraint firstAttribute="trailing" secondItem="fUT-Dl-0Z1" secondAttribute="trailing" id="J7q-A4-WXJ"/>
+                                                <constraint firstAttribute="trailing" secondItem="fUT-Dl-0Z1" secondAttribute="trailing" constant="15" id="J7q-A4-WXJ"/>
                                                 <constraint firstAttribute="bottom" secondItem="Pby-j3-edo" secondAttribute="bottom" id="XXl-aT-ccm"/>
                                                 <constraint firstAttribute="bottom" secondItem="fUT-Dl-0Z1" secondAttribute="bottom" id="aj7-67-gTm"/>
-                                                <constraint firstItem="fUT-Dl-0Z1" firstAttribute="leading" secondItem="ZWv-7K-54F" secondAttribute="leading" id="f8p-cM-DPD"/>
+                                                <constraint firstItem="fUT-Dl-0Z1" firstAttribute="leading" secondItem="ZWv-7K-54F" secondAttribute="leading" constant="15" id="f8p-cM-DPD"/>
                                                 <constraint firstItem="fUT-Dl-0Z1" firstAttribute="top" secondItem="ZWv-7K-54F" secondAttribute="top" constant="20" id="iGS-7g-cpS"/>
-                                                <constraint firstItem="Pby-j3-edo" firstAttribute="leading" secondItem="ZWv-7K-54F" secondAttribute="leading" id="nHO-f1-Mdv"/>
-                                                <constraint firstAttribute="trailing" secondItem="Pby-j3-edo" secondAttribute="trailing" id="veI-aA-Mex"/>
+                                                <constraint firstItem="Pby-j3-edo" firstAttribute="leading" secondItem="ZWv-7K-54F" secondAttribute="leading" constant="10" id="nHO-f1-Mdv"/>
+                                                <constraint firstAttribute="trailing" secondItem="Pby-j3-edo" secondAttribute="trailing" constant="10" id="veI-aA-Mex"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -177,7 +170,18 @@
                             <constraint firstItem="tt7-Pm-S46" firstAttribute="leading" secondItem="vqo-v1-AFk" secondAttribute="leading" id="qM8-Ch-mFj"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="PAu-Jq-UT9"/>
+                    <navigationItem key="navigationItem" id="PAu-Jq-UT9">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="ebo-qu-Kdv">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="QXp-Fn-yPU">
+                                <rect key="frame" x="16" y="7" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="cityAction:forEvent:" destination="sX1-Ub-lv6" eventType="touchUpInside" id="hYz-iq-uB1"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="HomeTableView" destination="tt7-Pm-S46" id="HBy-0N-pa4"/>
                         <outlet property="adView" destination="wIQ-ti-G8d" id="ivJ-Yl-dxz"/>

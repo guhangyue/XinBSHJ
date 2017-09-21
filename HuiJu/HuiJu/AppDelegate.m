@@ -42,11 +42,11 @@
     //窗口APP入口
     _window.rootViewController = _slidingVC;
     //注册侧滑按钮被按的监听
-    //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(leftSwitchAction) name:@"LeftSwitch" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(cityAction:) name:@"LeftSwitch" object:nil];
     return YES;
 }
 //收到通知要执行的方法
--(void)leftSwitchAction:(NSNotification *)note{
+-(void)cityAction:(NSNotification *)note{
     NSLog(@"侧滑");
     //当合上的状态下打开，当打开的状态下合上
     if (_slidingVC.currentTopViewPosition == ECSlidingViewControllerTopViewPositionCentered) {
