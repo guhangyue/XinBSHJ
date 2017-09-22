@@ -10,6 +10,7 @@
 
 @interface PayViewController ()<UITableViewDataSource,UITableViewDelegate>{
     NSInteger  selected;
+    NSInteger  numst;
 }
 @property (weak, nonatomic) IBOutlet UILabel *eNameLbl;
 @property (weak, nonatomic) IBOutlet UILabel *ClubNameLbl;
@@ -19,6 +20,8 @@
 @property (weak, nonatomic) IBOutlet UIStepper *stepper;
 - (IBAction)stepperAction:(UIStepper *)sender forEvent:(UIEvent *)event;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *payBtn;
+- (IBAction)payAction:(UIBarButtonItem *)sender;
 @property (strong,nonatomic)NSArray *arr;
 
 @end
@@ -122,11 +125,14 @@
         }
     }
     if (indexPath.row == 0) {
-        [self performSegueWithIdentifier:@"1" sender:nil];
+        numst=1;
+       // [self performSegueWithIdentifier:@"1" sender:nil];
     }else if (indexPath.row ==1){
-        [self performSegueWithIdentifier:@"2" sender:nil];
+        numst=2;
+       // [self performSegueWithIdentifier:@"2" sender:nil];
     }else{
-        [self performSegueWithIdentifier:@"3" sender:nil];
+        numst=3;
+       // [self performSegueWithIdentifier:@"3" sender:nil];
     }
     
 }
@@ -155,5 +161,18 @@
     _numLbl.text =[NSString stringWithFormat:@"%d",i];
     
     _zhongPirceLbl.text=[NSString stringWithFormat:@"%.1f元",i*s];
+}
+- (IBAction)payAction:(UIBarButtonItem *)sender {
+    if (numst==1) {
+       
+        [self performSegueWithIdentifier:@"1" sender:nil];
+    }else if (numst==2){
+        
+        [self performSegueWithIdentifier:@"2" sender:nil];
+    }else{
+        
+        [self performSegueWithIdentifier:@"3" sender:nil];
+    }
+
 }
 @end

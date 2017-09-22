@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *jiage;
 - (IBAction)jiajian:(UIStepper *)sender forEvent:(UIEvent *)event;
 @property (weak, nonatomic) IBOutlet UITableView *tablecell;
+- (IBAction)zhifuBtn:(UIBarButtonItem *)sender;
 
 @property (strong,nonatomic)NSArray *zhifuArr;
 
@@ -218,6 +219,12 @@
 }
 */
 
-- (IBAction)jiajian:(UIStepper *)sender forEvent:(UIEvent *)event {
+- (IBAction)jiajian:(UIStepper *)sender forEvent:(UIEvent *)event
+{
+    
+}
+- (IBAction)zhifuBtn:(UIBarButtonItem *)sender
+{
+    
 }
 @end

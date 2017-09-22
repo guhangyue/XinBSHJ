@@ -268,6 +268,8 @@
     [[StorageMgr singletonStorageMgr] addKey:@"clubJing" andValue:jing];
     NSString *wei=detail.clubWei;
     [[StorageMgr singletonStorageMgr] addKey:@"clubWei" andValue:wei];
+    NSString *clubname=detail.TName;
+    [[StorageMgr singletonStorageMgr] addKey:@"clubName" andValue:clubname];
     [self performSegueWithIdentifier:@"detailToMap" sender:nil];
 }
 - (IBAction)callingAction:(UIButton *)sender forEvent:(UIEvent *)event {

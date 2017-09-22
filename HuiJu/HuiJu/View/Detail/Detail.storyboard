@@ -692,11 +692,20 @@
                         <outlet property="useDateLbl" destination="uHi-gd-IZ5" id="bHO-iL-nbc"/>
                         <segue destination="7HK-Sc-3SH" kind="push" identifier="TiYanJuanToMap" id="wmk-mv-alp"/>
                         <segue destination="txt-9C-2dA" kind="push" identifier="TiYanJuanToPay" id="U0I-YI-4XZ"/>
+                        <segue destination="DJ7-JC-k01" kind="show" identifier="tiyanjuanTodelu" id="2nn-Tr-NT3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="APQ-lj-M7O" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="809" y="112"/>
+        </scene>
+        <!--SignNavi-->
+        <scene sceneID="uG4-dF-Uqn">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Sign" referencedIdentifier="SignNavi" id="DJ7-JC-k01" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IVl-7d-SFM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1775" y="-387"/>
         </scene>
         <!--Pay View Controller-->
         <scene sceneID="NzE-PM-osl">
@@ -711,7 +720,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ST3-TH-l3S">
-                                <rect key="frame" x="0.0" y="20" width="375" height="190.5"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="190.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="莫梵瑜伽-体验卡" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A7p-ds-TzU">
                                         <rect key="frame" x="15" y="10" width="129" height="21"/>
@@ -775,7 +784,7 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelectionDuringEditing="YES" allowsMultipleSelectionDuringEditing="YES" rowHeight="89" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="EZc-OJ-ddk">
-                                <rect key="frame" x="0.0" y="210.5" width="375" height="456.5"/>
+                                <rect key="frame" x="0.0" y="254.5" width="375" height="412.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PayCell" rowHeight="89" id="Z9S-Cm-uy7">
@@ -805,12 +814,20 @@
                             <constraint firstAttribute="trailing" secondItem="EZc-OJ-ddk" secondAttribute="trailing" id="yIW-oP-bw6"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="j4x-qD-Nhk"/>
+                    <navigationItem key="navigationItem" id="j4x-qD-Nhk">
+                        <barButtonItem key="rightBarButtonItem" title="支付" id="jKh-R7-UI5">
+                            <connections>
+                                <action selector="payAction:" destination="txt-9C-2dA" id="XG6-VE-0WJ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="ClubNameLbl" destination="ZOg-TY-ndh" id="Vi5-c2-XcY"/>
                         <outlet property="PirceLbl" destination="gsM-jQ-8zn" id="p1u-Bv-SEa"/>
                         <outlet property="eNameLbl" destination="A7p-ds-TzU" id="dkr-xO-CWc"/>
                         <outlet property="numLbl" destination="9ms-pp-Dbe" id="sR7-sU-pgT"/>
+                        <outlet property="payBtn" destination="jKh-R7-UI5" id="RE8-H6-Awo"/>
                         <outlet property="stepper" destination="w1U-SN-2m7" id="OrA-Pr-DWz"/>
                         <outlet property="tableView" destination="EZc-OJ-ddk" id="rbZ-IL-aas"/>
                         <outlet property="zhongPirceLbl" destination="ekX-Bz-r4y" id="9Er-N2-JM1"/>
@@ -1020,6 +1037,6 @@
         <image name="对勾" width="15" height="15"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="424-OX-C1w"/>
+        <segue reference="wmk-mv-alp"/>
     </inferredMetricsTieBreakers>
 </document>
