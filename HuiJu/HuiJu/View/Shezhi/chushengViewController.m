@@ -17,7 +17,7 @@
 @property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
 - (IBAction)cancelAction:(UIBarButtonItem *)sender;
 - (IBAction)doneAction:(UIBarButtonItem *)sender;
-@property(strong,nonatomic)NSArray *pickerArr;
+@property (strong,nonatomic)NSArray *pickerArr;
 @property (strong,nonatomic)UserModel *user;
 @property (strong,nonatomic) UIActivityIndicatorView *avi;
 
@@ -86,7 +86,7 @@
             [[NSNotificationCenter defaultCenter] performSelectorOnMainThread:@selector(postNotification:) withObject:note waitUntilDone:YES];
             
             
-            [self backAction];
+            //[self backAction];
             
         }else{
             NSString *errorMsg=[ErrorHandler getProperErrorString:[responseObject[@"resultFlag"]integerValue]];
@@ -100,7 +100,7 @@
     }];
     
     
-    
+    [self backAction];
     
     
 }

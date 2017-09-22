@@ -26,6 +26,7 @@
 @property (weak, nonatomic) IBOutlet UIView *adView;
 @property (weak, nonatomic) IBOutlet UITableView *HomeTableView;
 @property (weak, nonatomic) IBOutlet UIButton *cityBtn;
+- (IBAction)cityAction:(UIButton *)sender forEvent:(UIEvent *)event;
 
 @property (strong, nonatomic) NSMutableArray *arr;
 @property (strong, nonatomic) NSMutableArray *arr3;
@@ -59,6 +60,7 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self locationStart];
+    [self refreshPage];
 }
 
 //这个方法专门处理定位的基本设置
@@ -92,7 +94,7 @@
     // 设置导航条标题文字
     self.navigationItem.title = @"首页";
     //设置导航条颜色（风格颜色）
-    self.navigationController.navigationBar.barTintColor = [UIColor blueColor];
+    self.navigationController.navigationBar.barTintColor = UIColorFromRGB(0, 100, 255);
     //设置导航条是否隐藏.
     self.navigationController.navigationBar.hidden = NO;
     //设置导航条标题颜色
@@ -119,21 +121,21 @@
     
     refreshControl.tag = 10001;
     //设置标题
-    NSString *title = @"刷新中...";
+    //NSString *title = @"刷新中...";
     
     //创建属性字典
-    NSDictionary *attrDict = @{NSForegroundColorAttributeName : [UIColor redColor],NSBackgroundColorAttributeName : [UIColor yellowColor]};
+    //NSDictionary *attrDict = @{NSForegroundColorAttributeName : [UIColor redColor],NSBackgroundColorAttributeName : UIColorFromRGB(0, 100, 255)};
     
     
     //将文字和属性字典包裹成一个带属性的字符串
-    NSAttributedString *attriTitle = [[NSAttributedString alloc]initWithString:title attributes:attrDict];
+    //NSAttributedString *attriTitle = [[NSAttributedString alloc]initWithString:title attributes:attrDict];
     
-    refreshControl.attributedTitle = attriTitle;
+    //refreshControl.attributedTitle = attriTitle;
     //设置风格颜色为黑色（风格颜色：刷新指示器的颜色）
-    refreshControl.tintColor = [UIColor blueColor];
+   // refreshControl.tintColor = [UIColor blueColor];
     
     //设置背景色
-    refreshControl.backgroundColor = [UIColor whiteColor];
+    refreshControl.backgroundColor = [UIColor lightGrayColor];
     //定义用户触发下拉事件时执行的方法
     [refreshControl addTarget:self action:@selector(refreshPage) forControlEvents:UIControlEventValueChanged];
     //将下拉刷新控件添加到tableView中(在tableView中，下拉刷新控件会自动放置在表格视图顶部后侧位置)
@@ -143,6 +145,7 @@
 - (void)end{
     //在activityTableView中，根据下标为10001获得其子视图：下拉刷新控件
     UIRefreshControl *refresh = (UIRefreshControl *)[self.HomeTableView viewWithTag:10001];
+    [_avi stopAnimating];
     //结束刷新
     [refresh endRefreshing];
 }
@@ -197,7 +200,6 @@
     NSDictionary *para = @{@"city":[Utilities getUserDefaults:@"UserCity"], @"jing":[NSString stringWithFormat:@"%f",_location.coordinate.longitude],@"wei":[NSString stringWithFormat:@"%f",_location.coordinate.latitude],@"page" : @(page),@"perPage":@10};
     NSLog(@"para = %@", para);
     [RequestAPI requestURL:@"/homepage/choice" withParameters:para andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
-        [_avi stopAnimating];
         [self end];
         NSLog(@"%@",responseObject);
         if ([responseObject[@"resultFlag"] integerValue] == 8001) {
@@ -232,7 +234,7 @@
             }
             [_HomeTableView reloadData];
         }else if([responseObject[@"resultFlag"] integerValue] == 8020){
-               [Utilities popUpAlertViewWithMsg:@"该城市并未有加入该APP的会所" andTitle:nil onView:self];
+               [Utilities popUpAlertViewWithMsg:@"该城市并未有加入该APP的会所。您可以选择有加盟商的城市，如:无锡等" andTitle:nil onView:self];
             }
             else{
             //业务逻辑失败的情况下
@@ -510,4 +512,8 @@
 }
 
 
+- (IBAction)cityAction:(UIButton *)sender forEvent:(UIEvent *)event {
+    //发送注册按钮的通知
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"LeftSwitch" object:nil];
+}
 @end

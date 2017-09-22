@@ -18,7 +18,7 @@
         _phone=[Utilities nullAndNilCheck:dict[@"contactTel"] replaceBy:@"未知号码"];
         _nickname=[Utilities nullAndNilCheck:dict[@"memberName"] replaceBy:@"未知"];
         _age=[Utilities nullAndNilCheck:dict[@"age"] replaceBy:@"未知"];
-        _dob=[Utilities nullAndNilCheck:dict[@"dob"] replaceBy:@"未知"];
+        _dob=[Utilities nullAndNilCheck:dict[@"birthday"] replaceBy:@"未知"];
         _idCardNo=[Utilities nullAndNilCheck:dict[@"identificationcard"] replaceBy:@"未知"];
         _credit=[Utilities nullAndNilCheck:dict[@"memberPoint"] replaceBy:@"未知"];
         _userPwd=[Utilities nullAndNilCheck:dict[@"userPwd"] replaceBy:@"未知"];

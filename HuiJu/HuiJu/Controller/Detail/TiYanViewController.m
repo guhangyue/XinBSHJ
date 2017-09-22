@@ -14,6 +14,7 @@
 @interface TiYanViewController (){
     ShouYe *detail3;
 }
+@property (weak, nonatomic) IBOutlet UIScrollView *tiyanjuanSV;
 
 @property (weak, nonatomic) IBOutlet UILabel *clubNameLbl;
 @property (weak, nonatomic) IBOutlet UIButton *clubAddressbBtn;
@@ -32,6 +33,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *rulesLbl;
 @property (weak, nonatomic) IBOutlet UIImageView *eLogoImage;
 @property (weak, nonatomic) IBOutlet UILabel *eFeatureLbl;
+
 @property (strong, nonatomic)NSArray *arr1;
 
 @end
@@ -42,6 +44,7 @@
     [super viewDidLoad];
     [self setNavigationItem];
     [self Club2DetailRequest];
+    [self uiLayout];
     // Do any additional setup after loading the view.
 }
 
@@ -59,6 +62,45 @@
 - (void)backAction {
     [self dismissViewControllerAnimated:YES completion:nil];
     //[self.navigationController popViewControllerAnimated:YES];
+}
+- (void)uiLayout {
+    //为表格视图创建footer(该方法可以去除表格视图底部多余的下划线)
+    // _huisouscrollView.
+    //创建下拉刷新器
+    [self refreshConfiguration];
+}
+- (void)refreshConfiguration{
+    //初始化一个下拉刷新控件
+    UIRefreshControl *refreshControl = [[UIRefreshControl alloc]init];
+    
+    refreshControl.tag = 10001;
+    //设置标题
+//    NSString *title = @"刷新中...";
+//    
+//    //创建属性字典
+//    NSDictionary *attrDict = @{NSForegroundColorAttributeName : [UIColor redColor],NSBackgroundColorAttributeName : [UIColor yellowColor]};
+//    
+//    
+//    //将文字和属性字典包裹成一个带属性的字符串
+//    NSAttributedString *attriTitle = [[NSAttributedString alloc]initWithString:title attributes:attrDict];
+//    
+//    refreshControl.attributedTitle = attriTitle;
+//    //设置风格颜色为黑色（风格颜色：刷新指示器的颜色）
+//    refreshControl.tintColor = [UIColor blueColor];
+    
+    //设置背景色
+    refreshControl.backgroundColor = [UIColor lightGrayColor];
+    //定义用户触发下拉事件时执行的方法
+    [refreshControl addTarget:self action:@selector(Club2DetailRequest) forControlEvents:UIControlEventValueChanged];
+    //将下拉刷新控件添加到tableView中(在tableView中，下拉刷新控件会自动放置在表格视图顶部后侧位置)
+    [self.tiyanjuanSV addSubview:refreshControl];
+    
+}
+- (void)end{
+    //在activityTableView中，根据下标为10001获得其子视图：下拉刷新控件
+    UIRefreshControl *refresh = (UIRefreshControl *)[self.tiyanjuanSV viewWithTag:10001];
+    //结束刷新
+    [refresh endRefreshing];
 }
 - (void)Club2DetailRequest{
     //菊花膜
@@ -88,7 +130,8 @@
             _clubNameLbl.text=detail3.eClubName;
             _orginPriceLbl.text=[NSString stringWithFormat:@"原价：%@元",detail3.orginPrice];
             _rulesLbl.text=detail3.rules;
-            _saleCountLbl.text=[NSString stringWithFormat:@"已售：%@",detail3.saleCount ];
+            _saleCountLbl.text=[NSString stringWithFormat:@"已售：%@",detail3.saleCount];
+            NSLog(@"333666尴尬:%@",detail3.saleCount);
             _useDateLbl.text=detail3.useDate;
             _eFeatureLbl.text=detail3.eFeature;
             _priceLbl.text=detail3.currentPrice;
@@ -116,7 +159,7 @@
             //_priceLbl.text = [NSString stringWithFormat:@"¥ %@",detail.hotelMoney];
             
             // [_smallPictureImgView sd_setImageWithURL:[NSURL URLWithString:detail.hotelImg] placeholderImage:[UIImage imageNamed:@"11"]];设置默认图片
-            
+            [self end];
             
         }else{
             NSString *errorMsg = [ErrorHandler getProperErrorString:[responseObject[@"result"] integerValue]];
@@ -140,10 +183,10 @@
     if ([segue.identifier isEqualToString:@"TiYanJuanToPay"]) {
         //当从列表页到详情页的这个跳转要发生的时候
         //获取要传递到下一页的数据
+        
         PayViewController *detailVC= segue.destinationViewController;
         detailVC.payModel=detail3;
-        NSLog(@"传的什么鬼%@",detail3);
-        //        ShouYe *activity=_arr[indexPath.section];
+        NSLog(@"传的什么鬼%@",detail3);        //        ShouYe *activity=_arr[indexPath.section];
         //        ShouYe *activity2=_arr[indexPath.row];
         //        // NSLog(@"%@",_arr[indexPath.row]);
         //        //获取下一页的这个实例
@@ -152,6 +195,7 @@
         //        detailVC.detailA=activity;
         //        detailVC.detailB=activity2;
     }
+    
 }
 
 - (IBAction)clubAddressbAction:(UIButton *)sender forEvent:(UIEvent *)event {
@@ -159,6 +203,8 @@
     [[StorageMgr singletonStorageMgr] addKey:@"clubJing" andValue:jing];
     NSString *wei=detail3.latitude;
     [[StorageMgr singletonStorageMgr] addKey:@"clubWei" andValue:wei];
+    NSString *clubname=detail3.eClubName;
+    [[StorageMgr singletonStorageMgr] addKey:@"clubName" andValue:clubname];
     [self performSegueWithIdentifier:@"TiYanJuanToMap" sender:nil];
 }
 - (IBAction)callingAction:(UIButton *)sender forEvent:(UIEvent *)event {
@@ -188,6 +234,13 @@
 
 }
 - (IBAction)payAction:(UIButton *)sender forEvent:(UIEvent *)event {
-    [self performSegueWithIdentifier:@"TiYanJuanToPay" sender:nil];
-}
+    if ([Utilities loginCheck]) {
+        [self performSegueWithIdentifier:@"TiYanJuanToPay" sender:nil];
+    }else{
+        [self performSegueWithIdentifier:@"tiyanjuanTodelu" sender:nil];
+        
+    }
+    
+
+    }
 @end

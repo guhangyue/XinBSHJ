@@ -136,6 +136,7 @@
         self.orginPrice= [Utilities nullAndNilCheck:dict[@"orginPrice"] replaceBy:@"未知"];
         self.rules= [Utilities nullAndNilCheck:dict[@"rules"] replaceBy:@"未知"];
         self.saleCount= [Utilities nullAndNilCheck:dict[@"saleCount"] replaceBy:@"未知"];
+        
         self.useDate= [Utilities nullAndNilCheck:dict[@"useDate"] replaceBy:@"未知"];
         self.clubTel =[Utilities nullAndNilCheck:dict[@"clubTel"] replaceBy:@"未知"];
         self.longitude =[Utilities nullAndNilCheck:dict[@"longitude"] replaceBy:@"未知"];

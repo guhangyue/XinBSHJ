@@ -172,7 +172,7 @@
     //_juhua = [Utilities getCoverOnView:self.view];
 //    NSDictionary *prarmeter = @{@"memberId" : _user.memberId,@"name":[[StorageMgr singletonStorageMgr] objectForKey:@"nic"],@"birthday":_user.dob,@"gender":_user.gender,@"identificationcard":_user.idCardNo/*, @"deviceId" : str*/};
     NSString *str = [Utilities uniqueVendor];
-    
+    _juhua = [Utilities getCoverOnView:self.view];
     NSDictionary *prarmeter = @{@"deviceType" : @7001, @"deviceId" : str};
     NSLog(@"%@",prarmeter);
 
@@ -190,23 +190,23 @@
 //            cell.biaoti.text = dict[@"biaoti"];
 //            cell.neirong.text = dict[@"neirong"];
 //            //[_juhua stopAnimating];
-//            NSDictionary *result = responseObject[@"result"];
-//            NSString *exponent = result[@"exponent"];
-//            NSString *modulus = result[@"modulus"];
-//            NSString *string = [[StorageMgr singletonStorageMgr]objectForKey:@"pwd"];
-//            //对内容进行MD5加密
-//            NSString *md5Str = [string getMD5_32BitString];
-//            //用模数与指数对MD5加密过后的密码进行加密
-//            NSString *rsaStr = [NSString encryptWithPublicKeyFromModulusAndExponent:md5Str.UTF8String modulus:modulus exponent:exponent];
-//            //加密完成执行接口
-//            [self signInWithEncryptPwd:rsaStr];
+            NSDictionary *result = responseObject[@"result"];
+            NSString *exponent = result[@"exponent"];
+            NSString *modulus = result[@"modulus"];
+            NSString *string = [[StorageMgr singletonStorageMgr]objectForKey:@"pwd"];
+            //对内容进行MD5加密
+            NSString *md5Str = [string getMD5_32BitString];
+            //用模数与指数对MD5加密过后的密码进行加密
+            NSString *rsaStr = [NSString encryptWithPublicKeyFromModulusAndExponent:md5Str.UTF8String modulus:modulus exponent:exponent];
+            //加密完成执行接口
+            [self signInWithEncryptPwd:rsaStr];
         }else{
-            //[_juhua stopAnimating];
+            [_juhua stopAnimating];
             NSString *errorMsg = [ErrorHandler getProperErrorString:[responseObject[@"resultFlag"] integerValue]];
             [Utilities popUpAlertViewWithMsg:errorMsg andTitle:nil onView:self];
         }
     } failure:^(NSInteger statusCode, NSError *error) {
-        //[_juhua stopAnimating];
+        [_juhua stopAnimating];
         //失败以后要做的事情
         [Utilities popUpAlertViewWithMsg:@"请保持网络连接畅通" andTitle:nil onView:self];
     }];
@@ -217,8 +217,9 @@
 -(void)signInWithEncryptPwd:(NSString *)encryptPwd
 {
     NSString *userName = [[StorageMgr singletonStorageMgr]objectForKey:@"userName"];
-    [RequestAPI requestURL:@"/login" withParameters:@{@"userName":userName, @"password":encryptPwd,@"deviceType":@7001,@"deviceId":[Utilities uniqueVendor]} andHeader:nil byMethod:kPost andSerializer:kJson success:^(id responseObject){
-        //[_aiv stopAnimating];
+    NSString *deviceId = [[StorageMgr singletonStorageMgr]objectForKey:@"deviceId"];//[Utilities uniqueVendor]
+    [RequestAPI requestURL:@"/login" withParameters:@{@"userName":userName, @"password":encryptPwd,@"deviceType":@7001,@"deviceId":deviceId} andHeader:nil byMethod:kPost andSerializer:kJson success:^(id responseObject){
+        [_juhua stopAnimating];
         NSLog(@"responseObject=%@",responseObject);
         if ([responseObject[@"resultFlag"]integerValue]==8001) {
             NSDictionary *result=responseObject[@"result"];
@@ -238,7 +239,7 @@
             [Utilities popUpAlertViewWithMsg:errorMsg andTitle:nil onView:self];
         }
     } failure:^(NSInteger statusCode, NSError *error) {
-        //[_aiv stopAnimating];
+        [_juhua stopAnimating];
         //业务逻辑失败的情况下
         [Utilities popUpAlertViewWithMsg:@"网络错误，请稍后再试" andTitle:@"提示" onView:self];
     }];

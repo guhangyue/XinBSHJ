@@ -125,8 +125,9 @@
 //- (IBAction)signinBtn:(UIButton *)sender forEvent:(UIEvent *)event {}
 -(void)readyForEncoding
 {
+    NSString *str = [Utilities uniqueVendor];
     _aiv=[Utilities getCoverOnView:self.view];
-    [RequestAPI requestURL:@"/login/getKey" withParameters:@{@"deviceType":@7001,@"deviceId":[Utilities uniqueVendor]} andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject)
+    [RequestAPI requestURL:@"/login/getKey" withParameters:@{@"deviceType":@7001,@"deviceId":str} andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject)
      {
          //NSLog(@"responseObject":%@,responseObject);
          if ([responseObject[@"resultFlag"]integerValue]==8001)
@@ -138,7 +139,7 @@
              //对内容进行MD5加密
              NSString *md5Str=[_passWordtextword.text getMD5_32BitString];
              
-             
+             [[StorageMgr singletonStorageMgr]addKey:@"pwd"andValue:_passWordtextword.text];
              //用模数和指数对MD5密码进行加密过后的密码进行加密   categary
              NSString *rsaStr=[NSString encryptWithPublicKeyFromModulusAndExponent:md5Str.UTF8String modulus:modulus exponent:exponent];
              [self signInWithEncryptPwd:rsaStr];
@@ -169,15 +170,25 @@
         [_aiv stopAnimating];
         NSLog(@"responseObject=%@",responseObject);
         if ([responseObject[@"resultFlag"]integerValue]==8001) {
+            //将登录入参存储，方便后面登录
+            [[StorageMgr singletonStorageMgr]addKey:@"userName" andValue:_userNametextword.text];
+            [[StorageMgr singletonStorageMgr]addKey:@"password" andValue:encryptPwd];
+            [[StorageMgr singletonStorageMgr]addKey:@"deviceId" andValue:[Utilities uniqueVendor]];
+            
+
             NSDictionary *result=responseObject[@"result"];
             UserModel*user=[[UserModel alloc]initWithDictionary:result];
             //将用户获取到的信息打包存储到单例化全局变量
             [[StorageMgr singletonStorageMgr]addKey:@"MemberInfo" andValue:user];
             //单独将用户的ID也存储进去单例化全局变量中来作为用户是否已经登录的判断依据，同时也方便其他所有的页面更快捷的使用用户ID这个参数
             [[StorageMgr singletonStorageMgr]addKey:@"MemberId" andValue:user.memberId];
+            
+            
             [[StorageMgr singletonStorageMgr]addKey:@"userName" andValue:_userNametextword.text];
-//            [[StorageMgr singletonStorageMgr]addKey:@"password" andValue:encryptPwd];
-//            [[StorageMgr singletonStorageMgr]addKey:@"deviceId" andValue:[Utilities uniqueVendor]];
+            [[StorageMgr singletonStorageMgr]addKey:@"password" andValue:encryptPwd];
+            [[StorageMgr singletonStorageMgr]addKey:@"deviceId" andValue:[Utilities uniqueVendor]];
+            
+            
             //如果键盘还开着 就让他收回去
             [self.view endEditing:YES];
             //清空密码输入框的内容

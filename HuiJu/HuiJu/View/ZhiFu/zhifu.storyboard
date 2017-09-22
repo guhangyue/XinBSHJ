@@ -107,7 +107,14 @@
                             <constraint firstItem="G1b-EE-zCH" firstAttribute="leading" secondItem="BtU-pJ-vNf" secondAttribute="trailing" constant="5" id="yDy-Rr-8dM"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="tQC-QZ-ajC"/>
+                    <navigationItem key="navigationItem" id="tQC-QZ-ajC">
+                        <barButtonItem key="rightBarButtonItem" title="支付" id="yDR-EO-GaX">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="zhifuBtn:" destination="7hj-Tx-hOW" id="Uat-Pp-oPf"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="danjia" destination="S9O-gb-K38" id="0W7-fS-DmD"/>
                         <outlet property="jiage" destination="MpN-vF-v3R" id="Wp3-Xa-vVH"/>
