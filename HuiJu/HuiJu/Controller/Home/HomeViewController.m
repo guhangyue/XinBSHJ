@@ -193,7 +193,90 @@
     page = 1;
     [self networkRequest];
 }
+//定位失败时
+- (void)locationManager:(CLLocationManager *)manager
+       didFailWithError:(NSError *)error{
+    if(error){
+        [self dataInitialize];
+        switch (error.code) {
+            case kCLErrorNetwork:
+                [Utilities popUpAlertViewWithMsg:NSLocalizedString(@"NetworkError", nil) andTitle:nil onView:self];
+                break;
+            case kCLErrorDenied:
+                [Utilities popUpAlertViewWithMsg:NSLocalizedString(@"GPSDisabled", nil) andTitle:nil onView:self];
+                break;
+            case kCLErrorLocationUnknown:
+                [Utilities popUpAlertViewWithMsg:NSLocalizedString(@"LocationUnkonw" , nil) andTitle:nil onView:self];
+                break;
+            default:
+                [Utilities popUpAlertViewWithMsg:NSLocalizedString(@"SystemError" , nil) andTitle:nil onView:self];
+                break;
+        }
+    }
+}
+//定位成功时
+- (void)locationManager:(CLLocationManager *)manager
+    didUpdateToLocation:(CLLocation *)newLocation
+           fromLocation:(CLLocation *)oldLocation{
+    //NSLog(@"维度：%f",newLocation.coordinate.latitude);
+    //NSLog(@"经度：%f",newLocation.coordinate.longitude);
+    _location = newLocation;
+    //用flag思想判断是否可以去根据定位拿城市
+    if(firstVisit){
+        firstVisit = ! firstVisit;
+        [self dataInitialize];
+        //根据定位拿城市
+        [self getRegeoViaCoordinate];
+        
+    }
+    //关掉开关
+    [_locMgr stopUpdatingLocation];
+}
 
+-(void)getRegeoViaCoordinate{
+    //duration表示从now开始过3个SEC
+    dispatch_time_t duration = dispatch_time(DISPATCH_TIME_NOW, 3 * NSEC_PER_SEC);
+    //用duration这个设置好的策略去做某些事
+    dispatch_after(duration, dispatch_get_main_queue(), ^{
+        //正式做事情
+        CLGeocoder *geo = [CLGeocoder new];
+        //反向地理编码
+        [geo reverseGeocodeLocation:_location completionHandler:^(NSArray<CLPlacemark *> * _Nullable placemarks, NSError * _Nullable error) {
+            if(!error){
+                CLPlacemark *first = placemarks.firstObject;
+                NSDictionary *locDict = first.addressDictionary;
+                NSLog(@"locDict = %@",locDict);
+                NSString *cityStr = locDict[@"City"];
+                cityStr = [cityStr substringToIndex:(cityStr.length - 1)];
+                [[StorageMgr singletonStorageMgr] removeObjectForKey:@"LocCity"];
+                
+                //将定位的城市保存进单例化全局变量
+                [[StorageMgr singletonStorageMgr]addKey:@"LocCity" andValue:cityStr];
+                if (![cityStr isEqualToString:_cityBtn.titleLabel.text]) {
+                    //当定位到的城市和当前选择到的城市不一样的时候去弹窗询问用户是否切换城市
+                    UIAlertController *alertView =[UIAlertController alertControllerWithTitle:@"提示" message:[NSString stringWithFormat:@"当前定位到城市为%@， 你是否要切换",cityStr] preferredStyle:UIAlertControllerStyleAlert];
+                    UIAlertAction *yesAction = [UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                        //修改城市按钮标题
+                        [_cityBtn setTitle:cityStr forState:UIControlStateNormal];
+                        _cityBtn.titleLabel.text = cityStr;
+                        //修改用户选择的城市记忆体
+                        [Utilities removeUserDefaults:@"UserCity"];
+                        [Utilities setUserDefaults:@"UserCity" content:cityStr];
+                        //重新执行网络请求
+                        [self networkRequest];
+                    }];
+                    UIAlertAction *noAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+                    [alertView addAction:yesAction];
+                    [alertView addAction:noAction];
+                    [self presentViewController:alertView animated:YES completion:nil];
+                    
+                    
+                }
+            }
+        }];
+        
+    });
+}
 
 //执行网络请求
 - (void)networkRequest{
@@ -409,90 +492,7 @@
 }
 
 
-//定位失败时
-- (void)locationManager:(CLLocationManager *)manager
-       didFailWithError:(NSError *)error{
-    if(error){
-        [self dataInitialize];
-        switch (error.code) {
-            case kCLErrorNetwork:
-                [Utilities popUpAlertViewWithMsg:NSLocalizedString(@"NetworkError", nil) andTitle:nil onView:self];
-                break;
-            case kCLErrorDenied:
-                [Utilities popUpAlertViewWithMsg:NSLocalizedString(@"GPSDisabled", nil) andTitle:nil onView:self];
-                break;
-            case kCLErrorLocationUnknown:
-                [Utilities popUpAlertViewWithMsg:NSLocalizedString(@"LocationUnkonw" , nil) andTitle:nil onView:self];
-                break;
-            default:
-                [Utilities popUpAlertViewWithMsg:NSLocalizedString(@"SystemError" , nil) andTitle:nil onView:self];
-                break;
-        }
-    }
-}
-//定位成功时
-- (void)locationManager:(CLLocationManager *)manager
-    didUpdateToLocation:(CLLocation *)newLocation
-           fromLocation:(CLLocation *)oldLocation{
-    //NSLog(@"维度：%f",newLocation.coordinate.latitude);
-    //NSLog(@"经度：%f",newLocation.coordinate.longitude);
-    _location = newLocation;
-    //用flag思想判断是否可以去根据定位拿城市
-    if(firstVisit){
-        firstVisit = ! firstVisit;
-        [self dataInitialize];
-        //根据定位拿城市
-        [self getRegeoViaCoordinate];
-        
-    }
-    //关掉开关
-    [_locMgr stopUpdatingLocation];
-}
 
--(void)getRegeoViaCoordinate{
-    //duration表示从now开始过3个SEC
-    dispatch_time_t duration = dispatch_time(DISPATCH_TIME_NOW, 3 * NSEC_PER_SEC);
-    //用duration这个设置好的策略去做某些事
-    dispatch_after(duration, dispatch_get_main_queue(), ^{
-        //正式做事情
-        CLGeocoder *geo = [CLGeocoder new];
-        //反向地理编码
-        [geo reverseGeocodeLocation:_location completionHandler:^(NSArray<CLPlacemark *> * _Nullable placemarks, NSError * _Nullable error) {
-            if(!error){
-                CLPlacemark *first = placemarks.firstObject;
-                NSDictionary *locDict = first.addressDictionary;
-                NSLog(@"locDict = %@",locDict);
-                NSString *cityStr = locDict[@"City"];
-                cityStr = [cityStr substringToIndex:(cityStr.length - 1)];
-                [[StorageMgr singletonStorageMgr] removeObjectForKey:@"LocCity"];
-                
-                //将定位的城市保存进单例化全局变量
-                [[StorageMgr singletonStorageMgr]addKey:@"LocCity" andValue:cityStr];
-                if (![cityStr isEqualToString:_cityBtn.titleLabel.text]) {
-                    //当定位到的城市和当前选择到的城市不一样的时候去弹窗询问用户是否切换城市
-                    UIAlertController *alertView =[UIAlertController alertControllerWithTitle:@"提示" message:[NSString stringWithFormat:@"当前定位到城市为%@， 你是否要切换",cityStr] preferredStyle:UIAlertControllerStyleAlert];
-                    UIAlertAction *yesAction = [UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                        //修改城市按钮标题
-                        [_cityBtn setTitle:cityStr forState:UIControlStateNormal];
-                        _cityBtn.titleLabel.text = cityStr;
-                        //修改用户选择的城市记忆体
-                        [Utilities removeUserDefaults:@"UserCity"];
-                        [Utilities setUserDefaults:@"UserCity" content:cityStr];
-                        //重新执行网络请求
-                        [self networkRequest];
-                    }];
-                    UIAlertAction *noAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
-                    [alertView addAction:yesAction];
-                    [alertView addAction:noAction];
-                    [self presentViewController:alertView animated:YES completion:nil];
-                    
-                    
-                }
-            }
-        }];
-        
-    });
-}
 -(void)checkCityState:(NSNotification *)note {
     NSString *cityStr=note.object;
     if (![cityStr isEqualToString:_cityBtn.titleLabel.text]) {

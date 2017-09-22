@@ -100,9 +100,17 @@
 }
 
 #pragma mark - Table view data source
-
+//设置表头高度
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 15.0f;
+}
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 120.f;
+    return 110.f;
+}
+//设置表尾高度
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    return 0.0f;
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return _arr.count;

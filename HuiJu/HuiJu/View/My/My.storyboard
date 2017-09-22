@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="2NY-8H-Ody">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="2NY-8H-Ody">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -26,21 +26,21 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Koo-7z-1U9">
                                 <rect key="frame" x="0.0" y="64" width="375" height="283"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_user_head" translatesAutoresizingMaskIntoConstraints="NO" id="4pO-rB-isp">
-                                        <rect key="frame" x="147.5" y="28" width="80" height="80"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_user_head" translatesAutoresizingMaskIntoConstraints="NO" id="4pO-rB-isp">
+                                        <rect key="frame" x="142.5" y="28" width="90" height="90"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="80" id="HJS-Om-sDc"/>
+                                            <constraint firstAttribute="height" constant="90" id="HJS-Om-sDc"/>
                                             <constraint firstAttribute="width" secondItem="4pO-rB-isp" secondAttribute="height" multiplier="1:1" id="uW1-9m-j2V"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                <integer key="value" value="40"/>
+                                                <integer key="value" value="45"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x5f-Iv-9sm">
-                                        <rect key="frame" x="147.5" y="128" width="80" height="30"/>
+                                        <rect key="frame" x="142.5" y="138" width="90" height="30"/>
                                         <state key="normal" title="点击登录">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -49,7 +49,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="游 客" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t8J-ai-5sp">
-                                        <rect key="frame" x="147.5" y="128" width="80" height="18"/>
+                                        <rect key="frame" x="142.5" y="138" width="90" height="18"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -261,15 +261,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="145" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zl2-bM-DJU">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="113" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="zl2-bM-DJU">
+                                <rect key="frame" x="0.0" y="15" width="375" height="652"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HistoryCell" rowHeight="145" id="0ZQ-rP-jGZ" customClass="HistoryTableViewCell">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="145"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HistoryCell" rowHeight="113" id="0ZQ-rP-jGZ" customClass="HistoryTableViewCell">
+                                        <rect key="frame" x="0.0" y="56" width="375" height="113"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0ZQ-rP-jGZ" id="xZd-Im-1hC">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="145"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="112"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="体验券" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f6v-xH-oXV">
@@ -325,13 +325,23 @@
                                     <outlet property="delegate" destination="8Ey-DV-IOy" id="bqF-k1-vxb"/>
                                 </connections>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jcE-qu-Zrn">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="15"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="15" id="CPB-SZ-QJK"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="zl2-bM-DJU" firstAttribute="top" secondItem="o9S-tO-N6d" secondAttribute="top" id="8ye-lt-tyd"/>
                             <constraint firstItem="zl2-bM-DJU" firstAttribute="leading" secondItem="o9S-tO-N6d" secondAttribute="leading" id="Sbv-Vc-zIa"/>
                             <constraint firstAttribute="trailing" secondItem="zl2-bM-DJU" secondAttribute="trailing" id="T9k-rJ-skv"/>
+                            <constraint firstItem="jcE-qu-Zrn" firstAttribute="top" secondItem="o9S-tO-N6d" secondAttribute="top" id="UJ2-FO-CwH"/>
                             <constraint firstAttribute="bottom" secondItem="zl2-bM-DJU" secondAttribute="bottom" id="YRG-yx-3Xj"/>
+                            <constraint firstItem="jcE-qu-Zrn" firstAttribute="leading" secondItem="o9S-tO-N6d" secondAttribute="leading" id="cxA-VU-31Y"/>
+                            <constraint firstAttribute="trailing" secondItem="jcE-qu-Zrn" secondAttribute="trailing" id="vGE-Au-GFa"/>
+                            <constraint firstItem="zl2-bM-DJU" firstAttribute="top" secondItem="jcE-qu-Zrn" secondAttribute="bottom" id="yJ0-hi-mmy"/>
                         </constraints>
                     </view>
                     <connections>
