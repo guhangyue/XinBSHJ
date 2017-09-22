@@ -33,6 +33,9 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:NO animated:animated];
+    self.textView.delegate = self;
+    [super viewWillAppear:animated];// 1
+    [self.textView becomeFirstResponder];// 2
 }
 
 //设置导航栏样式
